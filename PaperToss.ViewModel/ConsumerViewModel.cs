@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PaperToss.ViewModel
+﻿namespace PaperToss.ViewModel
 {
-   public class ConsumerViewModel
+    public class ConsumerViewModel
     {
         public int Id { get; set; } // ID (Primary key)
         public string GaasCampaignKey { get; set; } // Gaas_CampaignKey (length: 128)
