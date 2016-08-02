@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
-using DodgeBall.Service;
+using PaperToss.Service;
 
-namespace DodgeBall.Web.Controllers.api.v1
+namespace PaperTossWeb.Controllers.api.v1
 {
     public class EndpointsController : ApiController
     {

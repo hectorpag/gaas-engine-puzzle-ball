@@ -2,13 +2,13 @@
 
 using System.Collections.Generic;
 using AutoMapper;
-using DodgeBall.Service.Interfaces;
-using DodgeBall.Service.RedisCaching;
-using DodgeBall.ViewModel;
+using PaperToss.Service.Interfaces;
+using PaperToss.Service.RedisCaching;
+using PaperToss.ViewModel;
 
 #endregion
 
-namespace DodgeBall.Service.Config
+namespace PaperToss.Service.Config
 {
     public class ConfigService : IConfigService
     {

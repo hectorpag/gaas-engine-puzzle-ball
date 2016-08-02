@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using DodgeBall.Model;
-using DodgeBall.ViewModel;
+using PaperToss.Model;
+using PaperToss.ViewModel;
 
-namespace DodgeBall.Service
+namespace PaperToss.Service
 {
     public static class AutoMapperConfiguration
     {

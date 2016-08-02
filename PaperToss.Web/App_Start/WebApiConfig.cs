@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace DodgeBall.Web
+namespace PaperTossWeb
 {
     public class WebApiConfig
     {

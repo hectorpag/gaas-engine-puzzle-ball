@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
-using DodgeBall.ViewModel;
+using PaperToss.ViewModel;
 
-namespace DodgeBall.Service.GamePlay
+namespace PaperToss.Service.GamePlay
 {
     public class GamePlayService : IGamePlayService
     {

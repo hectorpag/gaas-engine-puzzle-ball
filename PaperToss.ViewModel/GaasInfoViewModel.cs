@@ -1,4 +1,4 @@
-﻿namespace DodgeBall.ViewModel
+﻿namespace PaperToss.ViewModel
 {
     public class GaasInfoViewModel
     {

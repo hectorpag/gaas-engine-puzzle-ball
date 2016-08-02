@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DodgeBall.Service.Configuration;
-using DodgeBall.Service.Interfaces;
+using PaperToss.Service.Configuration;
+using PaperToss.Service.Interfaces;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 
-namespace DodgeBall.Service.RedisCaching
+namespace PaperToss.Service.RedisCaching
 {
     public partial class RedisCacheManager : ICacheManager
     {
@@ -22,7 +22,7 @@ namespace DodgeBall.Service.RedisCaching
 
         public RedisCacheManager(IRedisConnectionWrapper connectionWrapper)
         {
-            if (String.IsNullOrEmpty(DodgeBallConfig.RedisCachingConnectionString))
+            if (String.IsNullOrEmpty(PaperTossConfig.RedisCachingConnectionString))
                 throw new Exception("Redis connection string is empty");
 
             // ConnectionMultiplexer.Connect should only be called once and shared between callers

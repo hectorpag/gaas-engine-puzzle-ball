@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using Data;
-using DodgeBall.Data;
+using PaperToss.Data;
 
-namespace DodgeBall.Service.Fuel
+namespace PaperToss.Service.Fuel
 {
     public class FuelRepository : IFuelRepository
     {
-        private readonly DodgeBallContext _context;
-        public FuelRepository(IDodgeBallContext context)
+        private readonly dbContext _context;
+        public FuelRepository(IdbContext context)
         {
-            _context = context as DodgeBallContext;
+            _context = context as dbContext;
         }
         #region Implementation of IConfigRepository
 

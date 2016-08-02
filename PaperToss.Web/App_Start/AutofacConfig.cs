@@ -4,13 +4,13 @@ using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
-using DodgeBall.Data;
-using DodgeBall.Service.Config;
-using DodgeBall.Service.Configuration;
-using DodgeBall.Service.Interfaces;
-using DodgeBall.Service.RedisCaching;
+using PaperToss.Data;
+using PaperToss.Service.Config;
+using PaperToss.Service.Configuration;
+using PaperToss.Service.Interfaces;
+using PaperToss.Service.RedisCaching;
 
-namespace DodgeBall.Web
+namespace PaperToss.Web
 {
     public class AutofacConfig
     {
@@ -25,8 +25,8 @@ namespace DodgeBall.Web
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterType<DodgeBallConfig>();
-            builder.RegisterType<DodgeBallContext>().As<IDodgeBallContext>().InstancePerRequest();
+            builder.RegisterType<PaperTossConfig>();
+            builder.RegisterType<dbContext>().As<IdbContext>().InstancePerRequest();
             builder.RegisterType<RedisCacheManager>().As<ICacheManager>().InstancePerLifetimeScope();
             builder.RegisterType<RedisConnectionWrapper>().As<IRedisConnectionWrapper>().InstancePerLifetimeScope();
            

@@ -99,7 +99,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="PaperTossContext.cs">
+    <Compile Include="dbContext.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="FuelConfiguration.cs">
@@ -114,7 +114,7 @@
     <Compile Include="GamePlayViewConfiguration.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="IPaperTossContext.cs">
+    <Compile Include="IdbContext.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

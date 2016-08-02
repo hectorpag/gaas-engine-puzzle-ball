@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace DodgeBall.ViewModel
+namespace PaperToss.ViewModel
 {
     public class UniqueGamePlayViewViewModel
     {

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
-using DodgeBall.Model.Gaas.Models;
-using DodgeBall.Model.GaasModels;
-using DodgeBall.Service.Interfaces;
-using DodgeBall.Service.RedisCaching;
-using DodgeBall.ViewModel;
+using PaperToss.Model.Gaas.Models;
+using PaperToss.Model.GaasModels;
+using PaperToss.Service.Interfaces;
+using PaperToss.Service.RedisCaching;
+using PaperToss.ViewModel;
 using Newtonsoft.Json;
 using Shearnie.Net.Web;
 
-namespace DodgeBall.Service.Consumer
+namespace PaperToss.Service.Consumer
 {
     public class ConsumerService : IConsumerService
     {

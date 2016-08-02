@@ -1,4 +1,4 @@
-﻿namespace DodgeBall.Model.Gaas.Models
+﻿namespace PaperToss.Model.Gaas.Models
 {
     public class GaasScore
     {

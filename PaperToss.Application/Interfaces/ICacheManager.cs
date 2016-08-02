@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DodgeBall.Service.Interfaces
+namespace PaperToss.Service.Interfaces
 {
     /// <summary>
     /// Cache manager interface

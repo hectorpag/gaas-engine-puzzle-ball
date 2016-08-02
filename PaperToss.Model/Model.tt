@@ -6,10 +6,10 @@
     // A course for this generator is available on Pluralsight at https://www.pluralsight.com/courses/code-first-entity-framework-legacy-databases
 
     // Main settings **********************************************************************************************************************
-    ConnectionStringName = "dbDodgeBallEntities";   // Searches for this connection string in config files listed below in the ConfigFilenameSearchOrder setting
+    ConnectionStringName = "dbEntities";   // Searches for this connection string in config files listed below in the ConfigFilenameSearchOrder setting
     //ConnectionStringName is the only required setting
     // Namespace = ""; // Override the default namespace here
-    DbContextName = "dbDodgeBallEntities";
+    DbContextName = "dbContext";
     //DbContextInterfaceName = "IMyDbContext"; //Defaults to "I" + DbContextName
     DbContextInterfaceBaseClasses = "System.IDisposable";    // Specify what the base classes are for your database context interface
     DbContextBaseClass = "System.Data.Entity.DbContext";   // Specify what the base class is for your DbContext. For ASP.NET Identity use "IdentityDbContext<ApplicationUser>"
@@ -93,7 +93,7 @@
     //      UnitOfWorkNamespace = "YourProject.Context";
     //      PocoConfigurationNamespace = "YourProject.Maps";
     // You also need to set the following to the namespace where they now live:
-    PocoNamespace = "DodgeBall.Model";
+    PocoNamespace = "PaperToss.Model";
     ContextNamespace = "";
     UnitOfWorkNamespace = "";
     PocoConfigurationNamespace = "";

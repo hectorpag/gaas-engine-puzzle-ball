@@ -4,11 +4,12 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using DodgeBall.App_Start;
-using DodgeBall.Service;
-using DodgeBall.Service.Configuration;
+using PaperTossApp_Start;
+using PaperToss.Service;
+using PaperToss.Service.Configuration;
+using PaperToss.Web;
 
-namespace DodgeBall.Web
+namespace PaperTossWeb
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -23,7 +24,7 @@ namespace DodgeBall.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.Run();
             AutoMapperConfiguration.RegisterMappings();
-            DodgeBallConfig.Set(ConfigurationManager.AppSettings);
+            PaperTossConfig.Set(ConfigurationManager.AppSettings);
         }
         protected void Application_OnError()
         {

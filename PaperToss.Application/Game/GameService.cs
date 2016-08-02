@@ -1,16 +1,16 @@
-﻿using DodgeBall.ViewModel;
+﻿using PaperToss.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using AutoMapper;
-using DodgeBall.Service.Config;
-using DodgeBall.Service.Consumer;
-using DodgeBall.Service.Fuel;
-using DodgeBall.Service.GamePlay;
+using PaperToss.Service.Config;
+using PaperToss.Service.Consumer;
+using PaperToss.Service.Fuel;
+using PaperToss.Service.GamePlay;
 using Newtonsoft.Json;
 
-namespace DodgeBall.Service.Game
+namespace PaperToss.Service.Game
 {
     public class GameService : IGameService
     {

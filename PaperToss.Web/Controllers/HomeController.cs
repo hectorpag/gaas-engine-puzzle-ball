@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
-using DodgeBall.Service.Fuel;
-using DodgeBall.Service.Game;
-using DodgeBall.ViewModel;
+using PaperToss.Service.Fuel;
+using PaperToss.Service.Game;
+using PaperToss.ViewModel;
 using Extensions;
 
-namespace DodgeBall.Web.Controllers
+namespace PaperTossWeb.Controllers
 {
     public class HomeController : Controller
     {

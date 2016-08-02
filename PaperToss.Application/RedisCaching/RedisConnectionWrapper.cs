@@ -4,11 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using DodgeBall.Service.Configuration;
-using DodgeBall.Service.Interfaces;
+using PaperToss.Service.Configuration;
+using PaperToss.Service.Interfaces;
 using StackExchange.Redis;
 
-namespace DodgeBall.Service.RedisCaching
+namespace PaperToss.Service.RedisCaching
 {
     public class RedisConnectionWrapper : IRedisConnectionWrapper
     {
@@ -24,7 +24,7 @@ namespace DodgeBall.Service.RedisCaching
 
         private string GetConnectionString()
         {
-            return DodgeBallConfig.RedisCachingConnectionString;
+            return PaperTossConfig.RedisCachingConnectionString;
         }
 
         private ConnectionMultiplexer GetConnection()

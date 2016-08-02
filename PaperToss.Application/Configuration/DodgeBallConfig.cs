@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DodgeBall.Service.Configuration
+namespace PaperToss.Service.Configuration
 {
     /// <summary>
     ///
     /// </summary>
-    public partial class DodgeBallConfig
+    public partial class PaperTossConfig
     {
 
         /// <summary>

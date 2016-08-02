@@ -1,16 +1,16 @@
 ﻿using System.Data.Entity.Migrations;
 using System.Linq;
 using Data;
-using DodgeBall.Data;
+using PaperToss.Data;
 
-namespace DodgeBall.Service.Consumer
+namespace PaperToss.Service.Consumer
 {
     public class ConsumerRepository : IConsumerRepository
     {
-        private readonly DodgeBallContext _context;
-        public ConsumerRepository(IDodgeBallContext context)
+        private readonly dbContext _context;
+        public ConsumerRepository(IdbContext context)
         {
-            _context = context as DodgeBallContext;
+            _context = context as dbContext;
         }
         #region Implementation of IConsumerRepository
 

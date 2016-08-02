@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PaperToss.ViewModel;
 
-namespace DodgeBall.ViewModel
+namespace PaperToss.ViewModel
 {
     public class GameViewModel
     {

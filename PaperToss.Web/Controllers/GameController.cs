@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http.Formatting;
 using System.Web.Mvc;
-using DodgeBall.Service;
-using DodgeBall.Service.Fuel;
-using DodgeBall.Service.Game;
-using DodgeBall.ViewModel;
+using PaperToss.Service;
+using PaperToss.Service.Fuel;
+using PaperToss.Service.Game;
+using PaperToss.ViewModel;
 using Extensions;
 using Microsoft.ApplicationInsights.Channel;
 using Newtonsoft.Json;
 
-namespace DodgeBall.Web.Controllers
+namespace PaperTossWeb.Controllers
 {
     public class GameController : Controller
     {

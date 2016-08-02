@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace DodgeBall.Web
+namespace PaperTossWeb
 {
     public class FilterConfig
     {

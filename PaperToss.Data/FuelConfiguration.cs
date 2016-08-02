@@ -11,10 +11,10 @@
 // TargetFrameworkVersion = 4.61
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
-namespace DodgeBall.Data
+namespace PaperToss.Data
 {
 
-    using DodgeBall.Model;
+    using PaperToss.Model;
 
 
     // Fuel

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using DodgeBall.Data;
-using DodgeBall.Model;
+using PaperToss.Data;
+using PaperToss.Model;
 
-namespace DodgeBall.Service.GameDataCapture
+namespace PaperToss.Service.GameDataCapture
 {
     public class GameDataCaptureRepository : IGameDataCaptureRepository
     {
-        private readonly DodgeBallContext _context;
-        public GameDataCaptureRepository(IDodgeBallContext context)
+        private readonly dbContext _context;
+        public GameDataCaptureRepository(IdbContext context)
         {
-            _context = context as DodgeBallContext;
+            _context = context as dbContext;
         }
 
         #region Implementation of IGameDataCaptureServiceRepository

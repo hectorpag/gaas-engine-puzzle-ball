@@ -11,7 +11,7 @@
 // TargetFrameworkVersion = 4.61
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
-namespace DodgeBall.Model
+namespace PaperToss.Model
 {
 
 
@@ -140,6 +140,10 @@ namespace DodgeBall.Model
 
         public Config()
         {
+
+            ShowMenu = false;
+
+            ShowResult = false;
 
 
             InitializePartial();

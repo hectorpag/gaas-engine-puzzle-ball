@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using DodgeBall.Service.Interfaces;
+using PaperToss.Service.Interfaces;
 
-namespace DodgeBall.Service.RedisCaching
+namespace PaperToss.Service.RedisCaching
 {
     public static class CacheExtensions
     {

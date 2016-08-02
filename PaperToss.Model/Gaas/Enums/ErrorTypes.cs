@@ -1,4 +1,4 @@
-namespace DodgeBall.Model.GaasModels
+namespace PaperToss.Model.GaasModels
 {
     public enum ErrorTypes
     {

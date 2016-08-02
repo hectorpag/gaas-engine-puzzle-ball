@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using DodgeBall.Service.GamePlay;
-using DodgeBall.ViewModel;
+using PaperToss.Service.GamePlay;
+using PaperToss.ViewModel;
 
-namespace DodgeBall.Service.Score
+namespace PaperToss.Service.Score
 {
     public  class ScoreService : IScoreService
     {

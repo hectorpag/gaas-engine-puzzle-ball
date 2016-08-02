@@ -2,16 +2,16 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 using Data;
-using DodgeBall.Data;
+using PaperToss.Data;
 
-namespace DodgeBall.Service.Config
+namespace PaperToss.Service.Config
 {
     public class ConfigRepository : IConfigRepository
     {
-        private readonly DodgeBallContext _context;
-        public ConfigRepository(IDodgeBallContext context)
+        private readonly dbContext _context;
+        public ConfigRepository(IdbContext context)
         {
-            _context = context as DodgeBallContext;
+            _context = context as dbContext;
         }
         #region Implementation of IConfigRepository
 

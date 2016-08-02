@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StackExchange.Redis;
 
-namespace DodgeBall.Service.Interfaces
+namespace PaperToss.Service.Interfaces
 {
     public interface IRedisConnectionWrapper : IDisposable
     {

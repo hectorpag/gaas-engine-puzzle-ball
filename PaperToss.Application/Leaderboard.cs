@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DodgeBall.Service
+namespace PaperToss.Service
 {
     public class Leaderboard
     {

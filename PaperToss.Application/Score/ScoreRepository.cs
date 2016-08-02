@@ -2,16 +2,16 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 using Data;
-using DodgeBall.Data;
+using PaperToss.Data;
 
-namespace DodgeBall.Service.Score
+namespace PaperToss.Service.Score
 {
     public class ScoreRepository : IScoreRepository
     {
-        private readonly DodgeBallContext _context;
-        public ScoreRepository(IDodgeBallContext context)
+        private readonly dbContext _context;
+        public ScoreRepository(IdbContext context)
         {
-            _context = context as DodgeBallContext;
+            _context = context as dbContext;
         }
        
         #region Implementation of IScoreRepository

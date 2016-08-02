@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 
-namespace DodgeBall.Models
+namespace PaperToss.Web.Models
 {
-    public class DodgeBallContext : DbContext
+    public class PaperTossContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -15,10 +11,10 @@ namespace DodgeBall.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public DodgeBallContext() : base("name=DodgeBallContext")
+        public PaperTossContext() : base("name=dbContext")
         {
         }
 
-        public System.Data.Entity.DbSet<DodgeBall.ViewModel.ConfigViewModel> ConfigViewModels { get; set; }
+        public System.Data.Entity.DbSet<PaperToss.ViewModel.ConfigViewModel> ConfigViewModels { get; set; }
     }
 }

@@ -107,7 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
-    <Compile Include="Configuration\PaperTossConfig.cs" />
+    <Compile Include="Configuration\DodgeBallConfig.cs" />
     <Compile Include="Config\ConfigService.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Consumer\ConsumerService.cs" />

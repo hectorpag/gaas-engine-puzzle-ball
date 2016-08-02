@@ -1,6 +1,6 @@
-﻿using DodgeBall.Model.GaasModels;
+﻿using PaperToss.Model.GaasModels;
 
-namespace DodgeBall.Model.Gaas.Models
+namespace PaperToss.Model.Gaas.Models
 {
     public class Code
     {

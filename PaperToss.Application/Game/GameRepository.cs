@@ -1,16 +1,16 @@
 ﻿using Data;
-using DodgeBall.Data;
+using PaperToss.Data;
 
-namespace DodgeBall.Service.Game
+namespace PaperToss.Service.Game
 
 {
     public class GameRepository : IGameRepository// Repository<Client>, IClientRepository
     {
-        private readonly DodgeBallContext _context;
+        private readonly dbContext _context;
 
-        public GameRepository(IDodgeBallContext context)
+        public GameRepository(IdbContext context)
         {
-            _context = context as DodgeBallContext;
+            _context = context as dbContext;
         }
        
     }

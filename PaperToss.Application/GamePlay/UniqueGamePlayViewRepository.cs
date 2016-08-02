@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data;
-using DodgeBall.Data;
-using DodgeBall.Model;
+using PaperToss.Data;
+using PaperToss.Model;
 
-namespace DodgeBall.Service.GamePlay
+namespace PaperToss.Service.GamePlay
 {
     public class UniqueGamePlayViewRepository : IUniqueGamePlayViewRepository
     {
-        private readonly DodgeBallContext _context;
-        public UniqueGamePlayViewRepository(IDodgeBallContext context)
+        private readonly dbContext _context;
+        public UniqueGamePlayViewRepository(IdbContext context)
         {
-            _context = context as DodgeBallContext;
+            _context = context as dbContext;
         }
         #region Implementation of IUniqueGamePlayViewRepository
 

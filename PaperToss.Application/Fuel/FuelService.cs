@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using DodgeBall.Service.Fuel;
-using DodgeBall.ViewModel;
+using PaperToss.Service.Fuel;
+using PaperToss.ViewModel;
 
-namespace DodgeBall.Service.Fuel
+namespace PaperToss.Service.Fuel
 {
     public class FuelService : IFuelService
     {

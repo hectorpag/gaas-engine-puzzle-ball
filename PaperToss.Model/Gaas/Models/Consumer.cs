@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DodgeBall.Model.GaasModels;
+using PaperToss.Model.GaasModels;
 
-namespace DodgeBall.Model.Gaas.Models
+namespace PaperToss.Model.Gaas.Models
 {
     public class Consumer
     {

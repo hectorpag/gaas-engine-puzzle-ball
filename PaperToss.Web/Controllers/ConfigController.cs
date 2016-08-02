@@ -2,13 +2,13 @@
 
 using System;
 using System.Web.Mvc;
-using DodgeBall.Service.Config;
-using DodgeBall.Service.Game;
-using DodgeBall.ViewModel;
+using PaperToss.Service.Config;
+using PaperToss.Service.Game;
+using PaperToss.ViewModel;
 
 #endregion
 
-namespace DodgeBall.Web.Controllers
+namespace PaperTossWeb.Controllers
 {
     public class ConfigController : Controller
     {

@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Web.Http;
 using System.Web.Mvc;
-using DodgeBall.Service;
-using DodgeBall.Service.Config;
-using DodgeBall.Service.Consumer;
-using DodgeBall.Service.Fuel;
-using DodgeBall.Service.Game;
-using DodgeBall.Service.GameDataCapture;
-using DodgeBall.Service.GamePlay;
-using DodgeBall.ViewModel;
+using PaperToss.Service;
+using PaperToss.Service.Config;
+using PaperToss.Service.Consumer;
+using PaperToss.Service.Fuel;
+using PaperToss.Service.Game;
+using PaperToss.Service.GameDataCapture;
+using PaperToss.Service.GamePlay;
+using PaperToss.ViewModel;
 using Extensions;
 using Microsoft.ApplicationInsights;
 using Newtonsoft.Json;
 
-namespace DodgeBall.Web.Controllers.api
+namespace PaperTossWeb.Controllers.api
 {
     public class GameLogController : ApiController
     {
