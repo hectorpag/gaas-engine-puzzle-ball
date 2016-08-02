@@ -25,7 +25,7 @@
 // The following connection settings were used to generate this file:
 //     Configuration file:     "PaperToss.Data\App.config"
 //     Connection String Name: "dbEntities"
-//     Connection String:      "data source=LOCALHOST;initial catalog=gaas-engine-papertoss;integrated security=False;user id=iisuser;password=**zapped**;;MultipleActiveResultSets=True;App=EntityFramework Application Name=DodgeBall"
+//     Connection String:      "data source=LOCALHOST;initial catalog=gaas-engine-papertoss;integrated security=False;user id=iisuser;password=**zapped**;;MultipleActiveResultSets=True;App=EntityFramework Application Name=PaperToss"
 // ------------------------------------------------------------------------------------------------
 // Database Edition       : Developer Edition (64-bit)
 // Database Engine Edition: Enterprise
