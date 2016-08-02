@@ -1,0 +1,233 @@
+﻿@using System.Web.Optimization
+@model DodgeBall.ViewModel.ConfigViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout_Config.cshtml";
+    ViewBag.Title = "DodgeBall Game Config";
+    var showHomeScreenCheckbox = Model.ShowMenu ? "checked" : "";
+    var showResultScreenCheckbox = Model.ShowResult ? "checked" : "";
+}
+@section head {
+    @Styles.Render("~/bundles/css/config")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/js/config")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("[name='chkShowHome']").bootstrapSwitch();
+            $("[name='chkShowResult']").bootstrapSwitch();
+        });
+    </script>
+
+    @using (Html.BeginForm("Index", "Config",FormMethod.Post, new { campaignKey = Model.GaasCampaignKey, panelId = Model.GaasPanelId }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(false)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.GaasCampaignKey)
+        @Html.HiddenFor(model => model.GaasPanelId)
+        <div class="container">
+            <div class="row">
+                <h4>ConfigViewModel</h4>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Show Menu", htmlAttributes: new {@class = "control-label"})
+                        <input type="checkbox" name="chkShowHome" @showHomeScreenCheckbox>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowResult, "Show Result", htmlAttributes: new {@class = "control-label"})
+                        <input type="checkbox" name="chkShowResult" @showResultScreenCheckbox>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LevelNumber, "Level Number", htmlAttributes: new {@class = "control-label"})
+                        <input type="number" class="form-control" name="txtLevelNumber" placeholder="Level Number" value="@Model.LevelNumber"/>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CutOffScore, "Cut-off Score", htmlAttributes: new {@class = "control-label"})
+                        <input type="number" class="form-control" name="txtCutoffScore" placeholder="Cut-off Score" value="@Model.CutOffScore"/>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CustomText, "Custom Text", htmlAttributes: new {@class = "control-label"})
+                        <input type="text" name="txtCustomText" class="form-control" value="@Model.CustomText">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FbShareName, "Facebook Share Name", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareName" class="form-control" value="@Model.FbShareName">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FbShareCaption, "Facebook Share Caption", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareCaption" class="form-control" value="@Model.FbShareCaption">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FbShareUrl, "Facebook Share Url", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFbShareUrl" class="form-control" value="@Model.FbShareUrl">
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-xs-12">
+                    <p>
+                        <strong>
+                            Facebook Share Score Range 1
+                        </strong>
+                    </p>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Low", htmlAttributes: new {@class = "control-label"})
+                        <input type="text" name="txtFBShareScore1Low" class="form-control" value="@Model.FbShareScore1Low" style="width: 60px;" readonly>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "High", htmlAttributes: new {@class = "control-label"})
+                        <input type="text" name="txtFBShareScore1High" class="form-control" value="@Model.FbShareScore1High" style="width: 60px;">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Image Url", htmlAttributes: new {@class = "control-label"})
+                        <input type="text" name="txtFbShareScore1ImgUrl" class="form-control" value="@Model.FbShareScore1ImgUrl">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Message", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore1Msg" class="form-control" value="@Model.FbShareScore1Msg">
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-xs-12">
+                    <p>
+                        <strong>
+                            Facebook Share Score Range 2
+                        </strong>
+                    </p>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Low", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore2Low" class="form-control" value="@Model.FbShareScore2Low" style="width: 60px;">
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "High", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore2High" class="form-control" value="@Model.FbShareScore2High" style="width: 60px;">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Image Url", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFbShareScore2ImgUrl" class="form-control" value="@Model.FbShareScore2ImgUrl">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Message", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore2Msg" class="form-control" value="@Model.FbShareScore2Msg">
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-xs-12">
+                    <p>
+                        <strong>
+                            Facebook Share Score Range 3
+                        </strong>
+                    </p>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Low", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore3Low" class="form-control" value="@Model.FbShareScore3Low" style="width: 60px;">
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "High", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore3High" class="form-control" value="@Model.FbShareScore3High" style="width: 60px;">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Image Url", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFbShareScore3ImgUrl" class="form-control" value="@Model.FbShareScore3ImgUrl">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Message", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore3Msg" class="form-control" value="@Model.FbShareScore3Msg">
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-xs-12">
+                    <p>
+                        <strong>
+                            Facebook Share Score Range 4
+                        </strong>
+                    </p>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Low", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore4Low" class="form-control" value="@Model.FbShareScore4Low" style="width: 60px;">
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "High", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore4High" class="form-control" value="@Model.FbShareScore4High" style="width: 60px;" readonly>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Image Url", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFbShareScore4ImgUrl" class="form-control" value="@Model.FbShareScore4ImgUrl">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShowMenu, "Message", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" name="txtFBShareScore4Msg" class="form-control" value="@Model.FbShareScore4Msg">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group pull-right" style="margin-top: 20px;">
+                        <input type="submit" value="Save Changes" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+<h4>Clear all cache</h4>
+<hr />
+<p>   <a href="@Url.Action("ClearCache", new { campaignKey = Model.GaasCampaignKey, panelId = Model.GaasPanelId})" class="btn btn-danger">Clear Config & Consumer Cache</a></p>
+}

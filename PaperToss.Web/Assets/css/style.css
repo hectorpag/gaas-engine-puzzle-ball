@@ -1,0 +1,174 @@
+﻿@font-face {
+    font-family: 'HelveticaNeueBold';
+    src: url('../fonts/helveticaneuecyr-bold.eot');
+    /*src: url('fonts/helveticaneuecyr-bold.eot');*/
+    src: url('../fonts/helveticaneuecyr-bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticaneuecyr-bold.woff2') format('woff2'),
+         url('../fonts/helveticaneuecyr-bold.woff') format('woff'),
+         url('../fonts/helveticaneuecyr-bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'HelveticaNeue';
+	src: url('../fonts/HelveticaNeue-Light.ttf');
+}
+html, body {
+	padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'HelveticaNeue', Helvetica,Arial,sans-serif;
+    overflow: hidden;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-overflow-scrolling: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+	background-color: #000;
+}
+#wrapper {
+    margin: 0 auto;
+    -ms-transform-origin: center top;
+    -moz-transform-origin: center top;
+    -o-transform-origin: center top;
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
+    width: 640px;
+    height: 920px;
+	background-color: #fff;
+	background: url('../images/background.jpg') no-repeat;
+	background-size: contain;
+	overflow: hidden;
+}
+.preloader {
+	opacity: 0;
+	visibility: hidden;
+	width: 0px;
+}
+.boyPreload {
+	background: url('../images/boy.png');
+}
+.boyHitPreload {
+	background: url('../images/boyHit.png');
+}
+.girlPreload {
+	background: url('../images/girl.png');
+}
+.girlHitPreload {
+	background: url('../images/girlHit.png');
+}
+.result1 {
+	background: url('../images/result1.jpg');
+}
+.result2 {
+	background: url('../images/result2.jpg');
+}
+.result3 {
+	background: url('../images/result3.jpg');
+}
+.result4 {
+	background: url('../images/result4.jpg');
+}
+.countdown {
+	position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+	height: 300px;
+}
+.number {
+	font-size: 300px;
+    font-family: 'HelveticaNeueBold', Helvetica,Arial,sans-serif;
+	text-align: center;
+	color: #ffe604;
+	text-shadow: 5px 5px 5px #330000;
+	top: 0;
+    bottom: 0;
+	left: 0;
+	right: 0;
+    position: absolute;
+    margin: auto;
+}
+.scoreboard {
+	font-family: 'HelveticaNeueBold', Helvetica,Arial,sans-serif;
+	text-align: center;
+	position: absolute;
+    top: 106px;
+    left: 361px;
+	height: 68px;
+	line-height: 68px;
+}
+.score {
+	font-size: 60px;
+}
+.player {
+	position: absolute;
+	background-size: contain;
+	width: 240px;
+	height: 215px;
+	left: 205px;
+	bottom: 0px;
+	z-index: 3;
+}
+.ball {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: 300px;
+	z-index:2;
+	opacity: 0;
+	transform: translate3d(0,0,0);
+	-webkit-transform: translate3d(0,0,0);
+}
+.ball1 {
+	background: url('../images/ball1.png') no-repeat;
+	background-size: contain;
+	left: 75px;
+}
+.ball2 {
+	background: url('../images/ball2.png') no-repeat;
+	background-size: contain;
+	left: 280px;
+}
+.ball3 {
+	background: url('../images/ball3.png') no-repeat;
+	background-size: contain;
+	left: 470px;
+}
+.buttons {
+	width: 100%;
+	height: 100%;
+}
+.arrows {
+	position: absolute;
+	top: 650px;
+	width: 100px;
+	z-index: 10;
+}
+.leftArrow {
+	left: 20px;
+}
+.rightArrow {
+	right: 20px;
+}
+.leftButton {
+	position: absolute;
+	height: 100%;
+	width: 50%;
+	z-index: 100;
+}
+.rightButton {
+	position: absolute;
+	height: 100%;
+	width: 50%;
+	left: 50%;
+	z-index: 100;
+}

@@ -1,0 +1,96 @@
+﻿@font-face {
+    font-family: 'HelveticaNeueBold';
+    src: url('../fonts/helveticaneuecyr-bold.eot');
+    src: url('../fonts/helveticaneuecyr-bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticaneuecyr-bold.woff2') format('woff2'),
+         url('../fonts/helveticaneuecyr-bold.woff') format('woff'),
+         url('../fonts/helveticaneuecyr-bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'HelveticaNeue';
+	src: url('../fonts/HelveticaNeue-Light.ttf');
+}
+html, body {
+	padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'HelveticaNeue', Helvetica,Arial,sans-serif;
+    overflow: hidden;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-overflow-scrolling: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+#wrapper {
+    margin: 0 auto;
+    -ms-transform-origin: center top;
+    -moz-transform-origin: center top;
+    -o-transform-origin: center top;
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
+    width: 640px;
+    height: 920px;
+	overflow: hidden;
+}
+.finalScore {
+    width: 100%;
+    text-align: center;
+    font-size: 100px;
+    margin-top: 475px;
+    font-family: HelveticaNeueBold;
+}
+.facebookText {
+    font-family: 'HelveticaNeueBold', Helvetica,Arial,sans-serif;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 625px;
+    font-size: 24px;
+}
+.btnShare {
+    background-color: #000;
+    color: #fff;
+    padding: 18px 10px 10px 10px;
+    cursor: pointer;
+}
+.fa-facebook {
+    font-size: 35px;
+}
+#btnPlay {
+    background: #484d4d !important;
+    -moz-box-shadow: 0px 0px 3px 1px #030303;
+    -webkit-appearance: none;
+    -webkit-border-radius: 1px !important;
+    border-radius: 1px !important;
+    color: #ffffff;
+    font-size: 45px;
+    height: 80px;
+    line-height: 50px;
+    width: 450px;
+    padding: 7px 7px 7px 7px;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    outline: none;
+    margin: auto;
+    text-align: center;
+    font-family: Helvetica, Arial;
+    top: 734px;
+    left: 0;
+    right: 0;
+    position: absolute !important;
+}  
+#btnPlay:hover {
+    background: #b6b8b7 !important;
+    color: #000;
+}  
+
