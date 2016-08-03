@@ -1,5 +1,5 @@
-# NetBallGame
+# PaperToss
 
-azure name: gaas-engine-netball(dev)
-db name: gaas-engine-netball
-url: gaas-engine-netball(dev).azurewebsites.net
+azure name: gaas-engine-papertoss(dev)
+db name: gaas-engine-papertoss
+url: gaas-engine-papertoss(dev).azurewebsites.net
