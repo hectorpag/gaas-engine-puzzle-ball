@@ -24,9 +24,9 @@ var posHistory = [0, 0, 0];
 var time = 2000; // Starting time between throws
 var speed = 800; // Time it takes for a throw
 var startSpin = 0.66; // The percentage of time for when the ball starts spinning
-var timeMod = 0.9; // Percentage to reduce time between throws
+var timeMod = 0.85; // Percentage to reduce time between throws
 var minSpeed = 50; // Minimum duration of throw
-var speedMod = 2; // Number to reduce speed by
+var speedMod = 10; // Number to reduce speed by
 
 // Pre game placements
 var playerPixels = [5, 205, 405]; // The three different left pixels
@@ -41,20 +41,15 @@ var ballLoop;
 var startTime = time;
 var hit = false;
 var leftPos = playerPixels[playerPos - 1]; // Initial left pixels of avatar
-var lives = 1;
+var lives = 100;
 var started = false;
 var hundreds = "0";
 var tens = "0";
 var asdf = 0;
 var opened = false;
 var countdown = 3;
+var boyOrGirl = 'boy';
 
-if (GENDER == 'Female') {
-    var boyOrGirl = 'girl';
-
-} else {
-    var boyOrGirl = 'boy';
-}
 $(".player").css("background-image", "url(../../../Assets/images/" + boyOrGirl + ".png)");
 
 var tempArray = [0, 0, 0];
@@ -220,12 +215,13 @@ function logBall(ranEnd, ran) {
 function checkHit(ballPos, ran) {
     logBall(ballPos, ran);
     if (playerPos === ballPos) {
-        $(".ball" + ran).stop();
-        gameOver();
-    } else {
         score++;
         showScore();
         asdf += 3.754;
+        $(".ball" + ran).stop();
+    } else {
+        $(".ball" + ran).stop();
+        gameOver();
     }
 }
 
