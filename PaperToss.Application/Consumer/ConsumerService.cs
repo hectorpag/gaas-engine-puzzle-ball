@@ -82,7 +82,7 @@ namespace PaperToss.Service.Consumer
             var gaasConsumer = GetConsumerDetails(gaasInfoViewModel);
             if (gaasConsumer.Error == null)
             {
-                consumer = Update(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId, new ConsumerViewModel() { GaasCampaignKey = gaasInfoViewModel.CampaignKey, GaasConsumerId = gaasConsumer.id, GaasConsumerName = gaasConsumer.data["full name"], GaasGender = gaasConsumer.data["gender"] });
+                consumer = Update(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId, new ConsumerViewModel() { GaasCampaignKey = gaasInfoViewModel.CampaignKey, GaasConsumerId = gaasConsumer.id, GaasConsumerName = gaasConsumer.email, GaasGender = String.Empty});
             }
             return consumer;
         }
@@ -105,7 +105,7 @@ namespace PaperToss.Service.Consumer
 
                 var gaasConsumer = JsonConvert.DeserializeObject<Model.Gaas.Models.Consumer>(rs);
                 return gaasConsumer;
-            }
+            } 
             catch (Exception ex)
             {
                 //TODO : Log error
