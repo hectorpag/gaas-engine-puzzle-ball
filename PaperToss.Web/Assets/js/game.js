@@ -26,7 +26,7 @@ var speed = 800; // Time it takes for a throw
 var startSpin = 0.66; // The percentage of time for when the ball starts spinning
 var timeMod = 0.85; // Percentage to reduce time between throws
 var minSpeed = 50; // Minimum duration of throw
-var speedMod = 5; // Number to reduce speed by
+var speedMod = 10; // Number to reduce speed by
 
 // Pre game placements
 var playerPixels = [5, 205, 405]; // The three different left pixels
