@@ -4,7 +4,7 @@ using PaperToss.Service.Game;
 using PaperToss.ViewModel;
 using Extensions;
 
-namespace PaperTossWeb.Controllers
+namespace PaperToss.Web.Controllers
 {
     public class HomeController : Controller
     {

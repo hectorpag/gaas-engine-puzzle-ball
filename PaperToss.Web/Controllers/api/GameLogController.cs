@@ -21,7 +21,7 @@ using Extensions;
 using Microsoft.ApplicationInsights;
 using Newtonsoft.Json;
 
-namespace PaperTossWeb.Controllers.api
+namespace PaperToss.Web.Controllers.api
 {
     public class GameLogController : ApiController
     {

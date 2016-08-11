@@ -8,7 +8,7 @@ using PaperToss.ViewModel;
 
 #endregion
 
-namespace PaperTossWeb.Controllers
+namespace PaperToss.Web.Controllers
 {
     public class ConfigController : Controller
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using PaperToss.Service;
 
-namespace PaperTossWeb.Controllers.api.v1
+namespace PaperToss.Web.Controllers.api.v1
 {
     public class EndpointsController : ApiController
     {

@@ -11,7 +11,7 @@ using Extensions;
 using Microsoft.ApplicationInsights.Channel;
 using Newtonsoft.Json;
 
-namespace PaperTossWeb.Controllers
+namespace PaperToss.Web.Controllers
 {
     public class GameController : Controller
     {
