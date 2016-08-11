@@ -32,6 +32,10 @@ namespace PaperToss.Web.Controllers
             {
                 return View(gameViewModel);
             }
+            else if (gameViewModel.Config.ShowResult)
+            {
+                return RedirectToRoute("result", new { campaignKey = gaasInfoViewModel.CampaignKey, panelId = gaasInfoViewModel.PanelId, consumerId = gaasInfoViewModel.ConsumerId });
+            }
             else
             {
                 return RedirectToRoute("game", new { campaignKey = gaasInfoViewModel.CampaignKey, panelId = gaasInfoViewModel.PanelId, consumerId = gaasInfoViewModel.ConsumerId });

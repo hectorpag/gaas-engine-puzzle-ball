@@ -60,6 +60,30 @@ namespace PaperToss.Web.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
+       public ActionResult Result(string campaignKey, string panelId, string consumerId)
+        {
+            //TODO: Check for errors
+            //Make sure that all paramaeters are passed in 
+            var gaasInfoViewModel = new GaasInfoViewModel
+            {
+                CampaignKey = campaignKey,
+                PanelId = Convert.ToInt32(panelId),
+                ConsumerId = Convert.ToInt32(consumerId)
+            };
+            
+            var gameViewModel = _gameService.Load(gaasInfoViewModel);
+
+            int score = _gameService.Score(gaasInfoViewModel);
+
+            var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = score };
+          
+            return View("Result",resultViewModel);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Result(FormCollection formCollection)
         {
@@ -70,11 +94,12 @@ namespace PaperToss.Web.Controllers
             var gamePlayViewModel = GetGamePlayViewModel(formCollection);
             _gameService.PostScore(gaasInfoViewModel, gamePlayViewModel);
 
+        
             var gameViewModel = _gameService.Load(gaasInfoViewModel);
 
-            var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = gamePlayViewModel.Score };
+          //var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = gamePlayViewModel.Score };
             //log score 
-            return View("Result", resultViewModel);
+            return View("GoTo");
         }
         #endregion
 
