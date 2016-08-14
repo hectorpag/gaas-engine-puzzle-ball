@@ -48,9 +48,6 @@ var tens = "0";
 var asdf = 0;
 var opened = false;
 var countdown = 3;
-var boyOrGirl = 'boy';
-
-$(".player").css("background-image", "url(../../../Assets/images/" + boyOrGirl + ".png)");
 
 var tempArray = [0, 0, 0];
 

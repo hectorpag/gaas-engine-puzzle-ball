@@ -117,6 +117,8 @@ html, body {
 	left: 205px;
 	bottom: 0px;
 	z-index: 3;
+    background: url('../images/boy.png') no-repeat;
+    background-size: contain;
 }
 .ball {
 	position: absolute;
@@ -129,17 +131,17 @@ html, body {
 	-webkit-transform: translate3d(0,0,0);
 }
 .ball1 {
-	background: url('../images/ball1.png') no-repeat;
+	background: url('../images/ball.png') no-repeat;
 	background-size: contain;
 	left: 75px;
 }
 .ball2 {
-	background: url('../images/ball2.png') no-repeat;
+	background: url('../images/ball.png') no-repeat;
 	background-size: contain;
 	left: 280px;
 }
 .ball3 {
-	background: url('../images/ball3.png') no-repeat;
+	background: url('../images/ball.png') no-repeat;
 	background-size: contain;
 	left: 470px;
 }
