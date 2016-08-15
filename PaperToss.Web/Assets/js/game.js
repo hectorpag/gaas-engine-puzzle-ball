@@ -288,7 +288,7 @@ function gameOver() {
     hit = true;
     var d = new Date();
     endTime = d.getTime();
-    $(".player").css("background-image", "url(../../../Assets/images/" + boyOrGirl +  "Hit.png)");
+    //$(".player").css("background-image", "url(../../../Assets/images/" + boyOrGirl +  "Hit.png)");
     lives--;
     $(".lives").html(lives);
 
