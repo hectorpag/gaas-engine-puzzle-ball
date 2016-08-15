@@ -4,7 +4,7 @@ using PaperToss.Service.Game;
 using PaperToss.ViewModel;
 using Extensions;
 
-namespace PaperTossWeb.Controllers
+namespace PaperToss.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -31,6 +31,10 @@ namespace PaperTossWeb.Controllers
             if (gameViewModel.Config.ShowMenu)
             {
                 return View(gameViewModel);
+            }
+            else if (gameViewModel.Config.ShowResult)
+            {
+                return RedirectToRoute("result", new { campaignKey = gaasInfoViewModel.CampaignKey, panelId = gaasInfoViewModel.PanelId, consumerId = gaasInfoViewModel.ConsumerId });
             }
             else
             {

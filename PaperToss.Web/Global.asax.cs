@@ -9,7 +9,7 @@ using PaperToss.Service;
 using PaperToss.Service.Configuration;
 using PaperToss.Web;
 
-namespace PaperTossWeb
+namespace PaperToss.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {

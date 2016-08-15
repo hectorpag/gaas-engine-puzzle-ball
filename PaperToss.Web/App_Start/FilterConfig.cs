@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace PaperTossWeb
+namespace PaperToss.Web
 {
     public class FilterConfig
     {

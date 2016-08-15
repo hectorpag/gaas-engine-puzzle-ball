@@ -16,6 +16,7 @@
     <title>PaperToss Game</title>
     @* CSS here *@
     @Styles.Render("~/Assets/css/home")
+    @Scripts.Render("~/Assets/js/jquery")
     <script>
         window.parent.postMessage('{"element_cfg" : "show_footer"}', "*");
     </script>
@@ -32,19 +33,33 @@
         <div class="boyHitPreload"></div>
         <div class="girlPreload"></div>
         <div class="girlHitPreload"></div>
-    </div>   
+    </div>
     <div id="wrapper">
         <div class="inner">
-            @{ Html.BeginForm("Index", "Game",
-                   new
-                   {
-                       campaignKey = Model.Consumer.GaasCampaignKey,
-                       panelId = Model.Config.GaasPanelId,
-                       consumerId = Model.Consumer.GaasConsumerId,
-                   }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
+
+          
+            @*@{ Html.BeginForm("Index", "Game",
+                       new
+                       {
+                           campaignKey = Model.Consumer.GaasCampaignKey,
+                           panelId = Model.Config.GaasPanelId,
+                           consumerId = Model.Consumer.GaasConsumerId,
+                       }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
+               
+                @{ Html.EndForm();}*@
+
             <input id="btnPlay" type="submit" value="ACCEPT CHALLENGE!">
-            @{ Html.EndForm();}
         </div>
     </div>
+<script>
+    $(document)
+        .ready(function() {
+            $('#btnPlay')
+                .click(function() {
+                    window.parent.postMessage('{"game_play" : "over"}', "*");
+                });
+        });
+   
+</script>
 </body>
 </html>

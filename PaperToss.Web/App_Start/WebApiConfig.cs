@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace PaperTossWeb
+namespace PaperToss.Web
 {
     public class WebApiConfig
     {
