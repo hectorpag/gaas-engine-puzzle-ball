@@ -51,30 +51,6 @@ html, body {
 	visibility: hidden;
 	width: 0px;
 }
-.boyPreload {
-	background: url('../images/boy.png');
-}
-.boyHitPreload {
-	background: url('../images/boyHit.png');
-}
-.girlPreload {
-	background: url('../images/girl.png');
-}
-.girlHitPreload {
-	background: url('../images/girlHit.png');
-}
-.result1 {
-	background: url('../images/result1.jpg');
-}
-.result2 {
-	background: url('../images/result2.jpg');
-}
-.result3 {
-	background: url('../images/result3.jpg');
-}
-.result4 {
-	background: url('../images/result4.jpg');
-}
 .countdown {
 	position: absolute;
     margin: auto;
