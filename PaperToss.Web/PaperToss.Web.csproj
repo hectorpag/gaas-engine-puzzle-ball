@@ -199,6 +199,7 @@
     <Content Include="Assets\images\ball1.png" />
     <Content Include="Assets\images\ball2.png" />
     <Content Include="Assets\images\ball3.png" />
+    <Content Include="Assets\images\bin.png" />
     <Content Include="Assets\images\boy.png" />
     <Content Include="Assets\images\boyHit.png" />
     <Content Include="Assets\images\DBHome-bkgrnd3.jpg" />

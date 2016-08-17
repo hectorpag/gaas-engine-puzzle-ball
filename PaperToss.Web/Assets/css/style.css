@@ -117,7 +117,7 @@ html, body {
 	left: 205px;
 	bottom: 0px;
 	z-index: 3;
-    background: url('../images/boy.png') no-repeat;
+    background: url('../images/bin.png') no-repeat;
     background-size: contain;
 }
 .ball {
