@@ -53,6 +53,7 @@ var tempArray = [0, 0, 0];
 
 $(document).ready(function() {
     noScroll(); // Stop game moving when swiping
+    document.body.focus();
     setTimeout(startCountdown, 1000);
 
     document.onkeydown = checkKeyPress; // Check when players uses arrow key
