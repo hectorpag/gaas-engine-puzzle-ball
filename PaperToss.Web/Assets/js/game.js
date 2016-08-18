@@ -1,8 +1,8 @@
 ﻿/* 
 Player positions:
-     left - 5px
-     middle - 205px
-    right - 405px
+     left - 50px
+     middle - 250px
+    right - 450px
     
 Ball positions:
     left - 75px
@@ -29,7 +29,7 @@ var minSpeed = 50; // Minimum duration of throw
 var speedMod = 10; // Number to reduce speed by
 
 // Pre game placements
-var playerPixels = [5, 205, 405]; // The three different left pixels
+var playerPixels = [50, 250, 450]; // The three different left pixels
 var movementAmount = 200; // The number of pixels the player moves (usually width of player asset)
 var playerPos = 2; // Initial position of avatar (out of 3)
 var ballStarts = [75, 280, 470]; // Initial placements of balls in pixels
@@ -48,27 +48,15 @@ var tens = "0";
 var asdf = 0;
 var opened = false;
 var countdown = 3;
-var boyOrGirl = 'boy';
-
-$(".player").css("background-image", "url(../../../Assets/images/" + boyOrGirl + ".png)");
 
 var tempArray = [0, 0, 0];
 
 $(document).ready(function() {
     noScroll(); // Stop game moving when swiping
+    document.body.focus();
     setTimeout(startCountdown, 1000);
 
     document.onkeydown = checkKeyPress; // Check when players uses arrow key
-
-    $(".buttons").hammer({}).bind("swipeleft swiperight", function(ev) {
-        ev.preventDefault();
-        if (ev.type == "swipeleft" && leftPos > playerPixels[0]) {
-            movePlayer(-movementAmount, -1);
-        }
-        if (ev.type == "swiperight" && leftPos < playerPixels[2]) {
-            movePlayer(movementAmount, 1);
-        }
-    });
 
     $(".leftButton").on("touchstart mousedown", function(e) {
         e.preventDefault();
@@ -291,7 +279,7 @@ function gameOver() {
     hit = true;
     var d = new Date();
     endTime = d.getTime();
-    $(".player").css("background-image", "url(../../../Assets/images/" + boyOrGirl +  "Hit.png)");
+    //$(".player").css("background-image", "url(../../../Assets/images/" + boyOrGirl +  "Hit.png)");
     lives--;
     $(".lives").html(lives);
 
