@@ -55,7 +55,7 @@ $(document).ready(function() {
     noScroll(); // Stop game moving when swiping
     setTimeout(startCountdown, 1000);
 
-    top.document.documentElement.onkeydown = checkKeyPress; // Check when players uses arrow key
+    document.onkeydown = checkKeyPress; // Check when players uses arrow key
 
     $(".leftButton").on("touchstart mousedown", function(e) {
         e.preventDefault();
