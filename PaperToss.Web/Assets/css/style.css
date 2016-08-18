@@ -31,6 +31,14 @@
 	background-size: contain;
 	overflow: hidden;
 }
+.people {
+    background: url('../images/people.png') no-repeat;
+    background-size: contain;
+    width: 640px;
+    height: 920px;
+    top: 50px;
+    position: absolute;
+}
 .preloader {
 	opacity: 0;
 	visibility: hidden;
