@@ -30,9 +30,9 @@ namespace PaperTossApp_Start
 
                 "~/Assets/js/gameApi.js",
                 "~/Assets/js/utils.js",
-                "~/Assets/js/resize.js",
+                "~/Assets/js/resize.js"
                 
-                "~/Assets/js/game.js"
+                //"~/Assets/js/game.js"
         ));
             bundles.Add(new ScriptBundle("~/Assets/js/jquery").Include(
                 "~/Scripts/jquery-3.1.0.min.js"

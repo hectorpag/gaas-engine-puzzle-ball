@@ -57,16 +57,6 @@ $(document).ready(function() {
 
     document.onkeydown = checkKeyPress; // Check when players uses arrow key
 
-    $(".buttons").hammer({}).bind("swipeleft swiperight", function(ev) {
-        ev.preventDefault();
-        if (ev.type == "swipeleft" && leftPos > playerPixels[0]) {
-            movePlayer(-movementAmount, -1);
-        }
-        if (ev.type == "swiperight" && leftPos < playerPixels[2]) {
-            movePlayer(movementAmount, 1);
-        }
-    });
-
     $(".leftButton").on("touchstart mousedown", function(e) {
         e.preventDefault();
         if (leftPos > playerPixels[0]) {
