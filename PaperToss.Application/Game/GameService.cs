@@ -57,8 +57,8 @@ namespace PaperToss.Service.Game
                 _gamePlayService.Add(gamePlayViewModel);
 
 
-                //Check if last Level, must have ShowResult = true
-                if (gamePlayViewModel.LevelPlayed > 0 && gameViewModel.Config.ShowResult)
+                //Check if last Level
+                if (gamePlayViewModel.LevelPlayed > 0 )
                 {
                     var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(gameViewModel.Consumer.Id, currentFuel.Id);
                     //check if all level played & Post to LeaderBoard
@@ -187,7 +187,7 @@ namespace PaperToss.Service.Game
         public void ClearAllCache()
         {
            _configService.ClearAllCache();
-            _consumerService.ClearAllCache();
+           _consumerService.ClearAllCache();
         }
 
         //public GameViewModel LoadConsumer(GaasInfoViewModel gaasInfoViewModel)
