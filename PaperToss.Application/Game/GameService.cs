@@ -110,7 +110,7 @@ namespace PaperToss.Service.Game
             }
         }
 
-        public int Score(GaasInfoViewModel gaasInfoViewModel)
+        public decimal Score(GaasInfoViewModel gaasInfoViewModel)
         {
             try
             {
@@ -136,10 +136,6 @@ namespace PaperToss.Service.Game
                     //TODO:// Find a way to make sure that uniqueGamesPlayed containes all levels
                     if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == 1)
                     {
-                        //Mark fuel as utilized 
-                        currentFuel.UtilizedDate = DateTime.UtcNow;
-                        _fuelService.Add(currentFuel);
-
                         var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
                         var data = new List<GaasScoreViewModel>();
                         foreach (var game in uniqueGamesPlayed)
@@ -153,16 +149,7 @@ namespace PaperToss.Service.Game
                                 value = game.Score.ToString(CultureInfo.InvariantCulture)
                             });
                         }
-
-                        //TODO : Update Score Table, it must contain the heighest score of a user. And that can be sent to leaderboard, to reduce the stress submitting all scores on GAAS
-                        var rs = Shearnie.Net.Web.RESTJSON.PostSync(Constants.GaasBaseUrl + "/api/v1/gamegallery/loggameresult", new List<KeyValuePair<string, string>>()
-                        {
-                            new KeyValuePair<string, string>("campaignkey", gaasInfoViewModel.CampaignKey),
-                            new KeyValuePair<string, string>("consumerid", gaasInfoViewModel.ConsumerId.ToString()),
-                            new KeyValuePair<string, string>("jsonresult", JsonConvert.SerializeObject(data)),
-                        });
-
-                        return data[0].value.GetInteger();
+                        return data[0].value.GetDecimal();
                     }
                     else
                     {
@@ -207,7 +194,7 @@ namespace PaperToss.Service.Game
         // GameViewModel LoadConsumer(GaasInfoViewModel gaasInfoViewModel);
         void PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel);
 
-        int Score(GaasInfoViewModel gaasInfoViewModel);
+        decimal Score(GaasInfoViewModel gaasInfoViewModel);
 
         void ClearAllCache();
     }

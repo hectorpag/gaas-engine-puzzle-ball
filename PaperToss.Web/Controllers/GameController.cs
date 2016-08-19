@@ -73,7 +73,7 @@ namespace PaperToss.Web.Controllers
             
             var gameViewModel = _gameService.Load(gaasInfoViewModel);
 
-            int score = _gameService.Score(gaasInfoViewModel);
+            int score = (int) _gameService.Score(gaasInfoViewModel);
 
             var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = score };
           
