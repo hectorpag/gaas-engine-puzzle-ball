@@ -86,7 +86,7 @@ function startCountdown() {
                 'font-size': "200px",
                 'line-height': "180px"
             });
-        $(".number").html("GAME ON!");
+        $(".number").html("GO!");
         $(".number")
             .fadeOut(1500,
                 function() {
@@ -176,7 +176,7 @@ function throwBall() {
     });
 
     $(".ball" + ran).velocity({
-        'top': "820px",
+        'top': "805px",
         'width': "100px",
         'height': "100px",
         'left': [(endThrow) + "px", "linear"]
