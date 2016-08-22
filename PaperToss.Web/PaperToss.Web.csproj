@@ -194,6 +194,7 @@
     <Content Include="Assets\css\home.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\images\DBHome-bkgrnd3.jpg" />
     <Content Include="Assets\images\background.jpg" />
     <Content Include="Assets\images\ball.png" />
     <Content Include="Assets\images\ball1.png" />
@@ -202,7 +203,6 @@
     <Content Include="Assets\images\bin.png" />
     <Content Include="Assets\images\boy.png" />
     <Content Include="Assets\images\boyHit.png" />
-    <Content Include="Assets\images\DBHome-bkgrnd3.jpg" />
     <Content Include="Assets\images\people.png" />
     <Content Include="Assets\images\result4.jpg" />
     <Content Include="Assets\images\result2.jpg" />
