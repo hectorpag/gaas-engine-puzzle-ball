@@ -32,29 +32,27 @@
     <div id="wrapper">
         <div class="inner">
 
-          
-            @*@{ Html.BeginForm("Index", "Game",
-                       new
-                       {
-                           campaignKey = Model.Consumer.GaasCampaignKey,
-                           panelId = Model.Config.GaasPanelId,
-                           consumerId = Model.Consumer.GaasConsumerId,
-                       }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
-               
-                @{ Html.EndForm();}*@
-
+            @{ Html.BeginForm("Index", "Game",
+                         new
+                         {
+                             campaignKey = Model.Consumer.GaasCampaignKey,
+                             panelId = Model.Config.GaasPanelId,
+                             consumerId = Model.Consumer.GaasConsumerId,
+                         }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
             <input id="btnPlay" type="submit" value="ACCEPT CHALLENGE!">
+            @{ Html.EndForm();}
+
         </div>
     </div>
-<script>
-    $(document)
-        .ready(function() {
-            $('#btnPlay')
-                .click(function() {
-                    window.parent.postMessage('{"game_play" : "over"}', "*");
-                });
-        });
-   
-</script>
+    <script>
+        //$(document)
+        //    .ready(function() {
+        //        $('#btnPlay')
+        //            .click(function() {
+        //                window.parent.postMessage('{"game_play" : "over"}', "*");
+        //            });
+        //    });
+
+    </script>
 </body>
 </html>
