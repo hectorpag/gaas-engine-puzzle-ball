@@ -47,6 +47,7 @@ html, body {
     font-size: 100px;
     margin-top: 475px;
     font-family: HelveticaNeueBold;
+    color: #ffffff;
 }
 .facebookText {
     font-family: 'HelveticaNeueBold', Helvetica,Arial,sans-serif;
@@ -66,31 +67,23 @@ html, body {
     font-size: 35px;
 }
 #btnPlay {
-    background: #484d4d !important;
-    -moz-box-shadow: 0px 0px 3px 1px #030303;
-    -webkit-appearance: none;
-    -webkit-border-radius: 1px !important;
-    border-radius: 1px !important;
+    background: #ff443f;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: none;
     color: #ffffff;
-    font-size: 45px;
-    height: 80px;
-    line-height: 50px;
-    width: 450px;
-    padding: 7px 7px 7px 7px;
+    padding: 5px 10px 5px 10px;
     text-decoration: none;
     cursor: pointer;
     display: block;
     outline: none;
-    margin: auto;
     text-align: center;
-    font-family: Helvetica, Arial;
-    top: 734px;
-    left: 0;
-    right: 0;
-    position: absolute !important;
-}  
-#btnPlay:hover {
-    background: #b6b8b7 !important;
-    color: #000;
-}  
+    font-size: 30px;
+    height: 60px;
+    width: 400px;
+    position: absolute;
+    top: 490px;
+    left: 120px;
+}   
 
