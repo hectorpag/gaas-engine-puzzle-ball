@@ -97,9 +97,9 @@ namespace PaperToss.Web.Controllers
         
             var gameViewModel = _gameService.Load(gaasInfoViewModel);
 
-          //var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = gamePlayViewModel.Score };
-            //log score 
-            return View("GoTo");
+            var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = gamePlayViewModel.Score };
+
+            return View("Result", resultViewModel);
         }
         #endregion
 
