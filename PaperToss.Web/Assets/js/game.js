@@ -5,9 +5,9 @@ Player positions:
     right - 450px
     
 Ball positions:
-    left - 75px
-    middle - 280px
-    right - 470px
+    left - 30px
+    middle - 290px
+    right - 530px
 */
 
 // Post game variables
@@ -22,18 +22,19 @@ var posHistory = [0, 0, 0];
 
 // Pre game variables
 var time = 2000; // Starting time between throws
-var speed = 800; // Time it takes for a throw
+var speed = 1200; // Time it takes for a throw
 var startSpin = 0.66; // The percentage of time for when the ball starts spinning
 var timeMod = 0.85; // Percentage to reduce time between throws
 var minSpeed = 50; // Minimum duration of throw
-var speedMod = 10; // Number to reduce speed by
+var speedMod = 20; // Number to reduce speed by
 
 // Pre game placements
 var playerPixels = [50, 250, 450]; // The three different left pixels
 var movementAmount = 200; // The number of pixels the player moves (usually width of player asset)
 var playerPos = 2; // Initial position of avatar (out of 3)
-var ballStarts = [75, 280, 470]; // Initial placements of balls in pixels
-var topPos = 300; // Initial top pixels of balls
+var ballStarts = [30, 280, 530]; // Initial placements of balls in pixels
+var ballTopStarts = [360, 320, 340];
+var topPos = 280; // Initial top pixels of balls
 var ballSize = 40;
 
 // Other variables
@@ -85,7 +86,7 @@ function startCountdown() {
                 'font-size': "200px",
                 'line-height': "180px"
             });
-        $(".number").html("GAME ON!");
+        $(".number").html("GO!");
         $(".number")
             .fadeOut(1500,
                 function() {
@@ -123,7 +124,25 @@ function movePlayer(pixelAmount, playerChange) {
     if (!hit) {
         leftPos += pixelAmount;
         playerPos += playerChange;
-        $(".player").css("left", leftPos);
+        $(".player").css({
+            "left": leftPos
+        });
+        if (playerPos === 1) {
+            $(".player").css({
+                "transform": "rotate(45deg)",
+                "transform-origin": "50% 50%"
+            });
+        } else if (playerPos === 3) {
+            $(".player").css({
+                "transform": "rotate(-45deg)",
+                "transform-origin": "50% 50%"
+            });
+        } else {
+            $(".player").css({
+                "transform": "rotate(0deg)",
+                "transform-origin": "50% 50%"
+            });
+        }
         movement++;
         $(".moves").html(movement);
     }
@@ -142,45 +161,30 @@ function throwBall() {
     posHistory[playerPos - 1]++;
     var endThrow;
     var ran = randInt(3, 1);
-    var ranEnd = randInt(3, 1);
-    
-    // The order here is important as out of all the outcomes, middle should take priority
-    if ((ballEnd[0] + 1) < ballEnd[1] ||
-        (ballEnd[0] + 1) < ballEnd[2]) {
-        ranEnd = 1;
-    }
-    if ((ballEnd[2] + 1) < ballEnd[0] ||
-        (ballEnd[2] + 1) < ballEnd[1]) {
-        ranEnd = 3;
-    }
-    if ((ballEnd[1] + 1) < ballEnd[0] ||
-        (ballEnd[1] + 1) < ballEnd[2]) {
-        ranEnd = 2;
-    }
-    
-    if (time < startTime * startSpin) {
-        endThrow = ballStarts[ranEnd - 1];
+    if (ran === 1) {
+        var ranEnd = 3;
+    } else if (ran === 2) {
+        var ranEnd = 2;
     } else {
-        endThrow = ballStarts[ran - 1];
+        var ranEnd = 1;
     }
+    
+    endThrow = ballStarts[ranEnd - 1];
+
     $(".ball" + ran).css({
         'opacity': "1"
     });
 
     $(".ball" + ran).velocity({
-        'top': "860px",
+        'top': "805px",
         'width': "100px",
         'height': "100px",
-        'left': [(endThrow) + "px", "easeOutQuad"]
+        'left': [(endThrow) + "px", "linear"]
     }, {
         easing: "linear",
         duration: speed,
         complete: function() {
-            if (time < startTime * startSpin) {
-                checkHit(ranEnd, ran);
-            } else {
-                checkHit(ran, ran);
-            }
+            checkHit(ranEnd, ran);
             if (hit) {
                 $(this).stop();
                 bounceOff(ran);
@@ -246,13 +250,13 @@ function showScore() {
 function resetBall(ran) {
     $(".ball")
         .css({
-            'top': topPos + "px",
             'width': ballSize + "px",
             'height': ballSize + "px",
             'opacity': "0"
         });
     $(".ball" + ran)
         .css({
+            'top': ballTopStarts[ran - 1] + "px",
             'left': ballStarts[ran - 1] + "px"
         });
 

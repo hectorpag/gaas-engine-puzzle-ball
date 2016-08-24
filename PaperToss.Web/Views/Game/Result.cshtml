@@ -25,6 +25,11 @@
 <body>
     <div id="wrapper">
         <div class="inner">
+            <p class="congratsText">
+                <span class="congrats">Congratulations</span>
+                <br /><br />
+                You achieved a score of
+            </p>
             <p class="finalScore">@Model.Score</p>
         </div>
     </div>
@@ -32,106 +37,12 @@
         var GAMESCORE = @Model.Score;
         var CUSTOMEVENTENDPOINT = '@Url.HttpRouteUrl("api/gamelog/customevent", new {controller = "GameLog", action = "CustomEvent" })';
 
-        var msg = '';
-        var img = '';
-
-        if (GAMESCORE <= @Model.GameViewModel.Config.FbShareScore1High) {
-
-            @{
-            var message1 = String.Format(Model.GameViewModel.Config.FbShareScore1Msg, Model.GameViewModel.Consumer.GaasConsumerName, Model.Score);
-        }
-            msg = '@message1';
-        img = '@Model.GameViewModel.Config.FbShareScore1ImgUrl';
-        $('#wrapper').css('background-image', 'url(@Url.Content("~/Assets/images/result1.jpg"))');
-        } else if (GAMESCORE >= @Model.GameViewModel.Config.FbShareScore2Low &&
-            GAMESCORE <= @Model.GameViewModel.Config.FbShareScore2High) {
-            @{
-            var message2 = String.Format(Model.GameViewModel.Config.FbShareScore2Msg, Model.GameViewModel.Consumer.GaasConsumerName, Model.Score);
-        }
-            msg = '@message2';
-        img = '@Model.GameViewModel.Config.FbShareScore2ImgUrl';
-        $('#wrapper').css('background-image', 'url(@Url.Content("~/Assets/images/result2.jpg"))');
-        } else if (GAMESCORE >= @Model.GameViewModel.Config.FbShareScore3Low &&
-            GAMESCORE <= @Model.GameViewModel.Config.FbShareScore3High) {
-            @{
-            var message3 = String.Format(Model.GameViewModel.Config.FbShareScore3Msg, Model.GameViewModel.Consumer.GaasConsumerName, Model.Score);
-        }
-            msg = '@message3';
-        img = '@Model.GameViewModel.Config.FbShareScore3ImgUrl';
-        $('#wrapper').css('background-image', 'url(@Url.Content("~/Assets/images/result3.jpg"))');
-        } else if (GAMESCORE >= @Model.GameViewModel.Config.FbShareScore4Low) {
-            @{
-            var message4 = String.Format(Model.GameViewModel.Config.FbShareScore4Msg, Model.GameViewModel.Consumer.GaasConsumerName, Model.Score);
-        }
-            msg = '@message4';
-        img = '@Model.GameViewModel.Config.FbShareScore4ImgUrl';
-        $('#wrapper').css('background-image', 'url(@Url.Content("~/Assets/images/result4.jpg"))');
-        }
-
-
-        $.getScript('//connect.facebook.net/en_UK/all.js',
-            function() {
-                FB.init({
-                    appId: '1787919611441899',
-                    xfbml: true,
-                    cookie: true,
-                    version: 'v2.4'
-                });
-                (function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "//connect.facebook.net/en_US/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-            });
-
-        function EscapeHtml(string) {
-            return string.replace(/'/g, "\\'").replace(/"/g, '\\"');
-        }
-
-        function fbshare() {
-            FB.ui({
-                method: 'feed',
-                name: EscapeHtml('@Model.GameViewModel.Config.FbShareName'),
-                link: EscapeHtml('@Model.GameViewModel.Config.FbShareUrl'),
-                picture: img,
-                caption: EscapeHtml('@Model.GameViewModel.Config.FbShareCaption'),
-                description: EscapeHtml(msg),
-                message: EscapeHtml(msg)
-            });
-        };
-
-        $(document)
-            .ready(function() {
-                $('.btnShare')
-                    .click(function() {
-                        fbshare();
-                        var GameData = {};
-                        GameData.Campaignkey = '@Model.GameViewModel.Config.GaasCampaignKey';
-                        GameData.ConsumerId = '@Model.GameViewModel.Consumer.GaasConsumerId';
-                        GameData.CustomEvent = "FacebookShareClicked" ;
-                        GameData.Score= '@Model.Score';
-                        var settings = {
-                            "async": true,
-                            "crossDomain": true,
-                            "url": CUSTOMEVENTENDPOINT,
-                            "method": "POST",
-                            "headers": {
-                                "content-type": "application/json",
-                                "cache-control": "no-cache"
-                            },
-                            "processData": true,
-                            "data": JSON.stringify(GameData)
-                        }
-                        $.ajax(settings).done();
-                    });
+        $(document).ready(function() {
+                
             });
     </script>
 
     <p class="facebookText">
-        CHALLENGE YOUR FRIENDS <span class="btnShare"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</span>
     </p>
     @{ Html.BeginForm("Index", "Home",
                                                            new
