@@ -1,8 +1,8 @@
 ﻿/* 
 Player positions:
-     left - 50px
-     middle - 250px
-    right - 450px
+     left - 45px
+     middle - 245px
+    right - 445px
     
 Ball positions:
     left - 30px
@@ -19,6 +19,7 @@ var ballThrownHistory = ""; // The order of which the balls are thrown
 var ballEndHistory = ""; // The order of which the balls end 
 var initialTime, endTime;
 var posHistory = [0, 0, 0];
+var ballTimes = [];
 
 // Pre game variables
 var time = 2000; // Starting time between throws
@@ -29,12 +30,13 @@ var minSpeed = 50; // Minimum duration of throw
 var speedMod = 20; // Number to reduce speed by
 
 // Pre game placements
-var playerPixels = [50, 250, 450]; // The three different left pixels
+var playerPixels = [45, 245, 445]; // The three different left pixels
 var movementAmount = 200; // The number of pixels the player moves (usually width of player asset)
 var playerPos = 2; // Initial position of avatar (out of 3)
-var ballStarts = [30, 280, 530]; // Initial placements of balls in pixels
+var ballStarts = [80, 140, 200]; // Initial placements of balls in pixels
+var ballLeftEnds = [60, 280, 500]
 var ballTopStarts = [360, 320, 340];
-var topPos = 280; // Initial top pixels of balls
+var topPos = 80; // Initial top pixels of balls
 var ballSize = 40;
 
 // Other variables
@@ -49,6 +51,7 @@ var tens = "0";
 var asdf = 0;
 var opened = false;
 var countdown = 3;
+var ballEasings = ["linear", "easeOutBack", "easeInOutQuad", "easeOutQuad"]
 
 var tempArray = [0, 0, 0];
 
@@ -127,22 +130,6 @@ function movePlayer(pixelAmount, playerChange) {
         $(".player").css({
             "left": leftPos
         });
-        if (playerPos === 1) {
-            $(".player").css({
-                "transform": "rotate(45deg)",
-                "transform-origin": "50% 50%"
-            });
-        } else if (playerPos === 3) {
-            $(".player").css({
-                "transform": "rotate(-45deg)",
-                "transform-origin": "50% 50%"
-            });
-        } else {
-            $(".player").css({
-                "transform": "rotate(0deg)",
-                "transform-origin": "50% 50%"
-            });
-        }
         movement++;
         $(".moves").html(movement);
     }
@@ -158,6 +145,11 @@ function isInspectOpen() {
 // Makes the ball move from starting position
 function throwBall() {
     isInspectOpen();
+
+    var d = new Date();
+    ballTime = d.getTime() - initialTime;
+    ballTimes.push(ballTime);
+
     posHistory[playerPos - 1]++;
     var endThrow;
     var ran = randInt(3, 1);
@@ -169,17 +161,35 @@ function throwBall() {
         var ranEnd = 1;
     }
     
-    endThrow = ballStarts[ranEnd - 1];
+    endThrow = ballLeftEnds[ranEnd - 1];
+    var x = randInt(4);
+    var y = randInt(10, 1);
+    var z = randInt(360);
+    var v = randInt(360, -180);
 
     $(".ball" + ran).css({
-        'opacity': "1"
+        'opacity': "1",
+        "background-image": "url(Assets/images/present" + y + ".png)",
+        "transform": "rotate(" + z + "deg)",
+        "transform-origin": "50% 50%"
     });
-
+    $(".magic").velocity({
+        opacity: 1
+    }, {
+        duration: speed / 2
+    });
+    $(".magic").velocity({
+        opacity: 0
+    }, {
+        delay: speed / 2,
+        duration: speed / 2
+    });
     $(".ball" + ran).velocity({
         'top': "805px",
         'width': "100px",
         'height': "100px",
-        'left': [(endThrow) + "px", "linear"]
+        'left': [(endThrow) + "px", ballEasings[x]],
+        rotateZ: v + "deg"
     }, {
         easing: "linear",
         duration: speed,
@@ -209,7 +219,7 @@ function checkHit(ballPos, ran) {
     if (playerPos === ballPos) {
         score++;
         showScore();
-        asdf += 3.754;
+        asdf += 1.271;
         $(".ball" + ran).stop();
     } else {
         $(".ball" + ran).stop();
@@ -237,13 +247,7 @@ function bounceOff(ran) {
 
 // Works out what digits to show for score
 function showScore() {
-    if (score > 9) {
-        tens = "";
-    }
-    if (score > 99) {
-        hundreds = "";
-    }
-    $(".score").html(hundreds + tens + score);
+    $(".score").html(score);
 }
 
 // Moves ball back to starting position
@@ -256,7 +260,7 @@ function resetBall(ran) {
         });
     $(".ball" + ran)
         .css({
-            'top': ballTopStarts[ran - 1] + "px",
+            'top': '50px',
             'left': ballStarts[ran - 1] + "px"
         });
 
@@ -268,7 +272,7 @@ function resetBall(ran) {
 
 // Change time and speed to make game harder
 function makeHarder() {
-    time = time * timeMod;
+    time -= 50;
     if (time < 100) {
         time = 100;
     }
@@ -286,7 +290,7 @@ function gameOver() {
     //$(".player").css("background-image", "url(../../../Assets/images/" + boyOrGirl +  "Hit.png)");
     lives--;
     $(".lives").html(lives);
-
+    
     showScore();
 
     // Post Scores

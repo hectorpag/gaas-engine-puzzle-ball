@@ -111,7 +111,7 @@ function saveScore() {
 }
 
 function saveVariables() {
-
+    console.log(ballTimes);
     var gameStatsData = {
         "Movement": movement,
         "BallThrown": ballThrown,

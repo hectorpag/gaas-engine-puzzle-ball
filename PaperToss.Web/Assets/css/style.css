@@ -31,13 +31,15 @@
 	background-size: contain;
 	overflow: hidden;
 }
-.people {
-    background: url('../images/people.png') no-repeat;
+.magic {
+    background: url('../images/magic.png') no-repeat;
     background-size: contain;
     width: 640px;
     height: 920px;
     top: 50px;
     position: absolute;
+    opacity: 0;
+    z-index: 10;
 }
 .preloader {
 	opacity: 0;
@@ -68,12 +70,15 @@
 }
 .scoreboard {
 	font-family: 'HelveticaNeueBold', Helvetica,Arial,sans-serif;
-	text-align: center;
-	position: absolute;
-    top: 181px;
-    left: 331px;
-	height: 68px;
-	line-height: 68px;
+    text-align: center;
+    position: absolute;
+    top: 40px;
+    left: 371px;
+    height: 68px;
+    line-height: 68px;
+    color: #f00;
+    text-shadow: 2px 2px 5px #0f0;
+    font-weight: bold;
 }
 .score {
 	font-size: 80px;
@@ -81,12 +86,12 @@
 .player {
 	position: absolute;
 	background-size: contain;
-	width: 130px;
-	height: 215px;
-	left: 250px;
+	width: 175px;
+    height: 215px;
+    left: 245px;
 	bottom: 0px;
 	z-index: 3;
-    background: url('../images/bin.png') no-repeat;
+    background: url('../images/elf.png') no-repeat;
     background-size: contain;
     transform-origin: 50% 50%;
 }
@@ -94,26 +99,26 @@
 	position: absolute;
 	width: 40px;
 	height: 40px;
-	top: 300px;
+	top: 50px;
 	z-index:2;
 	opacity: 0;
 	transform: translate3d(0,0,0);
 	-webkit-transform: translate3d(0,0,0);
 }
 .ball1 {
-	background: url('../images/ball.png') no-repeat;
+	background: url('../images/present1.png') no-repeat;
 	background-size: contain;
-	left: 30px;
+	left: 80px;
 }
 .ball2 {
-	background: url('../images/ball.png') no-repeat;
+	background: url('../images/present1.png') no-repeat;
 	background-size: contain;
-	left: 290px;
+	left: 140px;
 }
 .ball3 {
-	background: url('../images/ball.png') no-repeat;
+	background: url('../images/present1.png') no-repeat;
 	background-size: contain;
-	left: 530px;
+	left: 200px;
 }
 .buttons {
 	width: 100%;
