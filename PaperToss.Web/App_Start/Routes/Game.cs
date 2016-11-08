@@ -18,9 +18,9 @@ namespace PaperToss.App_Start.Routes
             );
 
             routes.MapRoute(
-                "result",
-                "result",
-                new { controller = "Game", action = "Result" }
+              name:  "result",
+              url: "result/{campaignKey}/{panelId}/{consumerId}",
+              defaults:   new { controller = "Game", action = "Result" }
                 );
 
         }
