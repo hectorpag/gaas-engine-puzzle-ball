@@ -429,7 +429,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61680</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/PaperToss</IISUrl>
+          <IISUrl>http://localhost/gaas-engine-papertoss</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
