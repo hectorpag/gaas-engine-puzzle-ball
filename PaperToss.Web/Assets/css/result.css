@@ -12,6 +12,17 @@
 	font-family: 'HelveticaNeue';
 	src: url('../fonts/HelveticaNeue-Light.ttf');
 }
+@font-face {
+    font-family: 'Bebas';
+    src: url('../fonts/bebas.eot');
+    src: url('../fonts/bebas.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/bebas.ttf') format('truetype'),
+        url('../fonts/bebas.woff2') format('woff2'),
+        url('../fonts/bebas.woff') format('woff'),
+        url('../fonts/bebas.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 html, body {
 	padding: 0;
     margin: 0;
@@ -46,10 +57,11 @@ html, body {
 .finalScore {
     width: 100%;
     text-align: center;
-    font-size: 100px;
-    margin-top: 475px;
+    font-size: 77px;
+    margin-top: 425px;
     font-family: HelveticaNeueBold;
-    color: #ffffff;
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
 }
 .facebookText {
     font-family: 'HelveticaNeueBold', Helvetica,Arial,sans-serif;
