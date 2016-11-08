@@ -193,6 +193,7 @@
     <Content Include="Assets\css\result.css" />
     <Content Include="Assets\css\home.css" />
     <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\fonts\bebas.svg" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\images\DBHome-bkgrnd3.jpg" />
     <Content Include="Assets\images\ball.png" />
@@ -203,6 +204,7 @@
     <Content Include="Assets\images\boy.png" />
     <Content Include="Assets\images\boyHit.png" />
     <Content Include="Assets\images\elf.png" />
+    <Content Include="Assets\images\Home.jpg" />
     <Content Include="Assets\images\magic.png" />
     <Content Include="Assets\images\present1.png" />
     <Content Include="Assets\images\present2.png" />
@@ -224,6 +226,7 @@
     <Content Include="Assets\images\left.png" />
     <Content Include="Assets\images\player.png" />
     <Content Include="Assets\images\playerHit.png" />
+    <Content Include="Assets\images\Results.jpg" />
     <Content Include="Assets\images\right.png" />
     <Content Include="Assets\images\background.jpg" />
     <Content Include="Assets\vendor\devtools-detect.js" />
@@ -281,6 +284,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\fonts\bebas.eot" />
+    <Content Include="Assets\fonts\bebas.ttf" />
+    <Content Include="Assets\fonts\bebas.woff" />
+    <Content Include="Assets\fonts\bebas.woff2" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
