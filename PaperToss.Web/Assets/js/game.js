@@ -169,7 +169,7 @@ function throwBall() {
 
     $(".ball" + ran).css({
         'opacity': "1",
-        "background-image": "url(Assets/images/present" + y + ".png)",
+        "background-image": "url(../../../Assets/images/present" + y + ".png)",
         "transform": "rotate(" + z + "deg)",
         "transform-origin": "50% 50%"
     });
