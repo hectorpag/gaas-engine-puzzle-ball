@@ -82,4 +82,5 @@ html, body {
     position: absolute;
     left: 0;
     right: 0;
+    -webkit-appearance: none;
 }  

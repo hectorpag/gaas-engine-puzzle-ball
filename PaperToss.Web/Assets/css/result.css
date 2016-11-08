@@ -40,6 +40,8 @@ html, body {
     width: 640px;
     height: 920px;
 	overflow: hidden;
+    background: url('../images/Results.jpg') no-repeat;
+    background-size: contain;
 }
 .finalScore {
     width: 100%;
@@ -67,24 +69,25 @@ html, body {
     font-size: 35px;
 }
 #btnPlay {
-    background: #ff443f;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    top: 700px;
+    width: 280px;
+    height: 80px;
+    font-size: 40px;
+    line-height: 74px;
+    background: #313263;
+    font-family: 'Bebas', Arial, sans-serif;
     border: none;
     color: #ffffff;
-    padding: 5px 10px 5px 10px;
+    height: 65px;
     text-decoration: none;
     cursor: pointer;
     display: block;
     outline: none;
+    margin: auto;
     text-align: center;
-    font-size: 30px;
-    height: 60px;
-    width: 400px;
     position: absolute;
-    top: 740px;
-    left: 120px;
+    left: 0;
+    right: 0;
     -webkit-appearance: none;
 }   
 .congratsText {
