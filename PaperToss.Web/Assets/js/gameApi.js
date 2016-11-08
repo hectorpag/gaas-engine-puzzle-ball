@@ -146,6 +146,7 @@ function saveVariables() {
     $.ajax(settings).done(function () {
         $("#score").val(score);
         $("form").submit();
+        window.parent.postMessage('{"game_play" : "over"}', "*");
     }).error(function () {
         $("#score").val(score);
         $("form").submit();
