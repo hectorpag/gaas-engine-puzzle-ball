@@ -10,6 +10,7 @@ using PaperToss.Service.Consumer;
 using PaperToss.Service.Fuel;
 using PaperToss.Service.GamePlay;
 using Newtonsoft.Json;
+using PaperToss.Service.Score;
 
 namespace PaperToss.Service.Game
 {
@@ -19,13 +20,15 @@ namespace PaperToss.Service.Game
         private readonly IConsumerService _consumerService;
         private readonly IGamePlayService _gamePlayService;
         private readonly IFuelService _fuelService;
+        private readonly IScoreService _scoreService;
 
-        public GameService(IConfigService configService, IConsumerService consumerService, IGamePlayService gamePlayService, IFuelService fuelService)
+        public GameService(IConfigService configService, IConsumerService consumerService, IGamePlayService gamePlayService, IFuelService fuelService, IScoreService scoreService)
         {
             _configService = configService;
             _consumerService = consumerService;
             _gamePlayService = gamePlayService;
             _fuelService = fuelService;
+            _scoreService = scoreService;
         }
 
         #region Implementation of IGameService
@@ -84,7 +87,10 @@ namespace PaperToss.Service.Game
                                 key = "score",
                                 value = game.Score.ToString(CultureInfo.InvariantCulture)
                             });
+                            _scoreService.Add(new ScoreViewModel() {ConsumerId = game.ConsumerId,Scored = DateTime.UtcNow,Result = Convert.ToInt32(game.Score) });
+
                         }
+
 
                         //TODO : Update Score Table, it must contain the heighest score of a user. And that can be sent to leaderboard, to reduce the stress submitting all scores on GAAS
                         var rs = Shearnie.Net.Web.RESTJSON.PostSync(Constants.GaasBaseUrl + "/api/v1/gamegallery/loggameresult", new List<KeyValuePair<string, string>>()

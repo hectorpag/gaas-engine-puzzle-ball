@@ -65,7 +65,17 @@ namespace PaperToss.Service.Consumer
         public ConsumerViewModel Update(string campaignKey, int panelId, ConsumerViewModel consumerViewModel)
         {
             var consumer = _mapper.Map<Model.Consumer>(consumerViewModel);
-            _consumerRepository.Update(campaignKey, panelId, consumer);
+            try
+            {
+                _consumerRepository.Update(campaignKey, panelId, consumer);
+            }
+            catch (Exception)
+            {
+
+                consumer = _consumerRepository.GetByGaasInfo(campaignKey, consumer.GaasConsumerId);
+
+            }
+
 
             //Remove cache
             _cacheManager.RemoveByPattern(GetKey(campaignKey, consumer.GaasConsumerId));
@@ -82,7 +92,7 @@ namespace PaperToss.Service.Consumer
             var gaasConsumer = GetConsumerDetails(gaasInfoViewModel);
             if (gaasConsumer.Error == null)
             {
-                consumer = Update(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId, new ConsumerViewModel() { GaasCampaignKey = gaasInfoViewModel.CampaignKey, GaasConsumerId = gaasConsumer.id, GaasConsumerName = gaasConsumer.email, GaasGender = String.Empty});
+                consumer = Update(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId, new ConsumerViewModel() { GaasCampaignKey = gaasInfoViewModel.CampaignKey, GaasConsumerId = gaasConsumer.id, GaasConsumerName = gaasConsumer.email, GaasGender = String.Empty });
             }
             return consumer;
         }
@@ -105,7 +115,7 @@ namespace PaperToss.Service.Consumer
 
                 var gaasConsumer = JsonConvert.DeserializeObject<Model.Gaas.Models.Consumer>(rs);
                 return gaasConsumer;
-            } 
+            }
             catch (Exception ex)
             {
                 //TODO : Log error
