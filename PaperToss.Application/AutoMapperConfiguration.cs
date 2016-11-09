@@ -24,6 +24,7 @@ namespace PaperToss.Service
                 cfg.CreateMap<Model.Fuel, FuelViewModel>().ReverseMap();
                 cfg.CreateMap<Model.UniqueGamePlayView, UniqueGamePlayViewViewModel>().ReverseMap();
                 cfg.CreateMap<Model.GameDataCapture, GameDataCaptureViewModel>().ReverseMap();
+                cfg.CreateMap<Model.GameDashboardReturnModel, GameDashboardReturnViewModel>().ReverseMap();
             });
         }
 

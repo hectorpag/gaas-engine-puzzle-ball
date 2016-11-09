@@ -19,6 +19,8 @@ namespace PaperToss.Data
 
 
 
+    using System.Linq;
+
 
 
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.20.1.0")]
@@ -161,6 +163,62 @@ namespace PaperToss.Data
 
         partial void InitializePartial();
         partial void OnModelCreatingPartial(System.Data.Entity.DbModelBuilder modelBuilder);
+
+
+        
+        // Stored Procedures
+
+        public System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(int? consumerId, string campaignKey, System.DateTime? startDate)
+        {
+            int procResult;
+            return GameDashboard(consumerId, campaignKey, startDate, out procResult);
+        }
+
+        public System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(int? consumerId, string campaignKey, System.DateTime? startDate, out int procResult)
+
+        {
+            var consumerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@consumerID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = consumerId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!consumerId.HasValue)
+                consumerIdParam.Value = System.DBNull.Value;
+
+            var campaignKeyParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@campaignKey", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = campaignKey, Size = 128 };
+            if (campaignKeyParam.Value == null)
+                campaignKeyParam.Value = System.DBNull.Value;
+
+            var startDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@StartDate", SqlDbType = System.Data.SqlDbType.DateTime, Direction = System.Data.ParameterDirection.Input, Value = startDate.GetValueOrDefault() };
+            if (!startDate.HasValue)
+                startDateParam.Value = System.DBNull.Value;
+
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+
+            var procResultData = Database.SqlQuery<GameDashboardReturnModel>("EXEC @procResult = [dbo].[GameDashboard] @consumerID, @campaignKey, @StartDate", consumerIdParam, campaignKeyParam, startDateParam, procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+
+            return procResultData;
+        }
+
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<GameDashboardReturnModel>> GameDashboardAsync(int? consumerId, string campaignKey, System.DateTime? startDate)
+        {
+            var consumerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@consumerID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = consumerId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!consumerId.HasValue)
+                consumerIdParam.Value = System.DBNull.Value;
+
+            var campaignKeyParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@campaignKey", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = campaignKey, Size = 128 };
+            if (campaignKeyParam.Value == null)
+                campaignKeyParam.Value = System.DBNull.Value;
+
+            var startDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@StartDate", SqlDbType = System.Data.SqlDbType.DateTime, Direction = System.Data.ParameterDirection.Input, Value = startDate.GetValueOrDefault() };
+            if (!startDate.HasValue)
+                startDateParam.Value = System.DBNull.Value;
+
+
+            var procResultData = await Database.SqlQuery<GameDashboardReturnModel>("EXEC [dbo].[GameDashboard] @consumerID, @campaignKey, @StartDate", consumerIdParam, campaignKeyParam, startDateParam).ToListAsync();
+
+
+            return procResultData;
+        }
 
     }
 

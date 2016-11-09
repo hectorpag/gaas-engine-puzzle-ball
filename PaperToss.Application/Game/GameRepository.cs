@@ -1,5 +1,10 @@
-﻿using Data;
+﻿using System;
+using System.Data.SqlClient;
+using System.Linq;
+using Data;
 using PaperToss.Data;
+using PaperToss.Model;
+using PaperToss.ViewModel;
 
 namespace PaperToss.Service.Game
 
@@ -12,10 +17,13 @@ namespace PaperToss.Service.Game
         {
             _context = context as dbContext;
         }
-       
+
+      
+
     }
 
     public interface IGameRepository
     {
+       
     }
 }

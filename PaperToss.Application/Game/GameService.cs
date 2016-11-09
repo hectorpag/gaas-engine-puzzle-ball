@@ -37,7 +37,9 @@ namespace PaperToss.Service.Game
 
             var consumer = gaasInfoViewModel.ConsumerId > 0 ? _consumerService.CheckConsumer(gaasInfoViewModel) : new ConsumerViewModel();
 
-            return new GameViewModel() { Config = config, Consumer = consumer, HostUrl = Constants.HostUrl, GaasBaseUrl = Constants.GaasBaseUrl };
+            var dashboard = _gamePlayService.LoadScoresForDashboard(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
+
+            return new GameViewModel() { Config = config, Consumer = consumer, HostUrl = Constants.HostUrl, GaasBaseUrl = Constants.GaasBaseUrl , Dashboard = dashboard};
         }
 
         public void PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel)
@@ -176,14 +178,7 @@ namespace PaperToss.Service.Game
            _configService.ClearAllCache();
            _consumerService.ClearAllCache();
         }
-
-        //public GameViewModel LoadConsumer(GaasInfoViewModel gaasInfoViewModel)
-        //{
-        //    var consumer = gaasInfoViewModel.ConsumerId > 0 ? _consumerService.CheckConsumer(gaasInfoViewModel) : new ConsumerViewModel();
-
-        //    return new GameViewModel() { Config = null, Consumer = consumer, HostUrl = Constants.HostUrl, GaasBaseUrl = Constants.GaasBaseUrl };
-        //}
-
+        
         #endregion
     }
 

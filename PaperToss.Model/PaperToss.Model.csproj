@@ -100,6 +100,9 @@
     <Compile Include="Gaas\Models\Error.cs" />
     <Compile Include="Gaas\Enums\ErrorTypes.cs" />
     <Compile Include="Gaas\Models\GaasScore.cs" />
+    <Compile Include="GameDashboardReturnModel.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="GameDataCapture.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

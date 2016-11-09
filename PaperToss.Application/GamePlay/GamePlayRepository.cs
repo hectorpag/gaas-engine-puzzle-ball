@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 using Data;
 using PaperToss.Data;
+using PaperToss.Model;
+using PaperToss.ViewModel;
 
 namespace PaperToss.Service.GamePlay
 {
@@ -20,7 +24,7 @@ namespace PaperToss.Service.GamePlay
 
             var gamePlay = _context.GamePlays
                 .AsNoTracking()
-                .FirstOrDefault(c => c.Id == id );
+                .FirstOrDefault(c => c.Id == id);
             return gamePlay;
 
         }
@@ -40,6 +44,29 @@ namespace PaperToss.Service.GamePlay
             return gamePlay;
         }
 
+        public GameDashboardReturnModel LoadScoresForDashboard(string campaignKey, int consumerId)
+        {
+            var returnViewModel = new GameDashboardReturnModel();
+            SqlParameter campaignKeyParam = new SqlParameter("@campaignKey", campaignKey);
+            SqlParameter consumerIdParam = new SqlParameter("@consumerID", consumerId);
+            SqlParameter startDateOfWeekParam = new SqlParameter("@StartDate", DBNull.Value);
+
+
+            var result =
+                   _context.Database.SqlQuery<GameDashboardReturnModel>(
+                       "dbo.CarGameDashboard @consumerId,@campaignKey ,@StartDate",
+                      consumerIdParam, campaignKeyParam, startDateOfWeekParam).FirstOrDefault();
+
+
+            if (result != null)
+            {
+                returnViewModel.BestScore = (int)result.BestScore;
+                if (result.LeaderBoardPosition != null) returnViewModel.LeaderBoardPosition = (int)result.LeaderBoardPosition;
+            }
+
+            return returnViewModel;
+        }
+
         #endregion
     }
 
@@ -47,6 +74,7 @@ namespace PaperToss.Service.GamePlay
     {
         Model.GamePlay Get(int id);
         List<Model.GamePlay> GetByConsumerId(int consumerId);
-        Model.GamePlay Add( Model.GamePlay gamePlay);
+        Model.GamePlay Add(Model.GamePlay gamePlay);
+        GameDashboardReturnModel LoadScoresForDashboard(string campaignKey, int consumerId);
     }
 }

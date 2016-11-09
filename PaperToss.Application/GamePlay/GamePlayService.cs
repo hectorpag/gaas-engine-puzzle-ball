@@ -54,6 +54,13 @@ namespace PaperToss.Service.GamePlay
             return viewModel;
         }
 
+        public GameDashboardReturnViewModel LoadScoresForDashboard(string campaignKey, int consumerId)
+        {
+            var scoresforDashboard = _gamePlayRepository.LoadScoresForDashboard(campaignKey, consumerId);
+            var viewModel = _mapper.Map<GameDashboardReturnViewModel>(scoresforDashboard);
+            return viewModel;
+        }
+
         #endregion
     }
 
@@ -64,5 +71,6 @@ namespace PaperToss.Service.GamePlay
         GamePlayViewModel Add(GamePlayViewModel gamePlayViewModel);
         List<UniqueGamePlayViewViewModel> GetUniqueByConsumerId(int consumerId);
         List<UniqueGamePlayViewViewModel> GetUniqueByFuelId(int consumerId, int fuelId);
+        GameDashboardReturnViewModel LoadScoresForDashboard(string campaignKey, int consumerId);
     }
 }
