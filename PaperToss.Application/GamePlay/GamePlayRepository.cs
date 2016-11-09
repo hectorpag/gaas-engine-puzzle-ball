@@ -54,7 +54,7 @@ namespace PaperToss.Service.GamePlay
 
             var result =
                    _context.Database.SqlQuery<GameDashboardReturnModel>(
-                       "dbo.CarGameDashboard @consumerId,@campaignKey ,@StartDate",
+                       "dbo.GameDashboard @consumerId,@campaignKey ,@StartDate",
                       consumerIdParam, campaignKeyParam, startDateOfWeekParam).FirstOrDefault();
 
 
