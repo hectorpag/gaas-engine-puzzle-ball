@@ -25,12 +25,7 @@
 <body>
     <div id="wrapper">
         <div class="inner">
-            <p class="congratsText">
-                <span class="congrats">Congratulations</span>
-                <br /><br />
-                You achieved a score of
-            </p>
-            <p class="finalScore">@Model.Score</p>
+            <p class="finalScore">@Model.Score presents</p>
         </div>
     </div>
     <script>
@@ -51,7 +46,7 @@
                                                                panelId = Model.GameViewModel.Config.GaasPanelId,
                                                                consumerId = Model.GameViewModel.Consumer.GaasConsumerId,
                                                            }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
-    <input id="btnPlay" type="submit" value="RETURN HOME">
+    <input id="btnPlay" type="submit" value="LEADERBOARD">
     @{ Html.EndForm();}
 </body>
 </html>

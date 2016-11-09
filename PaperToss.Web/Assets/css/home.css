@@ -61,6 +61,27 @@ html, body {
     background: url('../images/Home.jpg') no-repeat;
     background-size: contain;
 	overflow: hidden;
+    font-family: 'Bebas', Arial, sans-serif;
+}
+.scoreText {
+    position: absolute;
+    top: 210px;
+    left: 215px;
+    color: #EF060C;
+    font-size: 45px;
+    text-shadow: 2px 2px 4px #000;
+}
+.positionText {
+    position: absolute;
+    top: 210px;
+    left: 540px;
+    color: #EF060C;
+    font-size: 45px;
+    text-shadow: 2px 2px 4px #000;
+}
+.suffix {
+    font-size: 25px;
+    vertical-align: super;
 }
 #btnPlay {
     top: 700px;
@@ -82,4 +103,5 @@ html, body {
     position: absolute;
     left: 0;
     right: 0;
+    -webkit-appearance: none;
 }  
