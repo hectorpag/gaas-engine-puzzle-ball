@@ -125,6 +125,7 @@
 	height: 100%;
 }
 .arrows {
+    display: none;
 	position: absolute;
 	top: 650px;
 	width: 100px;
