@@ -22,12 +22,12 @@ var posHistory = [0, 0, 0];
 var ballTimes = [];
 
 // Pre game variables
-var time = 2000; // Starting time between throws
-var speed = 1200; // Time it takes for a throw
+var time = 1200; // Starting time between throws
+var speed = 1000; // Time it takes for a throw
 var startSpin = 0.66; // The percentage of time for when the ball starts spinning
-var timeMod = 0.85; // Percentage to reduce time between throws
+var timeMod = 20; // Number to reduce time by
 var minSpeed = 50; // Minimum duration of throw
-var speedMod = 20; // Number to reduce speed by
+var speedMod = 10; // Number to reduce speed by
 
 // Pre game placements
 var playerPixels = [45, 245, 445]; // The three different left pixels
@@ -272,7 +272,7 @@ function resetBall(ran) {
 
 // Change time and speed to make game harder
 function makeHarder() {
-    time -= 50;
+    time -= timeMod;
     if (time < 100) {
         time = 100;
     }
