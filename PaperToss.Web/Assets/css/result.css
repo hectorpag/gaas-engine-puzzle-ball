@@ -84,13 +84,13 @@ html, body {
     top: 700px;
     width: 280px;
     height: 80px;
-    font-size: 40px;
-    line-height: 74px;
+    font-size: 45px;
+    line-height: 80px;
     background: #313263;
-    font-family: 'Bebas', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: none;
     color: #ffffff;
-    height: 65px;
+    height: 80px;
     text-decoration: none;
     cursor: pointer;
     display: block;
