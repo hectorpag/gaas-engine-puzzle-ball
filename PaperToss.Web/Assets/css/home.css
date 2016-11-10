@@ -61,22 +61,23 @@ html, body {
     background: url('../images/Home.jpg') no-repeat;
     background-size: contain;
 	overflow: hidden;
-    font-family: 'Bebas', Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
 }
 .scoreText {
     position: absolute;
-    top: 210px;
+    top: 194px;
     left: 215px;
     color: #EF060C;
-    font-size: 45px;
+    font-size: 55px;
     text-shadow: 2px 2px 4px #000;
 }
 .positionText {
     position: absolute;
-    top: 210px;
+     top: 194px;
     left: 540px;
     color: #EF060C;
-    font-size: 45px;
+    font-size: 55px;
     text-shadow: 2px 2px 4px #000;
 }
 .suffix {
@@ -87,13 +88,13 @@ html, body {
     top: 700px;
     width: 280px;
     height: 80px;
-    font-size: 40px;
-    line-height: 74px;
+    font-size: 45px;
+    line-height: 80px;
     background: #313263;
-    font-family: 'Bebas', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: none;
     color: #ffffff;
-    height: 65px;
+    height: 80px;
     text-decoration: none;
     cursor: pointer;
     display: block;
