@@ -33,21 +33,21 @@ html, body {
 	visibility: hidden;
 	width: 0px;
 }
-.gameBGPreload {
-    background: url('../images/background.jpg') no-repeat;
-}
-.ballPreload {
-    background: url('../images/ball.png') no-repeat;
-}
-.arrowLeft {
-    background: url('../images/left.png') no-repeat;
-}
-.arrowRight {
-    background: url('../images/right.png') no-repeat;
-}
-.binPreload {
-    background: url('../images/bin.png') no-repeat;
-}
+.gameBGPreload {background: url('../images/background.jpg') no-repeat;}
+.present1Preload {background: url('../images/present1.png') no-repeat;}
+.present2Preload {background: url('../images/present2.png') no-repeat;}
+.present3Preload {background: url('../images/present3.png') no-repeat;}
+.present4Preload {background: url('../images/present4.png') no-repeat;}
+.present5Preload {background: url('../images/present5.png') no-repeat;}
+.present6Preload {background: url('../images/present6.png') no-repeat;}
+.present7Preload {background: url('../images/present7.png') no-repeat;}
+.present8Preload {background: url('../images/present8.png') no-repeat;}
+.present9Preload {background: url('../images/present9.png') no-repeat;}
+.present10Preload {background: url('../images/present10.png') no-repeat;}
+.arrowLeft {background: url('../images/left.png') no-repeat;}
+.arrowRight {background: url('../images/right.png') no-repeat;}
+.elfPreload {background: url('../images/elf.png') no-repeat;}
+
 #wrapper {
     margin: 0 auto;
     -ms-transform-origin: center top;
