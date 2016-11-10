@@ -19,13 +19,12 @@ namespace PaperToss.Web.Controllers
     {
         private readonly IGameService _gameService;
         private readonly IFuelService _fuelService;
-        private readonly IConfigService _configService;
 
-        public GameController(IGameService gameService, IFuelService fuelService, IConfigService configService)
+        public GameController(IGameService gameService, IFuelService fuelService)
         {
             _gameService = gameService;
             _fuelService = fuelService;
-            _configService = configService;
+          
         }
 
         #region Methods
@@ -78,11 +77,11 @@ namespace PaperToss.Web.Controllers
 
             int score = (int)_gameService.Score(gaasInfoViewModel);
 
-            var config = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey).Where(x=>x.LevelNumber ==1 && x.ShowMenu).ToList();
-            if (config.Count > 0)
-            {
-                gameViewModel.Config = config[0];
-            }
+            //var config = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey).Where(x=>x.LevelNumber ==1 && x.ShowMenu).ToList();
+            //if (config.Count > 0)
+            //{
+            //    gameViewModel.Config = config[0];
+            //}
             
             var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = score };
 

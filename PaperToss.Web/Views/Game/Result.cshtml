@@ -20,7 +20,7 @@
     @* CSS here *@
     @Styles.Render("~/Assets/css/result")
     @Scripts.Render("~/Assets/js/jquery")
-  
+
 </head>
 <body>
     <div id="wrapper">
@@ -33,20 +33,29 @@
         var CUSTOMEVENTENDPOINT = '@Url.HttpRouteUrl("api/gamelog/customevent", new {controller = "GameLog", action = "CustomEvent" })';
 
         $(document).ready(function() {
-                
-            });
-    </script>
 
+        });
+    </script>
     <p class="facebookText">
     </p>
-    @{ Html.BeginForm("Index", "Home",
-                                                            new
-                                                            {
-                                                                campaignKey = Model.GameViewModel.Config.GaasCampaignKey,
-                                                                panelId = Model.GameViewModel.Config.GaasPanelId,
-                                                                consumerId = Model.GameViewModel.Consumer.GaasConsumerId,
-                                                            }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
+    @*@{ Html.BeginForm("Index", "Home",
+        new
+        {
+            campaignKey = Model.GameViewModel.Config.GaasCampaignKey,
+            panelId = Model.GameViewModel.Config.GaasPanelId,
+            consumerId = Model.GameViewModel.Consumer.GaasConsumerId,
+        }, FormMethod.Post, new { enctype = "multipart/form-data" }); }*@
     <input id="btnPlay" type="submit" value="GO  HOME">
-    @{ Html.EndForm();}
+    @*@{ Html.EndForm();}*@
+    <script>
+        //$(document)
+        //   .ready(function () {
+        //       window.parent.postMessage('{"game_play" : "over"}', "*");
+        //   });
+
+        $('#btnPlay').click(function() {
+            window.parent.postMessage('{"goto_panel" : "2038"}', "*");
+        });
+    </script>
 </body>
 </html>
