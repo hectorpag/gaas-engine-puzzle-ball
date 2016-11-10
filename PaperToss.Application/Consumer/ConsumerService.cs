@@ -92,7 +92,7 @@ namespace PaperToss.Service.Consumer
             var gaasConsumer = GetConsumerDetails(gaasInfoViewModel);
             if (gaasConsumer.Error == null)
             {
-                consumer = Update(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId, new ConsumerViewModel() { GaasCampaignKey = gaasInfoViewModel.CampaignKey, GaasConsumerId = gaasConsumer.id, GaasConsumerName = gaasConsumer.email, GaasGender = String.Empty });
+                consumer = Update(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId, new ConsumerViewModel() { GaasCampaignKey = gaasInfoViewModel.CampaignKey, GaasConsumerId = gaasConsumer.id, GaasConsumerName = gaasConsumer.fname, GaasGender = String.Empty });
             }
             return consumer;
         }

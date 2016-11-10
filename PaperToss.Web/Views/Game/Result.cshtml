@@ -40,13 +40,13 @@
     <p class="facebookText">
     </p>
     @{ Html.BeginForm("Index", "Home",
-                                                           new
-                                                           {
-                                                               campaignKey = Model.GameViewModel.Config.GaasCampaignKey,
-                                                               panelId = Model.GameViewModel.Config.GaasPanelId,
-                                                               consumerId = Model.GameViewModel.Consumer.GaasConsumerId,
-                                                           }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
-    <input id="btnPlay" type="submit" value="LEADERBOARD">
+                                                            new
+                                                            {
+                                                                campaignKey = Model.GameViewModel.Config.GaasCampaignKey,
+                                                                panelId = Model.GameViewModel.Config.GaasPanelId,
+                                                                consumerId = Model.GameViewModel.Consumer.GaasConsumerId,
+                                                            }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
+    <input id="btnPlay" type="submit" value="GO  HOME">
     @{ Html.EndForm();}
 </body>
 </html>

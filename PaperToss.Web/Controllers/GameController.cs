@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Mvc;
 using PaperToss.Service;
@@ -10,6 +11,7 @@ using PaperToss.ViewModel;
 using Extensions;
 using Microsoft.ApplicationInsights.Channel;
 using Newtonsoft.Json;
+using PaperToss.Service.Config;
 
 namespace PaperToss.Web.Controllers
 {
@@ -17,11 +19,13 @@ namespace PaperToss.Web.Controllers
     {
         private readonly IGameService _gameService;
         private readonly IFuelService _fuelService;
+        private readonly IConfigService _configService;
 
-        public GameController(IGameService gameService, IFuelService fuelService)
+        public GameController(IGameService gameService, IFuelService fuelService, IConfigService configService)
         {
             _gameService = gameService;
             _fuelService = fuelService;
+            _configService = configService;
         }
 
         #region Methods
@@ -74,6 +78,12 @@ namespace PaperToss.Web.Controllers
 
             int score = (int)_gameService.Score(gaasInfoViewModel);
 
+            var config = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey).Where(x=>x.LevelNumber ==1 && x.ShowMenu).ToList();
+            if (config.Count > 0)
+            {
+                gameViewModel.Config = config[0];
+            }
+            
             var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = score };
 
             return View("Result", resultViewModel);

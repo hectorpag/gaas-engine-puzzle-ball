@@ -190,6 +190,7 @@ namespace PaperToss.Service.Game
 
     public interface IGameService
     {
+
         GameViewModel Load(GaasInfoViewModel gaasInfoViewModel);
         // GameViewModel LoadConfig(GaasInfoViewModel gaasInfoViewModel);
         // GameViewModel LoadConsumer(GaasInfoViewModel gaasInfoViewModel);
