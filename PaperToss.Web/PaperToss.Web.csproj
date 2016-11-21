@@ -226,9 +226,9 @@
     <Content Include="Assets\images\left.png" />
     <Content Include="Assets\images\player.png" />
     <Content Include="Assets\images\playerHit.png" />
-    <Content Include="Assets\images\Results.jpg" />
     <Content Include="Assets\images\right.png" />
     <Content Include="Assets\images\background.jpg" />
+    <Content Include="Assets\images\Results.jpg" />
     <Content Include="Assets\vendor\devtools-detect.js" />
     <Content Include="Assets\js\game.js" />
     <Content Include="Assets\js\gameApi.js" />
