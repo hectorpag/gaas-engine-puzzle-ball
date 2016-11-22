@@ -36,7 +36,7 @@ var playerPos = 2; // Initial position of avatar (out of 3)
 var ballStarts = [80, 140, 200]; // Initial placements of balls in pixels
 var ballLeftEnds = [60, 280, 500]
 var ballTopStarts = [360, 320, 340];
-var topPos = 80; // Initial top pixels of balls
+var topPos = 180; // Initial top pixels of balls
 var ballSize = 40;
 
 // Other variables
@@ -260,7 +260,7 @@ function resetBall(ran) {
         });
     $(".ball" + ran)
         .css({
-            'top': '50px',
+            'top': '150px',
             'left': ballStarts[ran - 1] + "px"
         });
 
