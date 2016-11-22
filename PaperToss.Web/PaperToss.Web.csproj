@@ -204,7 +204,6 @@
     <Content Include="Assets\images\boy.png" />
     <Content Include="Assets\images\boyHit.png" />
     <Content Include="Assets\images\elf.png" />
-    <Content Include="Assets\images\Home.jpg" />
     <Content Include="Assets\images\magic.png" />
     <Content Include="Assets\images\present1.png" />
     <Content Include="Assets\images\present2.png" />
@@ -228,6 +227,7 @@
     <Content Include="Assets\images\playerHit.png" />
     <Content Include="Assets\images\right.png" />
     <Content Include="Assets\images\background.jpg" />
+    <Content Include="Assets\images\Home.jpg" />
     <Content Include="Assets\images\Results.jpg" />
     <Content Include="Assets\vendor\devtools-detect.js" />
     <Content Include="Assets\js\game.js" />
