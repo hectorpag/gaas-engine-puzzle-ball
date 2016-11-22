@@ -36,7 +36,7 @@
     background-size: contain;
     width: 640px;
     height: 920px;
-    top: 50px;
+    top: 150px;
     position: absolute;
     opacity: 0;
     z-index: 10;
@@ -72,7 +72,7 @@
 	font-family: 'HelveticaNeueBold', Helvetica,Arial,sans-serif;
     text-align: center;
     position: absolute;
-    top: 40px;
+    top: 140px;
     left: 371px;
     height: 68px;
     line-height: 68px;
@@ -99,7 +99,7 @@
 	position: absolute;
 	width: 40px;
 	height: 40px;
-	top: 50px;
+	top: 150px;
 	z-index:2;
 	opacity: 0;
 	transform: translate3d(0,0,0);
