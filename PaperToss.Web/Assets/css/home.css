@@ -56,7 +56,7 @@ html, body {
     -webkit-transform-origin: center top;
     transform-origin: center top;
     width: 640px;
-    height: 920px;
+    height: 960px;
 	background-color: #fff;
     background: url('../images/Home.jpg') no-repeat;
     background-size: contain;

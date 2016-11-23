@@ -2,7 +2,7 @@
 
 $(function () {
     var $window = $(window),
-        viewAreaHeight = 920,
+        viewAreaHeight = 960,
         viewAreaWidth = 640,
         $content = $('#wrapper');
        
