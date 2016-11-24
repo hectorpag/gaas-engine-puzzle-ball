@@ -37,6 +37,9 @@ namespace GameEngineApp_Start
             bundles.Add(new ScriptBundle("~/Assets/js/jquery").Include(
                 "~/Scripts/jquery-3.1.0.min.js"
          ));
+            bundles.Add(new ScriptBundle("~/Assets/js/resize").Include(
+                "~/Assets/js/resize.js"
+         ));
             bundles.Add(new StyleBundle("~/Assets/css/home").Include(
                "~/Assets/css/home.css"
          ));

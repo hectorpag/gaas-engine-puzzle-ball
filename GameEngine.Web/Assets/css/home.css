@@ -58,7 +58,7 @@ html, body {
     width: 640px;
     height: 960px;
 	background-color: #fff;
-    background: url('../images/Home.jpg') no-repeat;
+    background: url('../images/home-bg.jpg') no-repeat;
     background-size: contain;
 	overflow: hidden;
     font-family: Arial, sans-serif;
@@ -85,24 +85,32 @@ html, body {
     vertical-align: super;
 }
 #btnPlay {
-    top: 800px;
-    width: 280px;
-    height: 80px;
-    font-size: 50px;
-    line-height: 83px;
-    background: #313263;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border: none;
-    color: #ffffff;
-    height: 80px;
-    text-decoration: none;
-    cursor: pointer;
-    display: block;
-    outline: none;
-    margin: auto;
-    text-align: center;
     position: absolute;
+    background: url(../images/play-btn.jpg) no-repeat;
+    background-size: contain;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    width: 424px;
+    height: 77px;
     left: 0;
     right: 0;
-    -webkit-appearance: none;
+    margin: auto;
+    top: 700px;
+    cursor: pointer;
 }  
+.leaderboard-button {
+     position: absolute;
+    background: url(../images/leaderboard-btn.jpg) no-repeat;
+    background-size: contain;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    width: 424px;
+    height: 77px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 800px;
+    cursor: pointer;
+}
