@@ -1,29 +1,4 @@
-﻿@font-face {
-    font-family: 'HelveticaNeueBold';
-    src: url('../fonts/helveticaneuecyr-bold.eot');
-    src: url('../fonts/helveticaneuecyr-bold.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/helveticaneuecyr-bold.woff2') format('woff2'),
-         url('../fonts/helveticaneuecyr-bold.woff') format('woff'),
-         url('../fonts/helveticaneuecyr-bold.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-	font-family: 'HelveticaNeue';
-	src: url('../fonts/HelveticaNeue-Light.ttf');
-}
-@font-face {
-    font-family: 'Bebas';
-    src: url('../fonts/bebas.eot');
-    src: url('../fonts/bebas.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/bebas.ttf') format('truetype'),
-        url('../fonts/bebas.woff2') format('woff2'),
-        url('../fonts/bebas.woff') format('woff'),
-        url('../fonts/bebas.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-html, body {
+﻿html, body {
 	padding: 0;
     margin: 0;
     width: 100%;

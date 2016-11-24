@@ -111,23 +111,22 @@ function saveScore() {
 }
 
 function saveVariables() {
-    console.log(ballTimes);
     var gameStatsData = {
-        "Movement": movement,
-        "BallThrown": ballThrown,
-        "BallEnd": ballEnd,
-        "BallThrownHistory": ballThrownHistory,
-        "BallEndHistory": ballEndHistory,
-        "Time": time,
-        "Speed": speed,
-        "Asdf": asdf,
-        "EndTime": endTime,
-        "Opened": opened,
-        "PlayerPos": playerPos,
-        "PosHistory": posHistory
+        //"Movement": movement,
+        //"BallThrown": ballThrown,
+        //"BallEnd": ballEnd,
+        //"BallThrownHistory": ballThrownHistory,
+        //"BallEndHistory": ballEndHistory,
+        //"Time": time,
+        //"Speed": speed,
+        //"Asdf": asdf,
+        //"EndTime": endTime,
+        //"Opened": opened,
+        //"PlayerPos": playerPos,
+        //"PosHistory": posHistory
     };
     var GameData = {};
-    GameData.Start = initialTime;
+    //GameData.Start = initialTime;
     GameData.Campaignkey = CAMPAIGN_KEY;
     GameData.ConsumerId = GAAS_CONSUMER_ID;
     GameData.Finished = JSON.stringify(gameStatsData);
