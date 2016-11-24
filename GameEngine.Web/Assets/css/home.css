@@ -66,11 +66,14 @@ html, body {
 }
 .scoreText {
     position: absolute;
-    top: 320px;
-    left: 215px;
-    color: #EF060C;
-    font-size: 55px;
-    text-shadow: 2px 2px 4px #000;
+    top: 590px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    color: #fff;
+    font-size: 60px;
+    font-family: 'Comic Sans MS', 'Arial Rounded MT', sans-serif;
 }
 .positionText {
     position: absolute;
