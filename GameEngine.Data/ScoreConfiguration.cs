@@ -8,13 +8,12 @@
 // ReSharper disable RedundantOverridenMember
 // ReSharper disable UseNameofExpression
 // TargetFrameworkVersion = 4.61
-
-using GameEngine.Model;
-
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 namespace GameEngine.Data
 {
+    using GameEngine.Model;
+
     // Scores
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.20.1.0")]
     public partial class ScoreConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Score>

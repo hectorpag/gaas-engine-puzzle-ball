@@ -7,9 +7,9 @@
 // Do not make changes directly to this file - edit the template instead.
 // 
 // The following connection settings were used to generate this file:
-//     Configuration file:     "GaasEngine.Data\App.config"
+//     Configuration file:     "GameEngine.Data\App.config"
 //     Connection String Name: "dbEntities"
-//     Connection String:      "data source=LOCALHOST;initial catalog=gaas-engine-forgetmenot;integrated security=False;user id=iisuser;password=**zapped**;;MultipleActiveResultSets=True;App=EntityFramework Application Name=GameEngine"
+//     Connection String:      "data source=LOCALHOST;initial catalog=gaas-engine-matchemall;integrated security=False;user id=iisuser;password=**zapped**;;MultipleActiveResultSets=True;App=EntityFramework Application Name=GameEngine"
 // ------------------------------------------------------------------------------------------------
 // Database Edition       : Developer Edition (64-bit)
 // Database Engine Edition: Enterprise
@@ -24,12 +24,12 @@
 // ReSharper disable RedundantOverridenMember
 // ReSharper disable UseNameofExpression
 // TargetFrameworkVersion = 4.61
-
-
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 namespace GameEngine.Data
 {
+    using GameEngine.Model;
+
 }
 // </auto-generated>
 

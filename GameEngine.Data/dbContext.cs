@@ -8,14 +8,14 @@
 // ReSharper disable RedundantOverridenMember
 // ReSharper disable UseNameofExpression
 // TargetFrameworkVersion = 4.61
-
-using System.Linq;
-using GameEngine.Model;
-
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 namespace GameEngine.Data
 {
+    using GameEngine.Model;
+
+    using System.Linq;
+
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.20.1.0")]
     public partial class dbContext : System.Data.Entity.DbContext, IdbContext
     {

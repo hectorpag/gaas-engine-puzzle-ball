@@ -8,13 +8,12 @@
 // ReSharper disable RedundantOverridenMember
 // ReSharper disable UseNameofExpression
 // TargetFrameworkVersion = 4.61
-
-using GameEngine.Model;
-
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 namespace GameEngine.Data
 {
+    using GameEngine.Model;
+
     public interface IdbContext : System.IDisposable
     {
         System.Data.Entity.DbSet<Config> Configs { get; set; } // Config
