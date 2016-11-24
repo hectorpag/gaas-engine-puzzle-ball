@@ -1,18 +1,28 @@
-﻿CREATE TABLE [dbo].[Consumer](
+﻿GO
+/****** Object:  Table [dbo].[Consumer]    Script Date: 24/11/2016 11:20:52 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Consumer](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[Gaas_CampaignKey] [varchar](128) NOT NULL,
 	[Gaas_ConsumerId] [int] NOT NULL,
 	[Gaas_ConsumerName] [varchar](500) NULL,
+	[Gaas_Gender] [varchar](50) NULL,
  CONSTRAINT [PK_Consumer] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [IX_Consumer] UNIQUE NONCLUSTERED 
+(
+	[Gaas_CampaignKey] ASC,
+	[Gaas_ConsumerId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Fuel]    Script Date: 21/07/2016 1:41:40 PM ******/
+/****** Object:  Table [dbo].[Fuel]    Script Date: 24/11/2016 11:20:52 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,7 +40,7 @@ CREATE TABLE [dbo].[Fuel](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[GamePlay]    Script Date: 21/07/2016 1:41:40 PM ******/
+/****** Object:  Table [dbo].[GamePlay]    Script Date: 24/11/2016 11:20:52 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -50,7 +60,7 @@ CREATE TABLE [dbo].[GamePlay](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  View [dbo].[GamePlayView]    Script Date: 21/07/2016 1:41:41 PM ******/
+/****** Object:  View [dbo].[GamePlayView]    Script Date: 24/11/2016 11:20:52 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -100,12 +110,9 @@ c.[ID] as ConsumerID
 FROM            dbo.Consumer c
 INNER JOIN               dbo.Fuel f ON c.ID = f.Consumer_ID 
 INNER JOIN            dbo.GamePlay g ON f.ID = g.Fuel_ID
-LEFT JOIN Game ga ON ga.Fuel_ID = f.ID 
-
-
-
+LEFT JOIN Game ga ON ga.Fuel_ID = f.ID
 GO
-/****** Object:  View [dbo].[UniqueGamePlayView]    Script Date: 21/07/2016 1:41:41 PM ******/
+/****** Object:  View [dbo].[UniqueGamePlayView]    Script Date: 24/11/2016 11:20:52 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -140,16 +147,11 @@ FROM (
 )  as a
 WHERE a.Ranking = 1  
 GROUP By a.Fuel_ID,a.ID,a.LevelPlayed,a.PlayedDate,a.Score,a.ScoreTime,a.Consumer_ID
-
-
-
 GO
-/****** Object:  Table [dbo].[Config]    Script Date: 21/07/2016 1:41:41 PM ******/
+/****** Object:  Table [dbo].[Config]    Script Date: 24/11/2016 11:20:52 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Config](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
@@ -170,19 +172,41 @@ CREATE TABLE [dbo].[Config](
 	[FBShare_Score3_Msg] [varchar](500) NULL,
 	[FBShare_Score4_Low] [int] NULL,
 	[FBShare_Score4_High] [int] NULL,
-	[FBShare_Score4_Msg] [varchar](500) NULL
-) ON [PRIMARY] 
-SET ANSI_PADDING OFF
-ALTER TABLE [dbo].[Config] ADD [CustomText] [varchar](100) NULL
+	[FBShare_Score4_Msg] [varchar](500) NULL,
+	[CustomText] [varchar](100) NULL,
+	[FBShare_Name] [varchar](500) NULL,
+	[FBShare_Caption] [varchar](500) NULL,
+	[FBShare_Url] [varchar](500) NULL,
+	[FBShare_Score1_ImgUrl] [varchar](500) NULL,
+	[FBShare_Score2_ImgUrl] [varchar](500) NULL,
+	[FBShare_Score3_ImgUrl] [varchar](500) NULL,
+	[FBShare_Score4_ImgUrl] [varchar](500) NULL,
  CONSTRAINT [PK_Config] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
-SET ANSI_PADDING OFF
+/****** Object:  Table [dbo].[GameDataCapture]    Script Date: 24/11/2016 11:20:52 AM ******/
+SET ANSI_NULLS ON
 GO
-/****** Object:  Table [dbo].[Scores]    Script Date: 21/07/2016 1:41:41 PM ******/
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[GameDataCapture](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Consumer_ID] [int] NOT NULL,
+	[Start] [bigint] NULL,
+	[Finished] [varchar](max) NULL,
+	[CreatedOn] [datetime] NOT NULL,
+ CONSTRAINT [PK_GameDataCapture] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Scores]    Script Date: 24/11/2016 11:20:52 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,6 +231,8 @@ ALTER TABLE [dbo].[Fuel] ADD  CONSTRAINT [DF_Fuel_Consumption]  DEFAULT ((0)) FO
 GO
 ALTER TABLE [dbo].[Fuel] ADD  CONSTRAINT [DF_Fuel_AutoDiscard]  DEFAULT ((0)) FOR [AutoDiscard]
 GO
+ALTER TABLE [dbo].[GameDataCapture] ADD  CONSTRAINT [DF_GameDataCapture_CreatedOn]  DEFAULT (getutcdate()) FOR [CreatedOn]
+GO
 ALTER TABLE [dbo].[GamePlay]  WITH CHECK ADD  CONSTRAINT [FK_GamePlay_Consumer] FOREIGN KEY([Consumer_ID])
 REFERENCES [dbo].[Consumer] ([ID])
 GO
@@ -222,45 +248,37 @@ REFERENCES [dbo].[Consumer] ([ID])
 GO
 ALTER TABLE [dbo].[Scores] CHECK CONSTRAINT [FK_Scores_Consumer]
 GO
-
-ALTER TABLE dbo.Config ADD
-	FBShare_Name varchar(500) NULL,
-	FBShare_Caption varchar(500) NULL
+/****** Object:  StoredProcedure [dbo].[GameDashboard]    Script Date: 24/11/2016 11:20:52 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
 GO
 
 
-ALTER TABLE dbo.Config ADD
-	FBShare_Url [varchar](500) NULL,
-	FBShare_Score1_ImgUrl [varchar](500) NULL,
-	FBShare_Score2_ImgUrl [varchar](500) NULL,
-	FBShare_Score3_ImgUrl [varchar](500) NULL,
-	FBShare_Score4_ImgUrl [varchar](500) NULL
+CREATE PROCEDURE [dbo].[GameDashboard] 
+	 @consumerID int 
+    ,@campaignKey VarChar(128)
+	,@StartDate datetime null
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    DECLARE @BestScore int ;
+	
+	
+   ;WITH b as(
+		SELECT a.BestScore,a.Gaas_ConsumerId, ROW_NUMBER() OVER (ORDER BY BestScore desc) LeaderBoardPosition  FROM (
+			SELECT
+				s.[Result] as BestScore
+				,c.Gaas_ConsumerId
+				,RANK () over (PARTITION BY  c.Gaas_ConsumerId order by s.[Result] desc ) As Ranking
+			FROM [dbo].[Scores] s
+			INNER JOIN [dbo].[Consumer] c ON c.ID = s.Consumer_ID AND c.Gaas_CampaignKey = @campaignKey  AND ((@StartDate  IS NOT NULL AND  s.Scored >= @StartDate) OR  @StartDate  IS NULL )
+		)  a
+		WHERE a.Ranking = 1 
+
+	)
+	
+	SELECT b.BestScore as BestScore,b.LeaderBoardPosition FROM b where b.Gaas_ConsumerId = @consumerId
+END
 GO
-
-ALTER TABLE dbo.Consumer ADD
-	Gaas_Gender varchar(50) NULL
-
-GO
-
-
-CREATE TABLE [dbo].[GameDataCapture](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Consumer_ID] [int] NOT NULL,
-	[Start] [bigint] NULL,
-	[Finished] [varchar](max) NULL,
-	[CreatedOn] [datetime] NOT NULL,
- CONSTRAINT [PK_GameDataCapture] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-GO
-
-SET ANSI_PADDING OFF
-GO
-
-ALTER TABLE [dbo].[GameDataCapture] ADD  CONSTRAINT [DF_GameDataCapture_CreatedOn]  DEFAULT (getutcdate()) FOR [CreatedOn]
-GO
-
-
