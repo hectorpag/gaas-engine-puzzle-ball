@@ -209,6 +209,7 @@
     <Content Include="Assets\images\background.jpg" />
     <Content Include="Assets\images\home-bg.jpg" />
     <Content Include="Assets\images\leaderboard-btn.jpg" />
+    <Content Include="Assets\images\results-bg.jpg" />
     <Content Include="Assets\images\play-btn.jpg" />
     <Content Include="Assets\images\playagain-btn.jpg" />
     <Content Include="Assets\vendor\devtools-detect.js" />

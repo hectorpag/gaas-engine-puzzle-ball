@@ -25,7 +25,7 @@
 <body>
     <div id="wrapper">
         <div class="inner">
-            <p class="finalScore">@Model.Score presents</p>
+            <p class="finalScore">@Model.Score</p>
         </div>
     </div>
     <script>
@@ -45,7 +45,8 @@
             panelId = Model.GameViewModel.Config.GaasPanelId,
             consumerId = Model.GameViewModel.Consumer.GaasConsumerId,
         }, FormMethod.Post, new { enctype = "multipart/form-data" }); }*@
-    <input id="btnPlay" type="submit" value="HOME">
+    <input id="btnPlay" type="submit" value="">
+    <a class="leaderboard-button"></a>
     @*@{ Html.EndForm();}*@
     <script>
         //$(document)
