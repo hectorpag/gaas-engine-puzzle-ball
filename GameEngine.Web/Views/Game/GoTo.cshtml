@@ -1,0 +1,39 @@
+﻿@using System.Web.Optimization
+@model GameEngine.ViewModel.GameViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        window.parent.postMessage('{"element_cfg" : "hide_footer"}', "*");
+    </script>
+    <meta charset="utf-8" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="Game" />
+    <meta name="Author" content="">
+    <meta name="format-detection" content="telephone=no" />
+    <title>GameEngine Game</title>
+    @Styles.Render("~/Assets/css/game")
+    @Scripts.Render("~/Assets/js/jquery")
+</head>
+<body>
+
+    @* Scripts here*@
+    <script>
+        $(document)
+           .ready(function () {
+               window.parent.postMessage('{"game_play" : "over"}', "*");
+           });
+    </script>
+    @*<script>
+                $(window)
+                    .load(function() {
+                        $('.inner').css("visibility", "visible");
+                    });
+        </script>*@
+
+</body>
+</html>
