@@ -26,7 +26,6 @@ html, body {
     -o-user-select: none;
     user-select: none;
     cursor: default;
-	background-color: #000;
 }
 .preloader {
 	opacity: 0;

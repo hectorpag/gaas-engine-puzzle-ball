@@ -15,7 +15,6 @@
     -o-user-select: none;
     user-select: none;
     cursor: default;
-	background-color: #000;
 }
 #wrapper {
     margin: 0 auto;
