@@ -157,7 +157,8 @@ $(document).ready(function () {
                     }
                 } else {
                     initialScore -= 250;
-                    $('.score').html(Math.floor(score));
+                    score = Math.floor(score);
+                    $('.score').html(score);
                     $('.selected').addClass('incorrect');
                     canClick = false;
                     setTimeout(function () {
@@ -183,10 +184,11 @@ function changeScore() {
         if (score <= 0) {
             score = 0;
         }
-        $('.score').html(Math.floor(score));
+        score = Math.floor(score);
+        $('.score').html(score);
     } else {
         score = 0;
-        $('.score').html(Math.floor(score));
+        $('.score').html(score);
         clearInterval(loop);
         gameOver();
     }
