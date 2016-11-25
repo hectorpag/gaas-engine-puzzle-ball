@@ -30,8 +30,8 @@ html, body {
 }
 .preloader {
 	opacity: 0;
-	visibility: hidden;
-	width: 0px;
+	width: 1px;
+    height: 1px;
 }
 .gameBGPreload {background: url('../images/background.jpg') no-repeat;}
 .card1Preload {background: url('../images/1.png') no-repeat;}
