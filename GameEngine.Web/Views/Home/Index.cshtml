@@ -22,22 +22,6 @@
     </script>
 </head>
 <body>
-    <div class="preloader">
-        <div class="gameBGPreload"></div>
-        <div class="present1Preload"></div>
-        <div class="present2Preload"></div>
-        <div class="present3Preload"></div>
-        <div class="present4Preload"></div>
-        <div class="present5Preload"></div>
-        <div class="present6Preload"></div>
-        <div class="present7Preload"></div>
-        <div class="present8Preload"></div>
-        <div class="present9Preload"></div>
-        <div class="present10Preload"></div>
-        <div class="arrowLeft"></div>
-        <div class="arrowRight"></div>
-        <div class="elfPreload"></div>
-    </div>
     <div id="wrapper">
         <div class="inner">
             <div class="scoreText">@Model.Dashboard.BestScore</div>
@@ -50,14 +34,27 @@
                              consumerId = Model.Consumer.GaasConsumerId,
                          }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
             <input id="btnPlay" type="submit" value="">
-            <a class="leaderboard-button"></a>
+            <a class="leaderboard-button" href="/leaderboard"></a>
             @{ Html.EndForm();}
 
         </div>
     </div>
     @Scripts.Render("~/Assets/js/resize")
-    <script>
-
-    </script>
+    <div class="preloader">
+        <div class="gameBGPreload"></div>
+        <div class="card1Preload"></div>
+        <div class="card2Preload"></div>
+        <div class="card3Preload"></div>
+        <div class="card4Preload"></div>
+        <div class="card5Preload"></div>
+        <div class="card6Preload"></div>
+        <div class="card7Preload"></div>
+        <div class="card8Preload"></div>
+        <div class="card9Preload"></div>
+        <div class="card10Preload"></div>
+        <div class="cardBackPreload"></div>
+        <div class="playAgainPreload"></div>
+        <div class="resultBGPreload"></div>
+    </div>
 </body>
 </html>
