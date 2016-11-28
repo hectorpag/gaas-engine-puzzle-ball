@@ -31,7 +31,7 @@
 	overflow: hidden;
 }
 .scoreboard {
-	font-family: 'Arial Rounded MT', sans-serif;
+	font-family: 'Arial Rounded MT', Helvetica, sans-serif;
 	text-align: center;
 	position: absolute;
     top: 130px;
@@ -98,6 +98,7 @@ td .pic {
 	visibility: hidden;
 	background-position: center;
 	background-size: 152px;
+    cursor: pointer;
 }
 .blank {
 	background: none;
@@ -134,7 +135,9 @@ td .pic {
 }
 .card.selected .pic {
 	visibility: visible;
+    cursor: default;
 }
 .correct .pic {
 	visibility: visible;
+    cursor: default;
 }
