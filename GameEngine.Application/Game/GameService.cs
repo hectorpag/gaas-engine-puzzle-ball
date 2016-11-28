@@ -100,13 +100,8 @@ namespace GameEngine.Service.Game
                                 });
                             }
                         }
-
-
-
+                        
                         _scoreService.Add(new ScoreViewModel() { ConsumerId = gameViewModel.Consumer.Id, Scored = DateTime.UtcNow, Result = Convert.ToInt32(data.Sum(x => x.value.GetDecimal())) });
-
-                      
-                      
                         
 
                         //TODO : Update Score Table, it must contain the heighest score of a user. And that can be sent to leaderboard, to reduce the stress submitting all scores on GAAS
