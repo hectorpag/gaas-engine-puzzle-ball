@@ -127,9 +127,13 @@ function saveVariables() {
     };
     var GameData = {};
     //GameData.Start = initialTime;
-    GameData.Campaignkey = CAMPAIGN_KEY;
+    GameData.CampaignKey = CAMPAIGN_KEY;
     GameData.ConsumerId = GAAS_CONSUMER_ID;
+    GameData.PanelId = PANEL_ID;
     GameData.Finished = JSON.stringify(gameStatsData);
+    GameData.Score = score;
+    GameData.ScoreTime = scoreTime;
+    GameData.LevelPlayed = LEVEL_NUMBER;
     var settings = {
         "async": true,
         "crossDomain": true,

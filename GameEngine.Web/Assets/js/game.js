@@ -1,5 +1,6 @@
 ﻿var levelNumber = LEVEL_NUMBER;
-
+var score = 0;
+var scoreTime = 0;
 var clickedCards = 0;
 
 var selectedCard1, selectedCard2, maxPairs, picOrder, score, loop, startTime, scoreInterval;
