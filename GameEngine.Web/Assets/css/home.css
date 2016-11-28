@@ -72,7 +72,7 @@ html, body {
     text-align: center;
     color: #fff;
     font-size: 60px;
-    font-family: 'Arial Rounded MT', sans-serif;
+    font-family: 'Arial Rounded MT', Helvetica, sans-serif;
 }
 .positionText {
     position: absolute;
