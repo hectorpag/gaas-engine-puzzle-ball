@@ -58,23 +58,23 @@
 table {
 	position: absolute;
 	margin: auto;
-	left: 0;
-	right: 0;
 	top: 40px;
-	bottom: 0;
 	margin-top: 175px;
 }
 #smallGrid table {
 	width: 500px;
 	height: 500px;
+    left: 70px;
 }
 #mediumGrid table{
 	width: 500px;
 	height: 660px;
+    left: 70px;
 }
 #largeGrid table {
 	width: 620px;
 	height: 620px;
+    left: 10px;
 }
 td {
     border: 0px solid black;
