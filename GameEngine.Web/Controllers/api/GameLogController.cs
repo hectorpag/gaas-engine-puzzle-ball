@@ -26,9 +26,11 @@ namespace GameEngine.Web.Controllers.api
     public class GameLogController : ApiController
     {
         private readonly IGameDataCaptureService _gameDataCaptureService;
-        public GameLogController(IGameDataCaptureService gameDataCaptureService)
+        private readonly IGameService _gameService;
+        public GameLogController(IGameDataCaptureService gameDataCaptureService, IGameService gameService)
         {
             _gameDataCaptureService = gameDataCaptureService;
+            _gameService = gameService;
         }
 
         // POST api/<controller>
@@ -51,6 +53,13 @@ namespace GameEngine.Web.Controllers.api
             var gameDataCaptureViewModel = JsonConvert.DeserializeObject<GameDataCaptureViewModel>(formData.ToString());
             gameDataCaptureViewModel.CreatedOn = DateTime.UtcNow;
             await Task.FromResult<int>(_gameDataCaptureService.Add(gameDataCaptureViewModel));
+            var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
+            var gamePlayViewModel = JsonConvert.DeserializeObject<GamePlayViewModel>(formData.ToString());
+
+
+            gamePlayViewModel.PlayedDate = DateTime.UtcNow;
+
+            await Task.FromResult<int>(_gameService.PostScore(gaasInfoViewModel, gamePlayViewModel));
         }
 
 

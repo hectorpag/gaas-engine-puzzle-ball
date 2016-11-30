@@ -95,19 +95,7 @@ namespace GameEngine.Web.Controllers
         [HttpPost]
         public ActionResult Result(FormCollection formCollection)
         {
-            //TODO: Check for errors
-            //Make sure that all paramaeters are passed in 
-            var gaasInfoViewModel = GetGaasInfoViewModel(formCollection);
-
-            var gamePlayViewModel = GetGamePlayViewModel(formCollection);
-            _gameService.PostScore(gaasInfoViewModel, gamePlayViewModel);
-
-
-            //var gameViewModel = _gameService.Load(gaasInfoViewModel);
-
-            //var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = gamePlayViewModel.Score };
-
-            return new EmptyResult();
+           return new EmptyResult();
         }
         #endregion
 

@@ -42,10 +42,10 @@ namespace GameEngine.Service.Game
 
             var dashboard = _gamePlayService.LoadScoresForDashboard(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
 
-            return new GameViewModel() { Config = config, Consumer = consumer, HostUrl = Constants.HostUrl, GaasBaseUrl = Constants.GaasBaseUrl , Dashboard = dashboard};
+            return new GameViewModel() { Config = config, Consumer = consumer, HostUrl = Constants.HostUrl, GaasBaseUrl = Constants.GaasBaseUrl, Dashboard = dashboard };
         }
 
-        public void PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel)
+        public int PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel)
         {
             try
             {
@@ -63,13 +63,13 @@ namespace GameEngine.Service.Game
 
 
                 //Check if last Level
-                if (gamePlayViewModel.LevelPlayed > 0 )
+                if (gamePlayViewModel.LevelPlayed == 3)
                 {
                     var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(gameViewModel.Consumer.Id, currentFuel.Id);
                     //check if all level played & Post to LeaderBoard
-                    List<int> levelIds = new List<int> { 1 };
+                    List<int> levelIds = new List<int> { 1, 2, 3 };
                     //TODO:// Find a way to make sure that uniqueGamesPlayed containes all levels
-                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == 1)
+                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == 3)
                     {
                         //Mark fuel as utilized 
                         currentFuel.UtilizedDate = DateTime.UtcNow;
@@ -77,6 +77,7 @@ namespace GameEngine.Service.Game
 
                         var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
                         var data = new List<GaasScoreViewModel>();
+                        var finalData = new List<GaasScoreViewModel>();
                         foreach (var game in uniqueGamesPlayed)
                         {
                             var panelConfig = configs.FirstOrDefault(c => c.LevelNumber == game.LevelPlayed);
@@ -87,17 +88,28 @@ namespace GameEngine.Service.Game
                                 key = "score",
                                 value = game.Score.ToString(CultureInfo.InvariantCulture)
                             });
-                            _scoreService.Add(new ScoreViewModel() {ConsumerId = game.ConsumerId,Scored = DateTime.UtcNow,Result = Convert.ToInt32(game.Score) });
 
+                            if (game.LevelPlayed ==3)
+                            {
+                                //add total score
+                                finalData.Add(new GaasScoreViewModel()
+                                {
+                                    storypanel_id = panelConfig.GaasPanelId,
+                                    key = "score",
+                                    value =data.Sum(x => x.value.GetDecimal()).ToString()
+                                });
+                            }
                         }
-
+                        
+                        _scoreService.Add(new ScoreViewModel() { ConsumerId = gameViewModel.Consumer.Id, Scored = DateTime.UtcNow, Result = Convert.ToInt32(data.Sum(x => x.value.GetDecimal())) });
+                        
 
                         //TODO : Update Score Table, it must contain the heighest score of a user. And that can be sent to leaderboard, to reduce the stress submitting all scores on GAAS
                         var rs = Shearnie.Net.Web.RESTJSON.PostSync(Constants.GaasBaseUrl + "/api/v1/gamegallery/loggameresult", new List<KeyValuePair<string, string>>()
                         {
                             new KeyValuePair<string, string>("campaignkey", gaasInfoViewModel.CampaignKey),
                             new KeyValuePair<string, string>("consumerid", gaasInfoViewModel.ConsumerId.ToString()),
-                            new KeyValuePair<string, string>("jsonresult", JsonConvert.SerializeObject(data)),
+                            new KeyValuePair<string, string>("jsonresult", JsonConvert.SerializeObject(finalData)),
                         });
                     }
                     else
@@ -116,6 +128,7 @@ namespace GameEngine.Service.Game
             {
 
             }
+            return 1;
         }
 
         public decimal Score(GaasInfoViewModel gaasInfoViewModel)
@@ -126,23 +139,23 @@ namespace GameEngine.Service.Game
                 var gameViewModel = Load(gaasInfoViewModel);
 
                 //Populate ConsumerId
-              //  gamePlayViewModel.ConsumerId = gameViewModel.Consumer.Id;
+                //  gamePlayViewModel.ConsumerId = gameViewModel.Consumer.Id;
 
                 //Get the fuelID that this score needs to be added to 
                 var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
-              //  gamePlayViewModel.FuelId = currentFuel.Id;
+                //  gamePlayViewModel.FuelId = currentFuel.Id;
 
-            //    _gamePlayService.Add(gamePlayViewModel);
+                //    _gamePlayService.Add(gamePlayViewModel);
 
 
-                
+
                 if (gameViewModel.Config.ShowResult)
                 {
                     var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(gameViewModel.Consumer.Id, currentFuel.Id);
                     //check if all level played & Post to LeaderBoard
-                    List<int> levelIds = new List<int> { 1 };
+                    List<int> levelIds = new List<int> { 1, 2, 3 };
                     //TODO:// Find a way to make sure that uniqueGamesPlayed containes all levels
-                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == 1)
+                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == 3)
                     {
                         var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
                         var data = new List<GaasScoreViewModel>();
@@ -157,7 +170,7 @@ namespace GameEngine.Service.Game
                                 value = game.Score.ToString(CultureInfo.InvariantCulture)
                             });
                         }
-                        return data[0].value.GetDecimal();
+                        return data.Sum(x => x.value.GetDecimal()); //data[0].value.GetDecimal();
                     }
                     else
                     {
@@ -181,10 +194,10 @@ namespace GameEngine.Service.Game
 
         public void ClearAllCache()
         {
-           _configService.ClearAllCache();
-           _consumerService.ClearAllCache();
+            _configService.ClearAllCache();
+            _consumerService.ClearAllCache();
         }
-        
+
         #endregion
     }
 
@@ -194,7 +207,7 @@ namespace GameEngine.Service.Game
         GameViewModel Load(GaasInfoViewModel gaasInfoViewModel);
         // GameViewModel LoadConfig(GaasInfoViewModel gaasInfoViewModel);
         // GameViewModel LoadConsumer(GaasInfoViewModel gaasInfoViewModel);
-        void PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel);
+        int PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel);
 
         decimal Score(GaasInfoViewModel gaasInfoViewModel);
 

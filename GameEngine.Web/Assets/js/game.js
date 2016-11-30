@@ -1,5 +1,6 @@
 ﻿var levelNumber = LEVEL_NUMBER;
-
+var score = 0;
+var scoreTime = 0;
 var clickedCards = 0;
 
 var countdown = 3;
