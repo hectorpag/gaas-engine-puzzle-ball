@@ -207,6 +207,8 @@
     <Content Include="Assets\images\9.png" />
     <Content Include="Assets\images\back.png" />
     <Content Include="Assets\images\background.jpg" />
+    <Content Include="Assets\images\continue-btn.jpg" />
+    <Content Include="Assets\images\finish-btn.jpg" />
     <Content Include="Assets\images\home-bg.jpg" />
     <Content Include="Assets\images\leaderboard-btn.jpg" />
     <Content Include="Assets\images\results-bg.jpg" />
