@@ -21,6 +21,9 @@
 </head>
 <body>
     <div id="wrapper">
+        <div class="countdown">
+            <p class="number">3</p>
+        </div>
         <div class="scoreboard">Score: <span class="score">0</span></div>
 
         <div id="smallGrid">
@@ -170,6 +173,8 @@
         </div>
     </div>
     @* Scripts here*@
+    <a class="end-btn continue-btn"></a>
+    <a class="end-btn finish-btn"></a>
     <script>
         var CAMPAIGN_KEY = "@Model.Config.GaasCampaignKey";
         var PANEL_ID = @Model.Config.GaasPanelId;

@@ -3,8 +3,10 @@ var score = 0;
 var scoreTime = 0;
 var clickedCards = 0;
 
+var countdown = 3;
+
 var selectedCard1, selectedCard2, maxPairs, picOrder, score, loop, startTime, scoreInterval;
-var canClick = true;
+var canClick = false;
 var pairs = 0;
 
 var pic1 = '1';
@@ -59,6 +61,7 @@ $(document).ready(function () {
         $('.card8 .pic').addClass('front' + $('.card8').attr('data-val'));
 
         $('#smallGrid').show();
+        $('.score').html(Math.floor(score));
     } else if (levelNumber === 2) {
         $('.card1').attr('data-val', picOrder[0]);
         $('.card2').attr('data-val', picOrder[1]);
@@ -88,6 +91,7 @@ $(document).ready(function () {
         $('.card12 .pic').addClass('front' + $('.card12').attr('data-val'));
 
         $('#mediumGrid').show();
+        $('.score').html(Math.floor(score));
     } else if (levelNumber >= 3) {
         $('.card1').attr('data-val', picOrder[0]);
         $('.card2').attr('data-val', picOrder[1]);
@@ -124,6 +128,7 @@ $(document).ready(function () {
         $('.card16 .pic').addClass('front' + $('.card16').attr('data-val'));
 
         $('#largeGrid').show();
+        $('.score').html(Math.floor(score));
     }
 
     $('.card').on('touchstart mousedown', function (e) {
@@ -171,11 +176,40 @@ $(document).ready(function () {
             }
         }
     });
+    $('.end-btn').on('touchstart mousedown', function (e) {
+        e.preventDefault();
+        saveVariables();
+    });
+});
+$(window).on('load', function () {
+    setTimeout(startCountdown, 2000);
+});
+
+function startCountdown() {
+    if (countdown > 1) {
+        countdown--;
+        $('.number').html(countdown);
+        setTimeout(startCountdown, 1000);
+    } else {
+        countdown--;
+        $('.countdown').fadeOut(800, function () {
+            $('.number').css({
+                'opacity': '0',
+                'visibility': 'hidden',
+                'display': 'none'
+            })
+        });
+        startGame();
+    }
+}
+
+function startGame() {
+    canClick = true;
     startTime = new Date().getTime();
     loop = setInterval(function () {
         changeScore();
     }, 50);
-});
+}
 
 function changeScore() {
     if (score > 0) {
@@ -217,6 +251,10 @@ function shuffle(array) {
 
 // What to do at the end of the game
 function gameOver() {
-    saveVariables();
-  
+    if (levelNumber < 3) {
+        $('.continue-btn').show();
+    } else {
+        $('.finish-btn').show();
+    }
+    
 }
