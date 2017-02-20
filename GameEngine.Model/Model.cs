@@ -9,7 +9,7 @@
 // The following connection settings were used to generate this file:
 //     Configuration file:     "GameEngine.Web\Web.config"
 //     Connection String Name: "dbEntities"
-//     Connection String:      "data source=LOCALHOST;initial catalog=gaas-engine-matchemall;integrated security=False;user id=iisuser;password=**zapped**;;MultipleActiveResultSets=True;App=EntityFramework Application Name=GameEngine"
+//     Connection String:      "data source=LOCALHOST\localhost2016;initial catalog=gaas-engine-matchemall;integrated security=False;user id=gaas;password=**zapped**;;MultipleActiveResultSets=True;App=EntityFramework Application Name=GameEngine"
 // ------------------------------------------------------------------------------------------------
 // Database Edition       : Developer Edition (64-bit)
 // Database Engine Edition: Enterprise

@@ -7,21 +7,17 @@ namespace GameEngine.Model.Gaas.Models
     public class Consumer
     {
         public Error Error { get; set; }
-
-        public int id { get; set; }
-        public string title { get; set; }
-        public string fname { get; set; }
-        public string lname { get; set; }
-        public string fullname { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public int? age { get; set; }
-        public DateTime? dob { get; set; }
-        public string address1 { get; set; }
-        public string address2 { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string post_code { get; set; }
-        public Dictionary<string, string> data { get; set; }
+        public string Id { get; set; } // Id (Primary key) (length: 128)
+        public string Email { get; set; } // Email (length: 256)
+        public bool EmailConfirmed { get; set; } // EmailConfirmed
+        public string PasswordHash { get; set; } // PasswordHash
+        public string SecurityStamp { get; set; } // SecurityStamp
+        public string PhoneNumber { get; set; } // PhoneNumber
+        public bool PhoneNumberConfirmed { get; set; } // PhoneNumberConfirmed
+        public bool TwoFactorEnabled { get; set; } // TwoFactorEnabled
+        public System.DateTime? LockoutEndDateUtc { get; set; } // LockoutEndDateUtc
+        public bool LockoutEnabled { get; set; } // LockoutEnabled
+        public int AccessFailedCount { get; set; } // AccessFailedCount
+        public string UserName { get; set; } // UserName (length: 256)
     }
 }

@@ -23,7 +23,7 @@ namespace GameEngine.Web.Controllers
             {
                 CampaignKey = campaignKey,
                 PanelId = panelId.GetInteger(),
-                ConsumerId = consumerId.GetInteger()
+                ConsumerId = consumerId
             };
 
             var gameViewModel = _gameService.Load(gaasInfoViewModel);

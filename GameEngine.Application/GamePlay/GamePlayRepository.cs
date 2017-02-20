@@ -44,7 +44,7 @@ namespace GameEngine.Service.GamePlay
             return gamePlay;
         }
 
-        public GameDashboardReturnModel LoadScoresForDashboard(string campaignKey, int consumerId)
+        public GameDashboardReturnModel LoadScoresForDashboard(string campaignKey, string consumerId)
         {
             var returnViewModel = new GameDashboardReturnModel();
             SqlParameter campaignKeyParam = new SqlParameter("@campaignKey", campaignKey);
@@ -75,6 +75,6 @@ namespace GameEngine.Service.GamePlay
         Model.GamePlay Get(int id);
         List<Model.GamePlay> GetByConsumerId(int consumerId);
         Model.GamePlay Add(Model.GamePlay gamePlay);
-        GameDashboardReturnModel LoadScoresForDashboard(string campaignKey, int consumerId);
+        GameDashboardReturnModel LoadScoresForDashboard(string campaignKey, string consumerId);
     }
 }

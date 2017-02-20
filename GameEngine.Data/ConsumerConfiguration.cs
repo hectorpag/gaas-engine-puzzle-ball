@@ -30,7 +30,7 @@ namespace GameEngine.Data
 
             Property(x => x.Id).HasColumnName(@"ID").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.GaasCampaignKey).HasColumnName(@"Gaas_CampaignKey").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(128);
-            Property(x => x.GaasConsumerId).HasColumnName(@"Gaas_ConsumerId").IsRequired().HasColumnType("int");
+            Property(x => x.GaasConsumerId).HasColumnName(@"Gaas_ConsumerId").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(450);
             Property(x => x.GaasConsumerName).HasColumnName(@"Gaas_ConsumerName").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
             Property(x => x.GaasGender).HasColumnName(@"Gaas_Gender").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(50);
             InitializePartial();

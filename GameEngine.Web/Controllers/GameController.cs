@@ -36,7 +36,7 @@ namespace GameEngine.Web.Controllers
             {
                 CampaignKey = campaignKey,
                 PanelId = Convert.ToInt32(panelId),
-                ConsumerId = Convert.ToInt32(consumerId)
+                ConsumerId = consumerId
             };
 
             var gameViewModel = _gameService.Load(gaasInfoViewModel);
@@ -70,7 +70,7 @@ namespace GameEngine.Web.Controllers
             {
                 CampaignKey = campaignKey,
                 PanelId = Convert.ToInt32(panelId),
-                ConsumerId = Convert.ToInt32(consumerId)
+                ConsumerId = consumerId
             };
 
             var gameViewModel = _gameService.Load(gaasInfoViewModel);
@@ -107,7 +107,7 @@ namespace GameEngine.Web.Controllers
             {
                 CampaignKey = formData["campaignkey"],
                 PanelId = (formData["panelId"]).GetInteger(),
-                ConsumerId = (formData["gaasConsumerId"]).GetInteger()
+                ConsumerId = formData["gaasConsumerId"].ToString()
             };
 
             return gaasInfoViewModel;

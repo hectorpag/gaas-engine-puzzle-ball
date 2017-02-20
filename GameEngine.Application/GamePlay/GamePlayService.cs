@@ -54,7 +54,7 @@ namespace GameEngine.Service.GamePlay
             return viewModel;
         }
 
-        public GameDashboardReturnViewModel LoadScoresForDashboard(string campaignKey, int consumerId)
+        public GameDashboardReturnViewModel LoadScoresForDashboard(string campaignKey, string consumerId)
         {
             var scoresforDashboard = _gamePlayRepository.LoadScoresForDashboard(campaignKey, consumerId);
             var viewModel = _mapper.Map<GameDashboardReturnViewModel>(scoresforDashboard);
@@ -71,6 +71,6 @@ namespace GameEngine.Service.GamePlay
         GamePlayViewModel Add(GamePlayViewModel gamePlayViewModel);
         List<UniqueGamePlayViewViewModel> GetUniqueByConsumerId(int consumerId);
         List<UniqueGamePlayViewViewModel> GetUniqueByFuelId(int consumerId, int fuelId);
-        GameDashboardReturnViewModel LoadScoresForDashboard(string campaignKey, int consumerId);
+        GameDashboardReturnViewModel LoadScoresForDashboard(string campaignKey, string consumerId);
     }
 }

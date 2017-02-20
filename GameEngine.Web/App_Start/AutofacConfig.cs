@@ -9,7 +9,8 @@ using GameEngine.Service.Config;
 using GameEngine.Service.Configuration;
 using GameEngine.Service.Interfaces;
 using GameEngine.Service.RedisCaching;
-
+using GaasPlay.API.Client.Api;
+using System.Configuration;
 namespace GameEngine.Web
 {
     public class AutofacConfig
@@ -29,9 +30,11 @@ namespace GameEngine.Web
             builder.RegisterType<dbContext>().As<IdbContext>().InstancePerRequest();
             builder.RegisterType<RedisCacheManager>().As<ICacheManager>().InstancePerLifetimeScope();
             builder.RegisterType<RedisConnectionWrapper>().As<IRedisConnectionWrapper>().InstancePerLifetimeScope();
-           
-                
-           //Repositories
+            var gaasPlayApiBaseUrl = ConfigurationManager.AppSettings["GaasPlayApi.BaseUrl"];
+            builder.Register<IGaasPlayProfileApi>(
+               c => (new GaasPlayProfileApi(new GaasPlay.API.Client.Client.ApiClient(gaasPlayApiBaseUrl, new GaasPlay.API.Client.Client.Configuration(), null))));
+
+            //Repositories
             builder.RegisterAssemblyTypes(typeof(ConfigRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();

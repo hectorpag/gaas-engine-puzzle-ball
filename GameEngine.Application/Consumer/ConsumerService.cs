@@ -8,7 +8,7 @@ using GameEngine.Service.RedisCaching;
 using GameEngine.ViewModel;
 using Newtonsoft.Json;
 using Shearnie.Net.Web;
-
+using GaasPlay.API.Client.Api;
 namespace GameEngine.Service.Consumer
 {
     public class ConsumerService : IConsumerService
@@ -16,6 +16,7 @@ namespace GameEngine.Service.Consumer
         private readonly IConsumerRepository _consumerRepository;
         private readonly IMapper _mapper = AutoMapperConfiguration.MapperConfiguration.CreateMapper();
         private readonly ICacheManager _cacheManager;
+        private readonly IGaasPlayProfileApi _profileApi;
 
         #region Cache Keys
         /// <summary>
@@ -30,13 +31,13 @@ namespace GameEngine.Service.Consumer
 
         public const string CONSUMER_PATTERN_KEY = "GameEngine.consumer";
 
-        private string GetKey(string campaignKey, int gaasConsumerId)
+        private string GetKey(string campaignKey, string gaasConsumerId)
         {
             return string.Format(CONSUMER_KEYBY_CAMPAIGN_GAASCONSUMERID, campaignKey, gaasConsumerId);
         }
 
         #endregion
-        public ConsumerService(IConsumerRepository consumerRepository, ICacheManager cacheManager)
+        public ConsumerService(IConsumerRepository consumerRepository, ICacheManager cacheManager, IGaasPlayProfileApi profileApi)
         {
             _consumerRepository = consumerRepository;
             _cacheManager = cacheManager;
@@ -92,7 +93,7 @@ namespace GameEngine.Service.Consumer
             var gaasConsumer = GetConsumerDetails(gaasInfoViewModel);
             if (gaasConsumer.Error == null)
             {
-                consumer = Update(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId, new ConsumerViewModel() { GaasCampaignKey = gaasInfoViewModel.CampaignKey, GaasConsumerId = gaasConsumer.id, GaasConsumerName = gaasConsumer.fname, GaasGender = String.Empty });
+                consumer = Update(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId, new ConsumerViewModel() { GaasCampaignKey = gaasInfoViewModel.CampaignKey, GaasConsumerId = gaasConsumer.Id, GaasConsumerName = gaasConsumer.UserName, GaasGender = String.Empty });
             }
             return consumer;
         }
@@ -107,14 +108,31 @@ namespace GameEngine.Service.Consumer
         {
             try
             {
-                var rs = RESTJSON.PostSync($"{Constants.GaasBaseUrl}/api/v1/consumer/get", new List<KeyValuePair<string, string>>
+                var gaasConsumer = _profileApi.GetPortalUser(gaasInfoViewModel.ConsumerId.ToString());
+                var consModel = gaasConsumer.Data;
+                if (gaasConsumer.StatusCode == 200 && consModel != null)
                 {
-                    new KeyValuePair<string, string>("campaignkey", gaasInfoViewModel.CampaignKey),
-                    new KeyValuePair<string, string>("id", gaasInfoViewModel.ConsumerId.ToString())
-                });
-
-                var gaasConsumer = JsonConvert.DeserializeObject<Model.Gaas.Models.Consumer>(rs);
-                return gaasConsumer;
+                    return new Model.Gaas.Models.Consumer()
+                    {
+                        Id = consModel.Id,
+                        Email = consModel.Email,
+                        AccessFailedCount = consModel.AccessFailedCount,
+                        EmailConfirmed = consModel.EmailConfirmed,
+                        LockoutEnabled = consModel.LockoutEnabled,
+                        LockoutEndDateUtc = consModel.LockoutEndDateUtc,
+                        PasswordHash = consModel.PasswordHash,
+                        PhoneNumber = consModel.PhoneNumber,
+                        PhoneNumberConfirmed = consModel.PhoneNumberConfirmed,
+                        SecurityStamp = consModel.SecurityStamp,
+                        TwoFactorEnabled = consModel.TwoFactorEnabled,
+                        UserName = consModel.UserName
+                    };
+                }
+                else
+                    return new Model.Gaas.Models.Consumer
+                    {
+                        Error = new Error { Code = (int)ErrorTypes.UnknownError, Message = "Consumer Not found." }
+                    };
             }
             catch (Exception ex)
             {

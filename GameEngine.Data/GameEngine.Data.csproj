@@ -136,6 +136,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\1.0.0.1.sql" />
     <Content Include="Scripts\elmah.sql" />
     <Content Include="Scripts\1.0.0.0.sql" />
   </ItemGroup>

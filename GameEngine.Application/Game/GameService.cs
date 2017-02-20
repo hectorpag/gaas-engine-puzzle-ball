@@ -38,7 +38,7 @@ namespace GameEngine.Service.Game
             var config = _configService.Get(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId);
             if (config == null) return new GameViewModel(); //TODO : Not sure if this is right
 
-            var consumer = gaasInfoViewModel.ConsumerId > 0 ? _consumerService.CheckConsumer(gaasInfoViewModel) : new ConsumerViewModel();
+            var consumer = !string.IsNullOrEmpty(gaasInfoViewModel.ConsumerId) ? _consumerService.CheckConsumer(gaasInfoViewModel) : new ConsumerViewModel();
 
             var dashboard = _gamePlayService.LoadScoresForDashboard(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
 
@@ -108,7 +108,7 @@ namespace GameEngine.Service.Game
                         var rs = Shearnie.Net.Web.RESTJSON.PostSync(Constants.GaasBaseUrl + "/api/v1/gamegallery/loggameresult", new List<KeyValuePair<string, string>>()
                         {
                             new KeyValuePair<string, string>("campaignkey", gaasInfoViewModel.CampaignKey),
-                            new KeyValuePair<string, string>("consumerid", gaasInfoViewModel.ConsumerId.ToString()),
+                            new KeyValuePair<string, string>("consumerid", gaasInfoViewModel.ConsumerId),
                             new KeyValuePair<string, string>("jsonresult", JsonConvert.SerializeObject(finalData)),
                         });
                     }

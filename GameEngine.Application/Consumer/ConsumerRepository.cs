@@ -23,7 +23,7 @@ namespace GameEngine.Service.Consumer
             return consumer;
         }
 
-        public Model.Consumer GetByGaasInfo(string campaignKey, int gaasConsumerId)
+        public Model.Consumer GetByGaasInfo(string campaignKey, string gaasConsumerId)
         {
             var consumer = _context.Consumers
                .AsNoTracking()
@@ -61,7 +61,7 @@ namespace GameEngine.Service.Consumer
     public interface IConsumerRepository
     {
         Model.Consumer Get(int id);
-        Model.Consumer GetByGaasInfo(string campaignKey,int gaasConsumerId);
+        Model.Consumer GetByGaasInfo(string campaignKey,string gaasConsumerId);
         Model.Consumer Get(string campaignKey, int panelId);
         Model.Consumer Update(string campaignKey, int panelId, Model.Consumer consumer);
     }
