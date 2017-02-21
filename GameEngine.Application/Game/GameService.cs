@@ -53,7 +53,7 @@ namespace GameEngine.Service.Game
                 var gameViewModel = Load(gaasInfoViewModel);
 
                 //Populate ConsumerId
-                gamePlayViewModel.ConsumerId = gameViewModel.Consumer.Id;
+                gamePlayViewModel.ConsumerId = gameViewModel.Consumer.Id.ToString();
 
                 //Get the fuelID that this score needs to be added to 
                 var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);

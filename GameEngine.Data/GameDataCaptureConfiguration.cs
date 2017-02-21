@@ -29,7 +29,7 @@ namespace GameEngine.Data
             HasKey(x => x.Id);
 
             Property(x => x.Id).HasColumnName(@"ID").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.ConsumerId).HasColumnName(@"Consumer_ID").IsRequired().HasColumnType("int");
+            Property(x => x.ConsumerId).HasColumnName(@"Consumer_ID").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(450);
             Property(x => x.Start).HasColumnName(@"Start").IsOptional().HasColumnType("bigint");
             Property(x => x.Finished).HasColumnName(@"Finished").IsOptional().IsUnicode(false).HasColumnType("varchar");
             Property(x => x.CreatedOn).HasColumnName(@"CreatedOn").IsRequired().HasColumnType("datetime");

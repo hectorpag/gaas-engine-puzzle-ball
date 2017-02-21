@@ -18,7 +18,7 @@ namespace GameEngine.Model
     public partial class GameDataCapture
     {
         public int Id { get; set; } // ID (Primary key)
-        public int ConsumerId { get; set; } // Consumer_ID
+        public string ConsumerId { get; set; } // Consumer_ID (length: 450)
         public long? Start { get; set; } // Start
         public string Finished { get; set; } // Finished
         public System.DateTime CreatedOn { get; set; } // CreatedOn

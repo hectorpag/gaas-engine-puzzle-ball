@@ -41,4 +41,6 @@ BEGIN
 END
 GO
 
+ALTER TABLE [dbo].[GameDataCapture] ALTER COLUMN Consumer_ID VARCHAR(450) NOT NULL
+GO
 --21 Feb 2017

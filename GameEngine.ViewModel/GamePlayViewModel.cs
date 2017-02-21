@@ -10,7 +10,7 @@ namespace GameEngine.ViewModel
     {
         public int Id { get; set; } // ID (Primary key)
         public int FuelId { get; set; } // Fuel_ID
-        public int ConsumerId { get; set; } // Consumer_ID
+        public string ConsumerId { get; set; } // Consumer_ID
         public int PanelId { get; set; }
         public int LevelPlayed { get; set; } // LevelPlayed
         public DateTime PlayedDate { get; set; } // PlayedDate
