@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using AutoMapper;
 using GameEngine.Model.Gaas.Models;
 using GameEngine.Model.GaasModels;
 using GameEngine.Service.Interfaces;
 using GameEngine.Service.RedisCaching;
 using GameEngine.ViewModel;
-using Newtonsoft.Json;
-using Shearnie.Net.Web;
 using GaasPlay.API.Client.Api;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 namespace GameEngine.Service.Consumer
 {
     public class ConsumerService : IConsumerService
@@ -41,6 +41,7 @@ namespace GameEngine.Service.Consumer
         {
             _consumerRepository = consumerRepository;
             _cacheManager = cacheManager;
+            _profileApi = profileApi;
         }
         #region Implementation of IConsumerService
 
@@ -108,6 +109,12 @@ namespace GameEngine.Service.Consumer
         {
             try
             {
+#if DEBUG
+                ServicePointManager.ServerCertificateValidationCallback =
+                delegate (object s, X509Certificate certificate,
+                         X509Chain chain, SslPolicyErrors sslpolicyerrors)
+                { return true; };
+#endif
                 var gaasConsumer = _profileApi.GetPortalUser(gaasInfoViewModel.ConsumerId.ToString());
                 var consModel = gaasConsumer.Data;
                 if (gaasConsumer.StatusCode == 200 && consModel != null)

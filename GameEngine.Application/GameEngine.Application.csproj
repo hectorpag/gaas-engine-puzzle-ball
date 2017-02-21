@@ -83,11 +83,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlay.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.2\lib\net461\GaasPlay.API.Client.dll</HintPath>
+      <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.3\lib\net461\GaasPlay.API.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlayCore.ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.2\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
+      <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.3\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
