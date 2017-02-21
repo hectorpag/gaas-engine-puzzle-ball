@@ -30,9 +30,9 @@ namespace GameEngine.Data
         System.Threading.Tasks.Task<int> SaveChangesAsync(System.Threading.CancellationToken cancellationToken);
         
         // Stored Procedures
-        System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(int? consumerId, string campaignKey, System.DateTime? startDate);
-        System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(int? consumerId, string campaignKey, System.DateTime? startDate, out int procResult);
-        System.Threading.Tasks.Task<System.Collections.Generic.List<GameDashboardReturnModel>> GameDashboardAsync(int? consumerId, string campaignKey, System.DateTime? startDate);
+        System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(string consumerId, string campaignKey, System.DateTime? startDate);
+        System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(string consumerId, string campaignKey, System.DateTime? startDate, out int procResult);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<GameDashboardReturnModel>> GameDashboardAsync(string consumerId, string campaignKey, System.DateTime? startDate);
 
     }
 

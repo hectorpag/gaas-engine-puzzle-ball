@@ -110,16 +110,16 @@ namespace GameEngine.Data
         partial void OnModelCreatingPartial(System.Data.Entity.DbModelBuilder modelBuilder);
         
         // Stored Procedures
-        public System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(int? consumerId, string campaignKey, System.DateTime? startDate)
+        public System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(string consumerId, string campaignKey, System.DateTime? startDate)
         {
             int procResult;
             return GameDashboard(consumerId, campaignKey, startDate, out procResult);
         }
 
-        public System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(int? consumerId, string campaignKey, System.DateTime? startDate, out int procResult)
+        public System.Collections.Generic.List<GameDashboardReturnModel> GameDashboard(string consumerId, string campaignKey, System.DateTime? startDate, out int procResult)
         {
-            var consumerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@consumerID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = consumerId.GetValueOrDefault(), Precision = 10, Scale = 0 };
-            if (!consumerId.HasValue)
+            var consumerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@consumerID", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = consumerId };
+            if (consumerIdParam.Value == null)
                 consumerIdParam.Value = System.DBNull.Value;
 
             var campaignKeyParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@campaignKey", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = campaignKey, Size = 128 };
@@ -137,10 +137,10 @@ namespace GameEngine.Data
             return procResultData;
         }
 
-        public async System.Threading.Tasks.Task<System.Collections.Generic.List<GameDashboardReturnModel>> GameDashboardAsync(int? consumerId, string campaignKey, System.DateTime? startDate)
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<GameDashboardReturnModel>> GameDashboardAsync(string consumerId, string campaignKey, System.DateTime? startDate)
         {
-            var consumerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@consumerID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = consumerId.GetValueOrDefault(), Precision = 10, Scale = 0 };
-            if (!consumerId.HasValue)
+            var consumerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@consumerID", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = consumerId };
+            if (consumerIdParam.Value == null)
                 consumerIdParam.Value = System.DBNull.Value;
 
             var campaignKeyParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@campaignKey", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = campaignKey, Size = 128 };
