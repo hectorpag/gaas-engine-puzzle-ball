@@ -2,7 +2,7 @@
 using System.Linq;
 using Data;
 using GameEngine.Data;
-
+using System.Collections.Generic;
 namespace GameEngine.Service.Consumer
 {
     public class ConsumerRepository : IConsumerRepository
@@ -22,7 +22,10 @@ namespace GameEngine.Service.Consumer
                 .FirstOrDefault(c => c.Id == id);
             return consumer;
         }
-
+        public List<Model.Consumer> Get(List<int> ids)
+        {
+            return _context.Consumers.Where(c => ids.Any(i => i == c.Id)).ToList();
+        }
         public Model.Consumer GetByGaasInfo(string campaignKey, string gaasConsumerId)
         {
             var consumer = _context.Consumers
@@ -61,6 +64,7 @@ namespace GameEngine.Service.Consumer
     public interface IConsumerRepository
     {
         Model.Consumer Get(int id);
+        List<Model.Consumer> Get(List<int> ids);
         Model.Consumer GetByGaasInfo(string campaignKey,string gaasConsumerId);
         Model.Consumer Get(string campaignKey, int panelId);
         Model.Consumer Update(string campaignKey, int panelId, Model.Consumer consumer);

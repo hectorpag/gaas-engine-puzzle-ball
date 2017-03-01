@@ -36,6 +36,11 @@ namespace GameEngine.Service.Score
             _context.SaveChanges();
             return score;
         }
+
+        public List<Model.Score> Get()
+        {
+            return _context.Scores.AsNoTracking().ToList();
+        }
         #endregion
     }
 
@@ -44,5 +49,7 @@ namespace GameEngine.Service.Score
         Model.Score Get(int id);
         List<Model.Score> GetByConsumerId(int consumerId);
         Model.Score Add( Model.Score score);
+
+        List<Model.Score> Get();
     }
 }

@@ -122,7 +122,7 @@ namespace GameEngine.Service.Game
             catch (Exception ex)
             {
                 var e = ex;
-                throw;
+                throw ex;
             }
             finally
             {

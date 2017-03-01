@@ -86,11 +86,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlay.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.3\lib\net461\GaasPlay.API.Client.dll</HintPath>
+      <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.5\lib\net461\GaasPlay.API.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlayCore.ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.3\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
+      <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.5\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
