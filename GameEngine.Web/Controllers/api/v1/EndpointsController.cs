@@ -19,6 +19,8 @@ namespace GameEngine.Web.Controllers.api.v1
             return new Leaderboard().GetKeys();
         }
 
+        [AcceptVerbs("POST")]
+        [HttpPost]
         public List<PortalLeaderboardGradeListViewModel> GetWinnerResults(FormDataCollection formData)
         {
             try
