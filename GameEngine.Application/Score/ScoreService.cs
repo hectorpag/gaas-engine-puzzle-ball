@@ -52,8 +52,9 @@ namespace GameEngine.Service.Score
             var config = _configRepository.Get(campaignKey, storyPanelId);
             if (config == null) return new List<PortalLeaderboardGradeListViewModel>();
 
-            var scoreList = _scoreRepository.Get();
             var winners = new List<PortalLeaderboardGradeListViewModel>();
+            var scoreList = _scoreRepository.Get();
+            if (scoreList.Any()) return winners;
             switch (sortOrder)
             {
                 case 1:
