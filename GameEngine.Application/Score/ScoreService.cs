@@ -54,7 +54,7 @@ namespace GameEngine.Service.Score
 
             var winners = new List<PortalLeaderboardGradeListViewModel>();
             var scoreList = _scoreRepository.Get();
-            if (scoreList.Any()) return winners;
+            if (!scoreList.Any()) return winners;
             switch (sortOrder)
             {
                 case 1:
