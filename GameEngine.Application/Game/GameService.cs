@@ -89,18 +89,18 @@ namespace GameEngine.Service.Game
                                 value = game.Score.ToString(CultureInfo.InvariantCulture)
                             });
 
-                            if (game.LevelPlayed ==3)
+                            if (game.LevelPlayed == 3)
                             {
                                 //add total score
                                 finalData.Add(new GaasScoreViewModel()
                                 {
                                     storypanel_id = panelConfig.GaasPanelId,
                                     key = "score",
-                                    value =data.Sum(x => x.value.GetDecimal()).ToString()
+                                    value = data.Sum(x => x.value.GetDecimal()).ToString()
                                 });
                             }
                         }
-                        
+
                         _scoreService.Add(new ScoreViewModel() { ConsumerId = gameViewModel.Consumer.Id, Scored = DateTime.UtcNow, Result = Convert.ToInt32(data.Sum(x => x.value.GetDecimal())) });
                     }
                     else
