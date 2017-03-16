@@ -11,6 +11,7 @@ using GameEngine.Service.Fuel;
 using GameEngine.Service.GamePlay;
 using Newtonsoft.Json;
 using GameEngine.Service.Score;
+using GaasPlay.Activities;
 
 namespace GameEngine.Service.Game
 {
@@ -102,6 +103,8 @@ namespace GameEngine.Service.Game
                         }
 
                         _scoreService.Add(new ScoreViewModel() { ConsumerId = gameViewModel.Consumer.Id, Scored = DateTime.UtcNow, Result = Convert.ToInt32(data.Sum(x => x.value.GetDecimal())) });
+                        ActivitiesHelper.PostCampaignActivity(ActivityType.CAMPAIGN_GAMES_PLAYED, gameViewModel.Consumer.GaasConsumerId, gaasInfoViewModel.CampaignKey,currentFuel.Id.ToString());
+
                     }
                     else
                     {
