@@ -101,7 +101,8 @@
       <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.5\lib\net461\GaasPlay.API.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GaasPlay.Application">
+    <Reference Include="GaasPlay.Application, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\GaasPlay\GaasPlay\source\GaasPlay\GaasPlay\GaasPlay.Application\bin\Debug\GaasPlay.Application.dll</HintPath>
     </Reference>
     <Reference Include="GaasPlayCore.ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
