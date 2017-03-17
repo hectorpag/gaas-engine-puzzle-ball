@@ -95,15 +95,20 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlay.Activities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.1.0.0.2\lib\net461\GaasPlay.Activities.dll</HintPath>
+      <HintPath>..\packages\GaasPlay.Activities.1.0.0.5\lib\net461\GaasPlay.Activities.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlay.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.5\lib\net461\GaasPlay.API.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GaasPlay.Application">
-      <HintPath>..\..\GaasPlay\GaasPlay\source\GaasPlay\GaasPlay\GaasPlay.Application\bin\Debug\GaasPlay.Application.dll</HintPath>
+    <Reference Include="GaasPlay.Application, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GaasPlay.Activities.1.0.0.5\lib\net461\GaasPlay.Application.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GaasPlayCore.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GaasPlay.Activities.1.0.0.5\lib\net461\GaasPlayCore.Model.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlayCore.ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.5\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
