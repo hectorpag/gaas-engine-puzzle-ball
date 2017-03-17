@@ -20,7 +20,7 @@ namespace GameEngineApp_Start
           ));
 
             bundles.Add(new ScriptBundle("~/Assets/js/game").Include(
-                "~/Scripts/jquery-3.1.0.min.js",
+                "~/Scripts/jquery-3.1.1.min.js",
                 "~/Scripts/hammer.min.js",
                 "~/Scripts/jquery.hammer.min.js",
 
@@ -35,7 +35,7 @@ namespace GameEngineApp_Start
                 //"~/Assets/js/game.js"
         ));
             bundles.Add(new ScriptBundle("~/Assets/js/jquery").Include(
-                "~/Scripts/jquery-3.1.0.min.js"
+                "~/Scripts/jquery-3.1.1.min.js"
          ));
             bundles.Add(new ScriptBundle("~/Assets/js/resize").Include(
                 "~/Assets/js/resize.js"

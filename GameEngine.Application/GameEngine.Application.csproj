@@ -70,8 +70,8 @@
       <HintPath>..\packages\Autofac.4.4.0\lib\net45\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=0.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -87,15 +87,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasCore.ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasManager.API.Client.1.0.0.59\lib\net461\GaasCore.ViewModel.dll</HintPath>
+      <HintPath>..\packages\GaasManager.API.Client.1.0.0.64\lib\net461\GaasCore.ViewModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasManager.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasManager.API.Client.1.0.0.59\lib\net461\GaasManager.API.Client.dll</HintPath>
+      <HintPath>..\packages\GaasManager.API.Client.1.0.0.64\lib\net461\GaasManager.API.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlay.Activities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.1.0.0\lib\net461\GaasPlay.Activities.dll</HintPath>
+      <HintPath>..\packages\GaasPlay.Activities.1.0.0.2\lib\net461\GaasPlay.Activities.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlay.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -126,20 +126,25 @@
       <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Shearnie.Net, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Shearnie.Net.1.8\lib\net45\Shearnie.Net.dll</HintPath>
+    <Reference Include="Shearnie.Net, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Shearnie.Net.1.10\lib\net45\Shearnie.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="StackExchange.Redis, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StackExchange.Redis.1.1.603\lib\net46\StackExchange.Redis.dll</HintPath>
+    <Reference Include="StackExchange.Redis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.1\lib\net46\StackExchange.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

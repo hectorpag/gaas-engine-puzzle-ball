@@ -15,7 +15,7 @@ namespace GameEngine.Service
             get
             {
 #if DEBUG
-                return "http://localhost/gaasplay";
+                return "https://localhost:44300/gaasplay";
 #endif
                 return ConfigurationManager.AppSettings["GaasBaseUrl"];
             }
@@ -26,7 +26,7 @@ namespace GameEngine.Service
             get
             {
 #if DEBUG
-                return "http://localhost";
+                return "https://localhost:44300";
 #endif
                 return ConfigurationManager.AppSettings["HostUrl"];
             }
