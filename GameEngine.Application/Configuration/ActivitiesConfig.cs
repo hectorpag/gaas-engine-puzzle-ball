@@ -1,5 +1,4 @@
-﻿using System;
-using GaasPlay.Activities;
+﻿using System.Configuration;
 
 namespace GameEngine.Service.Configuration
 {
@@ -7,7 +6,10 @@ namespace GameEngine.Service.Configuration
     {
         public static void StartActivitiesHelper()
         {
-            ActivitiesHelper.Initialize();
+            //posting activities (this line will be needed in all game engines)
+            GaasPlay.Activities.ActivitiesClientHelper.Initialize(
+                ConfigurationManager.AppSettings["GaasPlay.Activities.Topic"],
+                ConfigurationManager.AppSettings["ServiceBus.ConnectionString"]);
         }
 
     }

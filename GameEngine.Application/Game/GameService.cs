@@ -105,7 +105,7 @@ namespace GameEngine.Service.Game
                         _scoreService.Add(new ScoreViewModel() { ConsumerId = gameViewModel.Consumer.Id, Scored = DateTime.UtcNow, Result = Convert.ToInt32(data.Sum(x => x.value.GetDecimal())) });
                         try
                         {
-                            ActivitiesHelper.PostCampaignActivity(ActivityType.CAMPAIGN_GAMES_PLAYED, gameViewModel.Consumer.GaasConsumerId, gaasInfoViewModel.CampaignKey, currentFuel.Id.ToString());
+                            ActivitiesClientHelper.PostCampaignActivity(ActivityType.CAMPAIGN_GAMES_PLAYED, gameViewModel.Consumer.GaasConsumerId, gaasInfoViewModel.CampaignKey, currentFuel.Id.ToString());
                         }
                         catch
                         {

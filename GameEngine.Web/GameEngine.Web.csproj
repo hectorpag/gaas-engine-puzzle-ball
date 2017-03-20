@@ -85,40 +85,16 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GaasCore.ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasManager.API.Client.1.0.0.64\lib\net461\GaasCore.ViewModel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="GaasManager.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasManager.API.Client.1.0.0.64\lib\net461\GaasManager.API.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="GaasPlay.Activities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.1.0.0.7\lib\net461\GaasPlay.Activities.dll</HintPath>
+    <Reference Include="GaasPlay.Activities.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GaasPlay.Activities.Client.1.0.0\lib\net461\GaasPlay.Activities.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlay.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlayAPI.Client.1.0.0.5\lib\net461\GaasPlay.API.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="GaasPlay.Application, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.1.0.0.7\lib\net461\GaasPlay.Application.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="GaasPlayCore.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.1.0.0.7\lib\net461\GaasPlayCore.Data.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="GaasPlayCore.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.1.0.0.7\lib\net461\GaasPlayCore.Domain.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="GaasPlayCore.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.1.0.0.7\lib\net461\GaasPlayCore.Model.dll</HintPath>
+      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.6\lib\net461\GaasPlay.API.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlayCore.ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.1.0.0.7\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
+      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.6\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -163,7 +139,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAzure.ServiceBus.3.4.6\lib\net45-full\Microsoft.ServiceBus.dll</HintPath>
+      <HintPath>..\packages\GaasPlay.Activities.Client.1.0.0\lib\net461\Microsoft.ServiceBus.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -382,7 +358,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
