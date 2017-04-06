@@ -252,7 +252,7 @@ function shuffle(array) {
 // What to do at the end of the game
 function gameOver() {
     canClick = false;
-    if (levelNumber < 3) {
+    if (levelNumber < TOTAL_LEVELS) {
         $('.continue-btn').show();
     } else {
         $('.finish-btn').show();

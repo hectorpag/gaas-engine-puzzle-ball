@@ -12,7 +12,7 @@ using GameEngine.Service.GamePlay;
 using Newtonsoft.Json;
 using GameEngine.Service.Score;
 //using GaasPlay.Activities;
-
+using System.Linq;
 namespace GameEngine.Service.Game
 {
     public class GameService : IGameService
@@ -36,14 +36,21 @@ namespace GameEngine.Service.Game
 
         public GameViewModel Load(GaasInfoViewModel gaasInfoViewModel)
         {
-            var config = _configService.Get(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.PanelId);
+            var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
+            var config = configs.FirstOrDefault(c => c.GaasCampaignKey == gaasInfoViewModel.CampaignKey && c.GaasPanelId == gaasInfoViewModel.PanelId);
             if (config == null) return new GameViewModel(); //TODO : Not sure if this is right
 
             var consumer = !string.IsNullOrEmpty(gaasInfoViewModel.ConsumerId) ? _consumerService.CheckConsumer(gaasInfoViewModel) : new ConsumerViewModel();
 
             var dashboard = _gamePlayService.LoadScoresForDashboard(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
 
-            return new GameViewModel() { Config = config, Consumer = consumer, HostUrl = Constants.HostUrl, GaasBaseUrl = Constants.GaasBaseUrl, Dashboard = dashboard };
+            return new GameViewModel() {
+                                         Config = config, Consumer = consumer,
+                                         HostUrl = Constants.HostUrl,
+                                         GaasBaseUrl = Constants.GaasBaseUrl,
+                                         TotalLevels = configs.Count(),
+                                         Dashboard = dashboard
+                                        };
         }
 
         public int PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel)
@@ -62,21 +69,22 @@ namespace GameEngine.Service.Game
 
                 _gamePlayService.Add(gamePlayViewModel);
 
-
+                var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
+                var lastLevel = configs.Max(c => c.LevelNumber);
+                var totalLevels = configs.Count();
                 //Check if last Level
-                if (gamePlayViewModel.LevelPlayed == 3)
+                if (gamePlayViewModel.LevelPlayed == lastLevel.Value)
                 {
                     var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(gameViewModel.Consumer.Id, currentFuel.Id);
                     //check if all level played & Post to LeaderBoard
-                    List<int> levelIds = new List<int> { 1, 2, 3 };
+                    List<int> levelIds = configs.Where(c => c.LevelNumber != null).Select(c => c.LevelNumber ?? 0).ToList();
                     //TODO:// Find a way to make sure that uniqueGamesPlayed containes all levels
-                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == 3)
+                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == totalLevels)
                     {
                         //Mark fuel as utilized 
                         currentFuel.UtilizedDate = DateTime.UtcNow;
                         _fuelService.Add(currentFuel);
 
-                        var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
                         var data = new List<GaasScoreViewModel>();
                         var finalData = new List<GaasScoreViewModel>();
                         foreach (var game in uniqueGamesPlayed)
@@ -90,7 +98,7 @@ namespace GameEngine.Service.Game
                                 value = game.Score.ToString(CultureInfo.InvariantCulture)
                             });
 
-                            if (game.LevelPlayed == 3)
+                            if (game.LevelPlayed == lastLevel.Value)
                             {
                                 //add total score
                                 finalData.Add(new GaasScoreViewModel()
@@ -148,17 +156,17 @@ namespace GameEngine.Service.Game
 
                 //    _gamePlayService.Add(gamePlayViewModel);
 
-
-
+                var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
+                var lastLevel = configs.Max(c => c.LevelNumber);
+                var totalLevels = configs.Count();
                 if (gameViewModel.Config.ShowResult)
                 {
                     var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(gameViewModel.Consumer.Id, currentFuel.Id);
                     //check if all level played & Post to LeaderBoard
-                    List<int> levelIds = new List<int> { 1, 2, 3 };
+                    List<int> levelIds = configs.Where(c => c.LevelNumber != null).Select(c => c.LevelNumber ?? 0).ToList();
                     //TODO:// Find a way to make sure that uniqueGamesPlayed containes all levels
-                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == 3)
+                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == totalLevels)
                     {
-                        var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
                         var data = new List<GaasScoreViewModel>();
                         foreach (var game in uniqueGamesPlayed)
                         {
