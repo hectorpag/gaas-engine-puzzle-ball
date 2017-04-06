@@ -90,10 +90,6 @@
       <HintPath>..\packages\GaasHelper.1.1.6.29\lib\net461\GaasHelper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GaasPlay.Activities.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.Client.1.0.0\lib\net461\GaasPlay.Activities.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="GaasPlay.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GaasPlay.API.Client.1.0.0.6\lib\net461\GaasPlay.API.Client.dll</HintPath>
       <Private>True</Private>
@@ -108,10 +104,6 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.Activities.Client.1.0.0\lib\net461\Microsoft.ServiceBus.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
