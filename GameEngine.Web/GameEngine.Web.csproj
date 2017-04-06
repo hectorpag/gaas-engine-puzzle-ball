@@ -85,6 +85,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GaasHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GaasHelper.1.1.6.29\lib\net461\GaasHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GaasPlay.Activities.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GaasPlay.Activities.Client.1.0.0\lib\net461\GaasPlay.Activities.Client.dll</HintPath>
       <Private>True</Private>
@@ -389,10 +393,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Extensions\Extensions.csproj">
-      <Project>{133d48d2-38fd-4828-93b9-f83dce4209bd}</Project>
-      <Name>Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GameEngine.Application\GameEngine.Application.csproj">
       <Project>{b86374f8-4453-4924-b14a-9a9899992ff7}</Project>
       <Name>GameEngine.Application</Name>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using AutoMapper;
-using Extensions;
+using Helper;
 using GameEngine.Service.Config;
 using GameEngine.Service.Consumer;
 using GameEngine.Service.Fuel;
