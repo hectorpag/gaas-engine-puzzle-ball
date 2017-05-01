@@ -20,161 +20,16 @@
     @Styles.Render("~/Assets/css/game")
 </head>
 <body>
-    <div id="wrapper">
-        <div class="countdown">
-            <p class="number">3</p>
-        </div>
-        <div class="scoreboard">Score: <span class="score">0</span></div>
-
-        <div id="smallGrid">
-            <table>
-                <tr>
-                    <td class="card card1" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card2" data-val="2">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card3" data-val="2">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="card card4" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="blank" data-val="3"></td>
-                    <td class="card card5" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="card card6" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card7" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card8" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div id="mediumGrid">
-            <table>
-                <tr>
-                    <td class="card card1" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card2" data-val="2">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card3" data-val="2">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="card card4" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card5" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card6" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="card card7" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card8" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card9" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="card card10" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card11" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card12" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div id="largeGrid">
-            <table>
-                <tr>
-                    <td class="card card1" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card2" data-val="2">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card3" data-val="2">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card4" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="card card5" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card6" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card7" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card8" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="card card9" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card10" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card11" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card12" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="card card13" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card14" data-val="1">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card15" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                    <td class="card card16" data-val="3">
-                        <div class="pic"></div>
-                    </td>
-                </tr>
-            </table>
+    <div class="wrapper">
+        <div class="inner">
+            <div>
+                Tackles: <span class="tacklesMade">0</span> - Missed: <span class="missedZombies">0</span>
+            </div>
+            <div class="tryLine"></div>
+            <div class="player middlePos"></div>
         </div>
     </div>
     @* Scripts here*@
-    <a class="end-btn continue-btn"></a>
-    <a class="end-btn finish-btn"></a>
     <script>
         var CAMPAIGN_KEY = "@Model.Config.GaasCampaignKey";
         var PANEL_ID = @Model.Config.GaasPanelId;
@@ -205,6 +60,6 @@
     </script>*@
 
     @Scripts.Render("~/Assets/js/game")
-    <script src="~/Assets/js/game.js"></script>
+    @*<script src="~/Assets/js/game.js"></script>*@
 </body>
 </html>

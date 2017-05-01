@@ -30,9 +30,13 @@ namespace GameEngineApp_Start
 
                 "~/Assets/js/gameApi.js",
                 "~/Assets/js/utils.js",
-                "~/Assets/js/resize.js"
-                
-                //"~/Assets/js/game.js"
+                "~/Assets/js/resize.js",
+
+                "~/Assets/js/zombies.js",
+                "~/Assets/js/player.js",
+                "~/Assets/js/gameScript.js"
+
+        //"~/Assets/js/game.js"
         ));
             bundles.Add(new ScriptBundle("~/Assets/js/jquery").Include(
                 "~/Scripts/jquery-3.1.1.min.js"

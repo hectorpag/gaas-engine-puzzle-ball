@@ -249,8 +249,11 @@
     <Content Include="Assets\images\results-bg.jpg" />
     <Content Include="Assets\images\play-btn.jpg" />
     <Content Include="Assets\images\playagain-btn.jpg" />
+    <Content Include="Assets\js\gameScript.js" />
+    <Content Include="Assets\js\logScores.js" />
+    <Content Include="Assets\js\player.js" />
+    <Content Include="Assets\js\zombies.js" />
     <Content Include="Assets\vendor\devtools-detect.js" />
-    <Content Include="Assets\js\game.js" />
     <Content Include="Assets\js\gameApi.js" />
     <Content Include="Assets\js\resize.js" />
     <Content Include="Assets\js\utils.js" />
@@ -454,7 +457,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61680</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44300/matchemall</IISUrl>
+          <IISUrl>https://localhost:44300/gaas-engine-zombie</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
