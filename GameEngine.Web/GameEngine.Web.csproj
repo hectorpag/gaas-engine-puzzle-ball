@@ -250,7 +250,6 @@
     <Content Include="Assets\images\play-btn.jpg" />
     <Content Include="Assets\images\playagain-btn.jpg" />
     <Content Include="Assets\js\gameScript.js" />
-    <Content Include="Assets\js\logScores.js" />
     <Content Include="Assets\js\player.js" />
     <Content Include="Assets\js\zombies.js" />
     <Content Include="Assets\vendor\devtools-detect.js" />
