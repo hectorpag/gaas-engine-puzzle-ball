@@ -32,8 +32,8 @@ namespace GameEngineApp_Start
                 "~/Assets/js/utils.js",
                 "~/Assets/js/resize.js",
 
-                "~/Assets/js/zombies.js",
                 "~/Assets/js/player.js",
+                "~/Assets/js/zombies.js",
                 "~/Assets/js/gameScript.js"
 
         //"~/Assets/js/game.js"

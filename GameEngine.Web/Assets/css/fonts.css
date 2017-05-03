@@ -1,0 +1,58 @@
+/*********************
+
+Short List:
+
+Alpha Mack - alphamack
+Elektra Medium - elektra
+Helvetica Neue Bold - helveticaNeueBold
+Helvetica Neue Light - helveticaNeueLight
+
+**********************/
+
+/* Alpha Mack */
+@font-face {
+    font-family: 'alphamack';
+    src: url('../fonts/alphamacaoe/alphamack.eot');
+    src: url('../fonts/alphamacaoe/alphamack.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/alphamacaoe/alphamack.woff2') format('woff2'),
+         url('../fonts/alphamacaoe/alphamack.woff') format('woff'),
+         url('../fonts/alphamacaoe/alphamack.ttf') format('truetype'),
+         url('../fonts/alphamacaoe/alphamack.svg#alphamack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Elektra Medium Pro Regular */
+@font-face {
+    font-family: 'elektra';
+    src: url('../fonts/elektra/elektra.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Helvetica Neue Bold */
+@font-face {
+    font-family: 'helveticaNeueBold';
+    src: url('../fonts/helveticaNeueLight/helveticaNeueBold.eot');
+    src: url('../fonts/helveticaNeueLight/helveticaNeueBold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticaNeueLight/helveticaNeueBold.otf') format('otf'),
+         url('../fonts/helveticaNeueLight/helveticaNeueBold.woff2') format('woff2'),
+         url('../fonts/helveticaNeueLight/helveticaNeueBold.woff') format('woff'),
+         url('../fonts/helveticaNeueLight/helveticaNeueBold.ttf') format('truetype'),
+         url('../fonts/helveticaNeueLight/helveticaNeueBold.svg#helveticaNeueBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Helvetica Neue Light */
+@font-face {
+    font-family: 'helveticaNeueLight';
+    src: url('../fonts/helveticaNeueLight/helveticaNeueLight.eot');
+    src: url('../fonts/helveticaNeueLight/helveticaNeueLight.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticaNeueLight/helveticaNeueLight.otf') format('otf'),
+         url('../fonts/helveticaNeueLight/helveticaNeueLight.woff') format('woff'),
+         url('../fonts/helveticaNeueLight/helveticaNeueLight.ttf') format('truetype'),
+         url('../fonts/helveticaNeueLight/helveticaNeueLight.svg#helveticaNeueLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

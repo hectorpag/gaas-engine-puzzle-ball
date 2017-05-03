@@ -7,19 +7,10 @@ var timeTakenToSpawn = 0;
 
 var outOfBounds = -100;
 
-if (LEVEL_NUMBER === 1) {
-    var maxNumberOfZombies = 20;
-} else if (LEVEL_NUMBER === 2) {
-    var maxNumberOfZombies = 30;
-}
-
-
 var noOfZombies = 0;
 
 var tacklesMade = 0;
 var missedZombies = 0;
-
-var gameEnded = false;
 
 var posClass = ['leftPos', 'middlePos', 'rightPos'];
 var posValues = [70, 270, 470];
@@ -39,18 +30,13 @@ function startGame() {
 }
 
 function checkEndGame() {
-    if (missedZombies >= 3 || zombies.length === 0 && noOfZombies >= maxNumberOfZombies) {
+    if (missedZombies >= 3) {
         endGame();
     }
 }
 
 function endGame() {
-    if (!gameEnded) {
-        gameEnded = true;
-        clearInterval(loop);
-        
-        saveVariables();
-    }
+    clearInterval(loop); 
 }
 
 function mainLoop() {
@@ -84,6 +70,10 @@ function checkKeyPress(e) {
 
 $(document).ready(function() {
     
-    document.onkeydown = checkKeyPress;
+    $(this).keydown(function (e) {
+        e.preventDefault();
+        checkKeyPress(e);
+    });
+
 	startGame();
 });
