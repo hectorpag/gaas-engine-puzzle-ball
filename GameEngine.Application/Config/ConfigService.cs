@@ -78,9 +78,9 @@ namespace GameEngine.Service.Config
 
                 if (string.IsNullOrWhiteSpace(viewModel.GameConfigJson))
                 {
-                    viewModel.GameConfigJson = JsonConvert.SerializeObject(SetupStarterFields(), Formatting.Indented);
+                    viewModel.GameConfigJson = JsonConvert.SerializeObject(SetupStarterFields());
                 }
-
+                viewModel.GameConfigJson = JToken.Parse(viewModel.GameConfigJson).ToString(Formatting.Indented);
                 return viewModel;
             });
 
@@ -98,8 +98,9 @@ namespace GameEngine.Service.Config
                     var vm = _mapper.Map<ConfigViewModel>(config);
                     if (string.IsNullOrWhiteSpace(vm.GameConfigJson))
                     {
-                        vm.GameConfigJson = JsonConvert.SerializeObject(SetupStarterFields(), Formatting.Indented);
+                        vm.GameConfigJson = JsonConvert.SerializeObject(SetupStarterFields());
                     }
+                    vm.GameConfigJson = JToken.Parse(vm.GameConfigJson).ToString(Formatting.Indented);
                     viewModel.Add(vm);
                 }
                 return viewModel;
@@ -110,22 +111,18 @@ namespace GameEngine.Service.Config
         public ConfigViewModel Update(string campaignKey, int panelId, ConfigViewModel configViewModel)
         {
             var config = _mapper.Map<Model.Config>(configViewModel);
-            if (string.IsNullOrWhiteSpace(config.GameConfigJson))
-            {
-                config.GameConfigJson = JsonConvert.SerializeObject(SetupStarterFields());
-            }
-            else
-            {
-                var deserialise = JsonConvert.DeserializeObject<List<FieldDefinition>>(config.GameConfigJson);
-                config.GameConfigJson = JsonConvert.SerializeObject(deserialise);
-            }
+
+            config.GameConfigJson = string.IsNullOrWhiteSpace(config.GameConfigJson) 
+                ? JsonConvert.SerializeObject(SetupStarterFields()) 
+                : JToken.Parse(config.GameConfigJson).ToString(Formatting.None);
+
             _configRepository.Update(campaignKey, panelId, config);
 
             //cache
             _cacheManager.RemoveByPattern(GetKey(campaignKey,panelId));
 
             var viewModel = _mapper.Map<ConfigViewModel>(config);
-            viewModel.GameConfigJson = JsonConvert.SerializeObject(config.GameConfigJson, Formatting.Indented);
+            viewModel.GameConfigJson = JToken.Parse(config.GameConfigJson).ToString(Formatting.Indented);
             return viewModel;
         }
 
