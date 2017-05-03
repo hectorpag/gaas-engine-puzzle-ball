@@ -1,4 +1,7 @@
-﻿namespace GameEngine.ViewModel
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace GameEngine.ViewModel
 {
     public class GameViewModel
     {
@@ -8,5 +11,7 @@
         public ConfigViewModel Config { get; set; }
         public ConsumerViewModel Consumer { get; set; }
         public GameDashboardReturnViewModel Dashboard { get; set; }
+
+        public Dictionary<string, string> Fields => Config.Fields;
     }
 }

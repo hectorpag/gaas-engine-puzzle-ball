@@ -3,6 +3,14 @@
 @{
     Layout = null;
 }
+@functions{
+    string GetConfigItem(string key)
+    {
+        return !Model.Fields.ContainsKey(key)
+            ? ""
+            : Model.Fields.FirstOrDefault(f => f.Key.Equals(key, StringComparison.CurrentCultureIgnoreCase)).Value;
+    }
+}
 <!DOCTYPE html>
 <html>
 <head>
