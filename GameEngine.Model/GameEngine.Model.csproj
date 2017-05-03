@@ -106,6 +106,7 @@
     <Compile Include="GameDataCapture.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="GameEngine\FieldDefinition.cs" />
     <Compile Include="GamePlay.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -34,27 +34,7 @@ namespace GameEngine.Data
             Property(x => x.ShowMenu).HasColumnName(@"ShowMenu").IsRequired().HasColumnType("bit");
             Property(x => x.ShowResult).HasColumnName(@"ShowResult").IsRequired().HasColumnType("bit");
             Property(x => x.LevelNumber).HasColumnName(@"LevelNumber").IsOptional().HasColumnType("int");
-            Property(x => x.CutOffScore).HasColumnName(@"CutOffScore").IsOptional().HasColumnType("int");
-            Property(x => x.FbShareScore1Low).HasColumnName(@"FBShare_Score1_Low").IsOptional().HasColumnType("int");
-            Property(x => x.FbShareScore1High).HasColumnName(@"FBShare_Score1_High").IsOptional().HasColumnType("int");
-            Property(x => x.FbShareScore1Msg).HasColumnName(@"FBShare_Score1_Msg").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.FbShareScore2Low).HasColumnName(@"FBShare_Score2_Low").IsOptional().HasColumnType("int");
-            Property(x => x.FbShareScore2High).HasColumnName(@"FBShare_Score2_High").IsOptional().HasColumnType("int");
-            Property(x => x.FbShareScore2Msg).HasColumnName(@"FBShare_Score2_Msg").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.FbShareScore3Low).HasColumnName(@"FBShare_Score3_Low").IsOptional().HasColumnType("int");
-            Property(x => x.FbShareScore3High).HasColumnName(@"FBShare_Score3_High").IsOptional().HasColumnType("int");
-            Property(x => x.FbShareScore3Msg).HasColumnName(@"FBShare_Score3_Msg").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.FbShareScore4Low).HasColumnName(@"FBShare_Score4_Low").IsOptional().HasColumnType("int");
-            Property(x => x.FbShareScore4High).HasColumnName(@"FBShare_Score4_High").IsOptional().HasColumnType("int");
-            Property(x => x.FbShareScore4Msg).HasColumnName(@"FBShare_Score4_Msg").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.CustomText).HasColumnName(@"CustomText").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(100);
-            Property(x => x.FbShareName).HasColumnName(@"FBShare_Name").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.FbShareCaption).HasColumnName(@"FBShare_Caption").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.FbShareUrl).HasColumnName(@"FBShare_Url").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.FbShareScore1ImgUrl).HasColumnName(@"FBShare_Score1_ImgUrl").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.FbShareScore2ImgUrl).HasColumnName(@"FBShare_Score2_ImgUrl").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.FbShareScore3ImgUrl).HasColumnName(@"FBShare_Score3_ImgUrl").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
-            Property(x => x.FbShareScore4ImgUrl).HasColumnName(@"FBShare_Score4_ImgUrl").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
+            Property(x => x.GameConfigJson).HasColumnName(@"GameConfigJson").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(2000);
             InitializePartial();
         }
         partial void InitializePartial();

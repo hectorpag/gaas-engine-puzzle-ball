@@ -24,7 +24,6 @@ namespace GameEngine.Web.Controllers
         {
             _gameService = gameService;
             _fuelService = fuelService;
-          
         }
 
         #region Methods
@@ -128,6 +127,4 @@ namespace GameEngine.Web.Controllers
 
         #endregion
     }
-
-
 }

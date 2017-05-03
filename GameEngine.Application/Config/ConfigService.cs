@@ -2,9 +2,13 @@
 
 using System.Collections.Generic;
 using AutoMapper;
+using GameEngine.Model.GameEngine;
 using GameEngine.Service.Interfaces;
 using GameEngine.Service.RedisCaching;
 using GameEngine.ViewModel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 
 #endregion
 
@@ -71,6 +75,12 @@ namespace GameEngine.Service.Config
             {
                 var config = _configRepository.Get(campaignKey, panelId);
                 var viewModel = _mapper.Map<ConfigViewModel>(config);
+
+                if (string.IsNullOrWhiteSpace(viewModel.GameConfigJson))
+                {
+                    viewModel.GameConfigJson = JsonConvert.SerializeObject(SetupStarterFields(), Formatting.Indented);
+                }
+
                 return viewModel;
             });
 
@@ -82,22 +92,40 @@ namespace GameEngine.Service.Config
             var cacheModel = _cacheManager.Get(GetKey(campaignKey), () =>
             {
                 var configs = _configRepository.GetByCampaign(campaignKey);
-                var viewModel = _mapper.Map<List<ConfigViewModel>>(configs);
+                var viewModel = new List<ConfigViewModel>();
+                foreach (var config in configs)
+                {
+                    var vm = _mapper.Map<ConfigViewModel>(config);
+                    if (string.IsNullOrWhiteSpace(vm.GameConfigJson))
+                    {
+                        vm.GameConfigJson = JsonConvert.SerializeObject(SetupStarterFields(), Formatting.Indented);
+                    }
+                    viewModel.Add(vm);
+                }
                 return viewModel;
             });
             return cacheModel;
-
         }
 
         public ConfigViewModel Update(string campaignKey, int panelId, ConfigViewModel configViewModel)
         {
             var config = _mapper.Map<Model.Config>(configViewModel);
+            if (string.IsNullOrWhiteSpace(config.GameConfigJson))
+            {
+                config.GameConfigJson = JsonConvert.SerializeObject(SetupStarterFields());
+            }
+            else
+            {
+                var deserialise = JsonConvert.DeserializeObject<List<FieldDefinition>>(config.GameConfigJson);
+                config.GameConfigJson = JsonConvert.SerializeObject(deserialise);
+            }
             _configRepository.Update(campaignKey, panelId, config);
 
             //cache
             _cacheManager.RemoveByPattern(GetKey(campaignKey,panelId));
 
             var viewModel = _mapper.Map<ConfigViewModel>(config);
+            viewModel.GameConfigJson = JsonConvert.SerializeObject(config.GameConfigJson, Formatting.Indented);
             return viewModel;
         }
 
@@ -107,6 +135,20 @@ namespace GameEngine.Service.Config
         }
 
         #endregion
+
+        private List<FieldDefinition> SetupStarterFields()
+        {
+            return new List<FieldDefinition>()
+            {
+                new FieldDefinition()
+                {
+                    Label = "Label Text",
+                    Name = "Field1",
+                    Type = FieldDefinition.Types.Text,
+                    Value = ""
+                }
+            };
+        }
     }
 
     public interface IConfigService
