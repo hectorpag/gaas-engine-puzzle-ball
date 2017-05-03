@@ -9,6 +9,7 @@ using GameEngine.ViewModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System;
 
 #endregion
 
@@ -112,7 +113,7 @@ namespace GameEngine.Service.Config
         {
             var config = _mapper.Map<Model.Config>(configViewModel);
 
-            config.GameConfigJson = string.IsNullOrWhiteSpace(config.GameConfigJson) 
+            config.GameConfigJson = string.IsNullOrWhiteSpace(config.GameConfigJson)
                 ? JsonConvert.SerializeObject(SetupStarterFields()) 
                 : JToken.Parse(config.GameConfigJson).ToString(Formatting.None);
 
@@ -141,7 +142,7 @@ namespace GameEngine.Service.Config
                 {
                     Label = "Label Text",
                     Name = "Field1",
-                    Type = FieldDefinition.Types.Text,
+                    Type = Enum.GetName(FieldDefinition.Types.Text.GetType(), FieldDefinition.Types.Text),
                     Value = ""
                 }
             };
