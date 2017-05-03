@@ -2,7 +2,6 @@
 
 using System.Collections.Generic;
 using AutoMapper;
-using GameEngine.Model.GameEngine;
 using GameEngine.Service.Interfaces;
 using GameEngine.Service.RedisCaching;
 using GameEngine.ViewModel;
@@ -134,18 +133,9 @@ namespace GameEngine.Service.Config
 
         #endregion
 
-        private List<FieldDefinition> SetupStarterFields()
+        private Dictionary<string, string> SetupStarterFields()
         {
-            return new List<FieldDefinition>()
-            {
-                new FieldDefinition()
-                {
-                    Label = "Label Text",
-                    Name = "Field1",
-                    Type = Enum.GetName(FieldDefinition.Types.Text.GetType(), FieldDefinition.Types.Text),
-                    Value = ""
-                }
-            };
+            return new Dictionary<string, string> {{"Key1", "Value1"},{"Key2","Value2"}};
         }
     }
 

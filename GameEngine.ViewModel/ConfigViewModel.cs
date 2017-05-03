@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using GameEngine.Model.GameEngine;
 using Newtonsoft.Json;
 
 namespace GameEngine.ViewModel
@@ -14,9 +13,9 @@ namespace GameEngine.ViewModel
         public int? LevelNumber { get; set; } // LevelNumber
         public string GameConfigJson { get; set; } // GameConfigJson
 
-        public List<FieldDefinition> Fields => 
+        public Dictionary<string, string> Fields => 
             string.IsNullOrWhiteSpace(GameConfigJson)
-                ? new List<FieldDefinition>()
-                : JsonConvert.DeserializeObject<List<FieldDefinition>>(GameConfigJson);
+                ? new Dictionary<string, string>()
+                : JsonConvert.DeserializeObject<Dictionary<string, string>>(GameConfigJson);
     }
 }
