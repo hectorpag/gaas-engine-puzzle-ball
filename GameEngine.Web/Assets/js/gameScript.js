@@ -1,5 +1,4 @@
 var loopInterval;
-var fps = 45;
 var frameCount = 0;
 
 var timeToNextSpawn = fps;
