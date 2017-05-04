@@ -11,6 +11,8 @@ using GameEngine.Service.Interfaces;
 using GameEngine.Service.RedisCaching;
 using GaasPlay.API.Client.Api;
 using System.Configuration;
+using Serilog;
+
 namespace GameEngine.Web
 {
     public class AutofacConfig
@@ -44,10 +46,13 @@ namespace GameEngine.Web
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
             
-
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container);
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.AppSettings()
+                .CreateLogger();
         }
     }
 }
