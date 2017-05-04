@@ -9,18 +9,26 @@ var outOfBounds = -100;
 var noOfZombies = 0;
 
 var tacklesMade = 0;
+var tacklesMadeInLevel = 0;
 var missedZombies = 0;
+var missedZombiesInLevel = 0;
+
+var levelNumber = 1;
 
 var posClass = ['leftPos', 'middlePos', 'rightPos'];
 var posValues = [70, 270, 470];
 
+var maxNumberOfZombies = 10;
+
 function updateTacklesMade() {
     tacklesMade++;
+    tacklesMadeInLevel++;
     $('.tacklesMade').html(tacklesMade);
 }
 
 function updateMissedZombies() {
     missedZombies++;
+    missedZombiesInLevel++;
     $('.missedZombies').html(missedZombies);
 }
 
@@ -29,13 +37,28 @@ function startGame() {
 }
 
 function checkEndGame() {
-    if (missedZombies >= 3) {
+    if (missedZombies >= 3 || tacklesMadeInLevel + missedZombiesInLevel >= maxNumberOfZombies) {
         endGame();
     }
 }
 
+function resetGame() {
+    maxNumberOfZombies += 10;
+    tacklesMadeInLevel = 0;
+    missedZombiesInLevel = 0;
+    levelNumber++;
+    noOfZombies = 0;
+    timeTakenToSpawn = 0;
+    timeToNextSpawn = fps;
+
+    $('.levelNumberText').html(levelNumber);
+
+    startGame();
+}
+
 function endGame() {
-    clearInterval(loop); 
+    clearInterval(loop);
+    $('#questionDialog').show();
 }
 
 function mainLoop() {
@@ -69,6 +92,11 @@ function checkKeyPress(e) {
 
 $(document).ready(function() {
     
+    $('#questionDialogButton').click(function () {
+        $('#questionDialog').hide();
+        resetGame();
+    });
+
     $(this).keydown(function (e) {
         e.preventDefault();
         checkKeyPress(e);
