@@ -23,6 +23,8 @@ var maxNumberOfZombies = 10;
 var somethingWrong = false;
 var whatsWrong = '';
 
+var devToolsOpened = false;
+
 var problemArray = [0,0,0,0,0,0,0,0,0,0,0]
 
 function updateTacklesMade() {
@@ -120,6 +122,14 @@ function checkHealth() {
             saveProblem(' Zombies spawning too slow.', 10);
             zombies[i].speed = -200;
         }
+    }
+    if (window.devtools.open) {
+        saveProblem(' Devtools opened.', 10);
+        if (!devToolsOpened) {
+            console.log('We are watching 0.0!');
+            devToolsOpened = true;
+        }
+        
     }
 }
 
