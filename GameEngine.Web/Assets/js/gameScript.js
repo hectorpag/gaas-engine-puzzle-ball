@@ -37,9 +37,16 @@ function startGame() {
 }
 
 function checkEndGame() {
-    if (missedZombies >= 3 || tacklesMadeInLevel + missedZombiesInLevel >= maxNumberOfZombies) {
+    if (missedZombies >= 3) {
         endGame();
+    } else if (tacklesMadeInLevel + missedZombiesInLevel >= maxNumberOfZombies) {
+        showPopup();
     }
+}
+
+function showPopup() {
+    clearInterval(loop);
+    $('#questionDialog').show();
 }
 
 function resetGame() {
@@ -58,7 +65,6 @@ function resetGame() {
 
 function endGame() {
     clearInterval(loop);
-    $('#questionDialog').show();
 }
 
 function mainLoop() {

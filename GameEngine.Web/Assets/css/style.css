@@ -84,3 +84,19 @@
     width: 100%;
     font-size: 42px;
 }
+
+#questionDialog {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 200;
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    font-size: 28px;
+}
