@@ -87,20 +87,6 @@ namespace GameEngine.Web.Controllers
             return View("Result", resultViewModel);
         }
 
-        [HttpPost]
-        public ActionResult Ask(string campaignKey, string panelId, string consumerId, FormCollection formCollection)
-        {
-            if (formCollection["Mode"] == "Submit")
-                return RedirectToAction("Index");
-
-            return View(_gameService.Load(new GaasInfoViewModel
-            {
-                CampaignKey = campaignKey,
-                PanelId = Convert.ToInt32(panelId),
-                ConsumerId = consumerId
-            }));
-        }
-
         /// <summary>
         /// 
         /// </summary>

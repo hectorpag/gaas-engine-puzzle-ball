@@ -1,34 +1,22 @@
-﻿@using System.Web.Optimization
-@model GameEngine.ViewModel.GameViewModel
-@{
-    Layout = null;
-}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="description" content="Game" />
-    <meta name="Author" content="">
-    <meta name="format-detection" content="telephone=no" />
-    @Scripts.Render("~/Assets/js/jquery")
-</head>
-<body>
-    <div id="wrapper">
-        <div class="inner">
-            @{ Html.BeginForm("Ask", "Game",
-                           new
-                           {
-                               campaignKey = Model.Consumer.GaasCampaignKey,
-                               panelId = Model.Config.GaasPanelId,
-                               consumerId = Model.Consumer.GaasConsumerId,
-                           }, FormMethod.Post); }
-            @Html.Hidden("Mode", "Submit")
-            <input id="btnPlay" type="submit" value="SUBMIT ANSWER">
-            @{ Html.EndForm();}
-        </div>
+﻿<div id="questionDialog" style="display: none;">
+    <p>
+        Question
+    </p>
+    <div>
+        <input type="radio" name="Answer" value="1" id="Answer1" checked="checked" />
+        <label for="Answer1">Answer 1</label>
     </div>
-    @Scripts.Render("~/Assets/js/resize")
-</body>
-</html>
+    <div>
+        <input type="radio" name="Answer" value="2" id="Answer2" />
+        <label for="Answer2">Answer 2</label>
+    </div>
+    <div>
+        <input type="radio" name="Answer" value="3" id="Answer3" />
+        <label for="Answer3">Answer 3</label>
+    </div>
+    <div>
+        <input type="radio" name="Answer" value="4" id="Answer4" />
+        <label for="Answer4">Answer 4</label>
+    </div>
+    <button id="questionDialogButton" onclick="$('#questionDialog').hide();">SUBMIT ANSWER</button>
+</div>
