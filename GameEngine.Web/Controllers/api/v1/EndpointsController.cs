@@ -5,6 +5,8 @@ using GameEngine.Service;
 using GameEngine.Service.Score;
 using GaasPlayCore.ViewModel;
 using System.Net.Http.Formatting;
+using GameEngine.Web.Helpers;
+
 namespace GameEngine.Web.Controllers.api.v1
 {
     public class EndpointsController : ApiController
@@ -33,7 +35,7 @@ namespace GameEngine.Web.Controllers.api.v1
             }
             catch(Exception ex)
             {
-                var e = ex;
+                ErrorLogging.Log(ex);
                 return new List<PortalLeaderboardGradeListViewModel>();
             }
         }

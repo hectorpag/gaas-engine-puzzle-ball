@@ -7,8 +7,7 @@ namespace GameEngine.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
-            filters.Add(new LogRequests());
+            filters.Add(new ErrorHandling());
         }
     }
 }
