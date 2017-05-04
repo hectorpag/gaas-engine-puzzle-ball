@@ -25,7 +25,7 @@ var whatsWrong = '';
 
 var devToolsOpened = false;
 
-var problemArray = [0,0,0,0,0,0,0,0,0,0,0]
+var problemArray = [0,0,0,0,0,0,0,0,0,0,0,0]
 
 function updateTacklesMade() {
     tacklesMade++;
@@ -124,7 +124,7 @@ function checkHealth() {
         }
     }
     if (window.devtools.open) {
-        saveProblem(' Devtools opened.', 10);
+        saveProblem(' Devtools opened.', 11);
         if (!devToolsOpened) {
             console.log('We are watching 0.0!');
             devToolsOpened = true;
