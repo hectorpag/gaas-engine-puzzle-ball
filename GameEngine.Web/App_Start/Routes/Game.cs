@@ -18,11 +18,16 @@ namespace GameEngine.App_Start.Routes
             );
 
             routes.MapRoute(
-              name:  "result",
-              url: "result/{campaignKey}/{panelId}/{consumerId}",
-              defaults:   new { controller = "Game", action = "Result" }
-                );
+                name: "game/ask",
+                url: "game/ask/{campaignKey}/{panelId}/{consumerId}",
+                defaults: new { controller = "Game", action = "Ask", panelId = UrlParameter.Optional, consumerId = UrlParameter.Optional }
+            );
 
+            routes.MapRoute(
+                name:  "result",
+                url: "result/{campaignKey}/{panelId}/{consumerId}",
+                defaults:   new { controller = "Game", action = "Result" }
+            );
         }
     }
 }

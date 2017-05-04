@@ -400,6 +400,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Scripts\jquery.hammer.min.map" />
     <Content Include="Scripts\jquery.hammer-full.min.map" />
+    <Content Include="Views\Game\Ask.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
