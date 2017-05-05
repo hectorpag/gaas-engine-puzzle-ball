@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using GameEngine.Web.Filters;
 
 namespace GameEngine.Web
 {
@@ -7,7 +6,7 @@ namespace GameEngine.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new ErrorHandling());
+            filters.Add(new HandleErrorAttribute());
         }
     }
 }

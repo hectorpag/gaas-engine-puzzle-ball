@@ -24,11 +24,13 @@ namespace GameEngine.Model
         public string GaasGender { get; set; } // Gaas_Gender (length: 50)
 
         // Reverse navigation
+        public virtual System.Collections.Generic.ICollection<GameEventDatum> GameEventDatums { get; set; } // GameEventData.FK_GameEventData_Consumer
         public virtual System.Collections.Generic.ICollection<GamePlay> GamePlays { get; set; } // GamePlay.FK_GamePlay_Consumer
         public virtual System.Collections.Generic.ICollection<Score> Scores { get; set; } // Scores.FK_Scores_Consumer
 
         public Consumer()
         {
+            GameEventDatums = new System.Collections.Generic.List<GameEventDatum>();
             GamePlays = new System.Collections.Generic.List<GamePlay>();
             Scores = new System.Collections.Generic.List<Score>();
             InitializePartial();

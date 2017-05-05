@@ -106,6 +106,9 @@
     <Compile Include="GameDataCapture.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="GameEventDatum.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="GamePlay.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

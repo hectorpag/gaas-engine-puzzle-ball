@@ -13,26 +13,21 @@
 namespace GameEngine.Model
 {
 
-    // Fuel
+    // GameEventData
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.20.1.0")]
-    public partial class Fuel
+    public partial class GameEventDatum
     {
         public int Id { get; set; } // ID (Primary key)
         public int ConsumerId { get; set; } // Consumer_ID
-        public System.DateTime Created { get; set; } // Created
-        public System.DateTime? UtilizedDate { get; set; } // UtilizedDate
-        public bool AutoDiscard { get; set; } // AutoDiscard
+        public int FuelId { get; set; } // Fuel_ID
+        public string DataJson { get; set; } // DataJson (length: 2000)
 
-        // Reverse navigation
-        public virtual System.Collections.Generic.ICollection<GameEventDatum> GameEventDatums { get; set; } // GameEventData.FK_GameEventData_Fuel
-        public virtual System.Collections.Generic.ICollection<GamePlay> GamePlays { get; set; } // GamePlay.FK_GamePlay_Fuel
+        // Foreign keys
+        public virtual Consumer Consumer { get; set; } // FK_GameEventData_Consumer
+        public virtual Fuel Fuel { get; set; } // FK_GameEventData_Fuel
 
-        public Fuel()
+        public GameEventDatum()
         {
-            ConsumerId = 0;
-            AutoDiscard = false;
-            GameEventDatums = new System.Collections.Generic.List<GameEventDatum>();
-            GamePlays = new System.Collections.Generic.List<GamePlay>();
             InitializePartial();
         }
 

@@ -20,6 +20,7 @@ namespace GameEngine.Data
         System.Data.Entity.DbSet<Consumer> Consumers { get; set; } // Consumer
         System.Data.Entity.DbSet<Fuel> Fuels { get; set; } // Fuel
         System.Data.Entity.DbSet<GameDataCapture> GameDataCaptures { get; set; } // GameDataCapture
+        System.Data.Entity.DbSet<GameEventDatum> GameEventDatums { get; set; } // GameEventData
         System.Data.Entity.DbSet<GamePlay> GamePlays { get; set; } // GamePlay
         System.Data.Entity.DbSet<GamePlayView> GamePlayViews { get; set; } // GamePlayView
         System.Data.Entity.DbSet<Score> Scores { get; set; } // Scores

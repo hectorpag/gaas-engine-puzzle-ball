@@ -52,7 +52,26 @@ namespace GameEngine.Web.Controllers.api
 
             await Task.FromResult<int>(_gameService.PostScore(gaasInfoViewModel, gamePlayViewModel));
         }
-        
+
+        // POST api/<controller>
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.AcceptVerbs("POST")]
+        [System.Web.Http.HttpPost]
+        public async Task SaveScore(Object formData)
+        {
+            Logging.Info("api/savescore", formData);
+
+            var gameDataCaptureViewModel = JsonConvert.DeserializeObject<GameDataCaptureViewModel>(formData.ToString());
+            gameDataCaptureViewModel.CreatedOn = DateTime.UtcNow;
+            await Task.FromResult<int>(_gameDataCaptureService.Add(gameDataCaptureViewModel));
+            var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
+            var gamePlayViewModel = JsonConvert.DeserializeObject<GamePlayViewModel>(formData.ToString());
+
+            gamePlayViewModel.PlayedDate = DateTime.UtcNow;
+
+            await Task.Run(() => _gameService.SaveScore(gaasInfoViewModel, gamePlayViewModel));
+        }
+
         // POST api/<controller>
         [System.Web.Http.AllowAnonymous]
         [System.Web.Http.AcceptVerbs("POST")]

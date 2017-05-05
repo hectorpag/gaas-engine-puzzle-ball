@@ -55,13 +55,13 @@ function checkEndGame() {
 
 function showPopup() {
     clearInterval(loop);
-    saveVariables();
+    saveScore(tacklesMade, 0, levelNumber);
     $('#questionDialog').show();
 }
 
 function endGame() {
     clearInterval(loop);
-    saveVariables();
+    saveScore(tacklesMade, 0, levelNumber);
 }
 
 function resetGame() {

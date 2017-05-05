@@ -23,6 +23,7 @@ namespace GameEngine.Data
         public System.Data.Entity.DbSet<Consumer> Consumers { get; set; } // Consumer
         public System.Data.Entity.DbSet<Fuel> Fuels { get; set; } // Fuel
         public System.Data.Entity.DbSet<GameDataCapture> GameDataCaptures { get; set; } // GameDataCapture
+        public System.Data.Entity.DbSet<GameEventDatum> GameEventDatums { get; set; } // GameEventData
         public System.Data.Entity.DbSet<GamePlay> GamePlays { get; set; } // GamePlay
         public System.Data.Entity.DbSet<GamePlayView> GamePlayViews { get; set; } // GamePlayView
         public System.Data.Entity.DbSet<Score> Scores { get; set; } // Scores
@@ -85,6 +86,7 @@ namespace GameEngine.Data
             modelBuilder.Configurations.Add(new ConsumerConfiguration());
             modelBuilder.Configurations.Add(new FuelConfiguration());
             modelBuilder.Configurations.Add(new GameDataCaptureConfiguration());
+            modelBuilder.Configurations.Add(new GameEventDatumConfiguration());
             modelBuilder.Configurations.Add(new GamePlayConfiguration());
             modelBuilder.Configurations.Add(new GamePlayViewConfiguration());
             modelBuilder.Configurations.Add(new ScoreConfiguration());
@@ -99,6 +101,7 @@ namespace GameEngine.Data
             modelBuilder.Configurations.Add(new ConsumerConfiguration(schema));
             modelBuilder.Configurations.Add(new FuelConfiguration(schema));
             modelBuilder.Configurations.Add(new GameDataCaptureConfiguration(schema));
+            modelBuilder.Configurations.Add(new GameEventDatumConfiguration(schema));
             modelBuilder.Configurations.Add(new GamePlayConfiguration(schema));
             modelBuilder.Configurations.Add(new GamePlayViewConfiguration(schema));
             modelBuilder.Configurations.Add(new ScoreConfiguration(schema));

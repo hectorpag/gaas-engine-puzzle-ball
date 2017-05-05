@@ -108,6 +108,9 @@
     <Compile Include="GameDataCaptureConfiguration.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="GameEventDatumConfiguration.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="GamePlayConfiguration.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -136,8 +139,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\1.0.0.2.sql" />
     <Content Include="Scripts\1.0.0.1.sql" />
-    <Content Include="Scripts\elmah.sql" />
     <Content Include="Scripts\1.0.0.0.sql" />
   </ItemGroup>
   <ItemGroup>

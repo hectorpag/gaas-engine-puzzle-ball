@@ -55,147 +55,142 @@ namespace GameEngine.Service.Game
 
         public int PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel)
         {
-            try
+            //var consumer = _consumerService.CheckConsumer(gaasInfoViewModel);
+            var gameViewModel = Load(gaasInfoViewModel);
+
+            //Populate ConsumerId
+            gamePlayViewModel.ConsumerId = gameViewModel.Consumer.Id.ToString();
+
+            //Get the fuelID that this score needs to be added to 
+            var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
+            gamePlayViewModel.FuelId = currentFuel.Id;
+
+            _gamePlayService.Add(gamePlayViewModel);
+
+            var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
+            var lastLevel = configs.Max(c => c.LevelNumber);
+            var totalLevels = configs.Count();
+            //Check if last Level
+            if (gamePlayViewModel.LevelPlayed == lastLevel.Value)
             {
-                //var consumer = _consumerService.CheckConsumer(gaasInfoViewModel);
-                var gameViewModel = Load(gaasInfoViewModel);
-
-                //Populate ConsumerId
-                gamePlayViewModel.ConsumerId = gameViewModel.Consumer.Id.ToString();
-
-                //Get the fuelID that this score needs to be added to 
-                var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
-                gamePlayViewModel.FuelId = currentFuel.Id;
-
-                _gamePlayService.Add(gamePlayViewModel);
-
-                var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
-                var lastLevel = configs.Max(c => c.LevelNumber);
-                var totalLevels = configs.Count();
-                //Check if last Level
-                if (gamePlayViewModel.LevelPlayed == lastLevel.Value)
+                var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(gameViewModel.Consumer.Id, currentFuel.Id);
+                //check if all level played & Post to LeaderBoard
+                List<int> levelIds = configs.Where(c => c.LevelNumber != null).Select(c => c.LevelNumber ?? 0).ToList();
+                //TODO:// Find a way to make sure that uniqueGamesPlayed containes all levels
+                if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == totalLevels)
                 {
-                    var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(gameViewModel.Consumer.Id, currentFuel.Id);
-                    //check if all level played & Post to LeaderBoard
-                    List<int> levelIds = configs.Where(c => c.LevelNumber != null).Select(c => c.LevelNumber ?? 0).ToList();
-                    //TODO:// Find a way to make sure that uniqueGamesPlayed containes all levels
-                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == totalLevels)
-                    {
-                        //Mark fuel as utilized 
-                        currentFuel.UtilizedDate = DateTime.UtcNow;
-                        _fuelService.Add(currentFuel);
+                    //Mark fuel as utilized 
+                    currentFuel.UtilizedDate = DateTime.UtcNow;
+                    _fuelService.Add(currentFuel);
 
-                        var data = new List<GaasScoreViewModel>();
-                        var finalData = new List<GaasScoreViewModel>();
-                        foreach (var game in uniqueGamesPlayed)
+                    var data = new List<GaasScoreViewModel>();
+                    var finalData = new List<GaasScoreViewModel>();
+                    foreach (var game in uniqueGamesPlayed)
+                    {
+                        var panelConfig = configs.FirstOrDefault(c => c.LevelNumber == game.LevelPlayed);
+                        if (panelConfig == null) continue;
+                        data.Add(new GaasScoreViewModel()
                         {
-                            var panelConfig = configs.FirstOrDefault(c => c.LevelNumber == game.LevelPlayed);
-                            if (panelConfig == null) continue;
-                            data.Add(new GaasScoreViewModel()
+                            storypanel_id = panelConfig.GaasPanelId,
+                            key = "score",
+                            value = game.Score.ToString(CultureInfo.InvariantCulture)
+                        });
+
+                        if (game.LevelPlayed == lastLevel.Value)
+                        {
+                            //add total score
+                            finalData.Add(new GaasScoreViewModel()
                             {
                                 storypanel_id = panelConfig.GaasPanelId,
                                 key = "score",
-                                value = game.Score.ToString(CultureInfo.InvariantCulture)
+                                value = data.Sum(x => x.value.GetDecimal()).ToString()
                             });
-
-                            if (game.LevelPlayed == lastLevel.Value)
-                            {
-                                //add total score
-                                finalData.Add(new GaasScoreViewModel()
-                                {
-                                    storypanel_id = panelConfig.GaasPanelId,
-                                    key = "score",
-                                    value = data.Sum(x => x.value.GetDecimal()).ToString()
-                                });
-                            }
                         }
-
-                        _scoreService.Add(new ScoreViewModel() { ConsumerId = gameViewModel.Consumer.Id, Scored = DateTime.UtcNow, Result = Convert.ToInt32(data.Sum(x => x.value.GetDecimal())) });
-                        //try
-                        //{
-                        //    ActivitiesClientHelper.PostCampaignActivity(ActivityType.CAMPAIGN_GAMES_PLAYED, gameViewModel.Consumer.GaasConsumerId, gaasInfoViewModel.CampaignKey, currentFuel.Id.ToString());
-                        //}
-                        //catch
-                        //{
-                        //    ; //TODO: report error
-                        //}
-
                     }
-                    else
+
+                    _scoreService.Add(new ScoreViewModel()
                     {
-                        //Log error or alert
-                    }
+                        ConsumerId = gameViewModel.Consumer.Id,
+                        Scored = DateTime.UtcNow,
+                        Result = Convert.ToInt32(data.Sum(x => x.value.GetDecimal()))
+                    });
+                    //try
+                    //{
+                    //    ActivitiesClientHelper.PostCampaignActivity(ActivityType.CAMPAIGN_GAMES_PLAYED, gameViewModel.Consumer.GaasConsumerId, gaasInfoViewModel.CampaignKey, currentFuel.Id.ToString());
+                    //}
+                    //catch
+                    //{
+                    //    ; //TODO: report error
+                    //}
+
                 }
+                else
+                {
+                    //Log error or alert
+                }
+            }
 
-            }
-            catch (Exception ex)
-            {
-                var e = ex;
-                throw ex;
-            }
-            finally
-            {
-
-            }
             return 1;
+        }
+
+        public void SaveScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel)
+        {
+            //var consumer = _consumerService.CheckConsumer(gaasInfoViewModel);
+            var gameViewModel = Load(gaasInfoViewModel);
+
+            //Populate ConsumerId
+            gamePlayViewModel.ConsumerId = gameViewModel.Consumer.Id.ToString();
+
+            //Get the fuelID that this score needs to be added to 
+            var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
+            gamePlayViewModel.FuelId = currentFuel.Id;
+
+            _gamePlayService.Add(gamePlayViewModel);
         }
 
         public decimal Score(GaasInfoViewModel gaasInfoViewModel)
         {
-            try
+            //var consumer = _consumerService.CheckConsumer(gaasInfoViewModel);
+            var gameViewModel = Load(gaasInfoViewModel);
+
+            //Populate ConsumerId
+            //  gamePlayViewModel.ConsumerId = gameViewModel.Consumer.Id;
+
+            //Get the fuelID that this score needs to be added to 
+            var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
+            //  gamePlayViewModel.FuelId = currentFuel.Id;
+
+            //    _gamePlayService.Add(gamePlayViewModel);
+
+            var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
+            var lastLevel = configs.Max(c => c.LevelNumber);
+            var totalLevels = configs.Count();
+            if (gameViewModel.Config.ShowResult)
             {
-                //var consumer = _consumerService.CheckConsumer(gaasInfoViewModel);
-                var gameViewModel = Load(gaasInfoViewModel);
-
-                //Populate ConsumerId
-                //  gamePlayViewModel.ConsumerId = gameViewModel.Consumer.Id;
-
-                //Get the fuelID that this score needs to be added to 
-                var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
-                //  gamePlayViewModel.FuelId = currentFuel.Id;
-
-                //    _gamePlayService.Add(gamePlayViewModel);
-
-                var configs = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey);
-                var lastLevel = configs.Max(c => c.LevelNumber);
-                var totalLevels = configs.Count();
-                if (gameViewModel.Config.ShowResult)
+                var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(gameViewModel.Consumer.Id, currentFuel.Id);
+                //check if all level played & Post to LeaderBoard
+                List<int> levelIds = configs.Where(c => c.LevelNumber != null).Select(c => c.LevelNumber ?? 0).ToList();
+                //TODO:// Find a way to make sure that uniqueGamesPlayed containes all levels
+                if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == totalLevels)
                 {
-                    var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(gameViewModel.Consumer.Id, currentFuel.Id);
-                    //check if all level played & Post to LeaderBoard
-                    List<int> levelIds = configs.Where(c => c.LevelNumber != null).Select(c => c.LevelNumber ?? 0).ToList();
-                    //TODO:// Find a way to make sure that uniqueGamesPlayed containes all levels
-                    if (!(uniqueGamesPlayed.Any(x => !levelIds.Contains(x.LevelPlayed))) && uniqueGamesPlayed.Count == totalLevels)
+                    var data = new List<GaasScoreViewModel>();
+                    foreach (var game in uniqueGamesPlayed)
                     {
-                        var data = new List<GaasScoreViewModel>();
-                        foreach (var game in uniqueGamesPlayed)
+                        var panelConfig = configs.FirstOrDefault(c => c.LevelNumber == game.LevelPlayed);
+                        if (panelConfig == null) continue;
+                        data.Add(new GaasScoreViewModel()
                         {
-                            var panelConfig = configs.FirstOrDefault(c => c.LevelNumber == game.LevelPlayed);
-                            if (panelConfig == null) continue;
-                            data.Add(new GaasScoreViewModel()
-                            {
-                                storypanel_id = panelConfig.GaasPanelId,
-                                key = "score",
-                                value = game.Score.ToString(CultureInfo.InvariantCulture)
-                            });
-                        }
-                        return data.Sum(x => x.value.GetDecimal()); //data[0].value.GetDecimal();
+                            storypanel_id = panelConfig.GaasPanelId,
+                            key = "score",
+                            value = game.Score.ToString(CultureInfo.InvariantCulture)
+                        });
                     }
-                    else
-                    {
-                        //Log error or alert
-                    }
+                    return data.Sum(x => x.value.GetDecimal()); //data[0].value.GetDecimal();
                 }
-
-            }
-            catch (Exception ex)
-            {
-                var e = ex;
-                throw;
-            }
-            finally
-            {
-
+                else
+                {
+                    //Log error or alert
+                }
             }
 
             return 0;
@@ -217,6 +212,7 @@ namespace GameEngine.Service.Game
         // GameViewModel LoadConfig(GaasInfoViewModel gaasInfoViewModel);
         // GameViewModel LoadConsumer(GaasInfoViewModel gaasInfoViewModel);
         int PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel);
+        void SaveScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel);
 
         decimal Score(GaasInfoViewModel gaasInfoViewModel);
 

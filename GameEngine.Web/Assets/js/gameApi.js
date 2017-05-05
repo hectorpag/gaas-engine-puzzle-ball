@@ -44,7 +44,7 @@ function saveScore() {
 
 }
 
-function saveVariables(doneCallback, failCallback) {
+function saveScore(score, scoreTime, levelPlayed, doneCallback, failCallback) {
     var gameStatsData = {
         //"Movement": movement,
         //"BallThrown": ballThrown,
@@ -65,14 +65,14 @@ function saveVariables(doneCallback, failCallback) {
         ConsumerId: GAAS_CONSUMER_ID,
         PanelId: PANEL_ID,
         Finished: JSON.stringify(gameStatsData),
-        Score: tacklesMade,
-        ScoreTime: tacklesMade,
-        LevelPlayed: LEVEL_NUMBER
+        Score: score,
+        ScoreTime: scoreTime,
+        LevelPlayed: levelPlayed
     };
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": FINISHENDPOINT,
+        "url": POSTSCOREENDPOINT,
         "method": "POST",
         "headers": {
             "content-type": "application/json",

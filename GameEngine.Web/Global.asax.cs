@@ -7,7 +7,7 @@ using System.Web.Routing;
 using GameEngineApp_Start;
 using GameEngine.Service;
 using GameEngine.Service.Configuration;
-using GameEngine.Web;
+using GameEngine.Web.Helpers;
 
 namespace GameEngine.Web
 {
@@ -27,10 +27,11 @@ namespace GameEngine.Web
             GameEngineConfig.Set(ConfigurationManager.AppSettings);
             //ActivitiesConfig.StartActivitiesHelper();
         }
+
         protected void Application_OnError()
         {
             var exception = Server.GetLastError();
-            Elmah.ErrorSignal.FromCurrentContext().Raise(exception);
+            Logging.Error(exception, "Unhandled: " + exception.Message);
         }
     }
 }
