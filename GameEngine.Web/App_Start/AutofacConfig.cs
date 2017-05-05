@@ -11,6 +11,7 @@ using GameEngine.Service.Interfaces;
 using GameEngine.Service.RedisCaching;
 using GaasPlay.API.Client.Api;
 using System.Configuration;
+using GameEngine.Web.Filters;
 using Serilog;
 
 namespace GameEngine.Web
@@ -49,6 +50,7 @@ namespace GameEngine.Web
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container);
+            GlobalConfiguration.Configuration.Filters.Add(new LogApiExceptionFilterAttribute());
 
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.AppSettings()

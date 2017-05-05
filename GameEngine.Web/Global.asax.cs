@@ -31,7 +31,7 @@ namespace GameEngine.Web
         protected void Application_OnError()
         {
             var exception = Server.GetLastError();
-            Logging.Error(exception, "Unhandled: " + exception.Message);
+            Logging.Error(exception, "GameEngine.Web Unhandled: " + exception.Message);
         }
     }
 }

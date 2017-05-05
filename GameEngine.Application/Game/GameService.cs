@@ -135,7 +135,6 @@ namespace GameEngine.Service.Game
 
         public void SaveScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel)
         {
-            //var consumer = _consumerService.CheckConsumer(gaasInfoViewModel);
             var gameViewModel = Load(gaasInfoViewModel);
 
             //Populate ConsumerId
@@ -143,6 +142,8 @@ namespace GameEngine.Service.Game
 
             //Get the fuelID that this score needs to be added to 
             var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
+            if (currentFuel == null) return;
+
             gamePlayViewModel.FuelId = currentFuel.Id;
 
             _gamePlayService.Add(gamePlayViewModel);
