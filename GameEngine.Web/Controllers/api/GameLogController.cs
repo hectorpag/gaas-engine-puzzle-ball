@@ -61,12 +61,8 @@ namespace GameEngine.Web.Controllers.api
         {
             Logging.Info("api/savescore", formData);
 
-            var gameDataCaptureViewModel = JsonConvert.DeserializeObject<GameDataCaptureViewModel>(formData.ToString());
-            gameDataCaptureViewModel.CreatedOn = DateTime.UtcNow;
-            await Task.FromResult<int>(_gameDataCaptureService.Add(gameDataCaptureViewModel));
             var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
             var gamePlayViewModel = JsonConvert.DeserializeObject<GamePlayViewModel>(formData.ToString());
-
             gamePlayViewModel.PlayedDate = DateTime.UtcNow;
 
             await Task.Run(() => _gameService.SaveScore(gaasInfoViewModel, gamePlayViewModel));
