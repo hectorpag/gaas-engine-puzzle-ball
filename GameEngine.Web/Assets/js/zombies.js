@@ -26,7 +26,20 @@ var Zombie = {
     status: 'alive',
     jersey: '0',
     name: '', 
+    imgFrame: 11,
+    lastFrameUpdate: new Date().getTime(),
     moveZombie: function() {
+        var time = new Date().getTime();
+        if ((time - this.lastFrameUpdate) > 60) {
+            this.lastFrameUpdate = time;
+            $(this.query).removeClass('zombie-frame-' + this.imgFrame);
+            if (this.imgFrame === 11) {
+                this.imgFrame = 0;
+            }
+            this.imgFrame++;
+            $(this.query).addClass('zombie-frame-' + this.imgFrame);
+        }
+
         this.top += this.speed / fps;
         this.left += this.lateralSpeed / fps;
         
