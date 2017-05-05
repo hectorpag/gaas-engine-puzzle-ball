@@ -55,11 +55,13 @@ function checkEndGame() {
 
 function showPopup() {
     clearInterval(loop);
+    saveVariables();
     $('#questionDialog').show();
 }
 
 function endGame() {
     clearInterval(loop);
+    saveVariables();
 }
 
 function resetGame() {

@@ -11,7 +11,7 @@ namespace GameEngine.Web.Filters
     {
         public void OnException(ExceptionContext filterContext)
         {
-            ErrorLogging.Log(filterContext.Exception, "Unhandled: " + filterContext.Exception.Message);
+            Logging.Error(filterContext.Exception, "Unhandled: " + filterContext.Exception.Message);
         }
     }
 }

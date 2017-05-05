@@ -38,14 +38,13 @@ function startGame() {
         "data": JSON.stringify(GameData)
     }
     $.ajax(settings).done();
-
 }
 
 function saveScore() {
 
 }
 
-function saveVariables() {
+function saveVariables(doneCallback, failCallback) {
     var gameStatsData = {
         //"Movement": movement,
         //"BallThrown": ballThrown,
@@ -60,15 +59,16 @@ function saveVariables() {
         //"PlayerPos": playerPos,
         //"PosHistory": posHistory
     };
-    var GameData = {};
-    //GameData.Start = initialTime;
-    GameData.CampaignKey = CAMPAIGN_KEY;
-    GameData.ConsumerId = GAAS_CONSUMER_ID;
-    GameData.PanelId = PANEL_ID;
-    GameData.Finished = JSON.stringify(gameStatsData);
-    GameData.Score = tacklesMade;
-    GameData.ScoreTime = tacklesMade;
-    GameData.LevelPlayed = LEVEL_NUMBER;
+    var gameData = {
+        //Start = initialTime,
+        CampaignKey: CAMPAIGN_KEY,
+        ConsumerId: GAAS_CONSUMER_ID,
+        PanelId: PANEL_ID,
+        Finished: JSON.stringify(gameStatsData),
+        Score: tacklesMade,
+        ScoreTime: tacklesMade,
+        LevelPlayed: LEVEL_NUMBER
+    };
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -79,14 +79,15 @@ function saveVariables() {
             "cache-control": "no-cache"
         },
         "processData": true,
-        "data": JSON.stringify(GameData)
+        "data": JSON.stringify(gameData)
     }
+
     $.ajax(settings).done(function () {
-        $("#score").val(score);
-        $("form").submit();
+        if (doneCallback) { doneCallback(); }
         window.parent.postMessage('{"game_play" : "over"}', "*");
-    }).error(function () {
-        $("#score").val(score);
-        $("form").submit();
+
+    }).fail(function () {
+        if (failCallback) { failCallback(); }
+
     });
 }

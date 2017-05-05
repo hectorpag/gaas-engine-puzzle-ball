@@ -16,8 +16,11 @@ namespace GameEngine.Web.Controllers.api.v1
         {
             _scoreService = scoreService;
         }
+
         public List<string> GetLeaderboardKeys()
         {
+            Logging.Info("GetLeaderboardKeys");
+
             return new Leaderboard().GetKeys();
         }
 
@@ -25,6 +28,8 @@ namespace GameEngine.Web.Controllers.api.v1
         [HttpPost]
         public List<PortalLeaderboardGradeListViewModel> GetWinnerResults(FormDataCollection formData)
         {
+            Logging.Info("api/GetWinnerResults", formData);
+
             try
             {
                 var lastResetDate = new DateTime();
@@ -35,7 +40,7 @@ namespace GameEngine.Web.Controllers.api.v1
             }
             catch(Exception ex)
             {
-                ErrorLogging.Log(ex);
+                Logging.Error(ex);
                 return new List<PortalLeaderboardGradeListViewModel>();
             }
         }
