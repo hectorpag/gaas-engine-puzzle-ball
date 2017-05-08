@@ -36,6 +36,8 @@
     height: 100%;
     overflow: hidden;
     background-color: forestgreen;
+    background: url(../images/background.jpg) no-repeat;
+    background-size: contain;
 }
 .tryLine {
     width: 100%;
@@ -46,10 +48,10 @@
 }
 .player {
     position: absolute;
-    width: 160px;
+    width: 105px;
     height: 160px;
     top: 120px;
-    background-image: url("../images/QLD.png");
+    background-image: url(../images/defender.png);
     background-repeat: no-repeat;
     background-size: contain;
     z-index: 2;
@@ -72,45 +74,44 @@
     color: #fff;
     text-align: center;
     background-repeat: no-repeat;
-    background-size: contain;
-
+    background-image: url(../images/zombieSpritesheet.png);
 }
 
 .zombie-frame-0 {
-    background-image: url("../images/NSW_WALK_00.png");
+    background-position: -1100px 0px;
 }
 .zombie-frame-1 {
-    background-image: url("../images/NSW_WALK_01.png");
+    background-position: -1000px 0px;
 }
 .zombie-frame-2 {
-    background-image: url("../images/NSW_WALK_02.png");
+    background-position: -900px 0px;
 }
 .zombie-frame-3 {
-    background-image: url("../images/NSW_WALK_03.png");
+    background-position: -800px 0px;
 }
 .zombie-frame-4 {
-    background-image: url("../images/NSW_WALK_04.png");
+    background-position: -700px 0px;
 }
 .zombie-frame-5 {
-    background-image: url("../images/NSW_WALK_05.png");
+    background-position: -600px 0px;
 }
 .zombie-frame-6 {
-    background-image: url("../images/NSW_WALK_06.png");
+    background-position: -500px 0px;
 }
 .zombie-frame-7 {
-    background-image: url("../images/NSW_WALK_07.png");
+    background-position: -400px 0px;
 }
 .zombie-frame-8 {
-    background-image: url("../images/NSW_WALK_08.png");
+    background-position: -300px 0px;
 }
 .zombie-frame-9 {
-    background-image: url("../images/NSW_WALK_09.png");
+    background-position: -200px 0px;
 }
 .zombie-frame-10 {
-    background-image: url("../images/NSW_WALK_10.png");
+    background-position: -100px 0px;
 }
 .zombie-frame-11 {
-    background-image: url("../images/NSW_WALK_11.png");
+    background-position: 0px 0px;
 }
 
 .jerseyName {

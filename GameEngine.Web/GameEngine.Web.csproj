@@ -265,9 +265,11 @@
     <Content Include="Assets\images\NSW_WALK_10.png" />
     <Content Include="Assets\images\NSW_WALK_11.png" />
     <Content Include="Assets\images\QLD.png" />
+    <Content Include="Assets\images\defender.png" />
     <Content Include="Assets\images\results-bg.jpg" />
     <Content Include="Assets\images\play-btn.jpg" />
     <Content Include="Assets\images\playagain-btn.jpg" />
+    <Content Include="Assets\images\zombieSpritesheet.png" />
     <Content Include="Assets\js\gameScript.js" />
     <Content Include="Assets\js\player.js" />
     <Content Include="Assets\js\zombies.js" />
