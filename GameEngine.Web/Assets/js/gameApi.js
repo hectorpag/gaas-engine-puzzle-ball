@@ -90,7 +90,6 @@ function saveScore(score, scoreTime, levelPlayed, doneCallback, failCallback) {
 
 function saveEvent(doneCallback, failCallback) {
     var gameData = {
-        //Start = initialTime,
         CampaignKey: CAMPAIGN_KEY,
         ConsumerId: GAAS_CONSUMER_ID,
         PanelId: PANEL_ID,
@@ -117,6 +116,31 @@ function saveEvent(doneCallback, failCallback) {
 
     $.ajax(settings).done(function () {
         if (doneCallback) { doneCallback(); }
+
+    }).fail(function () {
+        if (failCallback) { failCallback(); }
+
+    });
+}
+
+function getNextQuestion(doneCallback, failCallback) {
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": DCENDPOINT,
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "cache-control": "no-cache"
+        },
+        "processData": true,
+        "data": JSON.stringify({
+            CampaignKey: CAMPAIGN_KEY,
+            ConsumerId: GAAS_CONSUMER_ID,
+            PanelId: PANEL_ID
+        })
+    }).done(function (data) {
+        if (doneCallback) { doneCallback(data); }
 
     }).fail(function () {
         if (failCallback) { failCallback(); }

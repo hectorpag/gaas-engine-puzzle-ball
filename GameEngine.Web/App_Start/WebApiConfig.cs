@@ -30,6 +30,12 @@ namespace GameEngine.Web
             );
 
             config.Routes.MapHttpRoute(
+                name: "api/dc/getnextquestion",
+                routeTemplate: "api/dc/getnextquestion",
+                defaults: new { controller = "Dc", action = "GetnextQuestion" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "api/v1/getleaderboardkeys",
                 routeTemplate: "api/v1/getleaderboardkeys",
                 defaults: new { controller = "Endpoints", action = "GetLeaderboardKeys" }

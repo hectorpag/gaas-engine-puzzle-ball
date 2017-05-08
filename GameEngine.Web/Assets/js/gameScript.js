@@ -26,7 +26,7 @@ var whatsWrong = '';
 
 var devToolsOpened = false;
 
-var problemArray = [0,0,0,0,0,0,0,0,0,0,0,0]
+var problemArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function updateTacklesMade() {
     tacklesMade++;
@@ -60,7 +60,12 @@ function showPopup() {
     clearInterval(loop);
     saveScore(tacklesMade, 0, levelNumber);
     saveEvent();
-    $('#questionDialog').show();
+
+    getNextQuestion(function (data) {
+        $('#questionContent').html(data.Question);
+
+        $('#questionDialog').show();
+    });
 }
 
 function endGame() {
@@ -136,7 +141,6 @@ function checkHealth() {
             console.log('We are watching 0.0!');
             devToolsOpened = true;
         }
-        
     }
 }
 
