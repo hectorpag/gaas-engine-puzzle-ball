@@ -31,14 +31,19 @@ namespace GameEngine.Service.GameDataCapture
 
         public GameDataCaptureNextQuestionViewModel GetNextQuestion(GaasInfoViewModel gaasInfoViewModel)
         {
-            var rs = _gaasDcApi.GetNextCampaignQuestion(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
-            if (rs == null) throw new Exception("No result returned from data capture.");
-
             return new GameDataCaptureNextQuestionViewModel()
             {
-                Question = rs.Data.CampaignQuestionDescription,
-                Responses = rs.Data.CampaignQuestionResponses.Select(r => r.Response).ToList()
+                Question = "Can you haz cheesburger?",
+                Responses = new List<string>() { "Salmon", "Groot", "Mirklewinks", "Atom bombs" }
             };
+            //var rs = _gaasDcApi.GetNextCampaignQuestion(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
+            //if (rs == null) throw new Exception("No result returned from data capture.");
+
+            //return new GameDataCaptureNextQuestionViewModel()
+            //{
+            //    Question = rs.Data.CampaignQuestionDescription,
+            //    Responses = rs.Data.CampaignQuestionResponses.Select(r => r.Response).ToList()
+            //};
         }
     }
 
