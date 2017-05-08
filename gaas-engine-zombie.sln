@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine.Web", "GameEngine.Web\GameEngine.Web.csproj", "{374ACFBD-DA0B-4273-AB38-EFF9882A57EB}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine.Application", "GameEngine.Application\GameEngine.Application.csproj", "{B86374F8-4453-4924-B14A-9A9899992FF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine.ViewModel", "GameEngine.ViewModel\GameEngine.ViewModel.csproj", "{20F03174-3631-4913-8262-ABF16679C6E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2A0232D6-7954-4140-AC62-2F36A97A4A49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Integration", "Tests.Integration\Tests.Integration.csproj", "{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,8 +87,23 @@ Global
 		{20F03174-3631-4913-8262-ABF16679C6E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20F03174-3631-4913-8262-ABF16679C6E4}.Release|x64.ActiveCfg = Release|x64
 		{20F03174-3631-4913-8262-ABF16679C6E4}.Release|x64.Build.0 = Release|x64
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Debug|x64.Build.0 = Debug|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Production|Any CPU.ActiveCfg = Release|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Production|Any CPU.Build.0 = Release|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Production|x64.ActiveCfg = Release|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Production|x64.Build.0 = Release|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Release|x64.ActiveCfg = Release|Any CPU
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EDA11D20-F228-48E3-A0AE-089FE4BBD2BA} = {2A0232D6-7954-4140-AC62-2F36A97A4A49}
 	EndGlobalSection
 EndGlobal

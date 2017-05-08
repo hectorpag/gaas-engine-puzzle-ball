@@ -63,6 +63,15 @@ function showPopup() {
 
     getNextQuestion(function (data) {
         $('#questionContent').html(data.Question);
+        $('#questionResponses').html('');
+        var i = 0;
+        data.Responses.forEach(function (item) {
+            var qdiv = document.createElement('div');
+            i++;
+            $(qdiv).append('<input type="radio" name="Answer" value="' + item + '" id="answerInput' + i + '" required />');
+            $(qdiv).append('<label for="answerInput' + i + '">' + item + '</label>');
+            $('#questionResponses').append(qdiv);
+        });
 
         $('#questionDialog').show();
     });
