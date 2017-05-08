@@ -17,6 +17,7 @@ var levelNumber = 1;
 
 var posClass = ['leftPos', 'middlePos', 'rightPos'];
 var posValues = [40, 240, 440];
+var zombiePosValues = [70, 270, 470];
 
 var maxNumberOfZombies = 10;
 

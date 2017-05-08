@@ -43,7 +43,7 @@ var Zombie = {
         this.top += this.speed / fps;
         this.left += this.lateralSpeed / fps;
         
-        if (Math.round(this.left) === posValues[this.destination]) {
+        if (Math.round(this.left) === zombiePosValues[this.destination]) {
             this.lateralSpeed = 0;
         }
          
@@ -76,7 +76,7 @@ function createZombies() {
         zombieTemp.id = numberOfZombies;
         zombieTemp.pos = Math.floor(Math.random() * 3);
         zombieTemp.destination = Math.floor(Math.random() * 3);
-        zombieTemp.left = posValues[zombieTemp.pos];
+        zombieTemp.left = zombiePosValues[zombieTemp.pos];
         zombieTemp.query = '.zombie' + zombieTemp.id;
         zombieTemp.speed = Math.floor(Math.random() * -300) - 200;
 
