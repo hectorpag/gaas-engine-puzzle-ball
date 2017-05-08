@@ -189,5 +189,15 @@ $(document).ready(function() {
         checkKeyPress(e);
     });
 
+    $(".leftButton").on("touchstart mousedown", function (e) {
+        e.preventDefault();
+        player.movePlayer(-1);
+    });
+
+    $(".rightButton").on("touchstart mousedown", function (e) {
+        e.preventDefault();
+        player.movePlayer(1);
+    });
+
 	startGame();
 });
