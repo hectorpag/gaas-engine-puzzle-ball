@@ -87,6 +87,7 @@
     <Compile Include="GaasScoreViewModel.cs" />
     <Compile Include="CustomEventViewModel.cs" />
     <Compile Include="GameDashboardReturnViewModel.cs" />
+    <Compile Include="GameDataCaptureNextQuestionViewModel.cs" />
     <Compile Include="GameDataCaptureViewModel.cs" />
     <Compile Include="GameEventViewModel.cs" />
     <Compile Include="GamePlayViewModel.cs" />

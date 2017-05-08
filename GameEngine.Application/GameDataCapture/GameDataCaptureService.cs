@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using GameEngine.Service.Fuel;
+using GaasPlay.API.Client.Api;
 using GameEngine.ViewModel;
 
 namespace GameEngine.Service.GameDataCapture
@@ -10,13 +10,16 @@ namespace GameEngine.Service.GameDataCapture
     {
         private readonly IGameDataCaptureRepository _gameDataCaptureRepository;
         private readonly IMapper _mapper = AutoMapperConfiguration.MapperConfiguration.CreateMapper();
+        //private readonly IGaasDataCaptureApi _gaasDcApi;
 
-        public GameDataCaptureService(IGameDataCaptureRepository gameDataCaptureRepository)
+        public GameDataCaptureService(
+            IGameDataCaptureRepository gameDataCaptureRepository
+            //IGaasDataCaptureApi gaasDcApi
+            )
         {
             _gameDataCaptureRepository = gameDataCaptureRepository;
+            //_gaasDcApi = gaasDcApi;
         }
-
-        #region Implementation of IGameDataCaptureService
 
         public int Add(GameDataCaptureViewModel gameDataCaptureViewModel)
         {
@@ -25,11 +28,25 @@ namespace GameEngine.Service.GameDataCapture
            return 1;
         }
 
-        #endregion
+        public GameDataCaptureNextQuestionViewModel GetNextQuestion(GaasInfoViewModel gaasInfoViewModel)
+        {
+            return new GameDataCaptureNextQuestionViewModel();
+            //var cacheModel = _cacheManager.Get(GetKey(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId), () =>
+            //{
+            //    var consumer = _consumerRepository.GetByGaasInfo(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
+            //    var viewModel = _mapper.Map<ConsumerViewModel>(consumer);
+            //    return viewModel;
+            //});
+
+            //return cacheModel;
+
+            //_gaasDcApi.GetNext();
+        }
     }
 
     public interface IGameDataCaptureService
     {
         int Add(GameDataCaptureViewModel gameDataCaptureViewModel);
+        GameDataCaptureNextQuestionViewModel GetNextQuestion(GaasInfoViewModel gaasInfoViewModel);
     }
 }

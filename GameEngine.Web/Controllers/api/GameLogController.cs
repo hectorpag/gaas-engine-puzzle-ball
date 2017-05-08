@@ -31,7 +31,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task Start(Object formData)
         {
-            Logging.Info("api/Start", formData);
+            Logging.Info("api/gamelog/Start", formData);
 
             var gameDataCaptureViewModel = JsonConvert.DeserializeObject<GameDataCaptureViewModel>(formData.ToString());
             gameDataCaptureViewModel.CreatedOn = DateTime.UtcNow;
@@ -44,7 +44,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task Finish(Object formData)
         {
-            Logging.Info("api/Finish", formData);
+            Logging.Info("api/gamelog/Finish", formData);
 
             var gameDataCaptureViewModel = JsonConvert.DeserializeObject<GameDataCaptureViewModel>(formData.ToString());
             gameDataCaptureViewModel.CreatedOn = DateTime.UtcNow;
@@ -63,7 +63,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task SaveScore(Object formData)
         {
-            Logging.Info("api/savescore", formData);
+            Logging.Info("api/gamelog/savescore", formData);
 
             var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
             var gamePlayViewModel = JsonConvert.DeserializeObject<GamePlayViewModel>(formData.ToString());
@@ -78,7 +78,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task Telemetry(Object formData)
         {
-            Logging.Info("api/telemetry", formData);
+            Logging.Info("api/gamelog/telemetry", formData);
 
             var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
             var vm = JsonConvert.DeserializeObject<GameEventViewModel>(formData.ToString());
@@ -92,7 +92,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task CustomEvent(Object formData)
         {
-            Logging.Info("api/CustomEvent", formData);
+            Logging.Info("api/gamelog/CustomEvent", formData);
 
             var eventData = JsonConvert.DeserializeObject<CustomEventViewModel>(formData.ToString());
             var data = new Dictionary<string, string> {{"ConsumerId", eventData.ConsumerId}, {"Score", eventData.Score}};

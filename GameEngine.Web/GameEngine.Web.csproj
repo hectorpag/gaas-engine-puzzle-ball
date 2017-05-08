@@ -387,6 +387,7 @@
     <Compile Include="App_Start\Routes\Home.cs" />
     <Compile Include="App_Start\Routes\Reports.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\api\DcController.cs" />
     <Compile Include="Controllers\api\GameLogController.cs" />
     <Compile Include="Controllers\api\v1\EndpointsController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
