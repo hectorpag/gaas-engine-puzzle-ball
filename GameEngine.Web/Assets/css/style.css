@@ -114,12 +114,14 @@
     top: 5px;
     width: 100%;
     font-size: 18px;
+    display: none;
 }
 .jerseyNumber {
     position: absolute;
     top: 35px;
     width: 100%;
     font-size: 42px;
+    display: none;
 }
 
 #questionDialog {
