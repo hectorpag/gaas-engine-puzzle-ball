@@ -2,6 +2,7 @@
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[Consumer_ID] [int] NOT NULL,
 	[Fuel_ID] [int] NOT NULL,
+    [EventDate] [datetime] NOT NULL,
 	[DataJson] [varchar](2000) NULL,
  CONSTRAINT [PK_GameEventData] PRIMARY KEY CLUSTERED 
 (

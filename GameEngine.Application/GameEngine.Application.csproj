@@ -151,6 +151,8 @@
     <Compile Include="GameDataCapture\GameDataCaptureService.cs" />
     <Compile Include="Fuel\FuelRepository.cs" />
     <Compile Include="Fuel\FuelService.cs" />
+    <Compile Include="GameEventData\GameEventDataRepository.cs" />
+    <Compile Include="GameEventData\GameEventDataService.cs" />
     <Compile Include="GamePlay\GamePlayService.cs" />
     <Compile Include="GamePlay\UniqueGamePlayViewRepository.cs" />
     <Compile Include="Game\GameService.cs" />

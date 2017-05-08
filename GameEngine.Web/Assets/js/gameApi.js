@@ -40,10 +40,6 @@ function startGame() {
     $.ajax(settings).done();
 }
 
-function saveScore() {
-
-}
-
 function saveScore(score, scoreTime, levelPlayed, doneCallback, failCallback) {
     var gameStatsData = {
         //"Movement": movement,
@@ -84,7 +80,43 @@ function saveScore(score, scoreTime, levelPlayed, doneCallback, failCallback) {
 
     $.ajax(settings).done(function () {
         if (doneCallback) { doneCallback(); }
-        window.parent.postMessage('{"game_play" : "over"}', "*");
+        //window.parent.postMessage('{"game_play" : "over"}', "*");
+
+    }).fail(function () {
+        if (failCallback) { failCallback(); }
+
+    });
+}
+
+function saveEvent(doneCallback, failCallback) {
+    var gameData = {
+        //Start = initialTime,
+        CampaignKey: CAMPAIGN_KEY,
+        ConsumerId: GAAS_CONSUMER_ID,
+        PanelId: PANEL_ID,
+        eventData: {
+            levelNumber: levelNumber,
+            tacklesMade: tacklesMade,
+            tacklesMadeInLevel: tacklesMadeInLevel,
+            missedZombies: missedZombies,
+            missedZombiesInLevel: missedZombiesInLevel
+        }
+    };
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": TELEMETRYENDPOINT,
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "cache-control": "no-cache"
+        },
+        "processData": true,
+        "data": JSON.stringify(gameData)
+    }
+
+    $.ajax(settings).done(function () {
+        if (doneCallback) { doneCallback(); }
 
     }).fail(function () {
         if (failCallback) { failCallback(); }

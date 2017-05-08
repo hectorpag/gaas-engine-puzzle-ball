@@ -31,12 +31,14 @@ function updateTacklesMade() {
     tacklesMade++;
     tacklesMadeInLevel++;
     $('.tacklesMade').html(tacklesMade);
+    saveEvent();
 }
 
 function updateMissedZombies() {
     missedZombies++;
     missedZombiesInLevel++;
     $('.missedZombies').html(missedZombies);
+    saveEvent();
 }
 
 function startGame() {
@@ -56,12 +58,14 @@ function checkEndGame() {
 function showPopup() {
     clearInterval(loop);
     saveScore(tacklesMade, 0, levelNumber);
+    saveEvent();
     $('#questionDialog').show();
 }
 
 function endGame() {
     clearInterval(loop);
     saveScore(tacklesMade, 0, levelNumber);
+    saveEvent();
 }
 
 function resetGame() {

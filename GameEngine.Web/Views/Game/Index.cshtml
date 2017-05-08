@@ -51,6 +51,7 @@
         var GENDER = "@Model.Consumer.GaasGender";
         var STARTENDPOINT = '@Url.HttpRouteUrl("api/gamelog/start", new {controller = "GameLog", action = "Start" })';
         var POSTSCOREENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "SaveScore" })';
+        var TELEMETRYENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "Telemetry" })';
         var fps = @GetConfigItem("fps", "45");
     </script>
     <form action="@Url.RouteUrl("Result")" method="post" enctype="multipart/form-data">

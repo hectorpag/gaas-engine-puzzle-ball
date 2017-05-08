@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using GameEngine.Service.Game;
 using GameEngine.Service.GameDataCapture;
+using GameEngine.Service.GameEventData;
 using GameEngine.ViewModel;
 using Microsoft.ApplicationInsights;
 using Newtonsoft.Json;
@@ -15,7 +16,10 @@ namespace GameEngine.Web.Controllers.api
     {
         private readonly IGameDataCaptureService _gameDataCaptureService;
         private readonly IGameService _gameService;
-        public GameLogController(IGameDataCaptureService gameDataCaptureService, IGameService gameService)
+
+        public GameLogController(
+            IGameDataCaptureService gameDataCaptureService, 
+            IGameService gameService)
         {
             _gameDataCaptureService = gameDataCaptureService;
             _gameService = gameService;
@@ -66,6 +70,20 @@ namespace GameEngine.Web.Controllers.api
             gamePlayViewModel.PlayedDate = DateTime.UtcNow;
 
             await Task.Run(() => _gameService.SaveScore(gaasInfoViewModel, gamePlayViewModel));
+        }
+
+        // POST api/<controller>
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.AcceptVerbs("POST")]
+        [System.Web.Http.HttpPost]
+        public async Task Telemetry(Object formData)
+        {
+            Logging.Info("api/telemetry", formData);
+
+            var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
+            var vm = JsonConvert.DeserializeObject<GameEventViewModel>(formData.ToString());
+
+            await Task.Run(() => _gameService.SaveEventData(gaasInfoViewModel, vm));
         }
 
         // POST api/<controller>

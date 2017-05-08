@@ -20,6 +20,7 @@ namespace GameEngine.Model
         public int Id { get; set; } // ID (Primary key)
         public int ConsumerId { get; set; } // Consumer_ID
         public int FuelId { get; set; } // Fuel_ID
+        public System.DateTime EventDate { get; set; } // EventDate
         public string DataJson { get; set; } // DataJson (length: 2000)
 
         // Foreign keys

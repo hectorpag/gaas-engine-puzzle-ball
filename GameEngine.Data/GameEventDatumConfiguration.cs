@@ -31,6 +31,7 @@ namespace GameEngine.Data
             Property(x => x.Id).HasColumnName(@"ID").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.ConsumerId).HasColumnName(@"Consumer_ID").IsRequired().HasColumnType("int");
             Property(x => x.FuelId).HasColumnName(@"Fuel_ID").IsRequired().HasColumnType("int");
+            Property(x => x.EventDate).HasColumnName(@"EventDate").IsRequired().HasColumnType("datetime");
             Property(x => x.DataJson).HasColumnName(@"DataJson").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(2000);
 
             // Foreign keys

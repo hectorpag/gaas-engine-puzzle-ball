@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 using GameEngine.Service.Score;
 //using GaasPlay.Activities;
 using System.Linq;
+using GameEngine.Service.GameEventData;
+
 namespace GameEngine.Service.Game
 {
     public class GameService : IGameService
@@ -20,14 +22,22 @@ namespace GameEngine.Service.Game
         private readonly IConfigService _configService;
         private readonly IConsumerService _consumerService;
         private readonly IGamePlayService _gamePlayService;
+        private readonly IGameEventDataService _gameEventDataService;
         private readonly IFuelService _fuelService;
         private readonly IScoreService _scoreService;
 
-        public GameService(IConfigService configService, IConsumerService consumerService, IGamePlayService gamePlayService, IFuelService fuelService, IScoreService scoreService)
+        public GameService(
+            IConfigService configService, 
+            IConsumerService consumerService, 
+            IGamePlayService gamePlayService, 
+            IGameEventDataService gameEventDataService,
+            IFuelService fuelService, 
+            IScoreService scoreService)
         {
             _configService = configService;
             _consumerService = consumerService;
             _gamePlayService = gamePlayService;
+            _gameEventDataService = gameEventDataService;
             _fuelService = fuelService;
             _scoreService = scoreService;
         }
@@ -149,6 +159,23 @@ namespace GameEngine.Service.Game
             _gamePlayService.Add(gamePlayViewModel);
         }
 
+        public void SaveEventData(GaasInfoViewModel gaasInfoViewModel, GameEventViewModel vm)
+        {
+            var gameViewModel = Load(gaasInfoViewModel);
+
+            //Populate ConsumerId
+            vm.ConsumerId = gameViewModel.Consumer.Id.ToString();
+
+            //Get the fuelID that this score needs to be added to 
+            var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
+            if (currentFuel == null) return;
+
+            vm.FuelId = currentFuel.Id;
+            vm.EventDate = DateTime.UtcNow;
+
+            _gameEventDataService.Add(vm);
+        }
+
         public decimal Score(GaasInfoViewModel gaasInfoViewModel)
         {
             //var consumer = _consumerService.CheckConsumer(gaasInfoViewModel);
@@ -214,7 +241,7 @@ namespace GameEngine.Service.Game
         // GameViewModel LoadConsumer(GaasInfoViewModel gaasInfoViewModel);
         int PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel);
         void SaveScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel);
-
+        void SaveEventData(GaasInfoViewModel gaasInfoViewModel, GameEventViewModel vm);
         decimal Score(GaasInfoViewModel gaasInfoViewModel);
 
         void ClearAllCache();
