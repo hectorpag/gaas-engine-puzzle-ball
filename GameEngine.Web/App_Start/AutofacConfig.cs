@@ -36,6 +36,8 @@ namespace GameEngine.Web
             var gaasPlayApiBaseUrl = ConfigurationManager.AppSettings["GaasPlayApi.BaseUrl"];
             builder.Register<IGaasPlayProfileApi>(
                c => (new GaasPlayProfileApi(new GaasPlay.API.Client.Client.ApiClient(gaasPlayApiBaseUrl, new GaasPlay.API.Client.Client.Configuration(), null))));
+            builder.Register<ICampaignQuestionApi>(
+                c => (new GaasPlayQuestionApi(new GaasPlay.API.Client.Client.ApiClient(gaasPlayApiBaseUrl, new GaasPlay.API.Client.Client.Configuration(), null))));
 
             //Repositories
             builder.RegisterAssemblyTypes(typeof(ConfigRepository).Assembly)

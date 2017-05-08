@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using GaasPlay.API.Client.Api;
@@ -10,15 +12,14 @@ namespace GameEngine.Service.GameDataCapture
     {
         private readonly IGameDataCaptureRepository _gameDataCaptureRepository;
         private readonly IMapper _mapper = AutoMapperConfiguration.MapperConfiguration.CreateMapper();
-        //private readonly IGaasDataCaptureApi _gaasDcApi;
+        private readonly ICampaignQuestionApi  _gaasDcApi;
 
         public GameDataCaptureService(
-            IGameDataCaptureRepository gameDataCaptureRepository
-            //IGaasDataCaptureApi gaasDcApi
-            )
+            IGameDataCaptureRepository gameDataCaptureRepository,
+            ICampaignQuestionApi gaasDcApi)
         {
             _gameDataCaptureRepository = gameDataCaptureRepository;
-            //_gaasDcApi = gaasDcApi;
+            _gaasDcApi = gaasDcApi;
         }
 
         public int Add(GameDataCaptureViewModel gameDataCaptureViewModel)
@@ -30,17 +31,14 @@ namespace GameEngine.Service.GameDataCapture
 
         public GameDataCaptureNextQuestionViewModel GetNextQuestion(GaasInfoViewModel gaasInfoViewModel)
         {
-            return new GameDataCaptureNextQuestionViewModel();
-            //var cacheModel = _cacheManager.Get(GetKey(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId), () =>
-            //{
-            //    var consumer = _consumerRepository.GetByGaasInfo(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
-            //    var viewModel = _mapper.Map<ConsumerViewModel>(consumer);
-            //    return viewModel;
-            //});
+            var rs = _gaasDcApi.GetNextCampaignQuestion(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
+            if (rs == null) throw new Exception("No result returned from data capture.");
 
-            //return cacheModel;
-
-            //_gaasDcApi.GetNext();
+            return new GameDataCaptureNextQuestionViewModel()
+            {
+                Question = rs.Data.CampaignQuestionDescription,
+                Responses = rs.Data.CampaignQuestionResponses.Select(r => r.Response).ToList()
+            };
         }
     }
 
