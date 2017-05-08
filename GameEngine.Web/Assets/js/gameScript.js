@@ -16,7 +16,7 @@ var missedZombiesInLevel = 0;
 var levelNumber = 1;
 
 var posClass = ['leftPos', 'middlePos', 'rightPos'];
-var posValues = [70, 270, 470];
+var posValues = [40, 240, 440];
 
 var maxNumberOfZombies = 10;
 

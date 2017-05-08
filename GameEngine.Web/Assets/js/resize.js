@@ -4,7 +4,7 @@ $(function () {
     var $window = $(window),
         viewAreaHeight = 960,
         viewAreaWidth = 640,
-        $content = $('#wrapper');
+        $content = $('.wrapper');
        
 
     if (typeof InnerViewAreaWidth != 'undefined' && InnerViewAreaWidth > 0) {

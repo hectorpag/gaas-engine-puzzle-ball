@@ -2,7 +2,7 @@ var player = {
     query: '.player',
     pos: 1,
     top: 120,
-    left: 270,
+    left: 240,
     height: 100,
     lateralSpeed: 50,
     moving: false,

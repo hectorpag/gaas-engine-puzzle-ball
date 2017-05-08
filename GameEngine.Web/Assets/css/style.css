@@ -35,42 +35,45 @@
     width: 640px;
     height: 960px;
     overflow: hidden;
-    background-color: mediumseagreen;
+    background-color: forestgreen;
 }
 .tryLine {
     width: 100%;
     height: 10px;
-    top: 100px;
+    top: 220px;
     position: absolute;
     background-color: #fff;
 }
 .player {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 160px;
+    height: 160px;
     top: 120px;
     background-image: url("../images/QLD.png");
     background-repeat: no-repeat;
+    background-size: contain;
     z-index: 2;
 }
 .leftPos {
-    left: 70px;
+    left: 40px;
 }
 .middlePos {
-    left: 270px;
+    left: 240px;
 }
 .rightPos {
-    left: 470px;
+    left: 440px;
 }
 
 .zombie {
     position: absolute;
     width: 100px;
-    height: 100px;
+    height: 175px;
     z-index: 3;
     color: #fff;
     text-align: center;
     background-repeat: no-repeat;
+    background-size: contain;
+
 }
 
 .zombie-frame-0 {
