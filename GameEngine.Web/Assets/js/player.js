@@ -4,7 +4,7 @@ var player = {
     top: 120,
     left: 240,
     height: 100,
-    lateralSpeed: 50,
+    lateralSpeed: 66.666,
     moving: false,
     direction: 0,
     movePlayer: function (_moveAmount) {
