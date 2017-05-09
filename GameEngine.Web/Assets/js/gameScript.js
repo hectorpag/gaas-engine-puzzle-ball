@@ -79,10 +79,14 @@ function showPopup() {
 }
 
 function endGame() {
-    postFinalScore(levelNumber, tacklesMade);
-    clearInterval(loop);
-    saveScore(tacklesMade, 0, levelNumber);
     saveEvent();
+    postFinalScore(levelNumber, tacklesMade);
+    saveScore(tacklesMade, 0, levelNumber);
+    clearInterval(loop);
+
+    $('body, html').fadeTo(3000, 0, function () {
+        gotoResultPage(levelNumber, tacklesMade);
+    });
 }
 
 function resetGame() {

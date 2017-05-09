@@ -59,7 +59,7 @@
         var DCAENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "AnswerQuestion" })';
         var fps = @GetConfigItem("fps", "30");
     </script>
-    <form action="@Url.RouteUrl("Result")" method="post" enctype="multipart/form-data">
+    <form action="@Url.RouteUrl("Result")" method="post" enctype="multipart/form-data" id="resultForm">
         <input name="campaignKey" id="campaignKey" type="hidden" value="@Model.Config.GaasCampaignKey" />
         <input name="panelId" id="panelId" type="hidden" value="@Model.Config.GaasPanelId" />
         <input name="gaasConsumerId" id="consumerId" type="hidden" value="@Model.Consumer.GaasConsumerId"/>
