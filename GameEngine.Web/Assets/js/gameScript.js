@@ -1,7 +1,7 @@
 var loopInterval;
 var frameCount = 0;
 
-var timeToNextSpawn = fps;
+var timeToNextSpawn = fps * 1.5;
 var timeTakenToSpawn = 0;
 
 var outOfBounds = -100;
@@ -100,7 +100,7 @@ function resetGame() {
     levelNumber++;
     noOfZombies = 0;
     timeTakenToSpawn = 0;
-    timeToNextSpawn = fps;
+    timeToNextSpawn = fps * 2;
 
     $('.levelNumberText').html(levelNumber);
 
@@ -121,9 +121,9 @@ function checkHealth() {
         saveProblem(' Made too many tackles.', 2);
         tacklesMadeInLevel = maxNumberOfZombies;
     }
-    if (timeToNextSpawn > fps) {
+    if (timeToNextSpawn > fps * 1.5) {
         saveProblem(' Zombies spawning too slow.', 3);
-        timeTakenToSpawn = fps;
+        timeTakenToSpawn = fps * 1.5;
     }
     if (outOfBounds !== -100) {
         saveProblem(' Game area changed.', 4);
@@ -149,7 +149,7 @@ function checkHealth() {
             saveProblem(' Zombies spawning too fast.', 9);
             zombies[i].speed = -500;
         }
-        if (-200 < zombies[i].speed) {
+        if (-150 < zombies[i].speed) {
             saveProblem(' Zombies spawning too slow.', 10);
             zombies[i].speed = -200;
         }
