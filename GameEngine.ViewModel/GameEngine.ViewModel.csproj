@@ -91,6 +91,7 @@
     <Compile Include="GameDataCaptureViewModel.cs" />
     <Compile Include="GameEventViewModel.cs" />
     <Compile Include="AnswerQuestionViewModel.cs" />
+    <Compile Include="GameOverViewModel.cs" />
     <Compile Include="GamePlayViewModel.cs" />
     <Compile Include="ResultViewModel.cs" />
     <Compile Include="GameViewModel.cs" />

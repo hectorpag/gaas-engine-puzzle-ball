@@ -51,6 +51,8 @@
         var GAMESCORE = 0;
         var GENDER = "@Model.Consumer.GaasGender";
         var STARTENDPOINT = '@Url.HttpRouteUrl("api/gamelog/start", new {controller = "GameLog", action = "Start" })';
+        var FINISHENDPOINT = '@Url.HttpRouteUrl("api/gamelog/start", new {controller = "GameLog", action = "Finish" })';
+        var GAMEOVERENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "GameOver" })';
         var POSTSCOREENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "SaveScore" })';
         var TELEMETRYENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "Telemetry" })';
         var DCQENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "GetNextQuestion" })';
