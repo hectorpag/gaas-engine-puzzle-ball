@@ -27,6 +27,7 @@ var Zombie = {
     jersey: '0',
     name: '', 
     imgFrame: 11,
+    zIndex: 500,
     lastFrameUpdate: new Date().getTime(),
     moveZombie: function() {
         var time = new Date().getTime();
@@ -46,10 +47,14 @@ var Zombie = {
         if (Math.round(this.left) === zombiePosValues[this.destination]) {
             this.lateralSpeed = 0;
         }
+
+        this.zIndex = this.top / 2;
+        //$(this.query).css('z-index', this.zIndex);
          
         $(this.query).css({
             'top': this.top,
-            'left': this.left 
+            'left': this.left,
+            'z-index': parseInt(this.zIndex)
         });
     },
     destroyZombie: function() {
@@ -64,7 +69,7 @@ var Zombie = {
     },
     checkBehindPlayer: function() {
         if (player.top < this.top && this.top < (player.top + player.height)) {
-            $(this.query).css('z-index', '1'); 
+            //$(this.query).css('z-index', '1'); 
         }
     }
 } 
