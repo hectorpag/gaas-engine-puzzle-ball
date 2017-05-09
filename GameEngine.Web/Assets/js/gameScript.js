@@ -59,11 +59,21 @@ function showPopup() {
     saveScore(tacklesMade, 0, levelNumber);
     saveEvent();
 
-    $('#questionDialog').show();
+    if ($('#questionId').val() > 0) {
+        $('#questionDialog').show();
+    } else {
+        resetGame();
+    }
 }
 
 function loadNextQuestion() {
     getNextQuestion(function (data) {
+        if (data.QuestionId === 0) {
+            $('#questionId').val(0);
+            $('#questionContent').html('');
+            $('#questionResponses').html('');
+            return;
+        }
         $('#questionId').val(data.QuestionId);
         $('#questionContent').html(data.Question);
         $('#questionResponses').html('');
