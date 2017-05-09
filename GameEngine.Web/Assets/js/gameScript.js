@@ -79,23 +79,18 @@ function showPopup() {
 function endGame() {
     if (player.status == 'alive') {
         player.status = 'dead';
+        saveEvent();
         postFinalScore(levelNumber, tacklesMade);
+        saveScore(tacklesMade, 0, levelNumber);
         setTimeout(function () {
             clearInterval(loop);
         }, 3000);
         player.kill();
-        saveScore(tacklesMade, 0, levelNumber);
-        saveEvent();
+        $('body, html').fadeTo(3000, 0, function () {
+            gotoResultPage(levelNumber, tacklesMade);
+        });
+        
     }
-}
-    saveEvent();
-    postFinalScore(levelNumber, tacklesMade);
-    saveScore(tacklesMade, 0, levelNumber);
-    clearInterval(loop);
-
-    $('body, html').fadeTo(3000, 0, function () {
-        gotoResultPage(levelNumber, tacklesMade);
-    });
 }
 
 function resetGame() {
