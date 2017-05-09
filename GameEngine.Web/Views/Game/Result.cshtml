@@ -20,17 +20,6 @@
     @* CSS here *@
     @Styles.Render("~/Assets/css/result")
     @Scripts.Render("~/Assets/js/jquery")
-    <style>
-        .message {
-            width: 100%;
-            text-align: center;
-            font-size: 32px;
-            margin-top: -80px; 
-            font-family: 'Arial Rounded MT', Helvetica, sans-serif;
-            color: #fff;
-            text-shadow: 2px 2px 4px #000;
-        }
-    </style>
     @helper MessageText()
     {
         if (Model.Score < 16)
@@ -49,8 +38,9 @@
 <body>
     <div id="wrapper">
         <div class="inner">
-            <p class="finalScore">@Model.Score</p>
-            <p class="message">
+            <p class="bestScore">Best Score: @Model.GameViewModel.Dashboard.BestScore</p>
+            <p class="finalScore">Your Score: @Model.Score</p>
+            <p class="resultMessage">
                 @MessageText()
             </p>
         </div>
