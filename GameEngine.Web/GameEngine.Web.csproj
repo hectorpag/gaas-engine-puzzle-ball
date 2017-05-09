@@ -247,11 +247,12 @@
     <Content Include="Assets\images\8.png" />
     <Content Include="Assets\images\9.png" />
     <Content Include="Assets\images\back.png" />
-    <Content Include="Assets\images\background.jpg" />
     <Content Include="Assets\images\continue-btn.jpg" />
+    <Content Include="Assets\images\background.jpg" />
     <Content Include="Assets\images\finish-btn.jpg" />
     <Content Include="Assets\images\home-bg.jpg" />
     <Content Include="Assets\images\leaderboard-btn.jpg" />
+    <Content Include="Assets\images\zombieSpritesheet.png" />
     <Content Include="Assets\images\NSW_WALK_00.png" />
     <Content Include="Assets\images\NSW_WALK_01.png" />
     <Content Include="Assets\images\NSW_WALK_02.png" />
@@ -269,7 +270,6 @@
     <Content Include="Assets\images\results-bg.jpg" />
     <Content Include="Assets\images\play-btn.jpg" />
     <Content Include="Assets\images\playagain-btn.jpg" />
-    <Content Include="Assets\images\zombieSpritesheet.png" />
     <Content Include="Assets\js\gameScript.js" />
     <Content Include="Assets\js\player.js" />
     <Content Include="Assets\js\zombies.js" />

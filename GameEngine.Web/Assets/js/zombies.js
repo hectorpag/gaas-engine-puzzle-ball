@@ -57,7 +57,7 @@ var Zombie = {
         this.status = 'dead';
     },
     checkHit: function() {
-        if (player.top < this.top && this.top < (player.top + player.height) && this.destination === player.pos) {
+        if (player.top < this.top && this.top < (player.top + player.height - 50) && this.destination === player.pos) {
             this.destroyZombie();
             updateTacklesMade();
         }

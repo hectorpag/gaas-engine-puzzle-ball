@@ -35,7 +35,6 @@
             <div>
                 Tackles: <span class="tacklesMade">0</span> - Missed: <span class="missedZombies">0</span> - Level: <span class="levelNumberText">1</span>
             </div>
-            <div class="tryLine"></div>
             <div class="player middlePos"></div>
         </div>
     </div>
@@ -56,7 +55,7 @@
         var TELEMETRYENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "Telemetry" })';
         var DCQENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "GetNextQuestion" })';
         var DCAENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "AnswerQuestion" })';
-        var fps = @GetConfigItem("fps", "45");
+        var fps = @GetConfigItem("fps", "30");
     </script>
     <form action="@Url.RouteUrl("Result")" method="post" enctype="multipart/form-data">
         <input name="campaignKey" id="campaignKey" type="hidden" value="@Model.Config.GaasCampaignKey" />
