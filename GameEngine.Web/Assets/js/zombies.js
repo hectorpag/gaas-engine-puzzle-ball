@@ -28,6 +28,7 @@ var Zombie = {
     name: '', 
     imgFrame: 11,
     zIndex: 500,
+    zoom: 1,
     lastFrameUpdate: new Date().getTime(),
     moveZombie: function() {
         var time = new Date().getTime();
@@ -49,11 +50,13 @@ var Zombie = {
         }
 
         this.zIndex = this.top / 2;
+        this.zoom = 1 + (this.top / 1400)
         //$(this.query).css('z-index', this.zIndex);
          
         $(this.query).css({
             'top': this.top,
             'left': this.left,
+            'transform': 'scale(' + this.zoom + ')',
             'z-index': parseInt(this.zIndex + 10)
         });
     },
@@ -62,7 +65,7 @@ var Zombie = {
         this.status = 'dead';
     },
     checkHit: function() {
-        if (player.top < this.top && this.top < (player.top + player.height - 50) && this.destination === player.pos) {
+        if (player.top - 50 < this.top && this.top < (player.top + player.height - 100) && this.destination === player.pos) {
             this.destroyZombie();
             updateTacklesMade();
         }
