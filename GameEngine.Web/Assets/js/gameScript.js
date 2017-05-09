@@ -47,12 +47,10 @@ function startGame() {
 }
 
 function checkEndGame() {
-    if (missedZombies >= 3) {
+    if (missedZombies >= 3 && player.status == 'alive') {
         endGame();
-        console.log(whatsWrong);
     } else if (tacklesMadeInLevel + missedZombiesInLevel >= maxNumberOfZombies) {
         showPopup();
-        console.log(whatsWrong);
     }
 }
 
@@ -79,10 +77,16 @@ function showPopup() {
 }
 
 function endGame() {
-    postFinalScore(levelNumber, tacklesMade);
-    clearInterval(loop);
-    saveScore(tacklesMade, 0, levelNumber);
-    saveEvent();
+    if (player.status == 'alive') {
+        player.status = 'dead';
+        postFinalScore(levelNumber, tacklesMade);
+        setTimeout(function () {
+            clearInterval(loop);
+        }, 3000);
+        player.kill();
+        saveScore(tacklesMade, 0, levelNumber);
+        saveEvent();
+    }
 }
 
 function resetGame() {

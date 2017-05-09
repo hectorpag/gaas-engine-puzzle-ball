@@ -1,5 +1,6 @@
 var player = {
     query: '.player',
+    status: 'alive',
     pos: 1,
     top: 120,
     left: 270,
@@ -29,5 +30,9 @@ var player = {
                 }
             }
         }
+    },
+    kill: function () {
+        $(this.query).fadeOut();
     }
+
 }
