@@ -43,7 +43,7 @@ function updateMissedZombies() {
 }
 
 function startGame() {
-    loop = setInterval(mainLoop, (1000 / fps));
+    loopInterval = setInterval(mainLoop, (1000 / fps));
 }
 
 function checkEndGame() {
@@ -55,7 +55,7 @@ function checkEndGame() {
 }
 
 function showPopup() {
-    clearInterval(loop);
+    clearInterval(loopInterval);
     saveScore(tacklesMade, 0, levelNumber);
     saveEvent();
 
@@ -85,7 +85,7 @@ function endGame() {
         postFinalScore(levelNumber, tacklesMade);
         saveScore(tacklesMade, 0, levelNumber);
         setTimeout(function () {
-            clearInterval(loop);
+            clearInterval(loopInterval);
         }, 3000);
         player.kill();
         $('body, html').fadeTo(3000, 0, function () {
@@ -101,7 +101,7 @@ function resetGame() {
     levelNumber++;
     noOfZombies = 0;
     timeTakenToSpawn = 0;
-    timeToNextSpawn = fps * 2;
+    timeToNextSpawn = fps * 1.5;
 
     $('.levelNumberText').html(levelNumber);
 
