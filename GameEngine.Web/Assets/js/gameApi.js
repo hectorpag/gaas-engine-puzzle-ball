@@ -186,3 +186,9 @@ function answerQuestion(questionId, responseId, doneCallback, failCallback) {
 
     });
 }
+
+var gotoResultPage = function (level, score) {
+    $('#level').val(level);
+    $('#score').val(score);
+    $("#resultForm").submit();
+};

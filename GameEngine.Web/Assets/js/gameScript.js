@@ -88,6 +88,15 @@ function endGame() {
         saveEvent();
     }
 }
+    saveEvent();
+    postFinalScore(levelNumber, tacklesMade);
+    saveScore(tacklesMade, 0, levelNumber);
+    clearInterval(loop);
+
+    $('body, html').fadeTo(3000, 0, function () {
+        gotoResultPage(levelNumber, tacklesMade);
+    });
+}
 
 function resetGame() {
     maxNumberOfZombies += 10;

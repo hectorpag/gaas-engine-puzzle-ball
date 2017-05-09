@@ -96,7 +96,20 @@ namespace GameEngine.Web.Controllers
         [HttpPost]
         public ActionResult Result(FormCollection formCollection)
         {
-           return new EmptyResult();
+            var gaasInfoViewModel = new GaasInfoViewModel
+            {
+                CampaignKey = formCollection["campaignKey"],
+                PanelId = Convert.ToInt32(formCollection["panelId"]),
+                ConsumerId = formCollection["gaasConsumerId"]
+            };
+
+            var gameViewModel = _gameService.Load(gaasInfoViewModel);
+            var resultViewModel = new ResultViewModel()
+            {
+                GameViewModel = gameViewModel,
+                Score = decimal.Parse(formCollection["score"])
+            };
+            return View("Result", resultViewModel);
         }
         #endregion
 
