@@ -1,16 +1,16 @@
 ﻿#region
 
 using System;
-using System.Collections.Generic;
 
 #endregion
 
 namespace GameEngine.ViewModel
 {
-    public class GameDataCaptureNextQuestionViewModel
+    public class AnswerQuestionViewModel
     {
         public int QuestionId { get; set; }
         public string Question { get; set; }
-        public List<string> Responses { get; set; }
+        public string AnswerValue { get; set; }
+        public DateTime? EventDate { get; set; }
     }
 }

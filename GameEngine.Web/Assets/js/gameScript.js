@@ -62,6 +62,7 @@ function showPopup() {
     saveEvent();
 
     getNextQuestion(function (data) {
+        $('#questionId').val(data.QuestionId);
         $('#questionContent').html(data.Question);
         $('#questionResponses').html('');
         var i = 0;
@@ -194,6 +195,10 @@ function checkKeyPress(e) {
 $(document).ready(function() {
     
     $('#questionDialogButton').click(function () {
+        answerQuestion(
+            $('#questionId').val(),
+            $('#questionContent').html(),
+            $('input[name=Answer]:checked').val());
         $('#questionDialog').hide();
         resetGame();
     });

@@ -54,7 +54,8 @@
         var STARTENDPOINT = '@Url.HttpRouteUrl("api/gamelog/start", new {controller = "GameLog", action = "Start" })';
         var POSTSCOREENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "SaveScore" })';
         var TELEMETRYENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "Telemetry" })';
-        var DCENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "GetNextQuestion" })';
+        var DCQENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "GetNextQuestion" })';
+        var DCAENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "AnswerQuestion" })';
         var fps = @GetConfigItem("fps", "45");
     </script>
     <form action="@Url.RouteUrl("Result")" method="post" enctype="multipart/form-data">

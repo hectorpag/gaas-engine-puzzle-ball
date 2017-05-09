@@ -127,7 +127,7 @@ function getNextQuestion(doneCallback, failCallback) {
     $.ajax({
         "async": true,
         "crossDomain": true,
-        "url": DCENDPOINT,
+        "url": DCQENDPOINT,
         "method": "POST",
         "headers": {
             "content-type": "application/json",
@@ -138,6 +138,34 @@ function getNextQuestion(doneCallback, failCallback) {
             CampaignKey: CAMPAIGN_KEY,
             ConsumerId: GAAS_CONSUMER_ID,
             PanelId: PANEL_ID
+        })
+    }).done(function (data) {
+        if (doneCallback) { doneCallback(data); }
+
+    }).fail(function () {
+        if (failCallback) { failCallback(); }
+
+    });
+}
+
+function answerQuestion(questionId, question, answer, doneCallback, failCallback) {
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": DCAENDPOINT,
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "cache-control": "no-cache"
+        },
+        "processData": true,
+        "data": JSON.stringify({
+            CampaignKey: CAMPAIGN_KEY,
+            ConsumerId: GAAS_CONSUMER_ID,
+            PanelId: PANEL_ID,
+            QuestionId: questionId,
+            Question: question,
+            AnswerValue: answer
         })
     }).done(function (data) {
         if (doneCallback) { doneCallback(data); }

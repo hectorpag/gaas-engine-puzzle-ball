@@ -40,9 +40,11 @@ namespace GameEngine.Web.Controllers
 
             var gameViewModel = _gameService.Load(gaasInfoViewModel);
 
+            if (gameViewModel.Config == null)
+                throw new Exception("Config returned null, possible invalid campaign key.");
 
             //1.Check Level number
-            if (gameViewModel.Config.LevelNumber == 1)
+            if ((gameViewModel.Config.LevelNumber ?? 0) == 1)
             {
                 //TODO : Remove this after demo
                 _fuelService.ResetUnusedFuel(gameViewModel.Consumer.Id);

@@ -33,17 +33,28 @@ namespace GameEngine.Service.GameDataCapture
         {
             return new GameDataCaptureNextQuestionViewModel()
             {
+                QuestionId = 1234,
                 Question = "Can you haz cheesburger?",
                 Responses = new List<string>() { "Salmon", "Groot", "Mirklewinks", "Atom bombs" }
             };
             //var rs = _gaasDcApi.GetNextCampaignQuestion(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
             //if (rs == null) throw new Exception("No result returned from data capture.");
 
+            //rs.Data.CampaignQuestionId
             //return new GameDataCaptureNextQuestionViewModel()
             //{
+            //    QuestionId = rs.Data.CampaignQuestionId,
             //    Question = rs.Data.CampaignQuestionDescription,
             //    Responses = rs.Data.CampaignQuestionResponses.Select(r => r.Response).ToList()
             //};
+        }
+
+        public void AnswerQuestion(GaasInfoViewModel gaasInfoViewModel, AnswerQuestionViewModel answerVm)
+        {
+            var rs = _gaasDcApi.SubmitAnswer(
+                gaasInfoViewModel.CampaignKey, 
+                gaasInfoViewModel.ConsumerId,
+                answerVm.QuestionId, "huh?");
         }
     }
 
@@ -51,5 +62,6 @@ namespace GameEngine.Service.GameDataCapture
     {
         int Add(GameDataCaptureViewModel gameDataCaptureViewModel);
         GameDataCaptureNextQuestionViewModel GetNextQuestion(GaasInfoViewModel gaasInfoViewModel);
+        void AnswerQuestion(GaasInfoViewModel gaasInfoViewModel, AnswerQuestionViewModel answerVm);
     }
 }
