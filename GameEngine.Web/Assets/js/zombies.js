@@ -17,6 +17,7 @@ var zombies = [];
 var Zombie = {
     id: 0,
     query: '.zombie' + this.id,
+    type: 'normal',
     top: 960,
     pos: 0,
     left: 70,
@@ -30,6 +31,7 @@ var Zombie = {
     zIndex: 500,
     zoom: 1,
     lastFrameUpdate: new Date().getTime(),
+    lastFlashUpdate: new Date().getTime(),
     moveZombie: function() {
         var time = new Date().getTime();
         if ((time - this.lastFrameUpdate) > (80 - this.speed / -10)) {
@@ -41,6 +43,15 @@ var Zombie = {
             this.imgFrame++;
             $(this.query).addClass('zombie-frame-' + this.imgFrame);
         }
+
+        if (this.type == 'bonus') {
+            var flashTime = new Date().getTime();
+            if ((flashTime - this.lastFlashUpdate) > 250) {
+                this.lastFlashUpdate = flashTime;
+                $(this.query).toggleClass('bonusZombie');
+            }
+        }
+        
 
         this.top += this.speed / fps;
         this.left += this.lateralSpeed / fps;
@@ -66,8 +77,12 @@ var Zombie = {
     },
     checkHit: function() {
         if (player.top - 50 < this.top && this.top < (player.top + player.height - 100) && this.destination === player.pos) {
+            var pointsScored = 1;
             this.destroyZombie();
-            updateTacklesMade();
+            if (this.type == 'bonus') {
+                pointsScored = 5;
+            }
+            updateTacklesMade(pointsScored);
         }
     },
     checkBehindPlayer: function() {
@@ -87,6 +102,10 @@ function createZombies() {
         zombieTemp.left = zombiePosValues[zombieTemp.pos];
         zombieTemp.query = '.zombie' + zombieTemp.id;
         zombieTemp.speed = Math.floor((Math.random() * -300) * Math.random()) - 150;
+
+        if ((noOfZombies + 1) % 10 === 0) {
+            zombieTemp.type = 'bonus';
+        }
 
         var destinationDistance = zombieTemp.pos - zombieTemp.destination;
         zombieTemp.lateralSpeed = destinationDistance * (zombieTemp.speed / 4);

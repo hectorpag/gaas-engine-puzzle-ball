@@ -28,10 +28,13 @@ var devToolsOpened = false;
 
 var problemArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-function updateTacklesMade() {
+var score = 0;
+
+function updateTacklesMade(_pointsScored) {
+    score += _pointsScored;
     tacklesMade++;
     tacklesMadeInLevel++;
-    $('.tacklesMade').html(tacklesMade);
+    $('.tacklesMade').html(score);
     saveEvent();
 }
 

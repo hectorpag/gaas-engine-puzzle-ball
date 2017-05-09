@@ -77,6 +77,11 @@
     background-image: url(../images/zombieSpritesheet.png);
 }
 
+.bonusZombie {
+    -webkit-filter: hue-rotate(90deg) invert(100%); /* Safari */
+    filter: hue-rotate(90deg) invert(100%);
+}
+
 .zombie-frame-0 {
     background-position: -1100px 0px;
 }
