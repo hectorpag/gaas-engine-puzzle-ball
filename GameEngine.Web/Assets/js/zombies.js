@@ -71,8 +71,13 @@ var Zombie = {
             'z-index': parseInt(this.zIndex + 10)
         });
     },
-    destroyZombie: function() {
-        $(this.query).remove();
+    destroyZombie: function () {
+        $(this.query).attr('class', 'zombie bones ' + 'zombie' + this.id);
+        $(this.query).addClass('bones');
+        $(this.query).fadeOut(1500, function () {
+            $(this).remove();
+        });
+        
         this.status = 'dead';
     },
     checkHit: function() {
@@ -94,6 +99,8 @@ var Zombie = {
 
 function createZombies() {
     if (noOfZombies < maxNumberOfZombies) {
+        noOfZombies++;
+
         var numberOfZombies = noOfZombies;
         var zombieTemp = Object.create(Zombie);
         zombieTemp.id = numberOfZombies;
@@ -144,7 +151,7 @@ function createZombies() {
 
         zombies.push(zombieTemp);
         $('.inner').append('<div class="zombie zombie' + zombieTemp.id + ' ' + posClass[zombieTemp.pos] + '"><div class="jerseyName">' + zombiePlayers[zombiePlayerIndex][1] + '</div><div class="jerseyNumber">' + zombiePlayers[zombiePlayerIndex][0] + '</div></div>');
-        noOfZombies++;
+        
     }
 }
 

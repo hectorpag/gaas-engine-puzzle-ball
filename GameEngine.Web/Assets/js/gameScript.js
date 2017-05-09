@@ -192,8 +192,8 @@ function mainLoop() {
     player.slidePlayer();
     
     if (timeTakenToSpawn >= timeToNextSpawn) {
-        createZombies();
         timeTakenToSpawn = 0;
+        createZombies();
         if (timeToNextSpawn > 15) {
             timeToNextSpawn -= 0.5;
         }
