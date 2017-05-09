@@ -12,14 +12,14 @@ namespace GameEngine.Service.GameDataCapture
     {
         private readonly IGameDataCaptureRepository _gameDataCaptureRepository;
         private readonly IMapper _mapper = AutoMapperConfiguration.MapperConfiguration.CreateMapper();
-        private readonly ICampaignQuestionApi  _gaasDcApi;
+        private readonly ICampaignQuestionApi _gaasPlayDataCaptureApi;
 
         public GameDataCaptureService(
             IGameDataCaptureRepository gameDataCaptureRepository,
-            ICampaignQuestionApi gaasDcApi)
+            ICampaignQuestionApi gaasPlayDataCaptureApi)
         {
             _gameDataCaptureRepository = gameDataCaptureRepository;
-            _gaasDcApi = gaasDcApi;
+            _gaasPlayDataCaptureApi = gaasPlayDataCaptureApi;
         }
 
         public int Add(GameDataCaptureViewModel gameDataCaptureViewModel)
@@ -35,26 +35,29 @@ namespace GameEngine.Service.GameDataCapture
             {
                 QuestionId = 1234,
                 Question = "Can you haz cheesburger?",
-                Responses = new List<string>() { "Salmon", "Groot", "Mirklewinks", "Atom bombs" }
+                Responses = new Dictionary<string, string>()
+                {
+                    {"1","Salmon"}, {"2", "Groot"}, {"3", "Mirklewinks"}, {"4", "Atom bombs"}
+                }
             };
-            //var rs = _gaasDcApi.GetNextCampaignQuestion(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
+            //var rs = _gaasPlayDataCaptureApi.GetNextCampaignQuestion(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
             //if (rs == null) throw new Exception("No result returned from data capture.");
 
-            //rs.Data.CampaignQuestionId
             //return new GameDataCaptureNextQuestionViewModel()
             //{
             //    QuestionId = rs.Data.CampaignQuestionId,
             //    Question = rs.Data.CampaignQuestionDescription,
-            //    Responses = rs.Data.CampaignQuestionResponses.Select(r => r.Response).ToList()
+            //    Responses = rs.Data.CampaignQuestionResponses.ToDictionary(r => r.ResponseId.ToString(), r => r.Response)
             //};
         }
 
         public void AnswerQuestion(GaasInfoViewModel gaasInfoViewModel, AnswerQuestionViewModel answerVm)
         {
-            var rs = _gaasDcApi.SubmitAnswer(
-                gaasInfoViewModel.CampaignKey, 
-                gaasInfoViewModel.ConsumerId,
-                answerVm.QuestionId, "huh?");
+            //var rs = _gaasPlayDataCaptureApi.SubmitAnswer(
+            //    gaasInfoViewModel.CampaignKey, 
+            //    gaasInfoViewModel.ConsumerId,
+            //    answerVm.QuestionId, 
+            //    answerVm.ResponseId);
         }
     }
 

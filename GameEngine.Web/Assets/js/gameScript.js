@@ -66,11 +66,11 @@ function showPopup() {
         $('#questionContent').html(data.Question);
         $('#questionResponses').html('');
         var i = 0;
-        data.Responses.forEach(function (item) {
+        $.each(data.Responses, function (key, value) {
             var qdiv = document.createElement('div');
             i++;
-            $(qdiv).append('<input type="radio" name="Answer" value="' + item + '" id="answerInput' + i + '" required />');
-            $(qdiv).append('<label for="answerInput' + i + '">' + item + '</label>');
+            $(qdiv).append('<input type="radio" name="Answer" value="' + key + '" id="answerInput' + i + '" required />');
+            $(qdiv).append('<label for="answerInput' + i + '">' + value + '</label>');
             $('#questionResponses').append(qdiv);
         });
 
@@ -197,7 +197,6 @@ $(document).ready(function() {
     $('#questionDialogButton').click(function () {
         answerQuestion(
             $('#questionId').val(),
-            $('#questionContent').html(),
             $('input[name=Answer]:checked').val());
         $('#questionDialog').hide();
         resetGame();

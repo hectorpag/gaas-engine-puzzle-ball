@@ -11,6 +11,6 @@ namespace GameEngine.ViewModel
     {
         public int QuestionId { get; set; }
         public string Question { get; set; }
-        public List<string> Responses { get; set; }
+        public Dictionary<string, string> Responses { get; set; }
     }
 }

@@ -148,7 +148,7 @@ function getNextQuestion(doneCallback, failCallback) {
     });
 }
 
-function answerQuestion(questionId, question, answer, doneCallback, failCallback) {
+function answerQuestion(questionId, responseId, doneCallback, failCallback) {
     $.ajax({
         "async": true,
         "crossDomain": true,
@@ -164,8 +164,7 @@ function answerQuestion(questionId, question, answer, doneCallback, failCallback
             ConsumerId: GAAS_CONSUMER_ID,
             PanelId: PANEL_ID,
             QuestionId: questionId,
-            Question: question,
-            AnswerValue: answer
+            ResponseId: responseId
         })
     }).done(function (data) {
         if (doneCallback) { doneCallback(data); }
