@@ -30,6 +30,18 @@ namespace GameEngine.Web
             );
 
             config.Routes.MapHttpRoute(
+                name: "api/gamelog/telemetry",
+                routeTemplate: "api/gamelog/telemetry",
+                defaults: new { controller = "GameLog", action = "Telemetry" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "api/gamelog/gameover",
+                routeTemplate: "api/gamelog/gameover",
+                defaults: new { controller = "GameLog", action = "GameOver" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "api/dc/getnextquestion",
                 routeTemplate: "api/dc/getnextquestion",
                 defaults: new { controller = "Dc", action = "GetnextQuestion" }

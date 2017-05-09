@@ -2,19 +2,31 @@
 var qrs = "";
 var correctPicked = false;
 
-var PostScore = function (level, score, callback) {
-    $.post(POST_SCORE_ENDPOINT,
-        {
-            campaignkey: CAMPAIGN_KEY,
-            panelId: PANEL_ID,
-            gaasConsumerId: GAAS_CONSUMER_ID,
-            score: score,
-            level: level
+var postFinalScore = function (level, score, doneCallback, failCallback) {
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": GAMEOVERENDPOINT,
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "cache-control": "no-cache"
         },
-        function (data) {
-            callback(data);
-        },
-        "json");
+        "processData": true,
+        "data": JSON.stringify({
+            CampaignKey: CAMPAIGN_KEY,
+            ConsumerId: GAAS_CONSUMER_ID,
+            PanelId: PANEL_ID,
+            Level: level,
+            Score: score
+        })
+    }).done(function () {
+        if (doneCallback) { doneCallback(); }
+
+    }).fail(function () {
+        if (failCallback) { failCallback(); }
+
+    });
 };
 
 function startGame() {

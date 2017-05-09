@@ -79,6 +79,7 @@ function showPopup() {
 }
 
 function endGame() {
+    postFinalScore(levelNumber, tacklesMade);
     clearInterval(loop);
     saveScore(tacklesMade, 0, levelNumber);
     saveEvent();

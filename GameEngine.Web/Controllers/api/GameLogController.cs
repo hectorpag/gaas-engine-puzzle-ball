@@ -90,6 +90,21 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.AllowAnonymous]
         [System.Web.Http.AcceptVerbs("POST")]
         [System.Web.Http.HttpPost]
+        public async Task GameOver(Object formData)
+        {
+            Logging.Info("api/gamelog/gameover", formData);
+
+            var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
+            var gameOverViewModel = JsonConvert.DeserializeObject<GameOverViewModel>(formData.ToString());
+            gameOverViewModel.EventDate = DateTime.UtcNow;
+
+            await Task.Run(() => _gameService.SaveFinalScore(gaasInfoViewModel, gameOverViewModel));
+        }
+
+        // POST api/<controller>
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.AcceptVerbs("POST")]
+        [System.Web.Http.HttpPost]
         public async Task CustomEvent(Object formData)
         {
             Logging.Info("api/gamelog/CustomEvent", formData);
