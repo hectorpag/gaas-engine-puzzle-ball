@@ -43,9 +43,7 @@ namespace GameEngine.Web.Controllers.api
             var answerVm = JsonConvert.DeserializeObject<AnswerQuestionViewModel>(formData.ToString());
             answerVm.EventDate = DateTime.UtcNow;
             
-            // TODO save to DB, post to gaas
-
-            //await Task.Run(() => _gameDataCaptureService.AnswerQuestion(gaasInfo, answerVm));
+            await Task.Run(() => _gameDataCaptureService.AnswerQuestion(gaasInfo, answerVm));
         }
     }
 }
