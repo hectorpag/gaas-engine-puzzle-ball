@@ -20,12 +20,39 @@
     @* CSS here *@
     @Styles.Render("~/Assets/css/result")
     @Scripts.Render("~/Assets/js/jquery")
+    <style>
+        .message {
+            width: 100%;
+            text-align: center;
+            font-size: 32px;
+            margin-top: -80px; 
+            font-family: 'Arial Rounded MT', Helvetica, sans-serif;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+        }
+    </style>
+    @helper MessageText()
+    {
+        if (Model.Score < 16)
+            { <text>A slow start but plenty to work on!</text> }
 
+        else if (Model.Score < 31)
+            { <text>Picking up the pace, keep going!</text> }
+
+        else if (Model.Score < 51)
+            { <text>Solid play! Showing great potential!</text> }
+
+        else
+            { <text>A rock star performance. Awesome!</text> }
+    }
 </head>
 <body>
     <div id="wrapper">
         <div class="inner">
             <p class="finalScore">@Model.Score</p>
+            <p class="message">
+                @MessageText()
+            </p>
         </div>
     </div>
     <script>
