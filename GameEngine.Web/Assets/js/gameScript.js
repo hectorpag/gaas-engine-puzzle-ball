@@ -59,6 +59,10 @@ function showPopup() {
     saveScore(tacklesMade, 0, levelNumber);
     saveEvent();
 
+    $('#questionDialog').show();
+}
+
+function loadNextQuestion() {
     getNextQuestion(function (data) {
         $('#questionId').val(data.QuestionId);
         $('#questionContent').html(data.Question);
@@ -71,8 +75,6 @@ function showPopup() {
             $(qdiv).append('<label for="answerInput' + i + '">' + value + '</label>');
             $('#questionResponses').append(qdiv);
         });
-
-        $('#questionDialog').show();
     });
 }
 
@@ -89,7 +91,6 @@ function endGame() {
         $('body, html').fadeTo(3000, 0, function () {
             gotoResultPage(levelNumber, tacklesMade);
         });
-        
     }
 }
 
@@ -202,12 +203,14 @@ function checkKeyPress(e) {
 }
 
 $(document).ready(function() {
+    loadNextQuestion();
     
     $('#questionDialogButton').click(function () {
         answerQuestion(
             $('#questionId').val(),
             $('input[name=Answer]:checked').val());
         $('#questionDialog').hide();
+        loadNextQuestion();
         resetGame();
     });
 
