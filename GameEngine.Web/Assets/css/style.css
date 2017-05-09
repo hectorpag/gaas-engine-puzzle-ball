@@ -54,7 +54,7 @@
     background-image: url(../images/defender.png);
     background-repeat: no-repeat;
     background-size: contain;
-    z-index: 30;
+    z-index: 40;
 }
 .leftPos {
     left: 40px;

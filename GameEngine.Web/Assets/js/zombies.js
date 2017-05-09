@@ -31,7 +31,7 @@ var Zombie = {
     lastFrameUpdate: new Date().getTime(),
     moveZombie: function() {
         var time = new Date().getTime();
-        if ((time - this.lastFrameUpdate) > 60) {
+        if ((time - this.lastFrameUpdate) > (80 - this.speed / -10)) {
             this.lastFrameUpdate = time;
             $(this.query).removeClass('zombie-frame-' + this.imgFrame);
             if (this.imgFrame === 11) {
@@ -54,7 +54,7 @@ var Zombie = {
         $(this.query).css({
             'top': this.top,
             'left': this.left,
-            'z-index': parseInt(this.zIndex)
+            'z-index': parseInt(this.zIndex + 10)
         });
     },
     destroyZombie: function() {
@@ -83,7 +83,7 @@ function createZombies() {
         zombieTemp.destination = Math.floor(Math.random() * 3);
         zombieTemp.left = zombiePosValues[zombieTemp.pos];
         zombieTemp.query = '.zombie' + zombieTemp.id;
-        zombieTemp.speed = Math.floor(Math.random() * -300) - 200;
+        zombieTemp.speed = Math.floor((Math.random() * -300) * Math.random()) - 150;
 
         var destinationDistance = zombieTemp.pos - zombieTemp.destination;
         zombieTemp.lateralSpeed = destinationDistance * (zombieTemp.speed / 4);
