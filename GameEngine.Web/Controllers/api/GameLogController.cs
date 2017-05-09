@@ -80,10 +80,10 @@ namespace GameEngine.Web.Controllers.api
         {
             Logging.Info("api/gamelog/telemetry", formData);
 
-            var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
-            var vm = JsonConvert.DeserializeObject<GameEventViewModel>(formData.ToString());
-
-            await Task.Run(() => _gameService.SaveEventData(gaasInfoViewModel, vm));
+            await Task.Run(() => _gameService.SaveEventData(
+                JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString()), 
+                JsonConvert.DeserializeObject<GameEventViewModel>(formData.ToString()))
+            );
         }
 
         // POST api/<controller>
@@ -94,11 +94,10 @@ namespace GameEngine.Web.Controllers.api
         {
             Logging.Info("api/gamelog/gameover", formData);
 
-            var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
-            var gameOverViewModel = JsonConvert.DeserializeObject<GameOverViewModel>(formData.ToString());
-            gameOverViewModel.EventDate = DateTime.UtcNow;
-
-            await Task.Run(() => _gameService.SaveFinalScore(gaasInfoViewModel, gameOverViewModel));
+            await Task.Run(() => _gameService.SaveFinalScore(
+                JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString()),
+                JsonConvert.DeserializeObject<GameOverViewModel>(formData.ToString()))
+            );
         }
 
         // POST api/<controller>

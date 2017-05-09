@@ -176,9 +176,16 @@ namespace GameEngine.Service.Game
             _gameEventDataService.Add(vm);
         }
 
-        public void SaveFinalScore(GaasInfoViewModel gaasInfoViewModel, GameOverViewModel gamePlayViewModel)
+        public void SaveFinalScore(GaasInfoViewModel gaasInfoViewModel, GameOverViewModel vm)
         {
-            
+            var gameViewModel = Load(gaasInfoViewModel);
+
+            _scoreService.Add(new ScoreViewModel()
+            {
+                ConsumerId = gameViewModel.Consumer.Id,
+                Scored = DateTime.UtcNow,
+                Result = vm.Score
+            });
         }
 
         public decimal Score(GaasInfoViewModel gaasInfoViewModel)
@@ -247,7 +254,7 @@ namespace GameEngine.Service.Game
         int PostScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel);
         void SaveScore(GaasInfoViewModel gaasInfoViewModel, GamePlayViewModel gamePlayViewModel);
         void SaveEventData(GaasInfoViewModel gaasInfoViewModel, GameEventViewModel vm);
-        void SaveFinalScore(GaasInfoViewModel gaasInfoViewModel, GameOverViewModel gamePlayViewModel);
+        void SaveFinalScore(GaasInfoViewModel gaasInfoViewModel, GameOverViewModel vm);
         decimal Score(GaasInfoViewModel gaasInfoViewModel);
 
         void ClearAllCache();
