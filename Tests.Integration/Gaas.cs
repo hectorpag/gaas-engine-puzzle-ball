@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Autofac;
 using GaasPlay.API.Client.Api;
 using GameEngine.Service;
@@ -45,11 +46,16 @@ namespace Tests.Integration
         }
 
         [TestMethod]
-        public void GetNextQuestion()
+        public void GetAndAnswerQuestion()
         {
             var svc = _scope.Resolve<ICampaignQuestionApi>();
-            var rs = svc.GetNextCampaignQuestion(campaignKey, consumerId);
-            Assert.IsNotNull(rs);
+            var q = svc.GetNextCampaignQuestion(campaignKey, consumerId);
+            Assert.IsNotNull(q);
+            Assert.IsNotNull(q.Data);
+
+            var a = svc.SubmitAnswer(campaignKey, consumerId, 
+                q.Data.CampaignQuestionId, q.Data.CampaignQuestionResponses.First().ResponseId.ToString());
+            Assert.IsNotNull(a);
         }
     }
 }
