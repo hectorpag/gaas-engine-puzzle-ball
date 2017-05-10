@@ -89,10 +89,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="GaasPlay.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.54\lib\net461\GaasPlay.API.Client.dll</HintPath>
+      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.56\lib\net461\GaasPlay.API.Client.dll</HintPath>
     </Reference>
     <Reference Include="GaasPlayCore.ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.54\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
+      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.56\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
