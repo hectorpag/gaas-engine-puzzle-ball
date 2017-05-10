@@ -1,7 +1,7 @@
 var loopInterval;
 var frameCount = 0;
 
-var timeToNextSpawn = fps * 1.5;
+var timeToNextSpawn = fps * 2;
 var timeTakenToSpawn = 0;
 
 var outOfBounds = -100;
@@ -46,7 +46,13 @@ function updateMissedZombies() {
 }
 
 function startGame() {
-    loopInterval = setInterval(mainLoop, (1000 / fps));
+    $('.waveNumber').html(levelNumber);
+    $('.wave').fadeIn(500);
+    $('.wave').fadeOut(3000);
+    setTimeout(function () {
+        loopInterval = setInterval(mainLoop, (1000 / fps));
+    }, 2000);
+    
 }
 
 function checkEndGame() {
@@ -114,7 +120,7 @@ function resetGame() {
     levelNumber++;
     noOfZombies = 0;
     timeTakenToSpawn = 0;
-    timeToNextSpawn = fps * 1.5;
+    timeToNextSpawn = fps * 2;
 
     $('.levelNumberText').html(levelNumber);
 
@@ -135,9 +141,9 @@ function checkHealth() {
         saveProblem(' Made too many tackles.', 2);
         tacklesMadeInLevel = maxNumberOfZombies;
     }
-    if (timeToNextSpawn > fps * 1.5) {
+    if (timeToNextSpawn > fps * 2) {
         saveProblem(' Zombies spawning too slow.', 3);
-        timeTakenToSpawn = fps * 1.5;
+        timeTakenToSpawn = fps * 2;
     }
     if (outOfBounds !== -100) {
         saveProblem(' Game area changed.', 4);

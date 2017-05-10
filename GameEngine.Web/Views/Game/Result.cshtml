@@ -20,6 +20,7 @@
     @* CSS here *@
     @Styles.Render("~/Assets/css/result")
     @Scripts.Render("~/Assets/js/jquery")
+    @Scripts.Render("~/Assets/js/resize")
     @helper MessageText()
     {
         if (Model.Score < 16)
@@ -36,13 +37,13 @@
     }
 </head>
 <body>
-    <div id="wrapper">
+    <div class="wrapper">
         <div class="inner">
-            <p class="bestScore">Best Score: @Model.GameViewModel.Dashboard.BestScore</p>
-            <p class="finalScore">Your Score: @Model.Score</p>
             <p class="resultMessage">
                 @MessageText()
             </p>
+            <p class="finalScore">Your Score: @Model.Score</p>
+            <p class="bestScore">Best Score: @Model.GameViewModel.Dashboard.BestScore</p>
         </div>
     </div>
     <script>
@@ -62,8 +63,8 @@
             panelId = Model.GameViewModel.Config.GaasPanelId,
             consumerId = Model.GameViewModel.Consumer.GaasConsumerId,
         }, FormMethod.Post, new { enctype = "multipart/form-data" }); }*@
-    <input id="btnPlay" type="submit" value="">
-    <a class="leaderboard-button" href="https://ingames.com.au/f33eb0df9bb6419fb8c3383ccc160fe7/leaderboard" target="_parent"></a>
+    <input id="btnPlay" type="submit" value="PLAY NOW">
+    <a class="leaderboard-button" href="https://ingames.com.au/f33eb0df9bb6419fb8c3383ccc160fe7/leaderboard" target="_parent">LEADERBOARD</a>
     @*@{ Html.EndForm();}*@
     <script>
         //$(document)
