@@ -59,7 +59,7 @@ function checkEndGame() {
 
 function showPopup() {
     clearInterval(loopInterval);
-    saveScore(tacklesMade, 0, levelNumber);
+    saveScore(score, 0, levelNumber);
     saveEvent();
 
     if ($('#questionId').val() > 0) {
@@ -95,14 +95,14 @@ function endGame() {
     if (player.status == 'alive') {
         player.status = 'dead';
         saveEvent();
-        postFinalScore(levelNumber, tacklesMade);
-        saveScore(tacklesMade, 0, levelNumber);
+        postFinalScore(levelNumber, score);
+        saveScore(score, 0, levelNumber);
         setTimeout(function () {
             clearInterval(loopInterval);
         }, 3000);
         player.kill();
         $('body, html').fadeTo(3000, 0, function () {
-            gotoResultPage(levelNumber, tacklesMade);
+            gotoResultPage(levelNumber, score);
         });
     }
 }

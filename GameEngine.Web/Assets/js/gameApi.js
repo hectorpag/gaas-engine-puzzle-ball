@@ -110,7 +110,9 @@ function saveEvent(doneCallback, failCallback) {
             tacklesMade: tacklesMade,
             tacklesMadeInLevel: tacklesMadeInLevel,
             missedZombies: missedZombies,
-            missedZombiesInLevel: missedZombiesInLevel
+            missedZombiesInLevel: missedZombiesInLevel,
+            score: score,
+            whatsWrong: whatsWrong
         }
     };
     var settings = {
