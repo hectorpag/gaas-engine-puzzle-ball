@@ -43,10 +43,10 @@
       <HintPath>..\packages\Autofac.4.5.0\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="GaasPlay.API.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.52\lib\net461\GaasPlay.API.Client.dll</HintPath>
+      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.54\lib\net461\GaasPlay.API.Client.dll</HintPath>
     </Reference>
     <Reference Include="GaasPlayCore.ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.52\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
+      <HintPath>..\packages\GaasPlay.API.Client.1.0.0.54\lib\net461\GaasPlayCore.ViewModel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.17\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>

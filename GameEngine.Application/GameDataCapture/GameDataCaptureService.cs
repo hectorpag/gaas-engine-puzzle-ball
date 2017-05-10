@@ -31,33 +31,24 @@ namespace GameEngine.Service.GameDataCapture
 
         public GameDataCaptureNextQuestionViewModel GetNextQuestion(GaasInfoViewModel gaasInfoViewModel)
         {
+            var rs = _gaasPlayDataCaptureApi.GetNextCampaignQuestion(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
+            if (rs == null) throw new Exception("No result returned from data capture.");
+
             return new GameDataCaptureNextQuestionViewModel()
             {
-                QuestionId = 1234,
-                Question = "Can you haz cheesburger?",
-                Responses = new Dictionary<string, string>()
-                {
-                    {"1","Salmon"}, {"2", "Groot"}, {"3", "Mirklewinks"}, {"4", "Atom bombs"}
-                }
+                QuestionId = rs.Data.CampaignQuestionId,
+                Question = rs.Data.CampaignQuestionDescription,
+                Responses = rs.Data.CampaignQuestionResponses.ToDictionary(r => r.ResponseId.ToString(), r => r.Response)
             };
-            //var rs = _gaasPlayDataCaptureApi.GetNextCampaignQuestion(gaasInfoViewModel.CampaignKey, gaasInfoViewModel.ConsumerId);
-            //if (rs == null) throw new Exception("No result returned from data capture.");
-
-            //return new GameDataCaptureNextQuestionViewModel()
-            //{
-            //    QuestionId = rs.Data.CampaignQuestionId,
-            //    Question = rs.Data.CampaignQuestionDescription,
-            //    Responses = rs.Data.CampaignQuestionResponses.ToDictionary(r => r.ResponseId.ToString(), r => r.Response)
-            //};
         }
 
         public void AnswerQuestion(GaasInfoViewModel gaasInfoViewModel, AnswerQuestionViewModel answerVm)
         {
-            //var rs = _gaasPlayDataCaptureApi.SubmitAnswer(
-            //    gaasInfoViewModel.CampaignKey, 
-            //    gaasInfoViewModel.ConsumerId,
-            //    answerVm.QuestionId, 
-            //    answerVm.ResponseId);
+            var rs = _gaasPlayDataCaptureApi.SubmitAnswer(
+                gaasInfoViewModel.CampaignKey,
+                gaasInfoViewModel.ConsumerId,
+                answerVm.QuestionId,
+                answerVm.ResponseId);
         }
     }
 
