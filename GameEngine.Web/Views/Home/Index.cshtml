@@ -26,7 +26,6 @@
 <body>
     <div class="wrapper">
         <div class="inner">
-
             @{ Html.BeginForm("Index", "Game",
                          new
                          {
@@ -35,11 +34,10 @@
                              consumerId = Model.Consumer.GaasConsumerId,
                          }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
             <input id="btnPlay" type="submit" value="PLAY NOW">
-            <a class="leaderboard-button" href="https://ingames.com.au/f33eb0df9bb6419fb8c3383ccc160fe7/leaderboard" target="_parent">LEADERBOARD</a>
+            <a class="leaderboard-button" href="@GameEngine.Web.Helpers.ConfigReader.GetItem(Model, "leaderboardUrl", "#")" target="_parent">LEADERBOARD</a>
             @{ Html.EndForm();}
 
             <div class="scoreText">Your best score: @Model.Dashboard.BestScore</div>
-
         </div>
     </div>
     @Scripts.Render("~/Assets/js/resize")
