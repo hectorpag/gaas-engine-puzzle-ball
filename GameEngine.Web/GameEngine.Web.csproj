@@ -239,6 +239,7 @@
     <Content Include="Assets\images\bones.png" />
     <Content Include="Assets\images\background.jpg" />
     <Content Include="Assets\images\home-background.jpg" />
+    <Content Include="Assets\images\questionHeader.png" />
     <Content Include="Assets\images\results-background.jpg" />
     <Content Include="Assets\images\zombieSpritesheet.png" />
     <Content Include="Assets\images\defender.png" />
