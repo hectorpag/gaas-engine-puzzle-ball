@@ -1,4 +1,8 @@
-﻿html, body {
+﻿@font-face {
+  font-family: 'Impact';
+  src: url(https://pagdrive.blob.core.windows.net/zombie/impact.ttf) format("truetype");
+}
+html, body {
 	padding: 0;
     margin: 0;
     width: 100%;
