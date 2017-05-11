@@ -38,14 +38,18 @@ function updateTacklesMade(_pointsScored) {
     tacklesMade++;
     tacklesMadeInLevel++;
     $('.tacklesMade').html(score);
-    saveEvent();
+    if (player.status === 'alive') {
+        saveEvent();
+    }
 }
 
 function updateMissedZombies() {
     missedZombies++;
     missedZombiesInLevel++;
     $('.missedZombies').html(missedZombies);
-    saveEvent();
+    if (player.status === 'alive') {
+        saveEvent();
+    }
 }
 
 function startGame() {
