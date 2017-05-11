@@ -17,6 +17,7 @@
     @* CSS here *@
     @Styles.Render("~/Assets/css/home")
     @Scripts.Render("~/Assets/js/jquery")
+    @Styles.Render("~/Assets/css/addtohomescreen.css")
     <script>
         window.parent.postMessage('{"element_cfg" : "show_footer"}', "*");
     </script>
@@ -56,7 +57,7 @@
         <div class="playAgainPreload"></div>
         <div class="resultBGPreload"></div>*@
         <img src="~/Assets/images/background.jpg" />
-        <img src="~/Assets/images/1.png" />
+        @*<img src="~/Assets/images/1.png" />
         <img src="~/Assets/images/2.png" />
         <img src="~/Assets/images/3.png" />
         <img src="~/Assets/images/4.png" />
@@ -65,10 +66,16 @@
         <img src="~/Assets/images/7.png" />
         <img src="~/Assets/images/8.png" />
         <img src="~/Assets/images/9.png" />
-        <img src="~/Assets/images/10.png" />
+        <img src="~/Assets/images/10.png" />*@
         <img src="~/Assets/images/back.png" />
         <img src="~/Assets/images/playagain-btn.jpg" />
-        <img src="~/Assets/images/results-bg.jpg" />
+        @*<img src="~/Assets/images/results-bg.jpg" />*@
     </div>
+    @Scripts.Render("~/Assets/js/addtohomescreen.min.js")
+    <script>
+        addToHomescreen({
+            startDelay: 1
+        });
+    </script>
 </body>
 </html>

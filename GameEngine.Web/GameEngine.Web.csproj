@@ -225,6 +225,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\addtohomescreen.css" />
     <Content Include="Assets\css\fonts.css" />
     <Content Include="Assets\css\gameStyle.css" />
     <Content Include="Assets\css\result.css" />
@@ -248,6 +249,7 @@
     <Content Include="Assets\images\defender.png" />
     <Content Include="Assets\images\play-btn.jpg" />
     <Content Include="Assets\images\playagain-btn.jpg" />
+    <Content Include="Assets\js\addtohomescreen.min.js" />
     <Content Include="Assets\js\gameScript.js" />
     <Content Include="Assets\js\player.js" />
     <Content Include="Assets\js\zombies.js" />
