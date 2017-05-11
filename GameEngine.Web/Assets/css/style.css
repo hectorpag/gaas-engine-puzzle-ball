@@ -165,9 +165,11 @@
 }
 .questionHeader {
     background: url(../images/questionHeader.png) no-repeat;
-    height: 270px;
-    width: 600px;
+    height: 250px;
+    background-size: contain;
+    width: 510px;
     margin-top: 10px;
+    margin-left: 22px;
 }
 #questionContent {
     font-size: 42px;

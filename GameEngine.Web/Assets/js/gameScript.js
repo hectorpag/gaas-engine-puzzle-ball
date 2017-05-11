@@ -79,7 +79,7 @@ function showPopup() {
     saveEvent();
 
     if ($('#questionId').val() > 0) {
-        $('#questionDialog').show();
+        $('#questionDialog').fadeIn();
     } else {
         resetGame();
     }
