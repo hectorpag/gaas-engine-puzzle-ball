@@ -46,33 +46,15 @@
             <p class="bestScore">Best Score: @Model.GameViewModel.Dashboard.BestScore</p>
         </div>
     </div>
-    <script>
-        var GAMESCORE = @Model.Score;
-        var CUSTOMEVENTENDPOINT = '@Url.HttpRouteUrl("api/gamelog/customevent", new {controller = "GameLog", action = "CustomEvent" })';
-
-        $(document).ready(function() {
-
-        });
-    </script>
     <p class="facebookText">
     </p>
-    @*@{ Html.BeginForm("Index", "Home",
-        new
-        {
-            campaignKey = Model.GameViewModel.Config.GaasCampaignKey,
-            panelId = Model.GameViewModel.Config.GaasPanelId,
-            consumerId = Model.GameViewModel.Consumer.GaasConsumerId,
-        }, FormMethod.Post, new { enctype = "multipart/form-data" }); }*@
-    <input id="btnPlay" type="submit" value="PLAY NOW">
-    <a class="leaderboard-button" href="https://ingames.com.au/f33eb0df9bb6419fb8c3383ccc160fe7/leaderboard" target="_parent">LEADERBOARD</a>
-    @*@{ Html.EndForm();}*@
+    <input id="btnPlay" type="submit" value="PLAY">
+    <button class="leaderboard-button" >LEADERBOARD</button>
     <script>
-        //$(document)
-        //   .ready(function () {
-        //       window.parent.postMessage('{"game_play" : "over"}', "*");
-        //   });
-
         $('#btnPlay').click(function() {
+            window.parent.postMessage('{"game_play" : "home"}', "*");
+        });
+        $('.leaderboard-button').click(function () {
             window.parent.postMessage('{"game_play" : "over"}', "*");
         });
     </script>

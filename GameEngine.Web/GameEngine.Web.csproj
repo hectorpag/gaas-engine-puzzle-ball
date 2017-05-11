@@ -225,6 +225,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\addtohomescreen.css" />
     <Content Include="Assets\css\fonts.css" />
     <Content Include="Assets\css\gameStyle.css" />
     <Content Include="Assets\css\result.css" />
@@ -241,6 +242,7 @@
     <Content Include="Assets\images\results-background.jpg" />
     <Content Include="Assets\images\zombieSpritesheet.png" />
     <Content Include="Assets\images\defender.png" />
+    <Content Include="Assets\js\addtohomescreen.min.js" />
     <Content Include="Assets\js\gameScript.js" />
     <Content Include="Assets\js\player.js" />
     <Content Include="Assets\js\zombies.js" />
@@ -371,6 +373,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ConfigReader.cs" />
     <Compile Include="Helpers\Logging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

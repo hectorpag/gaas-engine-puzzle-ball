@@ -3,14 +3,6 @@
 @{
     Layout = null;
 }
-@functions{
-    string GetConfigItem(string key, string defaultIfNotFound = "")
-    {
-        return !Model.Fields.ContainsKey(key)
-            ? defaultIfNotFound
-            : Model.Fields.FirstOrDefault(f => f.Key.Equals(key, StringComparison.CurrentCultureIgnoreCase)).Value;
-    }
-}
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +50,7 @@
         var TELEMETRYENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "Telemetry" })';
         var DCQENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "GetNextQuestion" })';
         var DCAENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "AnswerQuestion" })';
-        var fps = @GetConfigItem("fps", "30");
+        var fps = @GameEngine.Web.Helpers.ConfigReader.GetItem(Model, "fps", "30");
         fps = 30;
     </script>
     <form action="@Url.RouteUrl("Result")" method="post" enctype="multipart/form-data" id="resultForm">
