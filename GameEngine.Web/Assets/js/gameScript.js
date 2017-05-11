@@ -1,5 +1,8 @@
 var loopInterval;
 var frameCount = 0;
+var framesPerWave = 0;
+var totalTime = 0;
+var startTime = 0;
 
 var timeToNextSpawn = fps * 2;
 var timeTakenToSpawn = 0;
@@ -26,7 +29,7 @@ var whatsWrong = '';
 
 var devToolsOpened = false;
 
-var problemArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var problemArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 var score = 0;
 
@@ -49,6 +52,9 @@ function startGame() {
     $('.waveNumber').html(levelNumber);
     $('.wave').fadeIn(500);
     $('.wave').fadeOut(3000);
+    startTime = new Date().getTime();
+    framesPerWave = 0;
+
     setTimeout(function () {
         loopInterval = setInterval(mainLoop, (1000 / fps));
     }, 2000);
@@ -143,7 +149,7 @@ function checkHealth() {
     }
     if (timeToNextSpawn > fps * 2) {
         saveProblem(' Zombies spawning too slow.', 3);
-        timeTakenToSpawn = fps * 2;
+        //timeTakenToSpawn = fps * 2;
     }
     if (outOfBounds !== -100) {
         saveProblem(' Game area changed.', 4);
@@ -181,6 +187,18 @@ function checkHealth() {
             devToolsOpened = true;
         }
     }
+    // My attempt so far at creating variable frame rate
+    /*var currentTime = new Date().getTime();
+    totalTime = currentTime - startTime;
+    var currentFrameRate = framesPerWave / (totalTime / 1000);
+    if (totalTime > 1000) {
+        totalTime = 0;
+        startTime = new Date().getTime();
+        framesPerWave = 0;
+    }
+    if (currentFrameRate < fps * 0.9) {
+        saveProblem(' Performance is slow.', 11);
+    }*/
 }
 
 function saveProblem(_message, _id) {
@@ -193,6 +211,7 @@ function saveProblem(_message, _id) {
 
 function mainLoop() {
     frameCount++;
+    framesPerWave++;
     timeTakenToSpawn++; 
     
     player.slidePlayer();
