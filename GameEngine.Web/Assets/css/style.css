@@ -157,7 +157,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 200;
+    z-index: 600;
     color: #fff;
     background-color: rgba(0,0,0,0.7);
     text-align: center;
@@ -228,6 +228,7 @@
     height: 100%;
     left: 0px;
     top: 0px;
+    z-index: 500;
 }
 .rightButton {
     left: 50%;
