@@ -27,26 +27,6 @@ html, body {
     user-select: none;
     cursor: default;
 }
-.preloader {
-	opacity: 0;
-	width: 1px;
-    height: 1px;
-}
-.gameBGPreload {background: url('../images/background.jpg') no-repeat;}
-.card1Preload {background: url('../images/1.png') no-repeat;}
-.card2Preload {background: url('../images/2.png') no-repeat;}
-.card3Preload {background: url('../images/3.png') no-repeat;}
-.card4Preload {background: url('../images/4.png') no-repeat;}
-.card5Preload {background: url('../images/5.png') no-repeat;}
-.card6Preload {background: url('../images/6.png') no-repeat;}
-.card7Preload {background: url('../images/7.png') no-repeat;}
-.card8Preload {background: url('../images/8.png') no-repeat;}
-.card9Preload {background: url('../images/9.png') no-repeat;}
-.card10Preload {background: url('../images/10.png') no-repeat;}
-.cardBackPreload {background: url('../images/back.png') no-repeat;}
-.playAgainPreload {background: url('../images/playagain-btn.jpg') no-repeat;}
-.resultBGPreload {background: url('../images/results-bg.jpg') no-repeat;}
-
 .wrapper {
     margin: 0 auto;
     -ms-transform-origin: center top;
