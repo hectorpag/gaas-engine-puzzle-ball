@@ -81,6 +81,10 @@
     -webkit-filter: hue-rotate(90deg) invert(100%); /* Safari */
     filter: hue-rotate(90deg) invert(100%);
 }
+.bossZombie {
+    -webkit-filter: saturate(8);
+    filter: saturate(8);
+}
 
 .zombie-frame-0 {
     background-position: -1100px 0px;

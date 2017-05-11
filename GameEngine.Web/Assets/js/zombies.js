@@ -30,6 +30,8 @@ var Zombie = {
     imgFrame: 11,
     zIndex: 500,
     zoom: 1,
+    size: 1,
+    boss: '',
     lastFrameUpdate: new Date().getTime(),
     lastFlashUpdate: new Date().getTime(),
     moveZombie: function() {
@@ -61,7 +63,7 @@ var Zombie = {
         }
 
         this.zIndex = this.top / 2;
-        this.zoom = 1 + (this.top / 1400)
+        this.zoom = this.size + (this.top / 1400)
         //$(this.query).css('z-index', this.zIndex);
          
         $(this.query).css({
@@ -112,9 +114,19 @@ function createZombies() {
 
         if (noOfZombies === levelNumber * 10) {
             zombieTemp.type = 'boss';
+            zombieTemp.size = 1.5;
+            zombieTemp.boss = ' bossZombie';
         } else if ((noOfZombies) % 10 === 0) {
             zombieTemp.type = 'bonus';
         }
+
+        if (zombieTemp.type == 'boss') {
+            zombieTemp.speed = -150;
+        }
+        if (zombieTemp.type == 'bonus') {
+            zombieTemp.speed = -450;
+        }
+        
 
         var destinationDistance = zombieTemp.pos - zombieTemp.destination;
         zombieTemp.lateralSpeed = destinationDistance * (zombieTemp.speed / 4);
@@ -152,7 +164,7 @@ function createZombies() {
         zombieTemp.name = zombiePlayers[zombiePlayerIndex][1];
 
         zombies.push(zombieTemp);
-        $('.inner').append('<div class="zombie zombie' + zombieTemp.id + ' ' + posClass[zombieTemp.pos] + '"><div class="jerseyName">' + zombiePlayers[zombiePlayerIndex][1] + '</div><div class="jerseyNumber">' + zombiePlayers[zombiePlayerIndex][0] + '</div></div>');
+        $('.inner').append('<div class="zombie zombie' + zombieTemp.id + zombieTemp.boss + ' ' + posClass[zombieTemp.pos] + '"><div class="jerseyName">' + zombiePlayers[zombiePlayerIndex][1] + '</div><div class="jerseyNumber">' + zombiePlayers[zombiePlayerIndex][0] + '</div></div>');
         
     }
 }
