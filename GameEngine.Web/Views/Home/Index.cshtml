@@ -17,14 +17,14 @@
     @* CSS here *@
     @Styles.Render("~/Assets/css/home")
     @Scripts.Render("~/Assets/js/jquery")
+    @Scripts.Render("~/Assets/js/resize")
     <script>
         window.parent.postMessage('{"element_cfg" : "show_footer"}', "*");
     </script>
 </head>
 <body>
-    <div id="wrapper">
+    <div class="wrapper">
         <div class="inner">
-            <div class="scoreText">@Model.Dashboard.BestScore</div>
 
             @{ Html.BeginForm("Index", "Game",
                          new
@@ -33,28 +33,16 @@
                              panelId = Model.Config.GaasPanelId,
                              consumerId = Model.Consumer.GaasConsumerId,
                          }, FormMethod.Post, new { enctype = "multipart/form-data" }); }
-            <input id="btnPlay" type="submit" value="">
-            <a class="leaderboard-button" href="https://ingames.com.au/f33eb0df9bb6419fb8c3383ccc160fe7/leaderboard" target="_parent"></a>
+            <input id="btnPlay" type="submit" value="PLAY NOW">
+            <a class="leaderboard-button" href="https://ingames.com.au/f33eb0df9bb6419fb8c3383ccc160fe7/leaderboard" target="_parent">LEADERBOARD</a>
             @{ Html.EndForm();}
+
+            <div class="scoreText">Your best score: @Model.Dashboard.BestScore</div>
 
         </div>
     </div>
     @Scripts.Render("~/Assets/js/resize")
     <div class="preloader">
-        @*<div class="gameBGPreload"></div>
-        <div class="card1Preload"></div>
-        <div class="card2Preload"></div>
-        <div class="card3Preload"></div>
-        <div class="card4Preload"></div>
-        <div class="card5Preload"></div>
-        <div class="card6Preload"></div>
-        <div class="card7Preload"></div>
-        <div class="card8Preload"></div>
-        <div class="card9Preload"></div>
-        <div class="card10Preload"></div>
-        <div class="cardBackPreload"></div>
-        <div class="playAgainPreload"></div>
-        <div class="resultBGPreload"></div>*@
         <img src="~/Assets/images/background.jpg" />
         <img src="~/Assets/images/1.png" />
         <img src="~/Assets/images/2.png" />

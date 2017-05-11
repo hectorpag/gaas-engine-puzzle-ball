@@ -47,7 +47,7 @@ html, body {
 .playAgainPreload {background: url('../images/playagain-btn.jpg') no-repeat;}
 .resultBGPreload {background: url('../images/results-bg.jpg') no-repeat;}
 
-#wrapper {
+.wrapper {
     margin: 0 auto;
     -ms-transform-origin: center top;
     -moz-transform-origin: center top;
@@ -57,7 +57,7 @@ html, body {
     width: 640px;
     height: 960px;
 	background-color: #fff;
-    background: url('../images/home-bg.jpg') no-repeat;
+    background: url('../images/home-background.jpg') no-repeat;
     background-size: contain;
 	overflow: hidden;
     font-family: Arial, sans-serif;
@@ -65,14 +65,15 @@ html, body {
 }
 .scoreText {
     position: absolute;
-    top: 590px;
+    top: 895px;
     left: 0;
     right: 0;
     margin: auto;
     text-align: center;
     color: #fff;
-    font-size: 60px;
-    font-family: 'Arial Rounded MT', Helvetica, sans-serif;
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: uppercase;
 }
 .positionText {
     position: absolute;
@@ -88,31 +89,40 @@ html, body {
 }
 #btnPlay {
     position: absolute;
-    background: url(../images/play-btn.jpg) no-repeat;
-    background-size: contain;
     border: none;
     outline: none;
     -webkit-appearance: none;
-    width: 424px;
+    width: 400px;
     height: 77px;
     left: 0;
     right: 0;
     margin: auto;
     top: 700px;
     cursor: pointer;
+    background-color: #fff;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 72px;
+    line-height: 70px;
+    color: #7b1441;
 }  
 .leaderboard-button {
-     position: absolute;
-    background: url(../images/leaderboard-btn.jpg) no-repeat;
-    background-size: contain;
+    position: absolute;
     border: none;
     outline: none;
     -webkit-appearance: none;
-    width: 424px;
+    width: 400px;
     height: 77px;
     left: 0;
     right: 0;
     margin: auto;
     top: 800px;
     cursor: pointer;
+    background-color: #fff;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 64px;
+    line-height: 74px;
+    text-align: center;
+    text-decoration: none;
+    color: #7b1441;
+    font-weight: normal;
 }
