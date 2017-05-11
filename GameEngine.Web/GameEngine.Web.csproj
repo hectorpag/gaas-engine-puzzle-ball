@@ -242,6 +242,7 @@
     <Content Include="Assets\images\finish-btn.jpg" />
     <Content Include="Assets\images\home-bg.jpg" />
     <Content Include="Assets\images\leaderboard-btn.jpg" />
+    <Content Include="Assets\images\home-background.jpg" />
     <Content Include="Assets\images\results-background.jpg" />
     <Content Include="Assets\images\zombieSpritesheet.png" />
     <Content Include="Assets\images\QLD.png" />
