@@ -110,7 +110,9 @@ function createZombies() {
         zombieTemp.query = '.zombie' + zombieTemp.id;
         zombieTemp.speed = Math.floor((Math.random() * -300) * Math.random()) - 150;
 
-        if ((noOfZombies + 1) % 10 === 0) {
+        if (noOfZombies === levelNumber * 10) {
+            zombieTemp.type = 'boss';
+        } else if ((noOfZombies) % 10 === 0) {
             zombieTemp.type = 'bonus';
         }
 
