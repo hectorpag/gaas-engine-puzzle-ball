@@ -52,7 +52,7 @@ html, body {
     text-align: center;
     color: #fff;
     font-size: 40px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-transform: uppercase;
 }
 .positionText {
@@ -80,7 +80,7 @@ html, body {
     top: 700px;
     cursor: pointer;
     background-color: #fff;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 72px;
     line-height: 70px;
     color: #7b1441;
@@ -98,7 +98,7 @@ html, body {
     top: 800px;
     cursor: pointer;
     background-color: #fff;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 64px;
     line-height: 74px;
     text-align: center;

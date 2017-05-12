@@ -7,7 +7,7 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     overflow: hidden;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-touch-callout: none;
@@ -223,7 +223,7 @@ html, body {
     top: 670px;
     cursor: pointer;
     background-color: #fff;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 72px;
     line-height: 70px;
     color: #7b1441;
