@@ -55,7 +55,7 @@ function updateMissedZombies() {
 function startGame() {
     $('.waveNumber').html(levelNumber);
     $('.wave').fadeIn(500);
-    $('.wave').fadeOut(3000);
+    $('.wave').fadeOut(5000);
     startTime = new Date().getTime();
     framesPerWave = 0;
 

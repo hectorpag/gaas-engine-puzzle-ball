@@ -10,6 +10,19 @@
     font-style: normal;
 
 }
+@font-face {
+font-family: 'Franchise Bold';
+font-style: normal;
+font-weight: normal;
+src: local('Franchise Bold'), url('https://pagdig.blob.core.windows.net/gaas/franchise/Franchise-Bold-hinted.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Franchise Bold Webfont';
+font-style: normal;
+font-weight: normal;
+src: local('Franchise Bold'), url('https://pagdig.blob.core.windows.net/gaas/franchise/franchise-bold-hinted-webfont.woff') format('woff');
+}
 html, body {
 	padding: 0;
     margin: 0;
@@ -94,8 +107,8 @@ html, body {
     filter: hue-rotate(90deg) invert(100%);
 }
 .bossZombie {
-    -webkit-filter: saturate(8);
-    filter: saturate(8);
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%);
 }
 
 .zombie-frame-0 {
@@ -231,7 +244,7 @@ html, body {
     top: 670px;
     cursor: pointer;
     background-color: #fff;
-    font-family: guardian, Arial, sans-serif;
+    font-family: 'Franchise Bold', sans-serif;
     font-size: 72px;
     line-height: 70px;
     color: #7b1441;
@@ -256,6 +269,8 @@ html, body {
     left: 0;
     right: 0;
     width: 100%;
-    font-size: 60px;
+    font-size: 140px;
     text-align: center;
+    font-family: 'Franchise Bold', sans-serif;
+    text-shadow: 0px 0px 50px #000;
 }

@@ -10,12 +10,25 @@
     font-style: normal;
 
 }
+@font-face {
+font-family: 'Franchise Bold';
+font-style: normal;
+font-weight: normal;
+src: local('Franchise Bold'), url('https://pagdig.blob.core.windows.net/gaas/franchise/Franchise-Bold-hinted.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Franchise Bold Webfont';
+font-style: normal;
+font-weight: normal;
+src: local('Franchise Bold'), url('https://pagdig.blob.core.windows.net/gaas/franchise/franchise-bold-hinted-webfont.woff') format('woff');
+}
 html, body {
 	padding: 0;
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: guardian, Arial, sans-serif;
+    font-family: 'Franchise Bold', sans-serif;
     overflow: hidden;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-touch-callout: none;
@@ -44,7 +57,7 @@ html, body {
 .resultMessage {
     width: 100%;
     text-align: center;
-    font-size: 32px;
+    font-size: 42px;
     color: #fff;
     position: absolute;
     text-transform: uppercase;
@@ -53,7 +66,7 @@ html, body {
 .finalScore {
     width: 100%;
     text-align: center;
-    font-size: 70px;
+    font-size: 85px;
     color: #fff;
     text-transform: uppercase;
     position: absolute;
@@ -62,7 +75,7 @@ html, body {
 .bestScore {
     width: 100%;
     text-align: center;
-    font-size: 40px;
+    font-size: 55px;
     color: #fff;
     text-transform: uppercase;
     position: absolute;
@@ -81,10 +94,10 @@ html, body {
     top: 700px;
     cursor: pointer;
     background-color: #fff;
-    font-family: guardian, Arial, sans-serif;
-    font-size: 72px;
+    font-size: 80px;
     line-height: 70px;
     color: #7b1441;
+    font-family: 'Franchise Bold', sans-serif;
 }  
 .leaderboard-button {
     position: absolute;
@@ -99,10 +112,10 @@ html, body {
     top: 800px;
     cursor: pointer;
     background-color: #fff;
-    font-family: guardian, Arial, sans-serif;
-    font-size: 64px;
+    font-size: 75px;
     line-height: 74px;
     text-align: center;
     text-decoration: none;
     color: #7b1441;
+    font-family: 'Franchise Bold', sans-serif;
 }
