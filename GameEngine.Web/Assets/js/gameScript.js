@@ -250,9 +250,11 @@ $(document).ready(function() {
     $('#questionDialogButton').click(function () {
         answerQuestion(
             $('#questionId').val(),
-            $('input[name=Answer]:checked').val());
+            $('input[name=Answer]:checked').val(),
+            function() {
+                loadNextQuestion();
+            });
         $('#questionDialog').hide();
-        loadNextQuestion();
         resetGame();
     });
 
