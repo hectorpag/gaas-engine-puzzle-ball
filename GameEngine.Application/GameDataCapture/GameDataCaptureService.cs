@@ -47,9 +47,10 @@ namespace GameEngine.Service.GameDataCapture
 
             return new GameDataCaptureNextQuestionViewModel()
             {
-                QuestionId = rs.Data.CampaignQuestionId,
-                Question = rs.Data.CampaignQuestionDescription,
-                Responses = rs.Data.CampaignQuestionResponses.ToDictionary(r => r.ResponseId.ToString(), r => r.Response)
+                QuestionId = rs.Data?.CampaignQuestionId ?? 0,
+                Question = rs.Data?.CampaignQuestionDescription,
+                Responses = rs.Data?.CampaignQuestionResponses?.ToDictionary(r => r.ResponseId.ToString(), r => r.Response) 
+                                ?? new Dictionary<string, string>()
             };
         }
 
