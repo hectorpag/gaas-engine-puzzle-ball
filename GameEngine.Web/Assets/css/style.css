@@ -11,14 +11,14 @@
 
 }
 @font-face {
-font-family: 'Franchise Bold';
+font-family: 'Franchise Bold old';
 font-style: normal;
 font-weight: normal;
 src: local('Franchise Bold'), url('https://pagdig.blob.core.windows.net/gaas/franchise/Franchise-Bold-hinted.woff') format('woff');
 }
 
 @font-face {
-font-family: 'Franchise Bold Webfont';
+font-family: 'Franchise Bold';
 font-style: normal;
 font-weight: normal;
 src: local('Franchise Bold'), url('https://pagdig.blob.core.windows.net/gaas/franchise/franchise-bold-hinted-webfont.woff') format('woff');
@@ -64,12 +64,14 @@ html, body {
     background: url(../images/background.jpg) no-repeat;
     background-size: contain;
 }
-.tryLine {
-    width: 100%;
-    height: 10px;
-    top: 220px;
+.tacklesWrap {
     position: absolute;
-    background-color: #fff;
+    right: 10px;
+    top: 75px;
+    color: #7b1441;
+    font-family: 'Franchise Bold', sans-serif;
+    text-shadow: 2px 2px 2px #000;
+    font-size: 42px;
 }
 .player {
     position: absolute;

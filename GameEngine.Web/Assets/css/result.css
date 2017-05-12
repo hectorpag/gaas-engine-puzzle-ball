@@ -11,14 +11,14 @@
 
 }
 @font-face {
-font-family: 'Franchise Bold';
+font-family: 'Franchise Bold old';
 font-style: normal;
 font-weight: normal;
 src: local('Franchise Bold'), url('https://pagdig.blob.core.windows.net/gaas/franchise/Franchise-Bold-hinted.woff') format('woff');
 }
 
 @font-face {
-font-family: 'Franchise Bold Webfont';
+font-family: 'Franchise Bold';
 font-style: normal;
 font-weight: normal;
 src: local('Franchise Bold'), url('https://pagdig.blob.core.windows.net/gaas/franchise/franchise-bold-hinted-webfont.woff') format('woff');
