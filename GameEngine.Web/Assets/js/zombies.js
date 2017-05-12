@@ -83,7 +83,7 @@ var Zombie = {
         this.status = 'dead';
     },
     checkHit: function() {
-        if (player.top - 50 < this.top && this.top < (player.top + player.height - 100) && this.destination === player.pos) {
+        if (player.top - 100 < this.top && this.top < (player.top + player.height - 100) && this.destination === player.pos) {
             var pointsScored = 1;
             this.destroyZombie();
             if (this.type == 'bonus') {
