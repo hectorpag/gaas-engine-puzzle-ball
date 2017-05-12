@@ -1,13 +1,21 @@
 ﻿@font-face {
-  font-family: 'Impact';
-  src: url(https://pagdrive.blob.core.windows.net/zombie/impact.ttf) format("truetype");
+    font-family: 'guardian';
+    src: url('../fonts/guardian_sans_xcond_regular.eot');
+    src: url('../fonts/guardian_sans_xcond_regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/guardian_sans_xcond_regular.woff2') format('woff2'),
+         url('../fonts/guardian_sans_xcond_regular.woff') format('woff'),
+         url('../fonts/guardian_sans_xcond_regular.ttf') format('truetype'),
+         url('../fonts/guardian_sans_xcond_regular.svg#guardian_sans_xcond_regularRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 html, body {
 	padding: 0;
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: guardian, Arial, sans-serif;
     overflow: hidden;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-touch-callout: none;
@@ -223,7 +231,7 @@ html, body {
     top: 670px;
     cursor: pointer;
     background-color: #fff;
-    font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: guardian, Arial, sans-serif;
     font-size: 72px;
     line-height: 70px;
     color: #7b1441;
