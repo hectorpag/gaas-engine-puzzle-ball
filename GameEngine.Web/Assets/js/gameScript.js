@@ -69,7 +69,9 @@ function checkEndGame() {
     if (missedZombies >= 3 && player.status == 'alive') {
         endGame();
     } else if (tacklesMadeInLevel + missedZombiesInLevel >= maxNumberOfZombies) {
+       // debugger;
         showPopup();
+        
     }
 }
 
@@ -224,7 +226,7 @@ function mainLoop() {
         timeTakenToSpawn = 0;
         createZombies();
         if (timeToNextSpawn > 15) {
-            timeToNextSpawn -= 0.5;
+            timeToNextSpawn -= 1;
         }
     }
      

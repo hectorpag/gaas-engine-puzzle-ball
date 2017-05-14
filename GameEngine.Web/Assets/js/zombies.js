@@ -1,18 +1,3 @@
-var zombiePlayers = [["1", "Minichiello"],
-                    ["2", "King"],
-                    ["3", "Gasnier"],
-                    ["4", "Daley"],
-                    ["5", "Tahu"],
-                    ["6", "Fittler"],
-                    ["7", "Johns"],
-                    ["8", "Lazarus"],
-                    ["9", "Buderus"],
-                    ["10", "Gallen"],
-                    ["11", "Hindmarsh"],
-                    ["12", "Menzies"],
-                    ["13", "Bird"],
-                    ["", "Gould"]];
-
 var zombies = [];
 var Zombie = {
     id: 0,
@@ -83,10 +68,10 @@ var Zombie = {
         this.status = 'dead';
     },
     checkHit: function() {
-        if (player.top - 100 < this.top && this.top < (player.top + player.height - 100) && this.destination === player.pos) {
+        if (player.top - 100 < this.top && this.top < (player.top + player.height - 100) && this.destination === player.pos && player.status == 'alive') {
             var pointsScored = 1;
             this.destroyZombie();
-            if (this.type == 'bonus') {
+            if (this.type == 'bonus' || this.type == 'boss') {
                 pointsScored = 5;
             }
             updateTacklesMade(pointsScored);
@@ -135,36 +120,8 @@ function createZombies() {
         var zombiePlayerIndex;
         var iterations = 0;
 
-        while (temp) {
-            zombiePlayerIndex = Math.floor(Math.random() * 14);
-            var doesExist = false;
-
-            for (i = 0; i < zombies.length; i++) {
-                if (zombies[i].name == zombiePlayers[zombiePlayerIndex][1]) {
-                    doesExist = true;
-                }
-            }
-
-            if (zombies.length >= zombiePlayers.length) {
-                doesExist = true; // If theres more zombies than actual players the game will break so we just serve up a duplicate zombie
-            }
-
-            if (!doesExist) {
-                temp = false;
-            }
-
-            // This is to just stop it from getting stuck if it were to occur
-            iterations++;
-            if (iterations >= 100) {
-                temp = false;
-            }
-        }
-
-        zombieTemp.jersey = zombiePlayers[zombiePlayerIndex][0];
-        zombieTemp.name = zombiePlayers[zombiePlayerIndex][1];
-
         zombies.push(zombieTemp);
-        $('.inner').append('<div class="zombie zombie' + zombieTemp.id + zombieTemp.boss + ' ' + posClass[zombieTemp.pos] + '"><div class="jerseyName">' + zombiePlayers[zombiePlayerIndex][1] + '</div><div class="jerseyNumber">' + zombiePlayers[zombiePlayerIndex][0] + '</div></div>');
+        $('.inner').append('<div class="zombie zombie' + zombieTemp.id + zombieTemp.boss + ' ' + posClass[zombieTemp.pos] + '"></div>');
         
     }
 }
