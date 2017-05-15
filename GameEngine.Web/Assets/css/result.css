@@ -70,7 +70,7 @@ html, body {
     color: #fff;
     text-transform: uppercase;
     position: absolute;
-    top: 380px;
+    top: 350px;
 }
 .bestScore {
     width: 100%;
@@ -79,7 +79,7 @@ html, body {
     color: #fff;
     text-transform: uppercase;
     position: absolute;
-    top: 510px;
+    top: 468px;
 }
 #btnPlay {
     position: absolute;
@@ -91,7 +91,7 @@ html, body {
     left: 0;
     right: 0;
     margin: auto;
-    top: 700px;
+    top: 720px;
     cursor: pointer;
     background-color: #fff;
     font-size: 80px;
@@ -109,7 +109,7 @@ html, body {
     left: 0;
     right: 0;
     margin: auto;
-    top: 800px;
+    top: 820px;
     cursor: pointer;
     background-color: #fff;
     font-size: 75px;
