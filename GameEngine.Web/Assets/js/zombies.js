@@ -65,10 +65,11 @@ var Zombie = {
             $(this).remove();
         });
         
-        this.status = 'dead';
+        
     },
     checkHit: function() {
-        if (player.top - 100 < this.top && this.top < (player.top + player.height - 100) && this.destination === player.pos && player.status == 'alive') {
+        if (player.top - 100 < this.top && this.top < (player.top + player.height - 100) && this.destination === player.pos && player.status == 'alive' && this.status == 'alive') {
+            this.status = 'dead';
             var pointsScored = 1;
             this.destroyZombie();
             if (this.type == 'bonus' || this.type == 'boss') {
