@@ -35,6 +35,12 @@
         else
             { <text>A rock star performance. Awesome!</text> }
     }
+    @{
+        var appId = "193570781164601";
+        var link = "https://newscorp-gaasplay.azurewebsites.net/game/QLD-TeamofthePlayingDead/home";
+        var message = "Brainnzzzz";
+        var fbShareLink = $"https://www.facebook.com/dialog/feed?app_id={appId}&link={link}&message={message}&display=popup&redirect_uri={link}";
+    }
 </head>
 <body>
     <div class="wrapper">
@@ -48,6 +54,8 @@
     </div>
     <p class="facebookText">
     </p>
+    <a href="@fbShareLink" class="facebook-share" onclick="ga('send', 'event', 'button', 'click', 'FBshareFollow', 1);"></a>
+
     <input id="btnPlay" type="submit" value="PLAY">
     <button class="leaderboard-button" >LEADERBOARD</button>
     <script>

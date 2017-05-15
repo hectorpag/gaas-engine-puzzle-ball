@@ -119,3 +119,19 @@ html, body {
     color: #7b1441;
     font-family: 'Franchise Bold', sans-serif;
 }
+.facebook-share {
+    background: url('../images/fb.png') no-repeat;
+    background-size: contain;
+    position: absolute;
+    border: none;
+    outline: none;
+    width: 82px;
+    height: 82px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 600px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
