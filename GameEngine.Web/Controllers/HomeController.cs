@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using GameEngine.Service.Fuel;
 using GameEngine.Service.Game;
 using GameEngine.ViewModel;
@@ -27,6 +28,9 @@ namespace GameEngine.Web.Controllers
             };
 
             var gameViewModel = _gameService.Load(gaasInfoViewModel);
+
+            if (gameViewModel.Config == null)
+                throw new Exception("Config returned null, possible invalid campaign key.");
 
             if (gameViewModel.Config.ShowMenu)
             {
