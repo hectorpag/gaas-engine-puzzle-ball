@@ -37,7 +37,7 @@
             <a class="leaderboard-button" href="@GameEngine.Web.Helpers.ConfigReader.GetItem(Model, "leaderboardUrl", "#")" target="_parent">LEADERBOARD</a>
             @{ Html.EndForm();}
 
-            <div class="scoreText">Your best score: @Model.Dashboard.BestScore</div>
+            <div class="scoreText">Your best score: @(Model.Dashboard?.BestScore ?? 0)</div>
         </div>
     </div>
     <script>
