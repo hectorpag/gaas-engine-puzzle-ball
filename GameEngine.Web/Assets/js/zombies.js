@@ -73,8 +73,10 @@ var Zombie = {
             this.status = 'dead';
             var pointsScored = 1;
             this.destroyZombie();
-            if (this.type == 'bonus' || this.type == 'boss') {
+            if (this.type == 'bonus') {
                 pointsScored = 5;
+            } else if (this.type == 'boss') {
+                pointsScored = 2;
             }
             updateTacklesMade(pointsScored);
         }
