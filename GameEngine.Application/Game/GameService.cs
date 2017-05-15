@@ -180,6 +180,12 @@ namespace GameEngine.Service.Game
         {
             var gameViewModel = Load(gaasInfoViewModel);
 
+            //Mark fuel as utilized 
+            var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
+            currentFuel.UtilizedDate = DateTime.UtcNow;
+            _fuelService.Add(currentFuel);
+
+            // save score
             _scoreService.Add(new ScoreViewModel()
             {
                 ConsumerId = gameViewModel.Consumer.Id,
