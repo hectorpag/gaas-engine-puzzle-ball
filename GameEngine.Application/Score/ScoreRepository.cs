@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using Data;
@@ -37,9 +38,11 @@ namespace GameEngine.Service.Score
             return score;
         }
 
-        public List<Model.Score> Get()
+        public List<Model.Score> Get(Func<Model.Score, bool> where = null)
         {
-            return _context.Scores.AsNoTracking().ToList();
+            return where == null 
+                ? _context.Scores.AsNoTracking().ToList() 
+                : _context.Scores.AsNoTracking().Where(where).ToList();
         }
         #endregion
     }
@@ -50,6 +53,6 @@ namespace GameEngine.Service.Score
         List<Model.Score> GetByConsumerId(int consumerId);
         Model.Score Add( Model.Score score);
 
-        List<Model.Score> Get();
+        List<Model.Score> Get(Func<Model.Score, bool> where = null);
     }
 }

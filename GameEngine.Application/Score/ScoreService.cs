@@ -46,58 +46,54 @@ namespace GameEngine.Service.Score
             return viewModel;
         }
 
-        public List<PortalLeaderboardGradeListViewModel> GetLeaderboardScore(string campaignKey, int storyPanelId, int accumulate, int sortOrder, DateTime? lastResetDate)
+        public List<PortalLeaderboardGradeListViewModel> GetLeaderboardScore(
+            string campaignKey, int storyPanelId, int accumulate, int sortOrder, DateTime? lastResetDate)
         {
             var key = "score";
             var config = _configRepository.Get(campaignKey, storyPanelId);
             if (config == null) return new List<PortalLeaderboardGradeListViewModel>();
 
-            var winners = new List<PortalLeaderboardGradeListViewModel>();
-            var scoreList = _scoreRepository.Get();
-            if (!scoreList.Any()) return winners;
+            var scoreList = lastResetDate == null 
+                ? _scoreRepository.Get() 
+                : _scoreRepository.Get(s => s.Scored > lastResetDate);
+            if (!scoreList.Any()) return new List<PortalLeaderboardGradeListViewModel>();
+
+            var winners = scoreList.GroupBy(gr => gr.ConsumerId)
+                .Select(gr => (accumulate == 1)
+                        ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Sum(grv => grv.Result)) })
+                        : (accumulate == 2)
+                            ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Max(grv => grv.Result)) })
+                            : new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Min(grv => grv.Result)) }));
+
+            var winnersSorted = new List<PortalLeaderboardGradeListViewModel>();
+
             switch (sortOrder)
             {
                 case 1:
-                    if (lastResetDate == null)
-                        winners = scoreList.GroupBy(gr => gr.ConsumerId)
-                                                .Select(gr => (accumulate == 1) ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Sum(grv => grv.Result)) }) :
-                                                              (accumulate == 2) ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Max(grv => grv.Result)) }) :
-                                                              new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Min(grv => grv.Result)) }))
-                                                .OrderByDescending(d => d.GameResults, new PortalLeaderboardSortExtensionViewModel(key)).Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD).ToList();
-                    else
-                        winners = scoreList.Where(gr => gr.Scored > lastResetDate)
-                                            .GroupBy(gr => gr.ConsumerId)
-                                            .Select(gr => (accumulate == 1) ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Sum(grv => grv.Result)) }) :
-                                                          (accumulate == 2) ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Max(grv => grv.Result)) }) :
-                                                          new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Min(grv => grv.Result)) }))
-                                            .OrderByDescending(d => d.GameResults, new PortalLeaderboardSortExtensionViewModel(key)).Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD).ToList();
+                    winnersSorted = winners
+                        .OrderByDescending(d => d.GameResults, new PortalLeaderboardSortExtensionViewModel(key))
+                        .Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD)
+                        .ToList();
                     break;
                 case 2:
-                    if (lastResetDate == null)
-                        winners = scoreList.GroupBy(gr => gr.ConsumerId)
-                                           .Select(gr => (accumulate == 1) ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Sum(grv => grv.Result)) }) :
-                                                         (accumulate == 2) ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Max(grv => grv.Result)) }) :
-                                                         new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "",new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Min(grv => grv.Result)) }))
-                                           .OrderBy(d => d.GameResults, new PortalLeaderboardSortExtensionViewModel(key)).Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD).ToList();
-                    else
-                        winners = scoreList.Where(gr => gr.Scored > lastResetDate)
-                                            .GroupBy(gr => gr.ConsumerId)
-                                            .Select(gr => (accumulate == 1) ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Sum(grv => grv.Result)) }) :
-                                                          (accumulate == 2) ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Max(grv => grv.Result)) }) :
-                                                          new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "","", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Min(grv => grv.Result)) }))
-                                            .OrderBy(d => d.GameResults, new PortalLeaderboardSortExtensionViewModel(key)).Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD).ToList();
+                    winnersSorted = winners
+                        .OrderBy(d => d.GameResults, new PortalLeaderboardSortExtensionViewModel(key))
+                        .Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD)
+                        .ToList();
                     break;
             }
-            var consumers = _consumerRepository.Get(winners.Select(f => int.Parse(f.ConsumerId)).Distinct().ToList());
-            foreach (var res in winners)
+
+            var consumers = _consumerRepository.Get(winnersSorted.Select(f => int.Parse(f.ConsumerId)).Distinct().ToList());
+            foreach (var res in winnersSorted)
             {
                 var consumer = consumers.FirstOrDefault(c => c.Id == int.Parse(res.ConsumerId));
                 res.ConsumerId = consumer.GaasConsumerId;
             }
-            return winners;
+            return winnersSorted;
         }
         #endregion
     }
+
     public interface IScoreService
     {
         ScoreViewModel Get(int id);
