@@ -9,6 +9,9 @@ namespace GameEngine.Web.Helpers
     {
         public static string GetItem(ViewModel.GameViewModel model, string key, string defaultIfNotFound = "")
         {
+            if (model?.Fields == null)
+                return defaultIfNotFound;
+
             return !model.Fields.ContainsKey(key)
                 ? defaultIfNotFound
                 : model.Fields.FirstOrDefault(f => f.Key.Equals(key, StringComparison.CurrentCultureIgnoreCase)).Value;
