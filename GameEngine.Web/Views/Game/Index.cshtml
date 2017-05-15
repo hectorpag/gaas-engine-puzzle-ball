@@ -44,16 +44,16 @@
     </div>
     @* Scripts here*@
     <script>
-        var CAMPAIGN_KEY = "@Model.Config.GaasCampaignKey";
-        var PANEL_ID = @Model.Config.GaasPanelId;
-        var GAAS_CONSUMER_ID = '@Model.Consumer.GaasConsumerId';
+        var CAMPAIGN_KEY = '@(Model.Config?.GaasCampaignKey)';
+        var PANEL_ID = @(Model.Config?.GaasPanelId);
+        var GAAS_CONSUMER_ID = '@(Model.Consumer?.GaasConsumerId)';
         var HOME_URL = '@Url.Content("~")';
         var HOST_URL = '@Model.HostUrl';
         var TOTAL_LEVELS = @Model.TotalLevels;
-        var LEVEL_NUMBER = @Model.Config.LevelNumber;
+        var LEVEL_NUMBER = @(Model.Config?.LevelNumber ?? 1);
         var SHOW_RESULT = false;
         var GAMESCORE = 0;
-        var GENDER = "@Model.Consumer.GaasGender";
+        var GENDER = '@(Model.Consumer?.GaasGender)';
         var STARTENDPOINT = '@Url.HttpRouteUrl("api/gamelog/start", new {controller = "GameLog", action = "Start" })';
         var FINISHENDPOINT = '@Url.HttpRouteUrl("api/gamelog/start", new {controller = "GameLog", action = "Finish" })';
         var GAMEOVERENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "GameOver" })';
@@ -65,11 +65,11 @@
         fps = 30;
     </script>
     <form action="@Url.RouteUrl("Result")" method="post" enctype="multipart/form-data" id="resultForm">
-        <input name="campaignKey" id="campaignKey" type="hidden" value="@Model.Config.GaasCampaignKey" />
-        <input name="panelId" id="panelId" type="hidden" value="@Model.Config.GaasPanelId" />
-        <input name="gaasConsumerId" id="consumerId" type="hidden" value="@Model.Consumer.GaasConsumerId"/>
-        <input name="level" id="level" type="hidden" value="@Model.Config.LevelNumber"/>
-        <input name="score" id="score" type="hidden" />
+        <input name="campaignKey" id="campaignKey" type="hidden" value="@(Model.Config?.GaasCampaignKey)" />
+        <input name="panelId" id="panelId" type="hidden" value="@(Model.Config?.GaasPanelId)" />
+        <input name="gaasConsumerId" id="consumerId" type="hidden" value="@(Model.Consumer?.GaasConsumerId)"/>
+        <input name="level" id="level" type="hidden" value="@(Model.Config?.LevelNumber ?? 1)"/>
+        <input name="score" id="score" type="hidden" value="0" />
     </form>
     @*<script>
             $(window)
