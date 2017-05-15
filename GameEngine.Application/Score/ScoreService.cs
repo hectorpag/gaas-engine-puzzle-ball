@@ -75,9 +75,16 @@ namespace GameEngine.Service.Score
                         .Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD)
                         .ToList();
                     break;
+
                 case 2:
                     winnersSorted = winners
                         .OrderBy(d => d.GameResults, new PortalLeaderboardSortExtensionViewModel(key))
+                        .Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD)
+                        .ToList();
+                    break;
+
+                default:
+                    winnersSorted = winners
                         .Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD)
                         .ToList();
                     break;
