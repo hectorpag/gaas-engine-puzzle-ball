@@ -258,6 +258,11 @@ $(document).ready(function() {
         resetGame();
     });
 
+    $('.popupButton').click(function () {
+        $('.introPopup').fadeOut();
+        startGame();
+    });
+
     $(this).keydown(function (e) {
         e.preventDefault();
         checkKeyPress(e);
@@ -273,5 +278,5 @@ $(document).ready(function() {
         player.movePlayer(1);
     });
 
-	startGame();
+	//startGame();
 });

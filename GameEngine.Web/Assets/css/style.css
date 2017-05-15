@@ -300,6 +300,47 @@ html, body {
     line-height: 70px;
     color: #7b1441;
 }
+.introPopup {
+    position: absolute;
+    width: 580px;
+    height: 780px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 600;
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+    text-align: left;
+    font-size: 50px;
+    padding: 10px;
+}
+.introPopup h3 {
+    font-size: 80px;
+    line-height: 80px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.popupButton {
+    position: absolute;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    width: 400px;
+    height: 77px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 670px;
+    cursor: pointer;
+    background-color: #fff;
+    font-family: 'Franchise Bold', sans-serif;
+    font-size: 72px;
+    line-height: 70px;
+    color: #7b1441;
+}
 .tapArea {
     position: absolute;
     width: 50%;
