@@ -3,6 +3,11 @@
 @{
     Layout = null;
     ViewBag.Title = "Home";
+    if (Model.Consumer == null) { throw new Exception("Consumer object is null."); }
+    if (Model.Config == null) { throw new Exception("Config object is null."); }
+    if (Model.Consumer.GaasCampaignKey == null) { throw new Exception("Consumer.GaasCampaignKey is null."); }
+    if (Model.Config.GaasPanelId == 0) { throw new Exception("Config.GaasPanelId is 0."); }
+    if (Model.Consumer.GaasConsumerId == null) { throw new Exception("Consumer.GaasConsumerId is null."); }
 }
 <!DOCTYPE html>
 <html>
