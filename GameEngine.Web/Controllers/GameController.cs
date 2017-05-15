@@ -107,7 +107,7 @@ namespace GameEngine.Web.Controllers
             var resultViewModel = new ResultViewModel()
             {
                 GameViewModel = gameViewModel,
-                Score = decimal.Parse(formCollection["score"])
+                Score = _gameService.GetLastScore(gaasInfoViewModel)
             };
             return View("Result", resultViewModel);
         }

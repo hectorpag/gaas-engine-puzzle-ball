@@ -242,6 +242,14 @@ namespace GameEngine.Service.Game
             return 0;
         }
 
+        public int GetLastScore(GaasInfoViewModel gaasInfoViewModel)
+        {
+            var vm = Load(gaasInfoViewModel);
+            var fuel = _fuelService.CheckFuel(vm.Consumer.Id);
+            var uniqueGamesPlayed = _gamePlayService.GetUniqueByFuelId(vm.Consumer.Id, fuel.Id);
+            return Convert.ToInt32(uniqueGamesPlayed.OrderByDescending(u => u.LevelPlayed).FirstOrDefault()?.Score ?? 0);
+        }
+
         public void ClearAllCache()
         {
             _configService.ClearAllCache();
@@ -262,7 +270,8 @@ namespace GameEngine.Service.Game
         void SaveEventData(GaasInfoViewModel gaasInfoViewModel, GameEventViewModel vm);
         void SaveFinalScore(GaasInfoViewModel gaasInfoViewModel, GameOverViewModel vm);
         decimal Score(GaasInfoViewModel gaasInfoViewModel);
-
+        int GetLastScore(GaasInfoViewModel gaasInfoViewModel);
+        
         void ClearAllCache();
     }
 }

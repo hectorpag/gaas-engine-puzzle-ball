@@ -78,7 +78,6 @@ function checkEndGame() {
 function showPopup() {
     clearInterval(loopInterval);
     saveScore(score, 0, levelNumber);
-    saveEvent();
 
     if ($('#questionId').val() > 0) {
         $('#questionDialog').fadeIn();
@@ -112,9 +111,8 @@ function loadNextQuestion() {
 function endGame() {
     if (player.status == 'alive') {
         player.status = 'dead';
-        saveEvent();
-        postFinalScore(levelNumber, score);
         saveScore(score, 0, levelNumber);
+        postFinalScore(levelNumber, score);
         setTimeout(function () {
             clearInterval(loopInterval);
         }, 3000);
