@@ -21,13 +21,23 @@
 <body>
     <div class="wrapper">
         <div class="inner">
+            <div class="header">
+                <div class="tacklesWrap">
+                    <span class="tacklesMade">0</span>
+                </div>
+                <div class="waveWrap">
+                    WAVE <span class="levelNumberText">1</span>
+                </div>
+                <div class="missedZombies">
+                    <div class="ball ball1"></div>
+                    <div class="ball ball2"></div>
+                    <div class="ball ball3"></div>
+                </div>
+            </div>
             <div class="leftButton tapArea"></div>
             <div class="rightButton tapArea"></div>
             @{ Html.RenderPartial("Ask"); }
-            <div class="tacklesWrap">
-                <span class="tacklesMade">0</span>
-            </div>
-            - Missed: <span class="missedZombies">0</span> - Level: <span class="levelNumberText">1</span>
+            
             <div class="player middlePos"></div>
             <div class="wave">WAVE <span class="waveNumber">1</span></div>
         </div>

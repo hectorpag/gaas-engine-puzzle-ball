@@ -237,7 +237,9 @@
     <Content Include="Assets\fonts\guardian_sans_xcond_regular.svg" />
     <Content Include="Assets\fonts\helveticaNeueBold\helveticaNeueBold.svg" />
     <Content Include="Assets\fonts\helveticaNeueLight\helveticaNeueLight.svg" />
+    <Content Include="Assets\images\ballSprite.png" />
     <Content Include="Assets\images\bones.png" />
+    <Content Include="Assets\images\headerBackground.png" />
     <Content Include="Assets\images\home-background.jpg" />
     <Content Include="Assets\images\background.jpg" />
     <Content Include="Assets\images\questionHeader.png" />

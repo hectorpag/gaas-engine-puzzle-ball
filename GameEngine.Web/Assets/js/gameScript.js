@@ -46,7 +46,7 @@ function updateTacklesMade(_pointsScored) {
 function updateMissedZombies() {
     missedZombies++;
     missedZombiesInLevel++;
-    $('.missedZombies').html(missedZombies);
+    $('.ball' + missedZombies).addClass('missedBall');
     if (player.status === 'alive') {
         saveEvent();
     }
@@ -54,7 +54,7 @@ function updateMissedZombies() {
 
 function startGame() {
     $('.waveNumber').html(levelNumber);
-    $('.wave').fadeIn(500);
+    $('.wave').show();
     $('.wave').fadeOut(5000);
     startTime = new Date().getTime();
     framesPerWave = 0;

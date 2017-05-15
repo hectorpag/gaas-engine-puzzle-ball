@@ -59,6 +59,7 @@ var Zombie = {
         });
     },
     destroyZombie: function () {
+        this.status = 'dead';
         $(this.query).attr('class', 'zombie bones ' + 'zombie' + this.id);
         $(this.query).addClass('bones');
         $(this.query).fadeOut(1500, function () {
