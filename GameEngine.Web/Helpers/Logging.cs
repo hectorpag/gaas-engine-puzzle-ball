@@ -18,7 +18,7 @@ namespace GameEngine.Web.Helpers
 
         public static void Info(string messageTemplate, object propertyValue = null)
         {
-#if DEBUG
+//#if DEBUG
             if (propertyValue == null)
             {
                 System.Diagnostics.Trace.TraceInformation(messageTemplate);
@@ -38,7 +38,7 @@ namespace GameEngine.Web.Helpers
                     Serilog.Log.Information(messageTemplate + " - cannot serialise object data");
                 }
             }
-#endif
+//#endif
         }
     }
 }
