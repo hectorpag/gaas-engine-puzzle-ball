@@ -341,6 +341,10 @@ html, body {
     line-height: 70px;
     color: #7b1441;
 }
+.popupButton:active {
+    background-color: #7b1441;
+    color: #fff;
+}
 .tapArea {
     position: absolute;
     width: 50%;

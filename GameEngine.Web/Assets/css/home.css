@@ -95,6 +95,10 @@ html, body {
     font-size: 80px;
     line-height: 64px;
     color: #7b1441;
+} 
+#btnPlay:active {
+    background-color: #7b1441;
+    color: #fff;
 }  
 .leaderboard-button {
     position: absolute;
@@ -115,3 +119,7 @@ html, body {
     text-decoration: none;
     color: #7b1441;
 }
+.leaderboard-button:active {
+    background-color: #7b1441;
+    color: #fff;
+} 
