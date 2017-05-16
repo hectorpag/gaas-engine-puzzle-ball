@@ -248,14 +248,16 @@ $(document).ready(function() {
     loadNextQuestion();
     
     $('#questionDialogButton').click(function () {
-        answerQuestion(
-            $('#questionId').val(),
-            $('input[name=Answer]:checked').val(),
-            function() {
-                loadNextQuestion();
-            });
-        $('#questionDialog').hide();
-        resetGame();
+        if ($('input[name=Answer]:checked').length) {
+            answerQuestion(
+                $('#questionId').val(),
+                $('input[name=Answer]:checked').val(),
+                function () {
+                    loadNextQuestion();
+                });
+            $('#questionDialog').hide();
+            resetGame();
+        }
     });
 
     $('.popupButton').click(function () {
