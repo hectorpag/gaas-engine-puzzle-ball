@@ -27,9 +27,17 @@ namespace GameEngine.Web.Controllers.api
         {
             Logging.Info("api/dc/GetNextQuestion", formData);
 
-            return await Task.FromResult(_gameDataCaptureService.GetNextQuestion(
-                JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString()))
-            );
+            try
+            {
+                return await Task.FromResult(_gameDataCaptureService.GetNextQuestion(
+                    JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString()))
+                );
+            }
+            catch (Exception e)
+            {
+                Logging.Error(e, "DcController.GetNextQuestion");
+                return new GameDataCaptureNextQuestionViewModel();
+            }
         }
 
         [System.Web.Http.AllowAnonymous]
@@ -39,11 +47,18 @@ namespace GameEngine.Web.Controllers.api
         {
             Logging.Info("api/dc/AnswerQuestion", formData);
 
-            var gaasInfo = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
-            var answerVm = JsonConvert.DeserializeObject<AnswerQuestionViewModel>(formData.ToString());
-            answerVm.EventDate = DateTime.UtcNow;
-            
-            await Task.Run(() => _gameDataCaptureService.AnswerQuestion(gaasInfo, answerVm));
+            try
+            {
+                var gaasInfo = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
+                var answerVm = JsonConvert.DeserializeObject<AnswerQuestionViewModel>(formData.ToString());
+                answerVm.EventDate = DateTime.UtcNow;
+
+                await Task.Run(() => _gameDataCaptureService.AnswerQuestion(gaasInfo, answerVm));
+            }
+            catch (Exception e)
+            {
+                Logging.Error(e, "DcController.AnswerQuestion");
+            }
         }
     }
 }

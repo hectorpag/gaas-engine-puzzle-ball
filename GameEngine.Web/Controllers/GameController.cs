@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http.Formatting;
@@ -12,6 +13,7 @@ using Helper;
 using Microsoft.ApplicationInsights.Channel;
 using Newtonsoft.Json;
 using GameEngine.Service.Config;
+using GameEngine.Web.Helpers;
 
 namespace GameEngine.Web.Controllers
 {
@@ -31,6 +33,12 @@ namespace GameEngine.Web.Controllers
         // GET: Default
         public ActionResult Index(string campaignKey, string panelId, string consumerId)
         {
+            //Logging.Info("Game Home", new
+            //{
+            //    AppSettings = ConfigurationManager.AppSettings.AllKeys.ToList().ToDictionary(k => k, k => ConfigurationManager.AppSettings[k]),
+            //    ConnectionStrings = ConfigurationManager.ConnectionStrings
+            //});
+
             var gaasInfoViewModel = new GaasInfoViewModel
             {
                 CampaignKey = campaignKey,
@@ -44,7 +52,8 @@ namespace GameEngine.Web.Controllers
                 throw new Exception("Config returned null, possible invalid campaign key.");
 
             //1.Check Level number
-            if ((gameViewModel.Config.LevelNumber ?? 0) == 1)
+            var levelNumber = gameViewModel.Config.LevelNumber ?? 0;
+            if (levelNumber == 0 || levelNumber == 1)
             {
                 //TODO : Remove this after demo
                 _fuelService.ResetUnusedFuel(gameViewModel.Consumer.Id);
