@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http.Formatting;
@@ -12,6 +13,7 @@ using Helper;
 using Microsoft.ApplicationInsights.Channel;
 using Newtonsoft.Json;
 using GameEngine.Service.Config;
+using GameEngine.Web.Helpers;
 
 namespace GameEngine.Web.Controllers
 {
@@ -31,6 +33,12 @@ namespace GameEngine.Web.Controllers
         // GET: Default
         public ActionResult Index(string campaignKey, string panelId, string consumerId)
         {
+            Logging.Info("Game Home", new
+            {
+                AppSettings = ConfigurationManager.AppSettings,
+                ConnectionStrings = ConfigurationManager.ConnectionStrings
+            });
+
             var gaasInfoViewModel = new GaasInfoViewModel
             {
                 CampaignKey = campaignKey,

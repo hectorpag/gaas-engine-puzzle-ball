@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
+using Serilog;
 
 namespace GameEngine.Web.Helpers
 {
@@ -17,8 +19,25 @@ namespace GameEngine.Web.Helpers
         public static void Info(string messageTemplate, object propertyValue = null)
         {
 #if DEBUG
-            System.Diagnostics.Trace.TraceInformation(messageTemplate, propertyValue);
-            Serilog.Log.Information(messageTemplate, propertyValue);
+            if (propertyValue == null)
+            {
+                System.Diagnostics.Trace.TraceInformation(messageTemplate);
+                Serilog.Log.Information(messageTemplate);
+            }
+            else
+            {
+                try
+                {
+                    System.Diagnostics.Trace.TraceInformation(messageTemplate, JsonConvert.SerializeObject(propertyValue));
+                    Serilog.Log.Information(messageTemplate + "{obj}", JsonConvert.SerializeObject(propertyValue));
+                }
+                catch (Exception e)
+                {
+                    var whatevs = e;
+                    System.Diagnostics.Trace.TraceInformation(messageTemplate + " - cannot serialise object data");
+                    Serilog.Log.Information(messageTemplate + " - cannot serialise object data");
+                }
+            }
 #endif
         }
     }
