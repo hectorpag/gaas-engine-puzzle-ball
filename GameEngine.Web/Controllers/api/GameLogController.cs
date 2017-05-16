@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using GameEngine.Service.Game;
@@ -31,7 +33,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task Start(Object formData)
         {
-            Logging.Info("api/gamelog/Start", formData);
+            LogRq("api/gamelog/Start", formData);
 
             var gameDataCaptureViewModel = JsonConvert.DeserializeObject<GameDataCaptureViewModel>(formData.ToString());
             gameDataCaptureViewModel.CreatedOn = DateTime.UtcNow;
@@ -44,7 +46,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task Finish(Object formData)
         {
-            Logging.Info("api/gamelog/Finish", formData);
+            LogRq("api/gamelog/Finish", formData);
 
             var gameDataCaptureViewModel = JsonConvert.DeserializeObject<GameDataCaptureViewModel>(formData.ToString());
             gameDataCaptureViewModel.CreatedOn = DateTime.UtcNow;
@@ -63,7 +65,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task SaveScore(Object formData)
         {
-            Logging.Info("api/gamelog/savescore", formData);
+            LogRq("api/gamelog/savescore", formData);
 
             var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
             var gamePlayViewModel = JsonConvert.DeserializeObject<GamePlayViewModel>(formData.ToString());
@@ -78,7 +80,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task Telemetry(Object formData)
         {
-            Logging.Info("api/gamelog/telemetry", formData);
+            LogRq("api/gamelog/telemetry", formData);
 
             await Task.Run(() => _gameService.SaveEventData(
                 JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString()), 
@@ -92,7 +94,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task GameOver(Object formData)
         {
-            Logging.Info("api/gamelog/gameover", formData);
+            LogRq("api/gamelog/gameover", formData);
 
             await Task.Run(() => _gameService.SaveFinalScore(
                 JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString()),
@@ -113,6 +115,16 @@ namespace GameEngine.Web.Controllers.api
             var telemertyClient = new TelemetryClient();
             telemertyClient.TrackEvent(eventData.CustomEvent, data);
             await Task.FromResult<int>(1);
+        }
+
+        private void LogRq(string msg, Object formData)
+        {
+            Logging.Info(msg, new
+            {
+                formData = formData,
+                AppSettings = ConfigurationManager.AppSettings.AllKeys.ToList().ToDictionary(k => k, k => ConfigurationManager.AppSettings[k]),
+                ConnectionStrings = ConfigurationManager.ConnectionStrings
+            });
         }
     }
 }

@@ -33,11 +33,11 @@ namespace GameEngine.Web.Controllers
         // GET: Default
         public ActionResult Index(string campaignKey, string panelId, string consumerId)
         {
-            Logging.Info("Game Home", new
-            {
-                AppSettings = ConfigurationManager.AppSettings.AllKeys.ToList().ToDictionary(k => k, k => ConfigurationManager.AppSettings[k]),
-                ConnectionStrings = ConfigurationManager.ConnectionStrings
-            });
+            //Logging.Info("Game Home", new
+            //{
+            //    AppSettings = ConfigurationManager.AppSettings.AllKeys.ToList().ToDictionary(k => k, k => ConfigurationManager.AppSettings[k]),
+            //    ConnectionStrings = ConfigurationManager.ConnectionStrings
+            //});
 
             var gaasInfoViewModel = new GaasInfoViewModel
             {
