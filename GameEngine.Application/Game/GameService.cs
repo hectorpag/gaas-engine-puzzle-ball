@@ -184,6 +184,7 @@ namespace GameEngine.Service.Game
             Logging.Info("SaveFinalScore: Mark fuel as utilizedMark fuel as utilized", gameViewModel);
             //Mark fuel as utilized 
             var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
+            Logging.Info("SaveFinalScore: add fuel", currentFuel);
             currentFuel.UtilizedDate = DateTime.UtcNow;
             _fuelService.Add(currentFuel);
 
