@@ -57,7 +57,7 @@
     <a href="@fbShareLink" class="facebook-share" onclick="ga('send', 'event', 'button', 'click', 'FBshareFollow', 1);"></a>
 
     <input id="btnPlay" type="submit" value="PLAY">
-    <button class="leaderboard-button" >LEADERBOARD</button>
+    <div class="leaderboard-button" >LEADERBOARD</div>
     <script>
         $('#btnPlay').click(function() {
             window.parent.postMessage('{"game_play" : "home"}', "*");
