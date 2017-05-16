@@ -19,7 +19,7 @@ namespace GameEngine.Web.Controllers.api.v1
 
         public List<string> GetLeaderboardKeys()
         {
-            Logging.Info("GetLeaderboardKeys");
+            Helpers.Logging.Info("GetLeaderboardKeys");
 
             return new Leaderboard().GetKeys();
         }
@@ -28,7 +28,7 @@ namespace GameEngine.Web.Controllers.api.v1
         [HttpPost]
         public List<PortalLeaderboardGradeListViewModel> GetWinnerResults(FormDataCollection formData)
         {
-            Logging.Info("api/GetWinnerResults", formData);
+            Helpers.Logging.Info("api/GetWinnerResults", formData);
 
             try
             {
@@ -47,7 +47,7 @@ namespace GameEngine.Web.Controllers.api.v1
             }
             catch(Exception ex)
             {
-                Logging.Error(ex);
+                Helpers.Logging.Error(ex);
                 return new List<PortalLeaderboardGradeListViewModel>();
             }
         }
