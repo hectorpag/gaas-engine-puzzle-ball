@@ -28,7 +28,7 @@ namespace GameEngine.Web.Helpers
             {
                 try
                 {
-                    System.Diagnostics.Trace.TraceInformation(messageTemplate, JsonConvert.SerializeObject(propertyValue));
+                    System.Diagnostics.Trace.TraceInformation(messageTemplate + " " + JsonConvert.SerializeObject(propertyValue));
                     Serilog.Log.Information(messageTemplate + "{obj}", JsonConvert.SerializeObject(propertyValue));
                 }
                 catch (Exception e)
