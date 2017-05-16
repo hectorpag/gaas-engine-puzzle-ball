@@ -22,6 +22,11 @@
     <meta name="format-detection" content="telephone=no" />
     <title>GameEngine Game</title>
     @Styles.Render("~/Assets/css/game")
+    <script>
+        window.parent.postMessage('{"element_cfg" : "show_footer"}', "*");
+        window.parent.postMessage('{"game_hidemenu" : "true"}', "*");
+
+    </script>
 </head>
 <body>
     <div class="wrapper">
