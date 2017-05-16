@@ -241,11 +241,11 @@ html, body {
 }
 .questionHeader {
     background: url(../images/questionHeader.png) no-repeat;
-    height: 250px;
+    height: 225px;
     background-size: contain;
-    width: 510px;
+    width: 450px;
     margin-top: 10px;
-    margin-left: 22px;
+    margin-left: 47px;
 }
 #questionContent {
     font-size: 42px;
