@@ -52,7 +52,7 @@ namespace GameEngine.Web.Controllers
                 throw new Exception("Config returned null, possible invalid campaign key.");
 
             //1.Check Level number
-            if ((gameViewModel.Config.LevelNumber ?? 0) == 1)
+            if ((gameViewModel.Config.LevelNumber ?? 1) == 1)
             {
                 //TODO : Remove this after demo
                 _fuelService.ResetUnusedFuel(gameViewModel.Consumer.Id);
