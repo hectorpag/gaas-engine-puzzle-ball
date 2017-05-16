@@ -80,7 +80,7 @@ namespace GameEngine.Web.Controllers.api
         [System.Web.Http.HttpPost]
         public async Task Telemetry(Object formData)
         {
-            LogRq("api/gamelog/telemetry", formData);
+            //LogRq("api/gamelog/telemetry", formData);
 
             await Task.Run(() => _gameService.SaveEventData(
                 JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString()), 
