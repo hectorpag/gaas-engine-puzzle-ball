@@ -35,7 +35,7 @@ namespace GameEngine.Web.Controllers
         {
             Logging.Info("Game Home", new
             {
-                AppSettings = ConfigurationManager.AppSettings,
+                AppSettings = ConfigurationManager.AppSettings.AllKeys.ToList().ToDictionary(k => k, k => ConfigurationManager.AppSettings[k]),
                 ConnectionStrings = ConfigurationManager.ConnectionStrings
             });
 
