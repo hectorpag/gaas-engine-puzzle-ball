@@ -300,6 +300,10 @@ html, body {
     line-height: 70px;
     color: #7b1441;
 }
+#questionDialogButton:active {
+    background-color: #7b1441;
+    color: #fff;
+}
 .introPopup {
     position: absolute;
     width: 580px;

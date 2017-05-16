@@ -99,6 +99,10 @@ html, body {
     color: #7b1441;
     font-family: 'Franchise Bold', sans-serif;
 }  
+#btnPlay:active {
+    background-color: #7b1441;
+    color: #fff;
+} 
 .leaderboard-button {
     position: absolute;
     border: none;
@@ -119,6 +123,10 @@ html, body {
     color: #7b1441;
     font-family: 'Franchise Bold', sans-serif;
 }
+.leaderboard-button:active {
+    background-color: #7b1441;
+    color: #fff;
+} 
 .facebook-share {
     background: url('../images/fb.png') no-repeat;
     background-size: contain;
