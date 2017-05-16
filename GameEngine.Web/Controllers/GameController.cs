@@ -53,7 +53,8 @@ namespace GameEngine.Web.Controllers
 
             Helpers.Logging.Info("Game Home", gameViewModel);
             //1.Check Level number
-            if ((gameViewModel.Config.LevelNumber ?? 1) == 1)
+            var levelNumber = gameViewModel.Config.LevelNumber ?? 0;
+            if (levelNumber == 0 || levelNumber == 1)
             {
                 //TODO : Remove this after demo
                 _fuelService.ResetUnusedFuel(gameViewModel.Consumer.Id);
