@@ -51,7 +51,6 @@ namespace GameEngine.Web.Controllers
             if (gameViewModel.Config == null)
                 throw new Exception("Config returned null, possible invalid campaign key.");
 
-            Helpers.Logging.Info("Game Home", gameViewModel);
             //1.Check Level number
             var levelNumber = gameViewModel.Config.LevelNumber ?? 0;
             if (levelNumber == 0 || levelNumber == 1)
@@ -60,7 +59,6 @@ namespace GameEngine.Web.Controllers
                 _fuelService.ResetUnusedFuel(gameViewModel.Consumer.Id);
                 //User is starting to play a new game.Create a new fuel record
                 _fuelService.Add(new FuelViewModel() { ConsumerId = gameViewModel.Consumer.Id, Created = DateTime.UtcNow, UtilizedDate = null, AutoDiscard = false });
-                Helpers.Logging.Info("Game Home added fuel");
             }
             //else
             //{

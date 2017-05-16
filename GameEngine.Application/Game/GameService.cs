@@ -178,17 +178,13 @@ namespace GameEngine.Service.Game
 
         public void SaveFinalScore(GaasInfoViewModel gaasInfoViewModel, GameOverViewModel vm)
         {
-            Logging.Info("SaveFinalScore: load game view model", gaasInfoViewModel);
             var gameViewModel = Load(gaasInfoViewModel);
 
-            Logging.Info("SaveFinalScore: Mark fuel as utilizedMark fuel as utilized", gameViewModel);
             //Mark fuel as utilized 
             var currentFuel = _fuelService.CheckFuel(gameViewModel.Consumer.Id);
-            Logging.Info("SaveFinalScore: add fuel", currentFuel);
             currentFuel.UtilizedDate = DateTime.UtcNow;
             _fuelService.Add(currentFuel);
 
-            Logging.Info("SaveFinalScore: save score", currentFuel);
             // save score
             _scoreService.Add(new ScoreViewModel()
             {
