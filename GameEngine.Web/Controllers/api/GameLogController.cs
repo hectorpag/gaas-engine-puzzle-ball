@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using GameEngine.Web.Helpers;
 using GaasPlay.Activities;
 using GaasPlay.Activities.Client.Model;
+using System.Diagnostics;
 
 namespace GameEngine.Web.Controllers.api
 {
@@ -83,6 +84,7 @@ namespace GameEngine.Web.Controllers.api
             {
                 ;//do nothing
             }
+            Trace.WriteLine(String.Format("zombie: {0} {1} {2} {3} {4}", gaasInfoViewModel.ConsumerId, gaasInfoViewModel.CampaignKey, gamePlayViewModel.LevelPlayed.ToString(), gamePlayViewModel.Score.ToString(), time.ToString()));
             ActivitiesClientHelper.PostActivity(ActivityType.CAMPAIGN_OBJECTIVE,
                 gaasInfoViewModel.ConsumerId,
                 null,
