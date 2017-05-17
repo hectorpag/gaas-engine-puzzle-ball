@@ -11,6 +11,8 @@ using GameEngine.ViewModel;
 using Microsoft.ApplicationInsights;
 using Newtonsoft.Json;
 using GameEngine.Web.Helpers;
+using GaasPlay.Activities;
+using GaasPlay.Activities.Client.Model;
 
 namespace GameEngine.Web.Controllers.api
 {
@@ -70,6 +72,27 @@ namespace GameEngine.Web.Controllers.api
             var gaasInfoViewModel = JsonConvert.DeserializeObject<GaasInfoViewModel>(formData.ToString());
             var gamePlayViewModel = JsonConvert.DeserializeObject<GamePlayViewModel>(formData.ToString());
             gamePlayViewModel.PlayedDate = DateTime.UtcNow;
+
+            DateTime time = DateTime.UtcNow;
+            try
+            {
+                TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("Australia/Brisbane");
+                time = TimeZoneInfo.ConvertTimeFromUtc(time, cstZone);
+            }
+            catch
+            {
+                ;//do nothing
+            }
+            ActivitiesClientHelper.PostActivity(ActivityType.CAMPAIGN_OBJECTIVE,
+                gaasInfoViewModel.ConsumerId,
+                null,
+                gaasInfoViewModel.CampaignKey,
+                new List<ActivityValue>() {
+                                    new ActivityValue() { Name = "default", Value = "wave complete" },
+                                    new ActivityValue() { Name = "wave"  , Value = gamePlayViewModel.LevelPlayed.ToString() },
+                                    new ActivityValue() { Name = "score"  , Value = gamePlayViewModel.Score.ToString() },
+                                    new ActivityValue() { Name = "date"  , Value = time.ToString() }
+                });
 
             await Task.Run(() => _gameService.SaveScore(gaasInfoViewModel, gamePlayViewModel));
         }

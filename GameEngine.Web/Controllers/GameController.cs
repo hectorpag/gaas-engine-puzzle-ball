@@ -14,8 +14,6 @@ using Microsoft.ApplicationInsights.Channel;
 using Newtonsoft.Json;
 using GameEngine.Service.Config;
 using GameEngine.Web.Helpers;
-using GaasPlay.Activities;
-using GaasPlay.Activities.Client.Model;
 
 namespace GameEngine.Web.Controllers
 {
@@ -88,26 +86,6 @@ namespace GameEngine.Web.Controllers
             var gameViewModel = _gameService.Load(gaasInfoViewModel);
 
             int score = (int)_gameService.Score(gaasInfoViewModel);
-            DateTime time = DateTime.UtcNow;
-            try
-            {
-                TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("Australia/Brisbane");
-                time = TimeZoneInfo.ConvertTimeFromUtc(time, cstZone);
-            }
-            catch
-            {
-                ;//do nothing
-            }
-            ActivitiesClientHelper.PostActivity(ActivityType.CAMPAIGN_OBJECTIVE,
-                consumerId,
-                null,
-                campaignKey,
-                new List<ActivityValue>() {
-                                    new ActivityValue() { Name = "default", Value = "wave complete" },
-                                    new ActivityValue() { Name = "wave"  , Value = gameViewModel.Config.LevelNumber.ToString() },
-                                    new ActivityValue() { Name = "score"  , Value = score.ToString() },
-                                    new ActivityValue() { Name = "date"  , Value = time.ToString() }
-                });
 
             //var config = _configService.GetByCampaign(gaasInfoViewModel.CampaignKey).Where(x=>x.LevelNumber ==1 && x.ShowMenu).ToList();
             //if (config.Count > 0)
