@@ -74,17 +74,7 @@ namespace GameEngine.Web.Controllers.api
             var gamePlayViewModel = JsonConvert.DeserializeObject<GamePlayViewModel>(formData.ToString());
             gamePlayViewModel.PlayedDate = DateTime.UtcNow;
 
-            DateTime time = DateTime.UtcNow;
-            try
-            {
-                TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time");
-                time = TimeZoneInfo.ConvertTimeFromUtc(time, cstZone);
-            }
-            catch
-            {
-                ;//do nothing
-            }
-            Trace.WriteLine(String.Format("zombie: {0} {1} {2} {3} {4}", gaasInfoViewModel.ConsumerId, gaasInfoViewModel.CampaignKey, gamePlayViewModel.LevelPlayed.ToString(), gamePlayViewModel.Score.ToString(), time.ToString()));
+            //Trace.WriteLine(String.Format("zombie: {0} {1} {2} {3} {4}", gaasInfoViewModel.ConsumerId, gaasInfoViewModel.CampaignKey, gamePlayViewModel.LevelPlayed.ToString(), gamePlayViewModel.Score.ToString(), time.ToString()));
             ActivitiesClientHelper.PostActivity(ActivityType.CAMPAIGN_OBJECTIVE,
                 gaasInfoViewModel.ConsumerId,
                 null,
@@ -93,7 +83,7 @@ namespace GameEngine.Web.Controllers.api
                                     new ActivityValue() { Name = "default", Value = "wave complete" },
                                     new ActivityValue() { Name = "wave"  , Value = gamePlayViewModel.LevelPlayed.ToString() },
                                     new ActivityValue() { Name = "score"  , Value = gamePlayViewModel.Score.ToString() },
-                                    new ActivityValue() { Name = "date"  , Value = time.ToString() }
+                                    new ActivityValue() { Name = "date"  , Value = gamePlayViewModel.PlayedDate.ToString() }
                 });
 
             await Task.Run(() => _gameService.SaveScore(gaasInfoViewModel, gamePlayViewModel));
