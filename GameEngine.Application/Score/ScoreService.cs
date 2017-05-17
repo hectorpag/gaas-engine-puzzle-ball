@@ -15,6 +15,21 @@ namespace GameEngine.Service.Score
         private readonly IConfigRepository _configRepository;
         private readonly IMapper _mapper = AutoMapperConfiguration.MapperConfiguration.CreateMapper();
         private const int NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD = 20;
+
+        public enum AccumulationTypes
+        {
+            Min = 0,
+            Sum = 1,
+            Max = 2
+        }
+
+        public enum SortOrders
+        {
+            None = 0,
+            Descending = 1,
+            Ascending = 2
+        }
+
         public ScoreService(IScoreRepository scoreRepository, IConfigRepository configRepository, IConsumerRepository consumerRepository)
         {
             _scoreRepository = scoreRepository;
@@ -47,9 +62,12 @@ namespace GameEngine.Service.Score
         }
 
         public List<PortalLeaderboardGradeListViewModel> GetLeaderboardScore(
-            string campaignKey, int storyPanelId, int accumulate, int sortOrder, DateTime? lastResetDate)
+            string campaignKey, int storyPanelId, AccumulationTypes accumulate, SortOrders sortOrder, DateTime? lastResetDate)
         {
-            var key = "score";
+            /*********
+             * TODO: if game engines support multiple campaigns, we'll need to have campaignKey in the scores table to restrict by the passed in campaign
+             **********/
+
             var config = _configRepository.Get(campaignKey, storyPanelId);
             if (config == null) return new List<PortalLeaderboardGradeListViewModel>();
 
@@ -61,13 +79,13 @@ namespace GameEngine.Service.Score
 
             switch (accumulate)
             {
-                case 1:
+                case AccumulationTypes.Sum:
                     switch (sortOrder)
                     {
-                        case 1:
+                        case SortOrders.Descending:
                             ordered = winnersList.OrderByDescending(w => w.Sum(m => m.Result));
                             break;
-                        case 2:
+                        case SortOrders.Ascending:
                             ordered = winnersList.OrderBy(w => w.Sum(m => m.Result));
                             break;
                         default:
@@ -76,13 +94,13 @@ namespace GameEngine.Service.Score
                     }
                     break;
 
-                case 2:
+                case AccumulationTypes.Max:
                     switch (sortOrder)
                     {
-                        case 1:
+                        case SortOrders.Descending:
                             ordered = winnersList.OrderByDescending(w => w.Max(m => m.Result));
                             break;
-                        case 2:
+                        case SortOrders.Ascending:
                             ordered = winnersList.OrderBy(w => w.Max(m => m.Result));
                             break;
                         default:
@@ -94,10 +112,10 @@ namespace GameEngine.Service.Score
                 default:
                     switch (sortOrder)
                     {
-                        case 1:
+                        case SortOrders.Descending:
                             ordered = winnersList.OrderByDescending(w => w.Min(m => m.Result));
                             break;
-                        case 2:
+                        case SortOrders.Ascending:
                             ordered = winnersList.OrderBy(w => w.Min(m => m.Result));
                             break;
                         default:
@@ -114,7 +132,7 @@ namespace GameEngine.Service.Score
                         new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "",
                             new List<PortalLeaderboardGradeViewModel>()
                             {
-                                new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Sum(grv => grv.Result))
+                                new PortalLeaderboardGradeViewModel(storyPanelId, "score", gr.Sum(grv => grv.Result))
                             }))
                 .ToList();
 
@@ -135,6 +153,7 @@ namespace GameEngine.Service.Score
         ScoreViewModel Get(int id);
         List<ScoreViewModel> GetByConsumerId(int consumerId);
         ScoreViewModel Add(ScoreViewModel scoreViewModel);
-        List<PortalLeaderboardGradeListViewModel> GetLeaderboardScore(string campaignKey, int storyPanelId, int accumulate, int sortOrder, DateTime? lastResetDate);
+        List<PortalLeaderboardGradeListViewModel> GetLeaderboardScore(
+            string campaignKey, int storyPanelId, ScoreService.AccumulationTypes accumulate, ScoreService.SortOrders sortOrder, DateTime? lastResetDate);
     }
 }
