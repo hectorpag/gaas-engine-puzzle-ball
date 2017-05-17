@@ -96,11 +96,11 @@ html, body {
     background-color: #fff;
     font-size: 80px;
     line-height: 70px;
-    color: #7b1441;
+    color: #5D80C0;
     font-family: 'Franchise Bold', sans-serif;
 }  
 #btnPlay:active {
-    background-color: #7b1441;
+    background-color: #5D80C0;
     color: #fff;
 } 
 .leaderboard-button {
@@ -120,11 +120,11 @@ html, body {
     line-height: 74px;
     text-align: center;
     text-decoration: none;
-    color: #7b1441;
+    color: #5D80C0;
     font-family: 'Franchise Bold', sans-serif;
 }
 .leaderboard-button:active {
-    background-color: #7b1441;
+    background-color: #5D80C0;
     color: #fff;
 } 
 .facebook-share {

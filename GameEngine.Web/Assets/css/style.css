@@ -89,7 +89,7 @@ html, body {
     text-align: center;
     font-family: 'Franchise Bold', sans-serif;
     font-size: 54px;
-    color: #7b1441;
+    color: #5D80C0;
     position: absolute;
     top: 0px;
 }
@@ -245,7 +245,7 @@ html, body {
     background-size: contain;
     width: 450px;
     margin-top: 10px;
-    margin-left: 47px;
+    margin-left: 75px;
 }
 #questionContent {
     font-size: 42px;
@@ -298,10 +298,10 @@ html, body {
     font-family: 'Franchise Bold', sans-serif;
     font-size: 72px;
     line-height: 70px;
-    color: #7b1441;
+    color: #5D80C0;
 }
 #questionDialogButton:active {
-    background-color: #7b1441;
+    background-color: #5D80C0;
     color: #fff;
 }
 .introPopup {
@@ -343,10 +343,10 @@ html, body {
     font-family: 'Franchise Bold', sans-serif;
     font-size: 72px;
     line-height: 70px;
-    color: #7b1441;
+    color: #5D80C0;
 }
 .popupButton:active {
-    background-color: #7b1441;
+    background-color: #5D80C0;
     color: #fff;
 }
 .tapArea {
@@ -362,7 +362,7 @@ html, body {
 }
 
 .wave {
-    color: #7b1441;
+    color: #5D80C0;
     position: absolute;
     top: 350px;
     margin: auto;

@@ -7,9 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-        window.parent.postMessage('{"element_cfg" : "show_footer"}', "*");
-    </script>
     <meta charset="utf-8" />
     <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,6 +38,12 @@
         var message = "Brainnzzzz";
         var fbShareLink = $"https://www.facebook.com/dialog/feed?app_id={appId}&link={link}&message={message}&display=popup&redirect_uri={link}";
     }
+
+    <script>
+        window.parent.postMessage('{"element_cfg" : "show_footer"}', "*");
+        window.parent.postMessage('{"game_hidemenu" : "false"}', "*");
+    </script>
+
 </head>
 <body ontouchstart="">
     <div class="wrapper">

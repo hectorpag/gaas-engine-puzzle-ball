@@ -240,13 +240,13 @@
     <Content Include="Assets\images\ballSprite.png" />
     <Content Include="Assets\images\bones.png" />
     <Content Include="Assets\images\background.jpg" />
+    <Content Include="Assets\images\defender.png" />
     <Content Include="Assets\images\fb.png" />
     <Content Include="Assets\images\headerBackground.png" />
     <Content Include="Assets\images\home-background.jpg" />
-    <Content Include="Assets\images\questionHeader.png" />
-    <Content Include="Assets\images\results-background.jpg" />
     <Content Include="Assets\images\zombieSpritesheet.png" />
-    <Content Include="Assets\images\defender.png" />
+    <Content Include="Assets\images\results-background.jpg" />
+    <Content Include="Assets\images\questionHeader.png" />
     <Content Include="Assets\js\addtohomescreen.min.js" />
     <Content Include="Assets\js\gameScript.js" />
     <Content Include="Assets\js\player.js" />
