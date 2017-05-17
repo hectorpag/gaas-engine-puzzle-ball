@@ -77,7 +77,7 @@ namespace GameEngine.Web.Controllers.api
             DateTime time = DateTime.UtcNow;
             try
             {
-                TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("Australia/Brisbane");
+                TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time");
                 time = TimeZoneInfo.ConvertTimeFromUtc(time, cstZone);
             }
             catch
