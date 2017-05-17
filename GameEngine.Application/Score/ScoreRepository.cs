@@ -38,12 +38,13 @@ namespace GameEngine.Service.Score
             return score;
         }
 
-        public List<Model.Score> Get(Func<Model.Score, bool> where = null)
+        public IEnumerable<IGrouping<int?, Model.Score>> GetWinners(Func<Model.Score, bool> where = null)
         {
-            return where == null 
-                ? _context.Scores.AsNoTracking().ToList() 
-                : _context.Scores.AsNoTracking().Where(where).ToList();
+            return (@where == null)
+                ? _context.Scores.AsNoTracking().GroupBy(gr => gr.ConsumerId) 
+                : _context.Scores.AsNoTracking().Where(@where).GroupBy(gr => gr.ConsumerId);
         }
+
         #endregion
     }
 
@@ -52,7 +53,6 @@ namespace GameEngine.Service.Score
         Model.Score Get(int id);
         List<Model.Score> GetByConsumerId(int consumerId);
         Model.Score Add( Model.Score score);
-
-        List<Model.Score> Get(Func<Model.Score, bool> where = null);
+        IEnumerable<IGrouping<int?, Model.Score>> GetWinners(Func<Model.Score, bool> where = null);
     }
 }

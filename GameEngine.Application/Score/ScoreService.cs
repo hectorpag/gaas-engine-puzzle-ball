@@ -53,50 +53,79 @@ namespace GameEngine.Service.Score
             var config = _configRepository.Get(campaignKey, storyPanelId);
             if (config == null) return new List<PortalLeaderboardGradeListViewModel>();
 
-            var scoreList = lastResetDate == null 
-                ? _scoreRepository.Get() 
-                : _scoreRepository.Get(s => s.Scored > lastResetDate);
-            if (!scoreList.Any()) return new List<PortalLeaderboardGradeListViewModel>();
+            var winnersList = (lastResetDate == null
+                ? _scoreRepository.GetWinners()
+                : _scoreRepository.GetWinners(w => w.Scored > lastResetDate));
 
-            var winners = scoreList.GroupBy(gr => gr.ConsumerId)
-                .Select(gr => (accumulate == 1)
-                        ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Sum(grv => grv.Result)) })
-                        : (accumulate == 2)
-                            ? new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Max(grv => grv.Result)) })
-                            : new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "", new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Min(grv => grv.Result)) }));
+            IOrderedEnumerable<IGrouping<int?, Model.Score>> ordered = null;
 
-            var winnersSorted = new List<PortalLeaderboardGradeListViewModel>();
-
-            switch (sortOrder)
+            switch (accumulate)
             {
                 case 1:
-                    winnersSorted = winners
-                        .OrderByDescending(d => d.GameResults, new PortalLeaderboardSortExtensionViewModel(key))
-                        .Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD)
-                        .ToList();
+                    switch (sortOrder)
+                    {
+                        case 1:
+                            ordered = winnersList.OrderByDescending(w => w.Sum(m => m.Result));
+                            break;
+                        case 2:
+                            ordered = winnersList.OrderBy(w => w.Sum(m => m.Result));
+                            break;
+                        default:
+                            ordered = null;
+                            break;
+                    }
                     break;
 
                 case 2:
-                    winnersSorted = winners
-                        .OrderBy(d => d.GameResults, new PortalLeaderboardSortExtensionViewModel(key))
-                        .Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD)
-                        .ToList();
+                    switch (sortOrder)
+                    {
+                        case 1:
+                            ordered = winnersList.OrderByDescending(w => w.Max(m => m.Result));
+                            break;
+                        case 2:
+                            ordered = winnersList.OrderBy(w => w.Max(m => m.Result));
+                            break;
+                        default:
+                            ordered = null;
+                            break;
+                    }
                     break;
 
                 default:
-                    winnersSorted = winners
-                        .Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD)
-                        .ToList();
+                    switch (sortOrder)
+                    {
+                        case 1:
+                            ordered = winnersList.OrderByDescending(w => w.Min(m => m.Result));
+                            break;
+                        case 2:
+                            ordered = winnersList.OrderBy(w => w.Min(m => m.Result));
+                            break;
+                        default:
+                            ordered = null;
+                            break;
+                    }
                     break;
             }
 
-            var consumers = _consumerRepository.Get(winnersSorted.Select(f => int.Parse(f.ConsumerId)).Distinct().ToList());
-            foreach (var res in winnersSorted)
+            var take = ordered?.Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD) ?? winnersList.Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD);
+
+            var rs = take
+                .Select(gr =>
+                        new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "",
+                            new List<PortalLeaderboardGradeViewModel>()
+                            {
+                                new PortalLeaderboardGradeViewModel(storyPanelId, key, gr.Sum(grv => grv.Result))
+                            }))
+                .ToList();
+
+            var consumers = _consumerRepository.Get(rs.Select(f => int.Parse(f.ConsumerId)).Distinct().ToList());
+            foreach (var res in rs)
             {
                 var consumer = consumers.FirstOrDefault(c => c.Id == int.Parse(res.ConsumerId));
-                res.ConsumerId = consumer.GaasConsumerId;
+                if (consumer != null) res.ConsumerId = consumer.GaasConsumerId;
             }
-            return winnersSorted;
+
+            return rs;
         }
         #endregion
     }
