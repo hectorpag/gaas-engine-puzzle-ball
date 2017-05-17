@@ -25,7 +25,7 @@ namespace GameEngine.Web
             AutofacConfig.Run();
             AutoMapperConfiguration.RegisterMappings();
             GameEngineConfig.Set(ConfigurationManager.AppSettings);
-            //ActivitiesConfig.StartActivitiesHelper();
+            ActivitiesConfig.StartActivitiesHelper();
         }
 
         protected void Application_OnError()
