@@ -239,8 +239,8 @@
     <Content Include="Assets\fonts\helveticaNeueLight\helveticaNeueLight.svg" />
     <Content Include="Assets\images\ballSprite.png" />
     <Content Include="Assets\images\bones.png" />
-    <Content Include="Assets\images\background.jpg" />
     <Content Include="Assets\images\defender.png" />
+    <Content Include="Assets\images\background.jpg" />
     <Content Include="Assets\images\fb.png" />
     <Content Include="Assets\images\headerBackground.png" />
     <Content Include="Assets\images\home-background.jpg" />
