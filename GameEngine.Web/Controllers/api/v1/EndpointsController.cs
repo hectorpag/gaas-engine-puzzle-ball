@@ -34,9 +34,9 @@ namespace GameEngine.Web.Controllers.api.v1
             {
                 return _scoreService.GetLeaderboardScore(
                     formData["campaignKey"], 
-                    int.Parse(formData["storyPanelId"]), 
-                    int.Parse(formData["accumulate"]), 
-                    int.Parse(formData["sortOrder"]),
+                    int.Parse(formData["storyPanelId"]),
+                    (ScoreService.AccumulationTypes) int.Parse(formData["accumulate"]),
+                    (ScoreService.SortOrders) int.Parse(formData["sortOrder"]),
                     (!string.IsNullOrEmpty(formData["lastResetDate"])) 
                         ? DateTime.Parse(formData["lastResetDate"]) 
                         : (DateTime?) null);

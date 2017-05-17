@@ -56,8 +56,8 @@ namespace Tests.Integration
             var rs = svc.GetLeaderboardScore(
                 campaignKey,
                 panelId,
-                0,
-                1,
+                ScoreService.AccumulationTypes.Max,
+                ScoreService.SortOrders.Descending,
                 null);
 
             Assert.IsNotNull(rs);
@@ -65,8 +65,8 @@ namespace Tests.Integration
             rs = svc.GetLeaderboardScore(
                 campaignKey,
                 panelId,
-                0,
-                1,
+                ScoreService.AccumulationTypes.Max,
+                ScoreService.SortOrders.Descending,
                 new DateTime(2017, 5, 17));
 
             Assert.IsNotNull(rs);
