@@ -32,18 +32,14 @@ namespace GameEngine.Web.Controllers.api.v1
 
             try
             {
-                var lastResetDate = new DateTime();
-                var date = formData["lastResetDate"];
-
-                if (!string.IsNullOrEmpty(date))
-                    lastResetDate = DateTime.Parse(date);
-
                 return _scoreService.GetLeaderboardScore(
                     formData["campaignKey"], 
                     int.Parse(formData["storyPanelId"]), 
                     int.Parse(formData["accumulate"]), 
-                    int.Parse(formData["sortOrder"]), 
-                    lastResetDate);
+                    int.Parse(formData["sortOrder"]),
+                    (!string.IsNullOrEmpty(formData["lastResetDate"])) 
+                        ? DateTime.Parse(formData["lastResetDate"]) 
+                        : (DateTime?) null);
             }
             catch(Exception ex)
             {

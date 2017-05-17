@@ -58,7 +58,16 @@ namespace Tests.Integration
                 panelId,
                 0,
                 1,
-                new DateTime(2017, 1, 15));
+                null);
+
+            Assert.IsNotNull(rs);
+
+            rs = svc.GetLeaderboardScore(
+                campaignKey,
+                panelId,
+                0,
+                1,
+                new DateTime(2017, 5, 17));
 
             Assert.IsNotNull(rs);
         }
