@@ -24,24 +24,24 @@
     @Scripts.Render("~/Assets/js/resize")
     @helper MessageText()
     {
-        if (Model.Score < 16)
-            { <text>A slow start but plenty to work on!</text> }
+if (Model.Score < 16)
+{ <text>A slow start but plenty to work on!</text> }
 
-        else if (Model.Score < 31)
-            { <text>Picking up the pace, keep going!</text> }
+else if (Model.Score < 31)
+{ <text>Picking up the pace, keep going!</text> }
 
-        else if (Model.Score < 51)
-            { <text>Solid play! Showing great potential!</text> }
+else if (Model.Score < 51)
+{ <text>Solid play! Showing great potential!</text> }
 
-        else
-            { <text>A rock star performance. Awesome!</text> }
-    }
+else
+{ <text>A rock star performance. Awesome!</text> }
+}
     @{
         var appId = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbappid", "193570781164601");
         var link = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fblink", "https://www.originzombies.com.au");
         var message = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbmessage", "");
         var hashtag = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbhashtag", "");
-     }
+    }
     <script type="text/javascript">
         function EscapeHtml(string) {
             return string.replace(/'/g, "\\'").replace(/"/g, '\\"');
@@ -52,8 +52,12 @@
                 'description': '@message',
                 'hashtag': '@hashtag'
             });
-            console.log(fbShareInfo);
+           
             window.parent.postMessage('{"fb_show_share" : ' + fbShareInfo + '}', '*');
+
+            var fbShareInfoOnClick = function() {
+                window.parent.postMessage('{"fb_share" : "share"}', '*');
+            };
         });
     </script>
 </head>
@@ -68,10 +72,12 @@
         </div>
     </div>
    
+    <a href="" class="facebook-share" onclick="fbShareInfoOnClick();" target="_top"></a>
+
     <input id="btnPlay" type="submit" value="PLAY">
-    <div class="leaderboard-button" >LEADERBOARD</div>
+    <div class="leaderboard-button">LEADERBOARD</div>
     <script>
-        $('#btnPlay').click(function() {
+        $('#btnPlay').click(function () {
             window.parent.postMessage('{"game_play" : "home"}', "*");
         });
         $('.leaderboard-button').click(function () {
