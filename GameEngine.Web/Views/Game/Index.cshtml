@@ -79,7 +79,7 @@
         var TELEMETRYENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "GameLog", action = "Telemetry" })';
         var DCQENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "GetNextQuestion" })';
         var DCAENDPOINT = '@Url.RouteUrl("DefaultApi", new {httproute = "", controller = "Dc", action = "AnswerQuestion" })';
-        var fps = @GameEngine.Web.Helpers.ConfigReader.GetItem(Model, "fps", "30");
+        var fps = @GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fps", "30");
         fps = 30;
     </script>
     <form action="@Url.RouteUrl("Result")" method="post" enctype="multipart/form-data" id="resultForm">

@@ -7,14 +7,14 @@ namespace GameEngine.Web.Helpers
 {
     public class ConfigReader
     {
-        public static string GetItem(ViewModel.GameViewModel model, string key, string defaultIfNotFound = "")
+        public static string GetItem(Dictionary<string, string> fields, string key, string defaultIfNotFound = "")
         {
-            if (model?.Fields == null)
+            if (fields == null)
                 return defaultIfNotFound;
 
-            return !model.Fields.ContainsKey(key)
+            return !fields.ContainsKey(key)
                 ? defaultIfNotFound
-                : model.Fields.FirstOrDefault(f => f.Key.Equals(key, StringComparison.CurrentCultureIgnoreCase)).Value;
+                : fields.FirstOrDefault(f => f.Key.Equals(key, StringComparison.CurrentCultureIgnoreCase)).Value;
         }
     }
 }

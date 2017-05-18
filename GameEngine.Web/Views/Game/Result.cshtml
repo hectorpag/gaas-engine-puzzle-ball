@@ -36,9 +36,9 @@
             { <text>A rock star performance. Awesome!</text> }
     }
     @{
-        var appId = "193570781164601";
-        var link = "https://newscorp-gaasplay.azurewebsites.net/game/QLD-TeamofthePlayingDead/home";
-        var message = "Brainnzzzz";
+        var appId = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbappid", "193570781164601");
+        var link = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fblink", "https://www.originzombies.com.au");
+        var message = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbmessage", "");
         var fbShareLink = $"https://www.facebook.com/dialog/feed?app_id={appId}&link={link}&message={message}&display=popup&redirect_uri={link}";
     }
 </head>
