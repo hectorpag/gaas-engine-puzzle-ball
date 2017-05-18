@@ -92,7 +92,7 @@ namespace GameEngine.Web.Controllers
             //{
             //    gameViewModel.Config = config[0];
             //}
-            
+
             var resultViewModel = new ResultViewModel() { GameViewModel = gameViewModel, Score = score };
 
             return View("Result", resultViewModel);

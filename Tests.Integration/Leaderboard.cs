@@ -56,9 +56,18 @@ namespace Tests.Integration
             var rs = svc.GetLeaderboardScore(
                 campaignKey,
                 panelId,
-                0,
-                1,
-                new DateTime(2017, 1, 15));
+                ScoreService.AccumulationTypes.Max,
+                ScoreService.SortOrders.Descending,
+                null);
+
+            Assert.IsNotNull(rs);
+
+            rs = svc.GetLeaderboardScore(
+                campaignKey,
+                panelId,
+                ScoreService.AccumulationTypes.Max,
+                ScoreService.SortOrders.Descending,
+                new DateTime(2017, 5, 17));
 
             Assert.IsNotNull(rs);
         }
