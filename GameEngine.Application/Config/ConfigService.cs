@@ -120,6 +120,7 @@ namespace GameEngine.Service.Config
 
             //cache
             _cacheManager.RemoveByPattern(GetKey(campaignKey,panelId));
+            _cacheManager.RemoveByPattern(GetKey(campaignKey));
 
             var viewModel = _mapper.Map<ConfigViewModel>(config);
             viewModel.GameConfigJson = JToken.Parse(config.GameConfigJson).ToString(Formatting.Indented);
