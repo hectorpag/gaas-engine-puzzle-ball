@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using Microsoft.Ajax.Utilities
 @model GameEngine.ViewModel.ResultViewModel
 @{
     Layout = null;
@@ -39,8 +40,25 @@
         var appId = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbappid", "193570781164601");
         var link = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fblink", "https://www.originzombies.com.au");
         var message = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbmessage", "");
-        var fbShareLink = $"https://www.facebook.com/dialog/feed?app_id={appId}&link={link}&message={message}&display=popup&redirect_uri={link}";
+
+        // var fbShareLink = $"https://www.facebook.com/dialog/feed?app_id={appId}&link={link}&message={message}&display=popup&redirect_uri={link}";
     }
+    <script type="text/javascript">
+        function EscapeHtml(string) {
+            return string.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        }
+        $(document).ready(function() {
+            var fbShareInfo = JSON.stringify({
+                'name': EscapeHtml('Ice Break Challenge'),
+                'caption': EscapeHtml('Ice Break Challenge'),
+                'url': EscapeHtml(link),
+                'message': message,
+                'description': message,
+                'imageUrl': 'https://gaas.digital/campaigns/settings/social-share-image/1242'
+            });
+            window.parent.postMessage('{"fb_show_share" : ' + fbShareInfo + '}', '*');
+        });
+    </script>
 </head>
 <body ontouchstart="">
     <div class="wrapper">
