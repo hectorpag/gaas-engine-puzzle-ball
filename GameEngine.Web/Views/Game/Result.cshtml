@@ -54,10 +54,10 @@ else
             });
            
             window.parent.postMessage('{"fb_show_share" : ' + fbShareInfo + '}', '*');
-
-            var fbShareInfoOnClick = function() {
+            
+            $("#facebook-share").click(function() {
                 window.parent.postMessage('{"fb_share" : "share"}', '*');
-            };
+            });
         });
     </script>
 </head>
@@ -72,7 +72,7 @@ else
         </div>
     </div>
    
-    <a href="" class="facebook-share" onclick="fbShareInfoOnClick();" target="_top"></a>
+    <i class="facebook-share" id="facebook-share"></i>
 
     <input id="btnPlay" type="submit" value="PLAY">
     <div class="leaderboard-button">LEADERBOARD</div>
