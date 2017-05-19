@@ -1,13 +1,8 @@
 ﻿@font-face {
     font-family: 'guardian';
-    src: url('../fonts/guardian_sans_xcond_regular.eot');
-    src: url('../fonts/guardian_sans_xcond_regular.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/guardian_sans_xcond_regular.woff2') format('woff2'),
-         url('../fonts/guardian_sans_xcond_regular.woff') format('woff'),
-         url('../fonts/guardian_sans_xcond_regular.ttf') format('truetype'),
-         url('../fonts/guardian_sans_xcond_regular.svg#guardian_sans_xcond_regularRg') format('svg');
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
+    src: local('guardian'), url('https://pagdig.blob.core.windows.net/gaas/guardian_sans_xcond_regular.woff') format('woff');
 
 }
 @font-face {
