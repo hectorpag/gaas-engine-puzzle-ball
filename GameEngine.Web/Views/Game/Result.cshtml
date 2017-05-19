@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using Microsoft.Ajax.Utilities
 @model GameEngine.ViewModel.ResultViewModel
 @{
     Layout = null;
@@ -23,24 +24,42 @@
     @Scripts.Render("~/Assets/js/resize")
     @helper MessageText()
     {
-        if (Model.Score < 16)
-            { <text>A slow start but plenty to work on!</text> }
+if (Model.Score < 16)
+{ <text>A slow start but plenty to work on!</text> }
 
-        else if (Model.Score < 31)
-            { <text>Picking up the pace, keep going!</text> }
+else if (Model.Score < 31)
+{ <text>Picking up the pace, keep going!</text> }
 
-        else if (Model.Score < 51)
-            { <text>Solid play! Showing great potential!</text> }
+else if (Model.Score < 51)
+{ <text>Solid play! Showing great potential!</text> }
 
-        else
-            { <text>A rock star performance. Awesome!</text> }
-    }
+else
+{ <text>A rock star performance. Awesome!</text> }
+}
     @{
-        var appId = "193570781164601";
-        var link = "https://newscorp-gaasplay.azurewebsites.net/game/QLD-TeamofthePlayingDead/home";
-        var message = "Brainnzzzz";
-        var fbShareLink = $"https://www.facebook.com/dialog/feed?app_id={appId}&link={link}&message={message}&display=popup&redirect_uri={link}";
+        var appId = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbappid", "193570781164601");
+        var link = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fblink", "https://www.originzombies.com.au");
+        var message = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbmessage", "");
+        var hashtag = GameEngine.Web.Helpers.ConfigReader.GetItem(Model.Fields, "fbhashtag", "");
     }
+    <script type="text/javascript">
+        function EscapeHtml(string) {
+            return string.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        }
+        $(document).ready(function() {
+            var fbShareInfo = JSON.stringify({
+                'url': EscapeHtml('@link'),
+                'description': '@message',
+                'hashtag': '@hashtag'
+            });
+           
+            window.parent.postMessage('{"fb_show_share" : ' + fbShareInfo + '}', '*');
+            
+            $("#facebook-share").click(function() {
+                window.parent.postMessage('{"fb_share" : "share"}', '*');
+            });
+        });
+    </script>
 </head>
 <body ontouchstart="">
     <div class="wrapper">
@@ -52,14 +71,13 @@
             <p class="bestScore">Best Score: @Model.GameViewModel.Dashboard.BestScore</p>
         </div>
     </div>
-    <p class="facebookText">
-    </p>
-    <a href="@fbShareLink" class="facebook-share" onclick="ga('send', 'event', 'button', 'click', 'FBshareFollow', 1);" target="_top"></a>
+   
+    <i class="facebook-share" id="facebook-share"></i>
 
     <input id="btnPlay" type="submit" value="PLAY">
-    <div class="leaderboard-button" >LEADERBOARD</div>
+    <div class="leaderboard-button">LEADERBOARD</div>
     <script>
-        $('#btnPlay').click(function() {
+        $('#btnPlay').click(function () {
             window.parent.postMessage('{"game_play" : "home"}', "*");
         });
         $('.leaderboard-button').click(function () {

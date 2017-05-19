@@ -125,22 +125,40 @@ namespace GameEngine.Service.Score
                     break;
             }
 
-            var take = ordered?.Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD) ?? winnersList.Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD);
-
-            var rs = take
-                .Select(gr =>
-                        new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "",
-                            new List<PortalLeaderboardGradeViewModel>()
-                            {
-                                new PortalLeaderboardGradeViewModel(storyPanelId, "score", gr.Sum(grv => grv.Result))
-                            }))
+            var take = (ordered?.Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD) ?? winnersList.Take(NUM_OF_WINNERS_TO_DISPLAY_ON_LEADERBOARD))
                 .ToList();
 
+            List<PortalLeaderboardGradeListViewModel> rs;
+
+            switch (accumulate)
+            {
+                case AccumulationTypes.Sum:
+                    rs = take.Select(gr =>
+                        new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "",
+                            new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, "score", gr.Sum(g => g.Result)) }))
+                    .ToList();
+                    break;
+                case AccumulationTypes.Max:
+                    rs = take.Select(gr =>
+                        new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "",
+                            new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, "score", gr.Max(g => g.Result)) }))
+                    .ToList();
+                    break;
+                default:
+                    rs = take.Select(gr =>
+                        new PortalLeaderboardGradeListViewModel(gr.Key.Value.ToString(), "", "",
+                            new List<PortalLeaderboardGradeViewModel>() { new PortalLeaderboardGradeViewModel(storyPanelId, "score", gr.Min(g => g.Result)) }))
+                    .ToList();
+                    break;
+            }
+            
             var consumers = _consumerRepository.Get(rs.Select(f => int.Parse(f.ConsumerId)).Distinct().ToList());
             foreach (var res in rs)
             {
                 var consumer = consumers.FirstOrDefault(c => c.Id == int.Parse(res.ConsumerId));
-                if (consumer != null) res.ConsumerId = consumer.GaasConsumerId;
+                if (consumer == null) continue;
+                res.ConsumerId = consumer.GaasConsumerId;
+                res.ConsumerName = consumer.GaasConsumerName;
             }
 
             return rs;
