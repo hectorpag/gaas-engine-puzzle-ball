@@ -87,6 +87,7 @@ html, body {
     color: #7b1441;
     position: absolute;
     top: 0px;
+    line-height: 54px;
 }
 .missedZombies {
     position: absolute;
