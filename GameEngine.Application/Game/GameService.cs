@@ -1,6 +1,7 @@
 ﻿using GameEngine.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using AutoMapper;
@@ -161,6 +162,13 @@ namespace GameEngine.Service.Game
 
         public void SaveEventData(GaasInfoViewModel gaasInfoViewModel, GameEventViewModel vm)
         {
+            var toSql = false;
+            bool.TryParse(ConfigurationManager.AppSettings["LogGameTelemetryToSql"], out toSql);
+            var toLogs = false;
+            bool.TryParse(ConfigurationManager.AppSettings["LogGameTelemetryToDiagnostics"], out toLogs);
+
+            if (!toSql && !toLogs) return;
+
             var gameViewModel = Load(gaasInfoViewModel);
 
             //Populate ConsumerId
@@ -173,7 +181,9 @@ namespace GameEngine.Service.Game
             vm.FuelId = currentFuel.Id;
             vm.EventDate = DateTime.UtcNow;
 
-            _gameEventDataService.Add(vm);
+            if (toSql) _gameEventDataService.Add(vm);
+
+            if (toLogs) Logging.Info("SaveEventData", vm);
         }
 
         public void SaveFinalScore(GaasInfoViewModel gaasInfoViewModel, GameOverViewModel vm)
