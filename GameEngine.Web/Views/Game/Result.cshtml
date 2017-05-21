@@ -24,13 +24,13 @@
     @Scripts.Render("~/Assets/js/resize")
     @helper MessageText()
     {
-if (Model.Score < 16)
+if (Model.Score < 30)
 { <text>A slow start but plenty to work on!</text> }
 
-else if (Model.Score < 31)
+else if (Model.Score < 100)
 { <text>Picking up the pace, keep going!</text> }
 
-else if (Model.Score < 51)
+else if (Model.Score < 210)
 { <text>Solid play! Showing great potential!</text> }
 
 else
