@@ -28,21 +28,16 @@ namespace GameEngineApp_Start
                 "~/Assets/vendor/velocity.min.js",
                 "~/Assets/vendor/devtools-detect.js",
 
-                "~/Assets/js/gameApi.js",
-                "~/Assets/js/utils.js",
-                "~/Assets/js/resize.js",
-
-                "~/Assets/js/player.js",
-                "~/Assets/js/zombies.js",
-                "~/Assets/js/gameScript.js"
+               "~/Assets/glue/jquery/jquery-1.8.2.min.js",
+                "~/Assets/glue/load/load.js"
 
         //"~/Assets/js/game.js"
         ));
             bundles.Add(new ScriptBundle("~/Assets/js/jquery").Include(
-                "~/Scripts/jquery-3.1.1.min.js"
+                //"~/Scripts/jquery-3.1.1.min.js"
          ));
             bundles.Add(new ScriptBundle("~/Assets/js/resize").Include(
-                "~/Assets/js/resize.js"
+                //"~/Assets/js/resize.js"
          ));
             bundles.Add(new StyleBundle("~/Assets/css/home").Include(
                "~/Assets/css/home.css"
@@ -53,7 +48,8 @@ namespace GameEngineApp_Start
          ));
 
             bundles.Add(new StyleBundle("~/Assets/css/game").Include(
-               "~/Assets/css/style.css"
+               //"~/Assets/css/style.css",
+               "~/Assets/css/main.css"
          ));
            
 

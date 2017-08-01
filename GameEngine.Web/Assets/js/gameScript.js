@@ -32,7 +32,7 @@ var devToolsOpened = false;
 var problemArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 var score = 0;
-
+console.log("Test Value: ", test);
 function updateTacklesMade(_pointsScored) {
     score += _pointsScored;
     tacklesMade++;
