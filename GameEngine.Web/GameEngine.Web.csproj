@@ -501,7 +501,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61680</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44300/gaas-engine-zombie</IISUrl>
+          <IISUrl>https://localhost:44300/gaas-engine-puzzleBall</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
