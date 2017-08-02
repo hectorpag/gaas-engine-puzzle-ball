@@ -35,13 +35,13 @@ ig.module('game.entities.controllers.mainmenu-ctrl')
 				EntityBtnplayMenu,0,0,{delay:0}
 			);
 			_this.btnPlay.fnSetCenter('both',{
-				x:ig.system.width/2,
-				y:ig.system.height/2 + 50
+				x:ig.system.width/2 + 80,
+				y:ig.system.height/2 + 170
 			});
 			
 			if(_SETTINGS.MoreGames.Enabled){
 				_this.btnOption = _this.fnSpawn(EntityBtnoptionMenu,0,0,{delay:0.2});
-				_this.btnMoregames = _this.fnSpawn(EntityButtonMoreGames,270,440,{delay:0.4});
+				//_this.btnMoregames = _this.fnSpawn(EntityButtonMoreGames,270,440,{delay:0.4});
 				// _this.btnMoregames.pos = {
 				// 	x:ig.system.width/2 + 80 - (_this.btnMoregames.size.x / 2),
 				// 	y:ig.system.height/2 + 120

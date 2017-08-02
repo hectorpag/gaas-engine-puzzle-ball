@@ -19,7 +19,7 @@ function loadScriptsSynchronously(arr) {
     }
     loadFunctions[0]();
 }
-
+console.log(ImpactPrefix);
 // if not on server, run compiled version
 loadScriptsSynchronously([
 	// _STRINGS

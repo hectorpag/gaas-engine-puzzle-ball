@@ -12,21 +12,21 @@ namespace GameEngineApp_Start
         {
 
             bundles.Add(new StyleBundle("~/bundles/css/config").Include(
-               "~/Content/bootstrap-switch/bootstrap3/bootstrap-switch.min.css"
+               //"~/Content/bootstrap-switch/bootstrap3/bootstrap-switch.min.css"
          ));
 
             bundles.Add(new ScriptBundle("~/bundles/js/config").Include(
-               "~/Scripts/bootstrap-switch.min.js"
+               //"~/Scripts/bootstrap-switch.min.js"
           ));
 
             bundles.Add(new ScriptBundle("~/Assets/js/game").Include(
-                "~/Scripts/jquery-3.1.1.min.js",
-                "~/Scripts/hammer.min.js",
-                "~/Scripts/jquery.hammer.min.js",
+                //"~/Scripts/jquery-3.1.1.min.js",
+                //"~/Scripts/hammer.min.js",
+                //"~/Scripts/jquery.hammer.min.js",
 
-                "~/Assets/vendor/jquery.easing.1.3.min.js",
-                "~/Assets/vendor/velocity.min.js",
-                "~/Assets/vendor/devtools-detect.js",
+                //"~/Assets/vendor/jquery.easing.1.3.min.js",
+                //"~/Assets/vendor/velocity.min.js",
+                //"~/Assets/vendor/devtools-detect.js",
 
                "~/Assets/glue/jquery/jquery-1.8.2.min.js",
                 "~/Assets/glue/load/load.js"
@@ -48,8 +48,14 @@ namespace GameEngineApp_Start
          ));
 
             bundles.Add(new StyleBundle("~/Assets/css/game").Include(
-               //"~/Assets/css/style.css",
-               "~/Assets/css/main.css"
+               "~/Assets/css/style.css",
+               "~/Assets/css/main.css",
+               "~/Assets/settings/ad/mobile/preroll/themes/light/ad.css",
+               "~/Assets/settings/ad/mobile/header/themes/light/ad.css",
+               "~/Assets/settings/ad/mobile/footer/themes/light/ad.css",
+               "~/Assets/settings/ad/mobile/end/themes/light/ad.css",
+               "~/Assets/settings/debug/debug.css",
+               "~/Assets/settings/ad/mobile/preroll/themes/light/ad.css"
          ));
            
 
